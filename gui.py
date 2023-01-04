@@ -4,25 +4,50 @@ import pygame.freetype
 import time
 import sys
 import login
+import main
 
 pygame.init()
 
 #Create display window
-SCREEN_HEIGHT = 500
-SCREEN_WIDTH = 1000
+SCREEN_HEIGHT = 768 
+SCREEN_WIDTH = 1366 
 
 screen = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
 clock = pygame.time.Clock()
-pygame.display.set_caption("Button Demo")
+pygame.display.set_caption("UNO")
+icon = pygame.image.load('Assets/uno_icon.ico')
+pygame.display.set_icon(icon)
 pygame.key.set_repeat(400, 50)
-GAME_FONT = pygame.freetype.Font("Assets/Fonts/cambria.ttf",20)
+GAME_FONT = pygame.freetype.Font("Assets/Fonts/cambria.ttf",22)
+WELCOME_FONT = pygame.freetype.Font("Assets/Fonts/cambria.ttf",50)
+PLAYER_FONT = pygame.freetype.Font("Assets/Fonts/YeastyFlavorsRegular-yweyd.ttf",40)
 
 signup_img = pygame.image.load('Assets/sign_up.png').convert_alpha()
 signup_img_hi = pygame.image.load('Assets/sign_up_hi.png').convert_alpha()
+card_button = pygame.image.load('Assets/more_cards.png').convert_alpha()
+card_button_hi = pygame.image.load('Assets/more_cards_hi.png').convert_alpha()
 
 signin_img = pygame.image.load('Assets/sign_in.png').convert_alpha()
 signin_img_hi = pygame.image.load('Assets/sign_in_hi.png').convert_alpha()
-user_name_img = pygame.image.load('Assets/enter_username.png')
+
+uno_logo = pygame.image.load('Assets/uno_logo.png').convert_alpha()
+play_img = pygame.image.load('Assets/play.png').convert_alpha()
+play_hi_img = pygame.image.load('Assets/play_hi.png').convert_alpha()
+leaderboard_img = pygame.image.load('Assets/leaderboard.png').convert_alpha()
+leaderboard_hi_img = pygame.image.load('Assets/leaderboard_hi.png').convert_alpha()
+
+setting_img = pygame.image.load('Assets/settings.png').convert_alpha()
+setting_hi_img = pygame.image.load('Assets/settings_hi.png').convert_alpha()
+
+quit_img = pygame.image.load('Assets/quit.png').convert_alpha()
+quit_hi_img = pygame.image.load('Assets/quit_hi.png').convert_alpha()
+
+temp_uno = pygame.image.load('Assets/Cards/green 1.png').convert_alpha()
+temp_uno2 = pygame.image.load('Assets/Cards/green 0.png').convert_alpha()
+
+bg = pygame.image.load("Assets/uno_background.png")
+
+#user_name_img = pygame.image.load('Assets/enter_username.png')
 class Button():
     def __init__(self,x,y,image,image_hi,scale):
         width = image.get_width()
@@ -32,8 +57,9 @@ class Button():
         self.rect = self.image.get_rect()
         self.rect.topleft = (x,y)
         self.clicked = False
+        self.pages = 0
 
-    def draw_login(self):
+    def draw(self):
         action = False
         #ger mouse postion
         pos = pygame.mouse.get_pos()
@@ -57,6 +83,33 @@ class Button():
         else:
             screen.blit(self.image, (self.rect.x,self.rect.y))
         return action
+
+    def page(self):
+        action = False
+        pos = pygame.mouse.get_pos()
+
+        if self.rect.collidepoint(pos):
+            screen.blit(self.image_hi, (self.rect.x,self.rect.y))
+            if pygame.mouse.get_pressed()[0]:
+                if self.pages == 3:
+                    self.pages = 0
+                else:
+                    self.pages += 1
+
+
+        if self.rect.collidepoint(pos):
+            screen.blit(self.image_hi, (self.rect.x,self.rect.y))
+
+        #draw button
+        else:
+            screen.blit(self.image, (self.rect.x,self.rect.y))
+
+
+        return self.pages
+
+
+
+
 
 class Enter_Text:
     def __init__(self,x,y,font,font_size,anti,text_manger):
@@ -83,8 +136,37 @@ class Enter_Text:
 
     def access(self):
         return self.name 
-        
 
+    def clear_text(self):
+        self.name = ""
+        self.textinput.value = ""
+
+
+class Text:
+    def __init__(self,text,colour,x,y):
+        self.text = text
+        self.colour = colour
+        self.x = x
+        self.y = y
+
+
+    def create(self):
+        text_surface, rect = WELCOME_FONT.render(self.text, (self.colour))
+        screen.blit(text_surface, (self.x, self.y))
+
+    def create_2(self):
+        text_surface, rect = GAME_FONT.render(self.text, (self.colour))
+        screen.blit(text_surface, (self.x, self.y))
+
+    def create_3(self):
+        text_surface, rect = PLAYER_FONT.render(self.text, (self.colour))
+        screen.blit(text_surface, (self.x, self.y))
+
+    def clear(self):
+        text_surface, rect = GAME_FONT.render("", (self.colour))
+        screen.blit(text_surface, (self.x, self.y))
+
+        
 
 class Image():
     def __init__(self,x,y,image,scale):
@@ -97,16 +179,168 @@ class Image():
     def display(self):
         screen.blit(self.image, (self.rect.x,self.rect.y))
 
+class UnoCards():
+    def __init__(self,x,y,image,image_hi,scale,postion):
+        width = image.get_width()
+        height = image.get_height()
+        self.image = pygame.transform.scale(image,(int(width*scale),int(height*scale)))
+        self.image_hi = pygame.transform.scale(image_hi,(int(width*scale),int(height*scale)))
+        self.rect = self.image.get_rect()
+        self.rect.topleft = (x,y)
+        self.clicked = False
+        self.postion = postion
+
+    def draw(self):
+ 
+        pos = pygame.mouse.get_pos()
+
+        if self.rect.collidepoint(pos):
+            screen.blit(self.image_hi, (self.rect.x,self.rect.y))
+            if pygame.mouse.get_pressed()[0]== 1 and self.clicked == False:
+                print("true")
+                self.clicked = True
+
+        if pygame.mouse.get_pressed()[0] == 0:
+            self.clicked = False
+
+
+        if self.rect.collidepoint(pos):
+            screen.blit(self.image_hi, (self.rect.x,self.rect.y))
+
+        else:
+            screen.blit(self.image, (self.rect.x,self.rect.y))
+
+    def get_card(self):
+        if self.clicked == True:
+            self.clicked = False
+            return self.postion
+
+
+    def clear(self):
+        blank = pygame.image.load('Assets/blank.png').convert_alpha()
+        screen.blit(blank, (self.rect.x,self.rect.y))
+
+
+
+def unoloop(user,user_deck,len_decks_list):
+    screen.fill((248,248,255))
+    screen.blit(bg, (0,0))  
+    player1_text = Text(f"{str(user).capitalize()}:",(0,0,0),50,650)
+    player1_text.create_3()
+    button = Button(1200,600,card_button,card_button_hi,1)
+
+  
+
+
+    def current_page(start,end,hand,hand_hi):
+        x = 190
+        y = 600
+        for num in range(start,end):
+            x += 110
+            cards = UnoCards(x,y,hand[num][0],hand_hi[num],1,hand[num][1])
+            cards.draw()
+            current_card = cards.get_card()
+            if current_card != "" or current_card != None:
+                print(current_card)
+
+
+    while True:
+        user_cards = [[pygame.image.load(f'Assets/Cards/{i}.png').convert_alpha(),str(i)] for i in user_deck]
+        user_cards_hi = [pygame.image.load(f'Assets/Cards/{x}_hi.png').convert_alpha() for x in user_deck]
+        events = pygame.event.get()
+        x = 190
+        y = 600
+        if button.page() == 0 and len_decks_list[0] < 8:
+            for num in range(7):
+                x += 110
+                cards = UnoCards(x,y,user_cards[num][0],user_cards_hi[num],1,user_cards[num][1])
+                cards.draw()
+                current_card = cards.get_card()
+                if current_card != "" or current_card != None:
+                    print(current_card)
+            
+        elif button.page() == 1 and len_decks_list[0] > 7 and len_decks_list[0] < 14:
+            current_page(7,14,user_cards,user_cards_hi)
+
         
 
-#create buttonm
-def gameloop():
-    in_button= Button(100, 160, signin_img,signin_img_hi,1)
-    up_button = Button(550, 160, signup_img,signup_img_hi,1)
-    username = Image(100,210,user_name_img,1)
+
+
+        for event in events:
+            if event.type == pygame.QUIT:
+                exit()
+        pygame.display.update()
+        clock.tick(60)
+
+
+
+
+
+
+
+def main_menu_loop():
+    logo = Image(510,20,uno_logo,1)
+    screen.fill((248,248,255))
+    play_button = Button(555, 240, play_img,play_hi_img,1)
+    leaderboard_button = Button(555, 360, leaderboard_img,leaderboard_hi_img,1)
+    setting_button = Button(555,480,setting_img,setting_hi_img,1)
+    quit_button = Button(555,600,quit_img,quit_hi_img,1)
+    option = ""
+    while True:
+        events = pygame.event.get()
+        logo.display()
+        if play_button.draw() == True:
+            return "play"
+        if leaderboard_button.draw() == True:
+            return "leaderboard"
+        if setting_button.draw() == True:
+            return "settings"
+        if quit_button.draw() == True:
+            exit()
+
+
+        for event in events:
+            #quit game
+            if event.type == pygame.QUIT:
+                exit()
+        pygame.display.update()
+        clock.tick(60)
+
+
+
+
+
+
+
+
+def welcomeloop(user):
+    for i in range(120):
+        welcome_text = Text(f"Hi {str(user).capitalize()}",(0,0,0),500,325)
+        welcome_text2 = Text("Welcome To Uno",(0,0,0),500,375)
+        screen.fill((198,226,255))
+        welcome_text.create()
+        welcome_text2.create()
+        events = pygame.event.get()
+        for event in events:
+                #quit game
+                if event.type == pygame.QUIT:
+                    exit()
+        pygame.display.update()
+        clock.tick(60)
     
+
+
+
+#create buttonm
+def startloop():
+    in_button= Button(200, 260, signin_img,signin_img_hi,1)
+    up_button = Button(750, 260, signup_img,signup_img_hi,1)
+    #username = Image(100,210,user_name_img,1)
+    error = ""
+    text2 = Text(error,(0,0,0),240,350)
+
     manager = pygame_textinput.TextInputManager(validator = lambda input: len(input) <= 10)
-    text1 = Enter_Text(305,206,"Cambria",20,True,manager)
+    text1 = Enter_Text(505,306,"Cambria",22,True,manager)
     text1.create()
 
 
@@ -116,22 +350,35 @@ def gameloop():
         events = pygame.event.get()
 
         screen.fill((198,226,255))
+        text2 = Text(error,(255,48,48),200,550)
         if menu != "clicked":
-            if in_button.draw_login() == True:
+            if in_button.draw() == True:
                 option = "sign in"
                 menu = "clicked"
-            elif up_button.draw_login() == True:
+            elif up_button.draw() == True:
                 option = "sign up"
                 print("also clicked")
                 menu ="clicked"
+                text2.clear()
+            else:
+                text2.create_2()
 
         if text1.access() != "":
-            user = login.login_or_sign(option,text1.access())
-            return user
+            list_1 = login.login_or_sign(option,text1.access())
+            user = list_1[0]
+            error = list_1[1]
+            text1.clear_text()
+            if user != "":
+                return user
+            else:
+                user = ""
+                menu = ""
+
+                
         if menu == "clicked":
-            text1.draw(events,300,201,140,32)
+            text1.draw(events,500,301,140,32)
             text_surface, rect = GAME_FONT.render("Enter Username: ", (0, 0, 0))
-            screen.blit(text_surface, (145, 212))
+            screen.blit(text_surface, (337, 308))
             
 
 

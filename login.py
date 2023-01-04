@@ -17,6 +17,7 @@ def create():
 class User:
     def __init__(self,u=""):
         self.__username = u
+        self.error = ""
     
     
     def set_username(self,u):
@@ -29,10 +30,14 @@ class User:
             copy_check = str("".join(c.fetchone()))
         except TypeError: None
 
-        if copy_check == self.__username: print("Please Create A UserName That Not In The Database")
-        elif self.__username == "": print("Please Do Not Leave The Username Blank")
-        elif len(self.__username) > 10:  print("Please Do Not Exceed 10 Characters")
-        else: c.execute(f"INSERT INTO Leaderboard(UserName,Games,Wins,Loss,Draws,Win_ratio) VALUES ('{self.__username.lower()}',0,0,0,0,0)")
+        if copy_check == self.__username: 
+            self.error = "Please Create A UserName That Not In The Database"
+        elif self.__username == "": 
+            self.error = "Please Do Not Leave The Username Blank"
+        elif len(self.__username) > 10:  
+            self.error = "Please Do Not Exceed 10 Characters"
+        else: 
+            c.execute(f"INSERT INTO Leaderboard(UserName,Games,Wins,Loss,Draws,Win_ratio) VALUES ('{self.__username.lower()}',0,0,0,0,0)")
         
         self.__username = ""
         conn.commit()
@@ -50,6 +55,7 @@ class User:
             check = str("".join(c.fetchone())).lower()
         except TypeError:
             self.__username = ""
+            self.error = "Please Enter A Valid Username"
             conn.close()
         
         if check == self.__username: 
@@ -58,19 +64,26 @@ class User:
     def get_user(self): 
         return self.__username
 
+    def error_code(self):
+        display = self.error 
+        self.error = ""
+        return display
+
+
 def login_or_sign(login_options,name):
     account_name = User()
-    while login_options != "sign up" or "sign in":
-        if login_options == "sign up":
-                #name = input("Create User: ")
-                account_name.set_username(name)
-    
-        elif login_options == "sign in":
-            print(name)
-            account_name.sign_in(name)
-            if account_name.get_user() == "": print("Please Enter A Valid Username")
-            else: break
-    return account_name.get_user()
+    if login_options == "sign up":
+            #name = input("Create User: ")
+            account_name.set_username(name)
+
+    elif login_options == "sign in":
+        print(name)
+        account_name.sign_in(name)
+        #if account_name.get_user() == "": 
+            #print("Please Enter A Valid Username")
+
+    list2 = [account_name.get_user(), account_name.error_code()]
+    return list2
 
     
     

@@ -11,9 +11,8 @@ import gui
 
 def menu(u):
     """A Function that gives the user options on what they want to do next"""
-    print("Welcome To Python UNO")
     while True:
-        option = input("\nMenu Options: | Play | Leaderboard | Settings | Quit |\n\nEnter A Option For: ").lower()
+        option = gui.main_menu_loop()
         if option == "play":
             main_game_uno(u)
         elif option == "leaderboard":
@@ -21,7 +20,7 @@ def menu(u):
         elif option == "settings":
             settings()
         elif option == "quit":
-            quit()
+                quit()
         
 
 def settings():
@@ -105,9 +104,9 @@ def main_game_uno(user):
                     pick_up = uno_deck.deal_card()
                     if pick_up == "end":
                         raise IndexError
-                    game.player_move(pick_up)
+                    game.player_move(pick_up,user)
                 else:
-                    game.player_move(pick_up)
+                    game.player_move(pick_up,user)
             
             if game.plus_4_check() == True:
                 add_card = []
@@ -158,9 +157,8 @@ if __name__ == "__main__":
     if os.path.exists("uno_database.db"): print("database already created")
     else: login.create()
     
-    user = gui.gameloop()
-    print(user)
-    print(f"Hi {user.capitalize()}")
+    user = gui.startloop()
+    gui.welcomeloop(user)
     menu(user)
         
 

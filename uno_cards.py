@@ -2,6 +2,7 @@ from random import shuffle
 from random import randint
 import time
 import sqlite3
+import gui
 
 class cards:
     def __init__(self,colour,value):
@@ -73,6 +74,13 @@ class UNO():
         self._clockwise = True
         self._pickup = False
         self._card_used = {}
+
+
+    def user_deck(self):
+        return [str(i) for i in self._order[0]]
+
+    def players_deck_len(self):
+        return [len(self._order[0]),len(self._order[1]),len(self._order[2]),len(self._order[3])]
 
 
     def postion_state(self):
@@ -439,17 +447,18 @@ class UNO():
 
         con.close()
 
-    def player_move(self,pick_up_card):
+    def player_move(self,pick_up_card,user):
         """Displays the top card. Ask the current player what card he wants to play. If the player does not want to play
         the user can pick up card and is given a second chance to play a cards. It then calls function to check the card and
         saves it variable as boolean datatype. Then calls a fucntion to check if player mmets end condtions. After calls a 
         function for the next user turn"""
-
         print(f"\nPlayer 1: {len(self._order[0])} cards | Player 2: {len(self._order[1])} cards | Player 3: {len(self._order[2])} cards | Player 4: {len(self._order[3])} cards")
         print(f"\nCard On Top: {self._topcard} \n")
         if self._order_postion == 0:
-            self._player_move = input(
-                f'Player{self._order_postion + 1} Options: | {" | ".join([str(i) for i in self._order[self._order_postion]])} | Pick Up |\n Which Card Do You Want To Play: ')
+            self._player_move = None
+            self._player_move = gui.unoloop(user,self.user_deck(),self.players_deck_len())
+
+                
                 
             if self._player_move.lower().replace(" ", "_") == "pick_up" or self._player_move == "":
                 self._order[self._order_postion].append(pick_up_card)
@@ -461,13 +470,12 @@ class UNO():
         else:
             self._player_move = self.card_states()
             print(f'Player{self._order_postion + 1} Turn')
-            time.sleep(1)
+
         
             if self._player_move.lower().replace(" ", "_") == "pick_up":
                 self._order[self._order_postion].append(pick_up_card)
                 self._pickup = True
                 self._player_move = self._order[self._order_postion][-1]
-                time.sleep(1)
 
         is_card_in_deck = self.card_in_deck(pick_up_card)
         if is_card_in_deck == True:
