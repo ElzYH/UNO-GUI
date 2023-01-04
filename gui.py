@@ -17,11 +17,15 @@ clock = pygame.time.Clock()
 pygame.display.set_caption("UNO")
 icon = pygame.image.load('Assets/uno_icon.ico')
 pygame.display.set_icon(icon)
-pygame.key.set_repeat(400, 50)
+pygame.key.set_repeat()
 GAME_FONT = pygame.freetype.Font("Assets/Fonts/cambria.ttf",22)
 WELCOME_FONT = pygame.freetype.Font("Assets/Fonts/cambria.ttf",50)
 PLAYER_FONT = pygame.freetype.Font("Assets/Fonts/YeastyFlavorsRegular-yweyd.ttf",40)
+TEXT_FONT = pygame.freetype.Font("Assets/Fonts/YeastyFlavorsRegular-yweyd.ttf",17)
 
+
+back = pygame.image.load("Assets/Cards/back.png").convert_alpha()
+back_hi = pygame.image.load("Assets/Cards/back_hi.png").convert_alpha()
 signup_img = pygame.image.load('Assets/sign_up.png').convert_alpha()
 signup_img_hi = pygame.image.load('Assets/sign_up_hi.png').convert_alpha()
 card_button = pygame.image.load('Assets/more_cards.png').convert_alpha()
@@ -162,6 +166,10 @@ class Text:
         text_surface, rect = PLAYER_FONT.render(self.text, (self.colour))
         screen.blit(text_surface, (self.x, self.y))
 
+    def create_4(self):
+        text_surface, rect = TEXT_FONT.render(self.text, (self.colour))
+        screen.blit(text_surface, (self.x, self.y))
+
     def clear(self):
         text_surface, rect = GAME_FONT.render("", (self.colour))
         screen.blit(text_surface, (self.x, self.y))
@@ -191,17 +199,17 @@ class UnoCards():
         self.postion = postion
 
     def draw(self):
- 
+        action = False
         pos = pygame.mouse.get_pos()
-
         if self.rect.collidepoint(pos):
             screen.blit(self.image_hi, (self.rect.x,self.rect.y))
             if pygame.mouse.get_pressed()[0]== 1 and self.clicked == False:
-                print("true")
+                action = True
                 self.clicked = True
 
         if pygame.mouse.get_pressed()[0] == 0:
             self.clicked = False
+        
 
 
         if self.rect.collidepoint(pos):
@@ -210,9 +218,14 @@ class UnoCards():
         else:
             screen.blit(self.image, (self.rect.x,self.rect.y))
 
+        return action
+        
+        
+
     def get_card(self):
         if self.clicked == True:
             self.clicked = False
+            print(self.postion)
             return self.postion
 
 
@@ -222,53 +235,171 @@ class UnoCards():
 
 
 
-def unoloop(user,user_deck,len_decks_list):
+
+
+def displayloop(user,user_deck,len_decks_list,topcard):
+    screen.fill((248,248,255))
+    screen.blit(bg, (0,0))
+    player1_text = Text(f"{str(user).capitalize()}:",(0,0,0),50,650)
+    player1_text.create_3()
+    display_all_cards = Text(f"{str(user).capitalize()}: {len_decks_list[0]} cards | Player 2: {len_decks_list[1]} cards | Player 3: {len_decks_list[2]} cards | Player 4: {len_decks_list[3]} cards",(0,0,0),355,200)
+    topcard = pygame.image.load(f'Assets/Cards/{topcard}.png').convert_alpha()
+    topcard = Image(640,330,topcard,1)
+    display_all_cards.create_4()
+    page = 1
+
+
+    for i in range(180):
+        topcard.display()
+        user_cards = [[pygame.image.load(f'Assets/Cards/{i}.png').convert_alpha(),str(i)] for i in user_deck]
+        user_cards_hi = [pygame.image.load(f'Assets/Cards/{x}_hi.png').convert_alpha() for x in user_deck]
+
+        events = pygame.event.get()
+        x = 190
+        y = 600
+        for num in range(len_decks_list[0]):
+            if num < 7 and page == 1:
+                x += 110
+                cards = UnoCards(x,y,user_cards[num][0],user_cards_hi[num],1,user_cards[num][1])
+                if cards.draw() == True:
+                    current_card = cards.get_card()
+                    for a in user_cards[num][1]:
+                        a = user_cards[num][1]
+                        if current_card == a:
+                            cards.clear()
+                            current_card = a
+
+            elif num > 7 and num < 14 and page == 2:
+                x += 110
+                cards = UnoCards(x,y,user_cards[num][0],user_cards_hi[num],1,user_cards[num][1])
+                if cards.draw() == True:
+                    current_card = cards.get_card()
+                    for a in user_cards[num][1]:
+                        a = user_cards[num][1]
+                        if current_card == a:
+                            cards.clear()
+                            current_card = a
+                    
+                        
+        # elif button.page() == 1 and len_decks_list[0] > 7 and len_decks_list[0] < 14:
+        #     current_page(7,14,user_cards,user_cards_hi)
+
+
+        for event in events:
+            if event.type == pygame.QUIT:
+                exit()
+
+            for num in range(len_decks_list[0]):
+                if event.type == pygame.KEYDOWN:
+                    if num < 8 and event.key == pygame.K_1:
+                        page = 1
+                        print(1)
+
+                    elif num > 7 and num < 14 and event.type == pygame.K_2:
+                        page = 2
+                        print(2)
+        pygame.display.update()
+        clock.tick(60)
+
+
+
+
+
+
+def playloop(user,user_deck,len_decks_list,topcard):
     screen.fill((248,248,255))
     screen.blit(bg, (0,0))  
     player1_text = Text(f"{str(user).capitalize()}:",(0,0,0),50,650)
     player1_text.create_3()
-    button = Button(1200,600,card_button,card_button_hi,1)
+    display_all_cards = Text(f"{str(user).capitalize()}: {len_decks_list[0]} cards | Player 2: {len_decks_list[1]} cards | Player 3: {len_decks_list[2]} cards | Player 4: {len_decks_list[3]} cards",(0,0,0),355,200)
+    topcard = pygame.image.load(f'Assets/Cards/{topcard}.png').convert_alpha()
+    topcard = Image(640,330,topcard,1)
+    display_all_cards.create_4()
+    page = 1
+    pick_up_button = UnoCards(800,330,back,back_hi,1,"pick up")
 
-  
 
+    nothing = pygame.image.load('Assets/blank.png').convert_alpha()
+    cards1 = UnoCards(0,0,nothing,nothing,1,"")
+    cards2 = UnoCards(0,0,nothing,nothing,1,"")
 
-    def current_page(start,end,hand,hand_hi):
-        x = 190
-        y = 600
-        for num in range(start,end):
-            x += 110
-            cards = UnoCards(x,y,hand[num][0],hand_hi[num],1,hand[num][1])
-            cards.draw()
-            current_card = cards.get_card()
-            if current_card != "" or current_card != None:
-                print(current_card)
 
 
     while True:
+        topcard.display()
         user_cards = [[pygame.image.load(f'Assets/Cards/{i}.png').convert_alpha(),str(i)] for i in user_deck]
         user_cards_hi = [pygame.image.load(f'Assets/Cards/{x}_hi.png').convert_alpha() for x in user_deck]
         events = pygame.event.get()
         x = 190
         y = 600
-        if button.page() == 0 and len_decks_list[0] < 8:
-            for num in range(7):
-                x += 110
-                cards = UnoCards(x,y,user_cards[num][0],user_cards_hi[num],1,user_cards[num][1])
-                cards.draw()
-                current_card = cards.get_card()
-                if current_card != "" or current_card != None:
-                    print(current_card)
-            
-        elif button.page() == 1 and len_decks_list[0] > 7 and len_decks_list[0] < 14:
-            current_page(7,14,user_cards,user_cards_hi)
 
+        for num in range(len_decks_list[0]):
         
+            if page == 1:
+                if num <= 6:
+                    x += 110
+                    cards1 = UnoCards(x,y,user_cards[num][0],user_cards_hi[num],1,user_cards[num][1])
+                    if cards1.draw() == True:
+                        current_card = cards1.get_card()
+                        for a in user_cards[num][1]:
+                            a = user_cards[num][1]
+                            if current_card == a:
+                                current_card = a
+                                print(current_card)
+                                return current_card
+
+            elif page == 2:
+                if num >= 7 and num <= 13:
+                    x += 110
+                    cards2 = UnoCards(x,y,user_cards[num][0],user_cards_hi[num],1,user_cards[num][1])
+                    if cards2.draw() == True:
+                        current_card = cards2.get_card()
+                        for a in user_cards[num][1]:
+                            a = user_cards[num][1]
+                            if current_card == a:
+                                current_card = a
+                                print(current_card)
+                                return current_card
+
+            elif page == 3:
+                if num >= 14 and num <= 20:
+                    x += 110
+                    cards2 = UnoCards(x,y,user_cards[num][0],user_cards_hi[num],1,user_cards[num][1])
+                    if cards2.draw() == True:
+                        current_card = cards2.get_card()
+                        for a in user_cards[num][1]:
+                            a = user_cards[num][1]
+                            if current_card == a:
+                                current_card = a
+                                print(current_card)
+                                return current_card
+
+            if pick_up_button.draw() == True:
+                return pick_up_button.get_card()
 
 
 
         for event in events:
             if event.type == pygame.QUIT:
                 exit()
+            if event.type == pygame.KEYDOWN:
+                total = len_decks_list[0]
+                if event.key == pygame.K_1:
+                    page = 1
+                    print(1)
+
+                elif event.key == pygame.K_2:
+                    page =2 
+                    print(2)
+
+                elif event.key == pygame.K_3:
+                    page =3
+                    print(3)
+
+            
+
+
+
         pygame.display.update()
         clock.tick(60)
 

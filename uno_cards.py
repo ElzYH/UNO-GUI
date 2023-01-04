@@ -456,8 +456,8 @@ class UNO():
         print(f"\nCard On Top: {self._topcard} \n")
         if self._order_postion == 0:
             self._player_move = None
-            self._player_move = gui.unoloop(user,self.user_deck(),self.players_deck_len())
-
+            self._player_move = gui.playloop(user,self.user_deck(),self.players_deck_len(),self._topcard)
+        
                 
                 
             if self._player_move.lower().replace(" ", "_") == "pick_up" or self._player_move == "":
@@ -469,6 +469,7 @@ class UNO():
                     self._player_move = self._order[self._order_postion][-1]
         else:
             self._player_move = self.card_states()
+            gui.displayloop(user,self.user_deck(),self.players_deck_len(),self._topcard)
             print(f'Player{self._order_postion + 1} Turn')
 
         
@@ -479,14 +480,14 @@ class UNO():
 
         is_card_in_deck = self.card_in_deck(pick_up_card)
         if is_card_in_deck == True:
-            self.play_card()
+            self.play_card(pick_up_card)
         print(f'Player{self._order_postion + 1} Move: {self._player_move}')
-        time.sleep(1)
+        #time.sleep(1)
 
         self.next_turn() 
         
 
-    def play_card(self):
+    def play_card(self,pick_up_card):
         """This functions replaces the top current card, with the card the user wants to play. It checks for what
         card it is to see if it has any special uses e.g. wild plus_4. Then function calls other functons to excute cards uses"""
         current_card = ""
@@ -598,6 +599,11 @@ class UNO():
             else:
                 self._topcard = cards(current_card[0],current_card[1])
                 self.update_player_hand(current_card)
+        else:
+            if self._order_postion == 0:
+                self._order[self._order_postion].append(pick_up_card)
+
+                
 
 
 

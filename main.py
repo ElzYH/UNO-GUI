@@ -98,56 +98,56 @@ def main_game_uno(user):
     game.game_setter(first_card)
     pick_up = uno_deck.deal_card()
     while game.end_check(user) != True:
-        try:
-            if True:
-                if game.pick_up_card_used() == True:
-                    pick_up = uno_deck.deal_card()
-                    if pick_up == "end":
-                        raise IndexError
-                    game.player_move(pick_up,user)
-                else:
-                    game.player_move(pick_up,user)
+        #try:
+        if True:
+            if game.pick_up_card_used() == True:
+                pick_up = uno_deck.deal_card()
+                if pick_up == "end":
+                    raise IndexError
+                game.player_move(pick_up,user)
+            else:
+                game.player_move(pick_up,user)
+        
+        if game.plus_4_check() == True:
+            add_card = []
+            for i in range(4):
+                add_card.append(uno_deck.deal_card())
+            game.append_cards(add_card)
+
+        if game.plus_2_check() == True:
+            add_card = []
+            for i in range(2):
+                add_card.append(uno_deck.deal_card())
+            game.append_cards(add_card)
+        # except TypeError and IndexError:
             
-            if game.plus_4_check() == True:
-                add_card = []
-                for i in range(4):
-                    add_card.append(uno_deck.deal_card())
-                game.append_cards(add_card)
+        #     print("DRAW!!!!!")
+        #     con = sqlite3.connect("uno_database.db")
+        #     c = con.cursor()
 
-            if game.plus_2_check() == True:
-                add_card = []
-                for i in range(2):
-                    add_card.append(uno_deck.deal_card())
-                game.append_cards(add_card)
-        except TypeError and IndexError:
-            
-            print("DRAW!!!!!")
-            con = sqlite3.connect("uno_database.db")
-            c = con.cursor()
+        #     games_played = c.execute(f"""SELECT Games
+        #                 FROM Leaderboard
+        #                 WHERE UserName = '{user}'
+        #                 """)
+        #     games_played = [int(i) for i in c.fetchone()]
+        #     games_played[0] += 1
 
-            games_played = c.execute(f"""SELECT Games
-                        FROM Leaderboard
-                        WHERE UserName = '{user}'
-                        """)
-            games_played = [int(i) for i in c.fetchone()]
-            games_played[0] += 1
+        #     user_draws = c.execute(f"""SELECT Draws
+        #                 FROM Leaderboard
+        #                 WHERE UserName = '{user}'
+        #                 """)
+        #     user_draws = [int(i) for i in c.fetchone()]
 
-            user_draws = c.execute(f"""SELECT Draws
-                        FROM Leaderboard
-                        WHERE UserName = '{user}'
-                        """)
-            user_draws = [int(i) for i in c.fetchone()]
+        #     user_draws[0] += 1
 
-            user_draws[0] += 1
+        #     print(f"{games_played},{user_draws}")
 
-            print(f"{games_played},{user_draws}")
-
-            c.execute(f"""UPDATE Leaderboard
-            SET Games = {games_played[0]}, Draws = {user_draws[0]}
-            WHERE UserName = '{user}'""")   
-            con.commit()
-            con.close()
-            break
+        #     c.execute(f"""UPDATE Leaderboard
+        #     SET Games = {games_played[0]}, Draws = {user_draws[0]}
+        #     WHERE UserName = '{user}'""")   
+        #     con.commit()
+        #     con.close()
+        #     break
 
 
 
