@@ -15,11 +15,9 @@ def menu(u):
         option = gui.main_menu_loop()
         if option == "play":
             main_game_uno(u)
-        elif option == "leaderboard":
-            leaderboard()
-        elif option == "settings":
-            settings()
-        elif option == "quit":
+        if option == "leaderboard":
+            leaderboard(user)
+        if option == "quit":
                 quit()
         
 
@@ -33,54 +31,9 @@ def settings():
             f.seek(0)
         elif option == "menu": break
 
-def leaderboard():
-    con = sqlite3.connect("uno_database.db")
-    c = con.cursor()
-
-    def leaderboard_choice(choice,text):
-        c.execute(f"""SELECT UserName,{choice}
-            From Leaderboard
-            ORDER BY {choice} DESC
-            """)
-        player_postions = [i for i in c.fetchall()]
-        for i in range(0,len(player_postions)):
-                if i < 99:
-                    username_length = 10 - len(player_postions[i][0])
-                    num_length = 2 - len(str(i+1))
-                    print(f"{' '*num_length}{i+1}. Name: {player_postions[i][0].capitalize() + ' '*username_length} {text}: {player_postions[i][1]}")
-                    if player_postions[i][0] == user:
-                        user_postion = i + 1
-                        user_games = player_postions[i][1]
-        username_length = 10 - len(user)
-        num_length = 2 - len(str(user_postion))
-        print(f"\n{' '*num_length}{user_postion}. Name: {user.capitalize() + ' '*username_length} Games Played: {user_games}")
-
-
-    while True:
-
-        option = input("\nMenu Option: | Plays | Wins | Losses | Draws | Menu |\n\nEnter A Option: ").lower()
-        
-        if option == "plays":
-            leaderboard_choice("Games","Games Played")
-            
-
-        elif option == "wins":
-            leaderboard_choice("Wins","Ganes Won")
-
-
-        elif option == "losses":
-            leaderboard_choice("Loss","Games Loss")
-
-
-        elif option == "draws":
-            leaderboard_choice("Draws","Games Drawn")
-
-
-        elif option == "menu":
-            break
-
-    con.commit()
-    con.close()
+def leaderboard(user):
+    gui.lead_menu(user)
+    
 
 
 def main_game_uno(user):

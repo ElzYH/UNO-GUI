@@ -5,6 +5,7 @@ import time
 import sys
 import login
 import main
+import sqlite3
 
 pygame.init()
 
@@ -19,10 +20,10 @@ icon = pygame.image.load('Assets/uno_icon.ico')
 pygame.display.set_icon(icon)
 pygame.key.set_repeat()
 GAME_FONT = pygame.freetype.Font("Assets/Fonts/cambria.ttf",22)
-WELCOME_FONT = pygame.freetype.Font("Assets/Fonts/cambria.ttf",50)
+WELCOME_FONT = pygame.freetype.Font("Assets/Fonts/cambria.ttf",48)
 PLAYER_FONT = pygame.freetype.Font("Assets/Fonts/YeastyFlavorsRegular-yweyd.ttf",37)
 TEXT_FONT = pygame.freetype.Font("Assets/Fonts/YeastyFlavorsRegular-yweyd.ttf",17)
-END_FONT = pygame.freetype.Font("Assets/Fonts/YeastyFlavorsRegular-yweyd.ttf",70)
+END_FONT = pygame.freetype.Font("Assets/Fonts/YeastyFlavorsRegular-yweyd.ttf",)
 
 
 back = pygame.image.load("Assets/Cards/back.png").convert_alpha()
@@ -68,7 +69,20 @@ greenimg= pygame.image.load('Assets/green_button.png').convert_alpha()
 greenimghi= pygame.image.load('Assets/green_button_hi.png').convert_alpha()
 
 
+games_img = pygame.image.load('Assets/gamesplayed.png').convert_alpha()
+games_hi_img = pygame.image.load('Assets/gamesplayed_hi.png').convert_alpha()
 
+wins_img = pygame.image.load('Assets/wins.png').convert_alpha()
+wins_hi_img = pygame.image.load('Assets/wins_hi.png').convert_alpha()
+
+losses_img = pygame.image.load('Assets/losses.png').convert_alpha()
+losses_hi_img = pygame.image.load('Assets/losses_hi.png').convert_alpha()
+
+draws_img = pygame.image.load('Assets/draws.png').convert_alpha()
+draws_hi_img = pygame.image.load('Assets/draws_hi.png').convert_alpha()
+
+black_back_img = pygame.image.load('Assets/back.png').convert_alpha()
+black_back_hi_img = pygame.image.load('Assets/back_hi.png').convert_alpha()
 
 
 
@@ -256,13 +270,154 @@ class UnoCards():
     def get_card(self):
         if self.clicked == True:
             self.clicked = False
-            print(self.postion)
+            #print(self.postion)
             return self.postion
 
 
     def clear(self):
         blank = pygame.image.load('Assets/blank.png').convert_alpha()
         screen.blit(blank, (self.rect.x,self.rect.y))
+
+
+
+
+def lead_menu(user): 
+    screen.fill((0,0,0))
+    back_button = Button(20,20,black_back_img,black_back_hi_img,1)
+    des = Text("Press 1: Games | Press 2: Wins | Press 3: Losses | Press 4: Draws",(240,248,255),20,650)
+    choice = ""
+    contin = False
+
+    con = sqlite3.connect("uno_database.db")
+    c = con.cursor()
+
+    def leaderboard_choice(choice,text,user):
+        c.execute(f"""SELECT UserName,{choice}
+            From Leaderboard
+            ORDER BY {choice} DESC
+            """)
+        board = []
+        player_postions = [i for i in c.fetchall()]
+        for i in range(0,len(player_postions)):
+                if i < 99:
+                    username_length = 10 - len(player_postions[i][0])
+                    num_length = 2 - len(str(i+1))
+                    leader = (f"{' '*num_length}{i+1}. Name: {player_postions[i][0].capitalize() + ' '*username_length} {text}: {player_postions[i][1]}")
+                    board.append(leader)
+                    if player_postions[i][0] == user:
+                        user_postion = i + 1
+                        user_games = player_postions[i][1]
+        username_length = 10 - len(user)
+        num_length = 2 - len(str(user_postion))
+        curent_user = (f"{' '*num_length}{user_postion}. Name: {user.capitalize() + ' '*username_length}  {text}: {user_games}")
+        return [board,curent_user]
+
+    page = 0
+    des.create()
+    while True:
+        if page == 1:
+            print("1")
+            choice = leaderboard_choice("Games","Games Played",user)
+            contin = True
+            #break
+        elif page == 2:
+            print("2")
+            choice = leaderboard_choice("Wins","Ganes Won",user)
+            contin = True
+            #break
+        elif page == 3:
+            print("3")
+            choice = leaderboard_choice("Loss","Games Loss",user)
+            contin = True
+            #break
+        elif page == 4:
+            print("4")
+            choice = leaderboard_choice("Draws","Games Drawn",user)
+            contin = True
+            #break
+        if back_button.draw()  == True:
+            print("5")
+            con.close()
+            return
+
+        if contin == True:
+            contin = False
+            screen.fill((0,0,0))
+            if back_button.draw()  == True:
+                print("5")
+                con.close()
+                return
+            user_text = Text(choice[1],(240,248,255),100,300)
+            user_text.create_2()
+            y = 10
+            for i in range(len(choice[0])):
+                if i < 25:
+                    y += 26
+                    board = Text(choice[0][i],(240,248,255),620,y)
+                    board.create_2()
+
+
+
+        events = pygame.event.get()
+        for event in events:
+            if event.type == pygame.QUIT:
+                exit()
+
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_1:
+                    page = 1
+                    print(1)
+
+                elif event.key == pygame.K_2:
+                    page =2 
+                    print(2)
+
+                elif event.key == pygame.K_3:
+                    page =3
+                    print(3)
+
+                elif event.key == pygame.K_4:
+                    page =4
+                    print(4)
+
+
+
+        pygame.display.update()
+        clock.tick(60)
+
+
+
+
+
+
+
+
+
+    # while True:
+    #     events = pygame.event.get()
+    #     if back_button.draw() == True:
+    #         choice =  "menu"
+    #         return choice
+    #     if play_button.draw() == True:
+    #         choice =  "plays"
+    #         return choice
+    #     if win_button.draw() == True:
+    #         choice =  "wins"
+    #         return choice
+    #     if losses_button.draw() == True:
+    #         choice =  "losses"
+    #         return choice
+    #     if draws_button.draw() == True:
+    #         choice =  "draws"
+    #         return choice
+
+
+        
+
+
+
+
+
 
 
 
@@ -282,6 +437,9 @@ def displayloop(user,user_deck,len_decks_list,topcard,current_player):
 
 
     for i in range(150):
+        screen.blit(bg, (0,0))
+        display_player.create_3()
+        display_all_cards.create_4()
         topcard.display()
         user_cards = [[pygame.image.load(f'Assets/Cards/{i}.png').convert_alpha(),str(i)] for i in user_deck]
         user_cards_hi = [pygame.image.load(f'Assets/Cards/{x}_hi.png').convert_alpha() for x in user_deck]
@@ -357,7 +515,7 @@ def displayloop(user,user_deck,len_decks_list,topcard,current_player):
 def winloop(user):
     screen.fill((248,248,255))
     screen.blit(bg2, (0,0))
-    win = Text(f"{str(user).capitalize} WIIIIINNNNNSSSSS",("#42e54a"),324,370)
+    win = Text(f"{str(user).capitalize()} WIIIIINNNNNSSSSS",("#42e54a"),324,370)
     win.create_5()
 
     for x in range(180):
@@ -377,7 +535,7 @@ def winloop(user):
 def lossloop(player):
     screen.fill((248,248,255))
     screen.blit(bg2, (0,0))
-    win = Text(f"{str(player + 1).capitalize} WIIIIINNNNNSSSSS",("#ee2525"),324,370)
+    win = Text(f"{str(player + 1).capitalize()} WIIIIINNNNNSSSSS",("#ee2525"),324,370)
     win.create_5()
 
     for x in range(180):
@@ -562,8 +720,7 @@ def main_menu_loop():
     screen.fill((248,248,255))
     play_button = Button(555, 240, play_img,play_hi_img,1)
     leaderboard_button = Button(555, 360, leaderboard_img,leaderboard_hi_img,1)
-    setting_button = Button(555,480,setting_img,setting_hi_img,1)
-    quit_button = Button(555,600,quit_img,quit_hi_img,1)
+    quit_button = Button(555,480,quit_img,quit_hi_img,1)
     option = ""
     while True:
         events = pygame.event.get()
@@ -572,8 +729,6 @@ def main_menu_loop():
             return "play"
         if leaderboard_button.draw() == True:
             return "leaderboard"
-        if setting_button.draw() == True:
-            return "settings"
         if quit_button.draw() == True:
             exit()
 
