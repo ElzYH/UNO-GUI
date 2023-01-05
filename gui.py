@@ -1,10 +1,8 @@
 import pygame
 import pygame_textinput
 import pygame.freetype
-import time
 import sys
 import login
-import main
 import sqlite3
 
 pygame.init()

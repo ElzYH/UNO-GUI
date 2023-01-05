@@ -1,6 +1,5 @@
 from random import shuffle
 from random import randint
-import time
 import sqlite3
 import gui
 
