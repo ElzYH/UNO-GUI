@@ -416,6 +416,7 @@ class UNO():
             games_played[0] += 1
 
             if e == 0:
+                gui.winloop(user)
                 print(f"{user} WINSSS!!!!")
                 user_wins = c.execute(f"""SELECT Wins
                 FROM Leaderboard
@@ -429,6 +430,7 @@ class UNO():
             
 
             else:
+                gui.lossloop(e)
                 print(f"player{e + 1} wins")
                 user_loss = c.execute(f"""SELECT loss
                 FROM Leaderboard
@@ -474,7 +476,7 @@ class UNO():
                     self._player_move = self._order[self._order_postion][-1]
         else:
             self._player_move = self.card_states()
-            gui.displayloop(user,self.user_deck(),self.players_deck_len(),self._topcard)
+            gui.displayloop(user,self.user_deck(),self.players_deck_len(),self._topcard,self._order_postion+1)
             print(f'Player{self._order_postion + 1} Turn')
 
         
@@ -510,7 +512,7 @@ class UNO():
                 if current_card[1] == "switch":
                     while True:
                         if self.colour_check(colour) != True:
-                            colour = colour = self._player_move[1]
+                            colour = self._player_move[1]
                         else:
                             break
 
