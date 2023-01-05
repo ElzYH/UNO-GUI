@@ -77,10 +77,7 @@ def login_or_sign(login_options,name):
             account_name.set_username(name)
 
     elif login_options == "sign in":
-        print(name)
         account_name.sign_in(name)
-        #if account_name.get_user() == "": 
-            #print("Please Enter A Valid Username")
 
     list2 = [account_name.get_user(), account_name.error_code()]
     return list2

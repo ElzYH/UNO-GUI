@@ -176,7 +176,6 @@ class Enter_Text:
 
     def enter(self,events):
         if [ev for ev in events if ev.type == pygame.KEYDOWN and ev.key == pygame.K_RETURN]:
-            print(f"User pressed enter! Input so far: {self.textinput.value}")
             self.name = str(self.textinput.value)
 
     def access(self):
@@ -270,7 +269,6 @@ class UnoCards():
     def get_card(self):
         if self.clicked == True:
             self.clicked = False
-            #print(self.postion)
             return self.postion
 
 
@@ -316,27 +314,22 @@ def lead_menu(user):
     des.create()
     while True:
         if page == 1:
-            print("1")
             choice = leaderboard_choice("Games","Games Played",user)
             contin = True
             #break
         elif page == 2:
-            print("2")
             choice = leaderboard_choice("Wins","Ganes Won",user)
             contin = True
             #break
         elif page == 3:
-            print("3")
             choice = leaderboard_choice("Loss","Games Loss",user)
             contin = True
             #break
         elif page == 4:
-            print("4")
             choice = leaderboard_choice("Draws","Games Drawn",user)
             contin = True
             #break
         if back_button.draw()  == True:
-            print("5")
             con.close()
             return
 
@@ -344,7 +337,6 @@ def lead_menu(user):
             contin = False
             screen.fill((0,0,0))
             if back_button.draw()  == True:
-                print("5")
                 con.close()
                 return
             user_text = Text(choice[1],(240,248,255),100,300)
@@ -366,58 +358,20 @@ def lead_menu(user):
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_1:
                     page = 1
-                    print(1)
 
                 elif event.key == pygame.K_2:
                     page =2 
-                    print(2)
 
                 elif event.key == pygame.K_3:
                     page =3
-                    print(3)
 
                 elif event.key == pygame.K_4:
                     page =4
-                    print(4)
 
 
 
         pygame.display.update()
         clock.tick(60)
-
-
-
-
-
-
-
-
-
-    # while True:
-    #     events = pygame.event.get()
-    #     if back_button.draw() == True:
-    #         choice =  "menu"
-    #         return choice
-    #     if play_button.draw() == True:
-    #         choice =  "plays"
-    #         return choice
-    #     if win_button.draw() == True:
-    #         choice =  "wins"
-    #         return choice
-    #     if losses_button.draw() == True:
-    #         choice =  "losses"
-    #         return choice
-    #     if draws_button.draw() == True:
-    #         choice =  "draws"
-    #         return choice
-
-
-        
-
-
-
-
-
 
 
 
@@ -494,15 +448,12 @@ def displayloop(user,user_deck,len_decks_list,topcard,current_player):
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_1:
                     page = 1
-                    print(1)
 
                 elif event.key == pygame.K_2:
                     page =2 
-                    print(2)
 
                 elif event.key == pygame.K_3:
                     page =3
-                    print(3)
                 
         pygame.display.update()
         clock.tick(60)
@@ -622,7 +573,6 @@ def playloop(user,user_deck,len_decks_list,topcard,pickup):
 
                             elif current_card == a:
                                 current_card = a
-                                print(current_card)
                                 return current_card
 
         elif page == 2 and pu_bool == False and change_colour == False:
@@ -639,7 +589,6 @@ def playloop(user,user_deck,len_decks_list,topcard,pickup):
 
                             elif current_card == a:
                                 current_card = a
-                                print(current_card)
                                 return current_card
 
         elif page == 3 and pu_bool == False and change_colour == False:
@@ -656,7 +605,6 @@ def playloop(user,user_deck,len_decks_list,topcard,pickup):
 
                             elif current_card == a:
                                 current_card = a
-                                print(current_card)
                                 return current_card
 
         if pick_up_button.draw() == True:
@@ -692,15 +640,12 @@ def playloop(user,user_deck,len_decks_list,topcard,pickup):
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_1:
                     page = 1
-                    print(1)
 
                 elif event.key == pygame.K_2:
                     page =2 
-                    print(2)
 
                 elif event.key == pygame.K_3:
                     page =3
-                    print(3)
 
             
 
@@ -791,7 +736,6 @@ def startloop():
                 menu = "clicked"
             elif up_button.draw() == True:
                 option = "sign up"
-                print("also clicked")
                 menu ="clicked"
                 text2.clear()
             else:

@@ -21,15 +21,6 @@ def menu(u):
                 quit()
         
 
-def settings():
-    """Allows The User To Open And Read The Read Me File"""
-    while True:
-        option = input("\nMenu Option: | Rules | Menu |\n\nEnter A Option: ").lower()
-        if option == "rules":
-            f = open("Rules\ReadMe.txt")
-            print(f"..........\n{f.read()}\n..........")
-            f.seek(0)
-        elif option == "menu": break
 
 def leaderboard(user):
     gui.lead_menu(user)
@@ -37,7 +28,6 @@ def leaderboard(user):
 
 
 def main_game_uno(user):
-    print(f"\nWelcome {user}")
     uno_deck = uno_cards.deck()
     uno_deck.shuffle_cards()
     game = uno_cards.UNO(uno_deck,uno_deck.deal_hand(7),uno_deck.deal_hand(7),uno_deck.deal_hand(7),uno_deck.deal_hand(7))

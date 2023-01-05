@@ -41,7 +41,7 @@ class deck:
         count = self.get_count()
         actual = min([count,num])
         if count == 0:
-            print("No more cards")
+            None
         cards = self._card[-actual:]
         self._card = self._card[:-actual]
         return cards
@@ -177,7 +177,6 @@ class UNO():
 
         
         swapped = False
-        #print(list_for_cards)
         if count > 1:
             for i in range(count - 1):
                 for x in range(0,count-i-1):
@@ -189,7 +188,6 @@ class UNO():
                 
                 if not swapped:
                     break
-        #print(list_for_cards)
 
         self.postion_state()
         
@@ -417,7 +415,6 @@ class UNO():
 
             if e == 0:
                 gui.winloop(user)
-                print(f"{user} WINSSS!!!!")
                 user_wins = c.execute(f"""SELECT Wins
                 FROM Leaderboard
                 WHERE UserName = '{user}'
@@ -431,7 +428,6 @@ class UNO():
 
             else:
                 gui.lossloop(e)
-                print(f"player{e + 1} wins")
                 user_loss = c.execute(f"""SELECT loss
                 FROM Leaderboard
                 WHERE UserName = '{user}'
@@ -456,8 +452,8 @@ class UNO():
         saves it variable as boolean datatype. Then calls a fucntion to check if player mmets end condtions. After calls a 
         function for the next user turn"""
         self._colour = ""
-        print(f"\nPlayer 1: {len(self._order[0])} cards | Player 2: {len(self._order[1])} cards | Player 3: {len(self._order[2])} cards | Player 4: {len(self._order[3])} cards")
-        print(f"\nCard On Top: {self._topcard} \n")
+        #print(f"\nPlayer 1: {len(self._order[0])} cards | Player 2: {len(self._order[1])} cards | Player 3: {len(self._order[2])} cards | Player 4: {len(self._order[3])} cards")
+        #print(f"\nCard On Top: {self._topcard} \n")
         if self._order_postion == 0:
             self._player_move = None
             self._player_move = gui.playloop(user,self.user_deck(),self.players_deck_len(),self._topcard,pick_up_card)
@@ -477,7 +473,7 @@ class UNO():
         else:
             self._player_move = self.card_states()
             gui.displayloop(user,self.user_deck(),self.players_deck_len(),self._topcard,self._order_postion+1)
-            print(f'Player{self._order_postion + 1} Turn')
+            #print(f'Player{self._order_postion + 1} Turn')
 
         
             if self._player_move.lower().replace(" ", "_") == "pick_up":
@@ -488,7 +484,7 @@ class UNO():
         is_card_in_deck = self.card_in_deck(pick_up_card)
         if is_card_in_deck == True:
             self.play_card(pick_up_card)
-        print(f'Player{self._order_postion + 1} Move: {self._player_move}')
+        #(f'Player{self._order_postion + 1} Move: {self._player_move}')
         #time.sleep(1)
 
         self.next_turn() 
