@@ -49,6 +49,31 @@ quit_hi_img = pygame.image.load('Assets/quit_hi.png').convert_alpha()
 temp_uno = pygame.image.load('Assets/Cards/green 1.png').convert_alpha()
 temp_uno2 = pygame.image.load('Assets/Cards/green 0.png').convert_alpha()
 
+pu_img = pygame.image.load('Assets/pickup.png').convert_alpha()
+pu_img_hi = temp_uno = pygame.image.load('Assets/pickup_hi.png').convert_alpha()
+
+
+
+redimg= pygame.image.load('Assets/red_button.png').convert_alpha()
+redimghi= pygame.image.load('Assets/red_button_hi.png').convert_alpha()
+
+blueimg= pygame.image.load('Assets/blue_button.png').convert_alpha()
+blueimghi= pygame.image.load('Assets/blue_button_hi.png').convert_alpha()
+
+yellowimg= pygame.image.load('Assets/yellow_button.png').convert_alpha()
+yellowimghi= pygame.image.load('Assets/yellow_button_hi.png').convert_alpha()
+
+greenimg= pygame.image.load('Assets/green_button.png').convert_alpha()
+greenimghi= pygame.image.load('Assets/green_button_hi.png').convert_alpha()
+
+
+
+
+
+
+
+
+
 bg = pygame.image.load("Assets/uno_background.png")
 
 #user_name_img = pygame.image.load('Assets/enter_username.png')
@@ -215,7 +240,7 @@ class UnoCards():
         if self.rect.collidepoint(pos):
             screen.blit(self.image_hi, (self.rect.x,self.rect.y))
 
-        else:
+        elif self.rect.collidepoint(pos) == False:
             screen.blit(self.image, (self.rect.x,self.rect.y))
 
         return action
@@ -247,6 +272,7 @@ def displayloop(user,user_deck,len_decks_list,topcard):
     topcard = Image(640,330,topcard,1)
     display_all_cards.create_4()
     page = 1
+    change_colour = False
 
 
     for i in range(180):
@@ -306,7 +332,7 @@ def displayloop(user,user_deck,len_decks_list,topcard):
 
 
 
-def playloop(user,user_deck,len_decks_list,topcard):
+def playloop(user,user_deck,len_decks_list,topcard,pickup):
     screen.fill((248,248,255))
     screen.blit(bg, (0,0))  
     player1_text = Text(f"{str(user).capitalize()}:",(0,0,0),50,650)
@@ -317,25 +343,37 @@ def playloop(user,user_deck,len_decks_list,topcard):
     display_all_cards.create_4()
     page = 1
     pick_up_button = UnoCards(800,330,back,back_hi,1,"pick up")
+    play_pu = Button(520,375,pu_img,pu_img_hi,1)
 
+    red_button = Button(100,250,redimg,redimghi,1)
+    blue_button = Button(100,350,blueimg,blueimghi,1)
+    yellow_button = Button(100,450,yellowimg,yellowimghi,1)
+    green_button = Button(100,550,greenimg,greenimghi,1)
+    current_card = ""
 
     nothing = pygame.image.load('Assets/blank.png').convert_alpha()
     cards1 = UnoCards(0,0,nothing,nothing,1,"")
     cards2 = UnoCards(0,0,nothing,nothing,1,"")
+    pu_bool = False
+    change_colour = False
 
-
+ 
 
     while True:
+        screen.blit(bg, (0,0))
+        display_all_cards.create_4()
         topcard.display()
         user_cards = [[pygame.image.load(f'Assets/Cards/{i}.png').convert_alpha(),str(i)] for i in user_deck]
         user_cards_hi = [pygame.image.load(f'Assets/Cards/{x}_hi.png').convert_alpha() for x in user_deck]
+        pick = UnoCards(400,330,pygame.image.load(f'Assets/Cards/{pickup}.png'),pygame.image.load(f'Assets/Cards/{pickup}_hi.png').convert_alpha(),1,pickup)
         events = pygame.event.get()
         x = 190
         y = 600
 
-        for num in range(len_decks_list[0]):
+        #for num in range(len_decks_list[0]):
         
-            if page == 1:
+        if page == 1 and pu_bool == False and change_colour == False:
+            for num in range(len_decks_list[0]):
                 if num <= 6:
                     x += 110
                     cards1 = UnoCards(x,y,user_cards[num][0],user_cards_hi[num],1,user_cards[num][1])
@@ -343,12 +381,16 @@ def playloop(user,user_deck,len_decks_list,topcard):
                         current_card = cards1.get_card()
                         for a in user_cards[num][1]:
                             a = user_cards[num][1]
-                            if current_card == a:
+                            if current_card == "wild plus_4" or current_card == "wild switch":
+                                change_colour = True
+
+                            elif current_card == a:
                                 current_card = a
                                 print(current_card)
                                 return current_card
 
-            elif page == 2:
+        elif page == 2 and pu_bool == False and change_colour == False:
+            for num in range(7,len_decks_list[0]):
                 if num >= 7 and num <= 13:
                     x += 110
                     cards2 = UnoCards(x,y,user_cards[num][0],user_cards_hi[num],1,user_cards[num][1])
@@ -361,7 +403,8 @@ def playloop(user,user_deck,len_decks_list,topcard):
                                 print(current_card)
                                 return current_card
 
-            elif page == 3:
+        elif page == 3 and pu_bool == False and change_colour == False:
+            for num in range(len_decks_list[0]):
                 if num >= 14 and num <= 20:
                     x += 110
                     cards2 = UnoCards(x,y,user_cards[num][0],user_cards_hi[num],1,user_cards[num][1])
@@ -372,10 +415,32 @@ def playloop(user,user_deck,len_decks_list,topcard):
                             if current_card == a:
                                 current_card = a
                                 print(current_card)
-                                return current_card
+                            return current_card
 
-            if pick_up_button.draw() == True:
-                return pick_up_button.get_card()
+        if pick_up_button.draw() == True:
+            pu_bool = True
+        
+        if pu_bool == True:
+                if pick.draw() == True:
+                    pu_bool = False
+                    return ["pick up","yes"]
+
+                if play_pu.draw() == True:
+                    pu_bool = False
+                    return ["pick up","no"]
+
+        if change_colour == True:
+            if red_button.draw() == True:
+                return [str(current_card),"red"]
+            elif green_button.draw() == True:
+                return [str(current_card),"green"]
+            elif yellow_button.draw() == True:
+                return [str(current_card),"yellow"]
+            elif blue_button.draw() == True:
+                return [str(current_card),"blue"]
+
+
+
 
 
 
@@ -383,7 +448,6 @@ def playloop(user,user_deck,len_decks_list,topcard):
             if event.type == pygame.QUIT:
                 exit()
             if event.type == pygame.KEYDOWN:
-                total = len_decks_list[0]
                 if event.key == pygame.K_1:
                     page = 1
                     print(1)
