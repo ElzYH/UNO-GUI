@@ -353,7 +353,7 @@ def lead_menu(user):
         events = pygame.event.get()
         for event in events:
             if event.type == pygame.QUIT:
-                exit()
+                sys.exit()
 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_1:
@@ -444,7 +444,7 @@ def displayloop(user,user_deck,len_decks_list,topcard,current_player):
 
         for event in events:
             if event.type == pygame.QUIT:
-                exit()
+                sys.exit()
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_1:
                     page = 1
@@ -466,15 +466,15 @@ def displayloop(user,user_deck,len_decks_list,topcard,current_player):
 def winloop(user):
     screen.fill((248,248,255))
     screen.blit(bg2, (0,0))
-    win = Text(f"{str(user).capitalize()} WIIIIINNNNNSSSSS",("#42e54a"),324,370)
-    win.create_5()
+    win = Text(f"{str(user).capitalize()} WIIIIINNNNNSSSSS",("#42e54a"),360,370)
+    win.create()
 
     for x in range(180):
         events = pygame.event.get()
 
         for event in events:
             if event.type == pygame.QUIT:
-                exit()
+                sys.exit()
 
 
         pygame.display.update()
@@ -486,15 +486,15 @@ def winloop(user):
 def lossloop(player):
     screen.fill((248,248,255))
     screen.blit(bg2, (0,0))
-    win = Text(f"{str(player + 1).capitalize()} WIIIIINNNNNSSSSS",("#ee2525"),324,370)
-    win.create_5()
+    win = Text(f"Player{str(player + 1).capitalize()} WIIIIINNNNNSSSSS",("#ee2525"),360,370)
+    win.create()
 
     for x in range(180):
         events = pygame.event.get()
 
         for event in events:
             if event.type == pygame.QUIT:
-                exit()
+                sys.exit()
 
         pygame.display.update()
         clock.tick(60)
@@ -506,14 +506,14 @@ def drawloop():
     screen.fill((248,248,255))
     screen.blit(bg2, (0,0))
     win = Text(f"DRAW",("#ffffff"),324,370)
-    win.create_5()
+    win.create()
 
     for x in range(180):
         events = pygame.event.get()
 
         for event in events:
             if event.type == pygame.QUIT:
-                exit()
+                sys.exit()
 
         pygame.display.update()
         clock.tick(60)
@@ -636,7 +636,7 @@ def playloop(user,user_deck,len_decks_list,topcard,pickup):
 
         for event in events:
             if event.type == pygame.QUIT:
-                exit()
+                sys.exit()
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_1:
                     page = 1
@@ -675,13 +675,13 @@ def main_menu_loop():
         if leaderboard_button.draw() == True:
             return "leaderboard"
         if quit_button.draw() == True:
-            exit()
+            sys.exit()
 
 
         for event in events:
             #quit game
             if event.type == pygame.QUIT:
-                exit()
+                sys.exit()
         pygame.display.update()
         clock.tick(60)
 
@@ -703,7 +703,7 @@ def welcomeloop(user):
         for event in events:
                 #quit game
                 if event.type == pygame.QUIT:
-                    exit()
+                    sys.exit()
         pygame.display.update()
         clock.tick(60)
     
@@ -763,7 +763,7 @@ def startloop():
         for event in events:
             #quit game
             if event.type == pygame.QUIT:
-                exit()
+                sys.exit()
 
             text1.enter(events)
 

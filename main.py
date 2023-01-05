@@ -18,6 +18,7 @@ def menu(u):
         if option == "leaderboard":
             leaderboard(user)
         if option == "quit":
+                sys.exit()
                 quit()
         
 
