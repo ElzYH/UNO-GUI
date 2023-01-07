@@ -23,7 +23,7 @@ class deck:
                 cards(c,v) for c in self.__colour for v in self.__special
                 ]*2 + [
                     cards("wild",v) for v in self.__special_no_colour
-                    ]*4
+                    ]*4 #4
     
     def get_card(self):
         return self._card
@@ -451,8 +451,8 @@ class UNO():
         saves it variable as boolean datatype. Then calls a fucntion to check if player mmets end condtions. After calls a 
         function for the next user turn"""
         self._colour = ""
-        #print(f"\nPlayer 1: {len(self._order[0])} cards | Player 2: {len(self._order[1])} cards | Player 3: {len(self._order[2])} cards | Player 4: {len(self._order[3])} cards")
-        #print(f"\nCard On Top: {self._topcard} \n")
+        print(f"\nPlayer 1: {len(self._order[0])} cards | Player 2: {len(self._order[1])} cards | Player 3: {len(self._order[2])} cards | Player 4: {len(self._order[3])} cards")
+        print(f"\nCard On Top: {self._topcard} \n")
         if self._order_postion == 0:
             self._player_move = None
             self._player_move = gui.playloop(user,self.user_deck(),self.players_deck_len(),self._topcard,pick_up_card)
@@ -463,16 +463,30 @@ class UNO():
                 
                 
             if self._player_move[0].replace(" ", "_") == "pick_up" or self._player_move == "":
+                print(pick_up_card)
                 self._order[self._order_postion].append(pick_up_card)
                 second_chance = self._player_move[1]
                 self._pickup = True
                 
                 if second_chance== "yes":
+                    print("hello")
+                    wild_check = str(self._order[self._order_postion][-1]).split()
+                    print(wild_check)
+                    print("shush")
+                    if wild_check[0] == "wild":
+                        print("hi")
+                        self._player_move = gui.colour_loop(user,self.user_deck(),self.players_deck_len(),self._topcard,pick_up_card,pick_up_card)
+                        print(self._player_move)
+                        self._colour = self._player_move[1]
+                        self._player_move = self._player_move[0]
+                        
+
                     self._player_move = self._order[self._order_postion][-1]
+                    print(self._player_move)
         else:
             self._player_move = self.card_states()
             gui.displayloop(user,self.user_deck(),self.players_deck_len(),self._topcard,self._order_postion+1)
-            #print(f'Player{self._order_postion + 1} Turn')
+            print(f'Player{self._order_postion + 1} Turn')
 
         
             if self._player_move.lower().replace(" ", "_") == "pick_up":
@@ -483,8 +497,7 @@ class UNO():
         is_card_in_deck = self.card_in_deck(pick_up_card)
         if is_card_in_deck == True:
             self.play_card(pick_up_card)
-        #(f'Player{self._order_postion + 1} Move: {self._player_move}')
-        #time.sleep(1)
+        (f'Player{self._order_postion + 1} Move: {self._player_move}')
 
         self.next_turn() 
         
@@ -507,7 +520,7 @@ class UNO():
                 if current_card[1] == "switch":
                     while True:
                         if self.colour_check(colour) != True:
-                            colour = self._player_move[1]
+                            colour = self._colour
                         else:
                             break
 

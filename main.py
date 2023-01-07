@@ -4,7 +4,6 @@ import os
 import uno_cards
 import sqlite3
 import sys
-from random import shuffle
 import gui
 
 
@@ -41,28 +40,28 @@ def main_game_uno(user):
     game.game_setter(first_card)
     pick_up = uno_deck.deal_card()
     while game.end_check(user) != True:
-        try:
-            if True:
-                if game.pick_up_card_used() == True:
-                    pick_up = uno_deck.deal_card()
-                    if pick_up == "end":
-                        raise IndexError
-                    game.player_move(pick_up,user)
-                else:
-                    game.player_move(pick_up,user)
-            
-            if game.plus_4_check() == True:
-                add_card = []
-                for i in range(4):
-                    add_card.append(uno_deck.deal_card())
-                game.append_cards(add_card)
+        #try:
+        if True:
+            if game.pick_up_card_used() == True:
+                pick_up = uno_deck.deal_card()
+                if pick_up == "end":
+                    raise IndexError
+                game.player_move(pick_up,user) #
+            else:
+                game.player_move(pick_up,user) #pick_up
+        
+        if game.plus_4_check() == True:
+            add_card = []
+            for i in range(4):
+                add_card.append(uno_deck.deal_card())
+            game.append_cards(add_card)
 
-            if game.plus_2_check() == True:
-                add_card = []
-                for i in range(2):
-                    add_card.append(uno_deck.deal_card())
-                game.append_cards(add_card)
-        except TypeError and IndexError:
+        if game.plus_2_check() == True:
+            add_card = []
+            for i in range(2):
+                add_card.append(uno_deck.deal_card())
+            game.append_cards(add_card)
+        #except TypeError and IndexError:
             
             print("DRAW!!!!!")
             gui.drawloop()
