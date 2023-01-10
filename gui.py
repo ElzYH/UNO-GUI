@@ -21,7 +21,7 @@ GAME_FONT = pygame.freetype.Font("Assets/Fonts/cambria.ttf",22)
 WELCOME_FONT = pygame.freetype.Font("Assets/Fonts/cambria.ttf",48)
 PLAYER_FONT = pygame.freetype.Font("Assets/Fonts/YeastyFlavorsRegular-yweyd.ttf",37)
 TEXT_FONT = pygame.freetype.Font("Assets/Fonts/YeastyFlavorsRegular-yweyd.ttf",17)
-END_FONT = pygame.freetype.Font("Assets/Fonts/YeastyFlavorsRegular-yweyd.ttf",)
+END_FONT = pygame.freetype.Font("Assets/Fonts/YeastyFlavorsRegular-yweyd.ttf",1)
 
 
 back = pygame.image.load("Assets/Cards/back.png").convert_alpha()
@@ -92,6 +92,7 @@ bg2 = pygame.image.load("Assets/end_screen.png")
 
 #user_name_img = pygame.image.load('Assets/enter_username.png')
 class Button():
+    """Creates Buttons that change image when the user mouse postion is over the button"""
     def __init__(self,x,y,image,image_hi,scale):
         width = image.get_width()
         height = image.get_height()
@@ -103,6 +104,7 @@ class Button():
         self.pages = 0
 
     def draw(self):
+        """Returns action and changes self.clicked if the user press the mouse ontop of the image"""
         action = False
         pos = pygame.mouse.get_pos()
 
@@ -128,6 +130,7 @@ class Button():
 
 
 class Enter_Text:
+    """Text that the user can type into and can be saved"""
     def __init__(self,x,y,font,font_size,anti,text_manger):
         self.font = pygame.font.SysFont(font,font_size)
         self.anti = anti
@@ -136,9 +139,11 @@ class Enter_Text:
         self.name = ""
 
     def create(self):
+        """Changes antialias to True or False"""
         self.textinput.antialias = self.anti
 
     def draw(self,events,rect_x,rect_y,rect_w,rect_h):
+        """Draws a box for the user to type in and to contrast with the background"""
         self.textinput.update(events)
         inputs_rect = pygame.Rect(rect_x,rect_y,rect_w,rect_h)
         colour = pygame.Color("ghostwhite")
@@ -146,19 +151,23 @@ class Enter_Text:
         screen.blit(self.textinput.surface, (self.cords))
 
     def enter(self,events):
+        """If Enter button is clicked it would save the text input"""
         if [ev for ev in events if ev.type == pygame.KEYDOWN and ev.key == pygame.K_RETURN]:
             self.name = str(self.textinput.value)
 
     def access(self):
+        """Returns the user username"""
         return self.name 
 
     def clear_text(self):
+        """Clears the Current text"""
         self.name = ""
         self.textinput.value = ""
 
 
 class Text:
     def __init__(self,text,colour,x,y):
+        """Creates text"""
         self.text = text
         self.colour = colour
         self.x = x
@@ -192,6 +201,7 @@ class Text:
         
 
 class Image():
+    """Displays Images"""
     def __init__(self,x,y,image,scale):
         width = image.get_width()
         height = image.get_height()
@@ -200,9 +210,11 @@ class Image():
         self.rect.topleft = (x,y)
 
     def display(self):
+        """Draws Images"""
         screen.blit(self.image, (self.rect.x,self.rect.y))
 
 class UnoCards():
+    """A version of the button class above but with couple of changes for Uno Cards in the game """
     def __init__(self,x,y,image,image_hi,scale,postion):
         width = image.get_width()
         height = image.get_height()
@@ -251,6 +263,7 @@ class UnoCards():
 
 
 def lead_menu(user): 
+    """Menu to display the leaderboard"""
     screen.fill((0,0,0))
     back_button = Button(20,20,black_back_img,black_back_hi_img,1)
     des = Text("Press 1: Games | Press 2: Wins | Press 3: Losses | Press 4: Draws",(240,248,255),20,650)
@@ -261,6 +274,8 @@ def lead_menu(user):
     c = con.cursor()
 
     def leaderboard_choice(choice,text,user):
+        """To access SQL Table and pull it infomation for it to be displayed"""
+
         c.execute(f"""SELECT UserName,{choice}
             From Leaderboard
             ORDER BY {choice} DESC
@@ -278,7 +293,7 @@ def lead_menu(user):
                         user_games = player_postions[i][1]
         username_length = 10 - len(user)
         num_length = 2 - len(str(user_postion))
-        curent_user = (f"{' '*num_length}{user_postion}. Name: {user.capitalize() + ' '*username_length}  {text}: {user_games}")
+        curent_user = f"{' '*num_length}{user_postion}. Name: {user.capitalize() + ' '*username_length}  {text}: {user_games}"
         return [board,curent_user]
 
     page = 0
@@ -287,29 +302,30 @@ def lead_menu(user):
         if page == 1:
             choice = leaderboard_choice("Games","Games Played",user)
             contin = True
-            #break
+
         elif page == 2:
             choice = leaderboard_choice("Wins","Ganes Won",user)
             contin = True
-            #break
+
         elif page == 3:
             choice = leaderboard_choice("Loss","Games Loss",user)
             contin = True
-            #break
+
         elif page == 4:
             choice = leaderboard_choice("Draws","Games Drawn",user)
             contin = True
-            #break
-        if back_button.draw()  == True:
+
+        if back_button.draw() == True:
             con.close()
             return
 
         if contin == True:
             contin = False
             screen.fill((0,0,0))
-            if back_button.draw()  == True:
+            if back_button.draw() == True:
                 con.close()
                 return
+            #Displays the current user leaderboard preview
             user_text = Text(choice[1],(240,248,255),100,300)
             user_text.create_2()
             y = 10
@@ -349,6 +365,7 @@ def lead_menu(user):
 
 
 def displayloop(user,user_deck,len_decks_list,topcard,current_player):
+    """Display the same infomation to the user during other players turns"""
     screen.fill((248,248,255))
     screen.blit(bg, (0,0))
     display_all_cards = Text(f"{str(user).capitalize()}: {len_decks_list[0]} cards | Player 2: {len_decks_list[1]} cards | Player 3: {len_decks_list[2]} cards | Player 4: {len_decks_list[3]} cards",("#6d6dba"),355,200)
@@ -358,7 +375,21 @@ def displayloop(user,user_deck,len_decks_list,topcard,current_player):
     page = 1
     display_player = Text(f"Player{current_player} Turn...",(205,51,51),535,40)
     display_player.create_3()
-  
+
+
+    def cards_show(start,end):
+        x = 190
+        y = 600
+        for num in range(len_decks_list[0]):
+            if num >= start and num <= end:
+                x += 110
+                cards = UnoCards(x,y,user_cards[num][0],user_cards_hi[num],1,user_cards[num][1])
+                if cards.draw() == True:
+                        current_card = cards.get_card()
+                        for a in user_cards[num][1]:
+                            a = user_cards[num][1]
+                            if current_card == a:
+                                current_card = a
 
 
     for i in range(80):
@@ -372,72 +403,25 @@ def displayloop(user,user_deck,len_decks_list,topcard,current_player):
         events = pygame.event.get()
         x = 190
         y = 600
-        if page == 1:
-            for num in range(len_decks_list[0]):
-                if num <= 6:
-                    x += 110
-                    cards1 = UnoCards(x,y,user_cards[num][0],user_cards_hi[num],1,user_cards[num][1])
-                    if cards1.draw() == True:
-                        current_card = cards1.get_card()
-                        for a in user_cards[num][1]:
-                            a = user_cards[num][1]
-                            if current_card == a:
-                                current_card = a
 
+        if page == 1:
+            cards_show(0,6)
 
         elif page == 2:
-            for num in range(7,len_decks_list[0]):
-                if num >= 7 and num <= 13:
-                    x += 110
-                    cards2 = UnoCards(x,y,user_cards[num][0],user_cards_hi[num],1,user_cards[num][1])
-                    if cards2.draw() == True:
-                        current_card = cards2.get_card()
-                        for a in user_cards[num][1]:
-                            a = user_cards[num][1]
-                            if current_card == a:
-                                current_card = a
-                               
+            cards_show(7,13)
 
-        elif page == 3:
-            for num in range(len_decks_list[0]):
-                if num >= 14 and num <= 20:
-                    x += 110
-                    cards2 = UnoCards(x,y,user_cards[num][0],user_cards_hi[num],1,user_cards[num][1])
-                    if cards2.draw() == True:
-                        current_card = cards2.get_card()
-                        for a in user_cards[num][1]:
-                            a = user_cards[num][1]
-                            if current_card == a:
-                                current_card = a
+        elif page == 3: 
+            cards_show(14,20)
 
 
         elif page == 4:
-            for num in range(len_decks_list[0]):
-                if num >= 21 and num <= 27:
-                    x += 110
-                    cards2 = UnoCards(x,y,user_cards[num][0],user_cards_hi[num],1,user_cards[num][1])
-                    if cards2.draw() == True:
-                        current_card = cards2.get_card()
-                        for a in user_cards[num][1]:
-                            a = user_cards[num][1]
-                            if current_card == a:
-                                current_card = a
+            cards_show(21,27)
 
 
         elif page == 5:
-            for num in range(len_decks_list[0]):
-                if num >= 28 and num <= 34:
-                    x += 110
-                    cards2 = UnoCards(x,y,user_cards[num][0],user_cards_hi[num],1,user_cards[num][1])
-                    if cards2.draw() == True:
-                        current_card = cards2.get_card()
-                        for a in user_cards[num][1]:
-                            a = user_cards[num][1]
-                            if current_card == a:
-                                current_card = a
+            cards_show(28,34)
                                
-                            
-
+                        
 
         for event in events:
             if event.type == pygame.QUIT:
@@ -462,9 +446,6 @@ def displayloop(user,user_deck,len_decks_list,topcard,current_player):
 
 
 
-
-
-
 def winloop(user):
     screen.fill((248,248,255))
     screen.blit(bg2, (0,0))
@@ -483,8 +464,6 @@ def winloop(user):
         clock.tick(60)
 
 
-
-
 def lossloop(player):
     screen.fill((248,248,255))
     screen.blit(bg2, (0,0))
@@ -500,8 +479,6 @@ def lossloop(player):
 
         pygame.display.update()
         clock.tick(60)
-
-
 
 
 def drawloop():
@@ -558,8 +535,7 @@ def playloop(user,user_deck,len_decks_list,topcard,pickup):
         events = pygame.event.get()
         x = 190
         y = 600
-
-        #for num in range(len_decks_list[0]):
+      
         
         if page == 1 and pu_bool == False and change_colour == False:
             for num in range(len_decks_list[0]):
@@ -659,10 +635,6 @@ def playloop(user,user_deck,len_decks_list,topcard,pickup):
                 return [str(current_card),"blue"]
 
 
-
-
-
-
         for event in events:
             if event.type == pygame.QUIT:
                 sys.exit()
@@ -716,13 +688,6 @@ def colour_loop(user,user_deck,len_decks_list,topcard,pickup,current_card):
     
     while True:
         events = pygame.event.get()
-
-  
-
-    
-        
-
-
         if red_button.draw() == True:
             return [str(current_card),"red"]
         elif green_button.draw() == True:
@@ -731,10 +696,6 @@ def colour_loop(user,user_deck,len_decks_list,topcard,pickup,current_card):
             return [str(current_card),"yellow"]
         elif blue_button.draw() == True:
             return [str(current_card),"blue"]
-
-
-
-
 
 
         for event in events:
@@ -756,14 +717,8 @@ def colour_loop(user,user_deck,len_decks_list,topcard,pickup,current_card):
                 elif event.key == pygame.K_5:
                     page =5
 
-            
-
-
-
         pygame.display.update()
         clock.tick(60)
-
-
 
 
 def main_menu_loop():
@@ -792,12 +747,6 @@ def main_menu_loop():
         clock.tick(60)
 
 
-
-
-
-
-
-
 def welcomeloop(user):
     for i in range(120):
         welcome_text = Text(f"Hi {str(user).capitalize()}",(0,0,0),500,325)
@@ -813,8 +762,6 @@ def welcomeloop(user):
         pygame.display.update()
         clock.tick(60)
     
-
-
 
 #create buttonm
 def startloop():
@@ -865,7 +812,6 @@ def startloop():
             screen.blit(text_surface, (337, 308))
             
 
-
         for event in events:
             #quit game
             if event.type == pygame.QUIT:
@@ -879,4 +825,4 @@ def startloop():
 
 
 
-#gameloop()
+

@@ -141,24 +141,24 @@ class UNO():
                     break
             return str(z)
 
-
-
-
-
         top_current_card = str(self._topcard).split(" ")
         list_for_cards = []
+        #Card counts:
         red_count = 0
         green_count = 0
         yellow_count = 0
         blue_count = 0
 
         for i in self._order[self._order_postion]:
-            i = str(i).split()
-            g = self._cards_weight.get(i[1])
-            list_for_cards.append([i[0],i[1],g])
+            i = str(i).split() #splits cards into two strings e.g ["red" "2"]
+            g = self._cards_weight.get(i[1]) #g uses i to get the cards values/weights from a dictionay
+            list_for_cards.append([i[0],i[1],g]) #appends to a list with the: card and its weights
 
+        #The list sorts and removes cards that cannot be equal too the card on top and appends pick up too
         list_for_cards = list(filter(lambda x: x[0] == top_current_card[0] or x[1] == top_current_card[1] or x[0] == "wild",list_for_cards)) + [["pick_up",None,0]]
         count = len(list_for_cards)
+
+        #For loop is used to give cards that are repeated more value/weight
         for i in range(count):
             if list_for_cards[i][0] == "red":
                 red_count += 1
@@ -168,13 +168,19 @@ class UNO():
                 yellow_count += 1
             elif list_for_cards[i][0] == "blue":
                 blue_count += 1
+        
+        #Creates a new dictionary with card colours and there weights and sorts the from the heightst value to the 
+        #lowest
         amount_of_card_weight = {"red":red_count,"green":green_count,"yellow":yellow_count,"blue":blue_count}
         amount_of_card_weight = {k: v for k,v in sorted(amount_of_card_weight.items(), key=lambda item: item[1])}
+
+        #Adds these values to current list with all the players cards and weights 
         for b in range(count):
             if amount_of_card_weight.get(0) == list_for_cards[i][0]:
                 list_for_cards[i][2] += 1 
 
-        
+        #bubble sort O(N^2)
+        #Sort the weights to highest to lowest
         swapped = False
         if count > 1:
             for i in range(count - 1):
@@ -188,9 +194,10 @@ class UNO():
                 if not swapped:
                     break
 
-        self.postion_state()
+        self.postion_state() #Call postion state
         
-        chance = randint(1,100)
+        #Depending on the users postion state and chacne, is used to decide the player choice
+        chance = randint(1,100) 
         if count >= 4:
             if self._postion_weight == 2:
                 if chance > 0 and chance < 10:
@@ -246,30 +253,15 @@ class UNO():
         elif count == 1:
             return "pick_up"
             
-            
-    
-
-        
-        
-        
-
-
-    def set_turn(self):
-        """Set turns"""
-        self._turns = 0
-
-    def set_players_cards(self):
-        """Set players hands"""
-        self._player1 = self._uno_deck.deal_hand(7)
-        self._player2 = self._uno_deck.deal_hand(7)
-        self._player3 = self._uno_deck.deal_hand(7)
-        self._player4 = self._uno_deck.deal_hand(7)
-
     def pick_up_card_used(self):
         if self._pickup == True:
             self._pickup = False
             return True
         return False
+
+    def set_turn(self):
+        """Set turns"""
+        self._turns = 0
 
     def set_order_clockwise(self):
         """Set order postion for the Uno players"""
@@ -454,7 +446,7 @@ class UNO():
         print(f"\nPlayer 1: {len(self._order[0])} cards | Player 2: {len(self._order[1])} cards | Player 3: {len(self._order[2])} cards | Player 4: {len(self._order[3])} cards")
         print(f"\nCard On Top: {self._topcard} \n")
         if self._order_postion == 0:
-            self._player_move = None
+            #self._player_move = None
             self._player_move = gui.playloop(user,self.user_deck(),self.players_deck_len(),self._topcard,pick_up_card)
             if self._player_move[0].split()[0] == "wild":
                 self._colour = self._player_move[1]
@@ -469,12 +461,9 @@ class UNO():
                 self._pickup = True
                 
                 if second_chance== "yes":
-                    print("hello")
                     wild_check = str(self._order[self._order_postion][-1]).split()
                     print(wild_check)
-                    print("shush")
                     if wild_check[0] == "wild":
-                        print("hi")
                         self._player_move = gui.colour_loop(user,self.user_deck(),self.players_deck_len(),self._topcard,pick_up_card,pick_up_card)
                         print(self._player_move)
                         self._colour = self._player_move[1]
@@ -508,32 +497,21 @@ class UNO():
         current_card = ""
         top_current_card = ""
         
-
-
-
         current_card = str(self._player_move).split(" ")
         top_current_card = str(self._topcard).split(" ")
         
         if current_card[0] == "wild":
-            if self._order_postion == 0:
+            if self._order_postion == 0: #user playing
                 colour = self._colour
                 if current_card[1] == "switch":
-                    while True:
-                        if self.colour_check(colour) != True:
-                            colour = self._colour
-                        else:
-                            break
+                    colour = self._colour
 
                 elif current_card[1] == "plus_4":
                     if self.plus_4_check() == True:
-                        while True:
-                            if self.colour_check(colour) != True:
-                                colour = self._colour
-                            else:
-                                break
+                        colour = self._colour
                 self._topcard = cards(colour,"")
                 self.update_player_hand(current_card)
-            else:
+            else: #Ai players
                 red_count = 0
                 blue_count = 0
                 yellow_count = 0
@@ -559,6 +537,7 @@ class UNO():
 
                 amount_of_card_weight = [["red",red_count],["green",green_count],["yellow",yellow_count],["blue",blue_count]]
 
+                #Bubble Sort 
                 swapped = False
                 for a in range(len(amount_of_card_weight)-1,0,-1):
                     for o in range(a):
