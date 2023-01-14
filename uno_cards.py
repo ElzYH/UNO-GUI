@@ -2,6 +2,7 @@ from random import shuffle
 from random import randint
 import sqlite3
 import gui
+import extra_module
 
 class cards:
     def __init__(self,colour,value):
@@ -179,20 +180,21 @@ class UNO():
             if amount_of_card_weight.get(0) == list_for_cards[i][0]:
                 list_for_cards[i][2] += 1 
 
-        #bubble sort O(N^2)
-        #Sort the weights to highest to lowest
-        swapped = False
-        if count > 1:
-            for i in range(count - 1):
-                for x in range(0,count-i-1):
-                    if list_for_cards[x][2] < list_for_cards[x + 1][2]:
-                        swapped = True
-                        temp_list = list_for_cards[x + 1]
-                        list_for_cards[x + 1] = list_for_cards[x]
-                        list_for_cards[x] = temp_list
+        print(list_for_cards)
+        list_for_cards = extra_module.quicksort(list_for_cards)
+        print(list_for_cards)
+        # swapped = False
+        # if count > 1:
+        #     for i in range(count - 1):
+        #         for x in range(0,count-i-1):
+        #             if list_for_cards[x][2] < list_for_cards[x + 1][2]:
+        #                 swapped = True
+        #                 temp_list = list_for_cards[x + 1]
+        #                 list_for_cards[x + 1] = list_for_cards[x]
+        #                 list_for_cards[x] = temp_list
                 
-                if not swapped:
-                    break
+        #         if not swapped:
+        #             break
 
         self.postion_state() #Call postion state
         
@@ -537,17 +539,8 @@ class UNO():
 
                 amount_of_card_weight = [["red",red_count],["green",green_count],["yellow",yellow_count],["blue",blue_count]]
 
-                #Bubble Sort 
-                swapped = False
-                for a in range(len(amount_of_card_weight)-1,0,-1):
-                    for o in range(a):
-                        if amount_of_card_weight[o][1] < amount_of_card_weight[o + 1][1]:
-                            swapped = True
-                            temp_list = amount_of_card_weight[o + 1]
-                            amount_of_card_weight[o + 1] = amount_of_card_weight[o]
-                            amount_of_card_weight[o] = temp_list
-                    if not swapped:
-                        break
+                #Merge sort
+                amount_of_card_weight = extra_module.merge_sort(amount_of_card_weight)
                 
                 chance = randint(1,20)
                 if chance > 9:
