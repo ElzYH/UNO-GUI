@@ -13,7 +13,6 @@ def merge_sort(list1):
       results.append(right_list.pop(0))
   results.extend(left_list)
   results.extend(right_list)
-  print(results)
   return results 
 
 

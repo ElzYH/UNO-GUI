@@ -68,7 +68,7 @@ class UNO():
         self._order_postion = 0
         self._chosen_card = None
         self._topcard = None
-        self._cards_weight = {"plus_2":3,"plus_4":5,"block":2,"reverse":2,"switch":4} 
+        self._cards_weight = {"plus_2":5,"plus_4":10,"block":3,"reverse":2,"switch":5} 
         self._postion_weight = 0
         self._turns = 0
         self._clockwise = True
@@ -138,7 +138,7 @@ class UNO():
         def ai_choice(postion):
             for z in self._order[self._order_postion]:
                 card_check = str(z).split(" ")
-                if card_check[0] ==  list_for_cards[postion][0] and card_check[1] == list_for_cards[postion][1]:
+                if card_check[0] == list_for_cards[postion][0] and card_check[1] == list_for_cards[postion][1]:
                     break
             return str(z)
 
@@ -170,32 +170,25 @@ class UNO():
             elif list_for_cards[i][0] == "blue":
                 blue_count += 1
         
-        #Creates a new dictionary with card colours and there weights and sorts the from the heightst value to the 
+        #Creates a new list with card colours and there weights and sorts the from the heightst value to the 
         #lowest
-        amount_of_card_weight = {"red":red_count,"green":green_count,"yellow":yellow_count,"blue":blue_count}
-        amount_of_card_weight = {k: v for k,v in sorted(amount_of_card_weight.items(), key=lambda item: item[1])}
-
+        amount_of_card_weight = [["red",red_count],["green",green_count],["yellow",yellow_count],["blue",blue_count]]
+       # print(amount_of_card_weight,"before")
+        amount_of_card_weight = extra_module.merge_sort(amount_of_card_weight)
+        print(amount_of_card_weight,"sorted card weight")
+        
+        
         #Adds these values to current list with all the players cards and weights 
-        for b in range(count):
-            if amount_of_card_weight.get(0) == list_for_cards[i][0]:
-                list_for_cards[i][2] += 1 
+        for b in amount_of_card_weight:
+            for z in range(len(list_for_cards)):
+                if b[0] == list_for_cards[z][0]:
+                    list_for_cards[z][2] += b[1] 
+                    print("hi")
+        print("after added weights", list_for_cards)
 
-        print(list_for_cards)
         list_for_cards = extra_module.quicksort(list_for_cards)
         print(list_for_cards)
-        # swapped = False
-        # if count > 1:
-        #     for i in range(count - 1):
-        #         for x in range(0,count-i-1):
-        #             if list_for_cards[x][2] < list_for_cards[x + 1][2]:
-        #                 swapped = True
-        #                 temp_list = list_for_cards[x + 1]
-        #                 list_for_cards[x + 1] = list_for_cards[x]
-        #                 list_for_cards[x] = temp_list
-                
-        #         if not swapped:
-        #             break
-
+        
         self.postion_state() #Call postion state
         
         #Depending on the users postion state and chacne, is used to decide the player choice
