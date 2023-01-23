@@ -767,6 +767,7 @@ def welcomeloop(user):
 def startloop():
     in_button= Button(200, 260, signin_img,signin_img_hi,1)
     up_button = Button(750, 260, signup_img,signup_img_hi,1)
+    back_button = Button(50,50,black_back_img,black_back_hi_img,1)
     #username = Image(100,210,user_name_img,1)
     error = ""
     text2 = Text(error,(0,0,0),240,350)
@@ -807,6 +808,8 @@ def startloop():
 
                 
         if menu == "clicked":
+            if back_button.draw() == True:
+                menu = ""
             text1.draw(events,500,301,140,32)
             text_surface, rect = GAME_FONT.render("Enter Username: ", (0, 0, 0))
             screen.blit(text_surface, (337, 308))

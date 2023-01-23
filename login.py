@@ -34,8 +34,6 @@ class User:
             self.error = "Please Create A UserName That Not In The Database"
         elif self.__username == "": 
             self.error = "Please Do Not Leave The Username Blank"
-        elif len(self.__username) > 10:  
-            self.error = "Please Do Not Exceed 10 Characters"
         else: 
             c.execute(f"INSERT INTO Leaderboard(UserName,Games,Wins,Loss,Draws,Win_ratio) VALUES ('{self.__username.lower()}',0,0,0,0,0)")
         
@@ -73,7 +71,6 @@ class User:
 def login_or_sign(login_options,name):
     account_name = User()
     if login_options == "sign up":
-            #name = input("Create User: ")
             account_name.set_username(name)
 
     elif login_options == "sign in":
