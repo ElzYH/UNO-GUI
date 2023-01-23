@@ -98,8 +98,8 @@ def main_game_uno(user):
 if __name__ == "__main__":
     if os.path.exists("uno_database.db"): print("database already created")
     else: login.create()
-    
     user = gui.startloop()
+    print(f"Test Username: {user}")
     gui.welcomeloop(user)
     menu(user)
         

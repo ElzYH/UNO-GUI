@@ -447,6 +447,8 @@ class UNO():
         print(f"\nCard On Top: {self._topcard} \n")
         if self._order_postion == 0:
             self._player_move = gui.playloop(user,self.user_deck(),self.players_deck_len(),self._topcard,pick_up_card)
+            if self._player_move == "endgamerightnow":
+                raise IndexError
             print(f"Player {self._order_postion + 1}: {self._player_move} card played")
             if self._player_move[0].split()[0] == "wild":
                 self._colour = self._player_move[1]
