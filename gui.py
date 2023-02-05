@@ -449,10 +449,11 @@ def displayloop(user,user_deck,len_decks_list,topcard,current_player):
 def winloop(user):
     screen.fill((248,248,255))
     screen.blit(bg2, (0,0))
-    win = Text(f"{str(user).capitalize()} WIIIIINNNNNSSSSS",("#42e54a"),360,370)
-    win.create()
 
-    for x in range(180):
+    for x in range(300):
+        screen.blit(bg2, (0,0))
+        win = Text(f"{str(user).capitalize()} WIIIIINNNNNSSSSS",("#42e54a"),380,x*1.2)
+        win.create()
         events = pygame.event.get()
 
         for event in events:
@@ -466,11 +467,11 @@ def winloop(user):
 
 def lossloop(player):
     screen.fill((248,248,255))
-    screen.blit(bg2, (0,0))
-    win = Text(f"Player{str(player + 1).capitalize()} WIIIIINNNNNSSSSS",("#ee2525"),360,370)
-    win.create()
 
-    for x in range(180):
+    for x in range(300):
+        screen.blit(bg2, (0,0))
+        win = Text(f"Player{str(player + 1).capitalize()} WIIIIINNNNNSSSSS",("#ee2525"),380,x*1.2)
+        win.create()
         events = pygame.event.get()
 
         for event in events:
@@ -481,10 +482,12 @@ def lossloop(player):
         clock.tick(60)
 
 
+
+
 def drawloop():
     screen.fill((248,248,255))
     screen.blit(bg2, (0,0))
-    win = Text(f"DRAW",("#ffffff"),324,370)
+    win = Text(f"DRAW",("#ffffff"),578,360)
     win.create()
 
     for x in range(180):
@@ -514,7 +517,7 @@ def playloop(user,user_deck,len_decks_list,topcard,pickup):
     yellow_button = Button(100,350,yellowimg,yellowimghi,1)
     green_button = Button(100,450,greenimg,greenimghi,1)
     current_card = ""
-
+    back_button = Button(20,20,black_back_img,black_back_hi_img,1)
     nothing = pygame.image.load('Assets/blank.png').convert_alpha()
     cards1 = UnoCards(0,0,nothing,nothing,1,"")
     cards2 = UnoCards(0,0,nothing,nothing,1,"")
@@ -614,6 +617,9 @@ def playloop(user,user_deck,len_decks_list,topcard,pickup):
 
         if pick_up_button.draw() == True:
             pu_bool = True
+
+        if back_button.draw() == True:
+            return "endgamerightnow"
         
         if pu_bool == True:
                 if pick.draw() == True:
@@ -767,6 +773,7 @@ def welcomeloop(user):
 def startloop():
     in_button= Button(200, 260, signin_img,signin_img_hi,1)
     up_button = Button(750, 260, signup_img,signup_img_hi,1)
+    back_button = Button(50,50,black_back_img,black_back_hi_img,1)
     #username = Image(100,210,user_name_img,1)
     error = ""
     text2 = Text(error,(0,0,0),240,350)
@@ -807,6 +814,8 @@ def startloop():
 
                 
         if menu == "clicked":
+            if back_button.draw() == True:
+                menu = ""
             text1.draw(events,500,301,140,32)
             text_surface, rect = GAME_FONT.render("Enter Username: ", (0, 0, 0))
             screen.blit(text_surface, (337, 308))

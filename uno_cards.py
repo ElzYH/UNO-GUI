@@ -169,12 +169,16 @@ class UNO():
             elif list_for_cards[i][0] == "blue":
                 blue_count += 1
         
+        
         #Creates a new list with card colours and there weights and sorts the from the heightst value to the 
         #lowest
         amount_of_card_weight = [["red",red_count],["green",green_count],["yellow",yellow_count],["blue",blue_count]]
-       # print(amount_of_card_weight,"before")
+
+        print(f"{self._order_postion + 1} the amount of card colour test before merge sort test {amount_of_card_weight}")
+
         amount_of_card_weight = extra_module.merge_sort(amount_of_card_weight)
-        print(amount_of_card_weight,"sorted card weight")
+
+        print(f"{self._order_postion + 1} the amount of card colour test and sorted {amount_of_card_weight}")
         
         
         #Adds these values to current list with all the players cards and weights 
@@ -182,11 +186,11 @@ class UNO():
             for z in range(len(list_for_cards)):
                 if b[0] == list_for_cards[z][0]:
                     list_for_cards[z][2] += b[1] 
-                    print("hi")
-        print("after added weights", list_for_cards)
 
+        print(f"{self._order_postion + 1} card with there new weights test{list_for_cards}")
+        
         list_for_cards = extra_module.quicksort(list_for_cards)
-        print(list_for_cards)
+        print(f"{self._order_postion + 1} the amount of card colour test and sorted {list_for_cards}")
         
         self.postion_state() #Call postion state
         
@@ -239,8 +243,6 @@ class UNO():
                 else:
                     return ai_choice(1)
 
-        
-
         elif count == 2:
             return ai_choice(0)
 
@@ -249,6 +251,7 @@ class UNO():
             
     def pick_up_card_used(self):
         if self._pickup == True:
+            print("Pick Up Test True")
             self._pickup = False
             return True
         return False
@@ -299,6 +302,7 @@ class UNO():
         current_card = str(self._player_move).split(" ")
         try:
             if current_card[1] == "plus_4":
+                print(f"{self._order_postion + 1} plus 4 test")
                 return True
             else: 
                 return False
@@ -313,6 +317,7 @@ class UNO():
         current_card = str(self._player_move).split(" ")
         try:
             if current_card[0] == top_current_card[0] and current_card[1] == "plus_2":
+                print(f"{self._order_postion + 1} plus 4 test")
                 return True
             else: 
                 return False
@@ -440,8 +445,10 @@ class UNO():
         print(f"\nPlayer 1: {len(self._order[0])} cards | Player 2: {len(self._order[1])} cards | Player 3: {len(self._order[2])} cards | Player 4: {len(self._order[3])} cards")
         print(f"\nCard On Top: {self._topcard} \n")
         if self._order_postion == 0:
-            #self._player_move = None
             self._player_move = gui.playloop(user,self.user_deck(),self.players_deck_len(),self._topcard,pick_up_card)
+            if self._player_move == "endgamerightnow":
+                raise IndexError
+            print(f"Player {self._order_postion + 1}: {self._player_move} card played")
             if self._player_move[0].split()[0] == "wild":
                 self._colour = self._player_move[1]
                 self._player_move = self._player_move[0]
@@ -456,10 +463,10 @@ class UNO():
                 
                 if second_chance== "yes":
                     wild_check = str(self._order[self._order_postion][-1]).split()
-                    print(wild_check)
                     if wild_check[0] == "wild":
+                        print(f"{wild_check} True")
                         self._player_move = gui.colour_loop(user,self.user_deck(),self.players_deck_len(),self._topcard,pick_up_card,pick_up_card)
-                        print(self._player_move)
+                        print(f"After wild loop: {self._player_move}")
                         self._colour = self._player_move[1]
                         self._player_move = self._player_move[0]
                         
