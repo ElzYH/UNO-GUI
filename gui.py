@@ -223,7 +223,7 @@ class UnoCards():
         self.rect = self.image.get_rect()
         self.rect.topleft = (x,y)
         self.clicked = False
-        self.postion = postion
+        self.postion = postion #the current card basically
 
     def draw(self):
         action = False
@@ -386,7 +386,7 @@ def displayloop(user,user_deck,len_decks_list,topcard,current_player):
                 cards = UnoCards(x,y,user_cards[num][0],user_cards_hi[num],1,user_cards[num][1])
                 if cards.draw() == True:
                         current_card = cards.get_card()
-                        for a in user_cards[num][1]:
+                        for a in user_cards[num][1]: #try to remove the loop i think it pointless
                             a = user_cards[num][1]
                             if current_card == a:
                                 current_card = a
