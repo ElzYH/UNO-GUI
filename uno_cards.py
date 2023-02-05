@@ -73,7 +73,6 @@ class UNO():
         self._turns = 0
         self._clockwise = True
         self._pickup = False
-        self._card_used = {}
         self._colour = ""
 
 
