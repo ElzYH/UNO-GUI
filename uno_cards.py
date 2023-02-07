@@ -336,7 +336,7 @@ class UNO():
 
 
     
-    def colour_check(self,colour):
+    def colour_check(self,colour): #check if it has use
         """Check if the string (colour), matches the colours. If it does it return TRUE else FAlSE"""
 
         if colour == "red":
