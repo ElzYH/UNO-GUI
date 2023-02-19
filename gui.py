@@ -50,9 +50,13 @@ temp_uno = pygame.image.load('Assets/Cards/green 1.png').convert_alpha()
 temp_uno2 = pygame.image.load('Assets/Cards/green 0.png').convert_alpha()
 
 pu_img = pygame.image.load('Assets/pickup.png').convert_alpha()
-pu_img_hi = temp_uno = pygame.image.load('Assets/pickup_hi.png').convert_alpha()
+pu_img_hi = pygame.image.load('Assets/pickup_hi.png').convert_alpha()
 
+separte = pygame.image.load('Assets/separate.png').convert_alpha()
+separte_hi = pygame.image.load('Assets/separate_hi.png').convert_alpha()
 
+compare = pygame.image.load('Assets/compare.png').convert_alpha()
+compare_hi = pygame.image.load('Assets/compare_hi.png').convert_alpha()
 
 redimg= pygame.image.load('Assets/red_button.png').convert_alpha()
 redimghi= pygame.image.load('Assets/red_button_hi.png').convert_alpha()
@@ -85,8 +89,8 @@ black_back_hi_img = pygame.image.load('Assets/back_hi.png').convert_alpha()
 all_numbers_img = pygame.image.load('Assets/numbers.png')
 all_numbers_hi_img = pygame.image.load('Assets/numbers_hi.png')
 
-no_wild_img = pygmae.image.load('Assets/no_wilds.ng')
-no_wild_hi_img = pygmae.image.load('Assets/no_wilds_hi.ng')
+no_wild_img = pygame.image.load('Assets/no_wilds.png')
+no_wild_hi_img = pygame.image.load('Assets/no_wilds_hi.png')
 
 all_cards = pygame.image.load('Assets/all_cards.png')
 all_cards_hi = pygame.image.load('Assets/all_cards.png')
@@ -275,99 +279,322 @@ def lead_menu(user):
     """Menu to display the leaderboard"""
     screen.fill((0,0,0))
     back_button = Button(20,20,black_back_img,black_back_hi_img,1)
-    des = Text("Press 1: Games | Press 2: Wins | Press 3: Losses | Press 4: Draws",(240,248,255),20,650)
-    choice = ""
-    contin = False
-
-    con = sqlite3.connect("uno_database.db")
-    c = con.cursor()
-
-    def leaderboard_choice(choice,text,user):
-        """To access SQL Table and pull it infomation for it to be displayed"""
-
-        c.execute(f"""SELECT UserName,{choice}
-            From Leaderboard
-            ORDER BY {choice} DESC
-            """)
-        board = []
-        player_postions = [i for i in c.fetchall()]
-        for i in range(0,len(player_postions)):
-                if i < 99:
-                    username_length = 10 - len(player_postions[i][0])
-                    num_length = 2 - len(str(i+1))
-                    leader = (f"{' '*num_length}{i+1}. Name: {player_postions[i][0].capitalize() + ' '*username_length} {text}: {player_postions[i][1]}")
-                    board.append(leader)
-                    if player_postions[i][0] == user:
-                        user_postion = i + 1
-                        user_games = player_postions[i][1]
-        username_length = 10 - len(user)
-        num_length = 2 - len(str(user_postion))
-        curent_user = f"{' '*num_length}{user_postion}. Name: {user.capitalize() + ' '*username_length}  {text}: {user_games}"
-        return [board,curent_user]
-
-    page = 0
-    des.create()
+    compare_button = Button(300,340,compare,compare_hi,1)
+    separte_button = Button(700,340,separte,separte_hi,1)
+    compare_option = False
+    separte_option = False
+    separte_continue = False
+    comsep = True
+    compaere_menu = False
     while True:
-        if page == 1:
-            choice = leaderboard_choice("Games","Games Played",user)
-            contin = True
-
-        elif page == 2:
-            choice = leaderboard_choice("Wins","Ganes Won",user)
-            contin = True
-
-        elif page == 3:
-            choice = leaderboard_choice("Loss","Games Loss",user)
-            contin = True
-
-        elif page == 4:
-            choice = leaderboard_choice("Draws","Games Drawn",user)
-            contin = True
-
-        if back_button.draw() == True:
-            con.close()
-            return
-
-        if contin == True:
-            contin = False
+        while comsep == True:
             screen.fill((0,0,0))
-            if back_button.draw() == True:
-                con.close()
+            if compare_button.draw() == True:
+                compare_option = True
+                comsep = False
+            elif separte_button.draw() == True:
+                separte_option = True
+                comsep = False
+            elif back_button.draw() == True:
+                comsep = False
                 return
-            #Displays the current user leaderboard preview
-            user_text = Text(choice[1],(240,248,255),100,300)
-            user_text.create_2()
-            y = 10
-            for i in range(len(choice[0])):
-                if i < 25:
-                    y += 26
-                    board = Text(choice[0][i],(240,248,255),620,y)
-                    board.create_2()
+
+
+            events = pygame.event.get()
+            for event in events:
+                if event.type == pygame.QUIT:
+                    sys.exit()
+
+            pygame.display.update()
+            clock.tick(60)
+
+        
+        if separte_option == True:
+            screen.fill((0,0,0))
+            options = Text("Press 1: Normal | Press 2: NoWilds | Press 3: Number",(240,248,255),20,650)
+            options.create()
+
+            while separte_option == True:
+                if back_button.draw() == True:
+                    separte_option = False
+                    comsep = True
+                events = pygame.event.get()
+                for event in events:
+                    if event.type == pygame.QUIT:
+                        sys.exit()
+                    if event.type == pygame.KEYDOWN:
+                        if event.key == pygame.K_1:
+                            separte_option = False
+                            separte_continue = True
+                            gamemode = "Normal"
+
+                        elif event.key == pygame.K_2:
+                            separte_option = False
+                            separte_continue = True
+                            gamemode = "Nowilds"
+
+                        elif event.key == pygame.K_3:
+                            separte_continue = True
+                            separte_option = False
+                            gamemode = "Numbers"
+
+                events = pygame.event.get()
+                pygame.display.update()
+                clock.tick(60)
+            
+
+
+            if separte_continue == True:
+                screen.fill((0,0,0))
+                des = Text("Press 1: Games | Press 2: Wins | Press 3: Losses | Press 4: Draws",(240,248,255),20,650)
+                choice = ""
+                contin = False
+
+                con = sqlite3.connect("uno_database.db")
+                c = con.cursor()
+
+                def leaderboard_choice(choice,text,user,gamemode):
+                    """To access SQL Table and pull it infomation for it to be displayed"""
+
+                    con = sqlite3.connect("uno_database.db")
+                    c = con.cursor()
+
+                    c.execute(f"""SELECT UserName,{choice}
+                        From {gamemode}
+                        ORDER BY {choice} DESC
+                        """)
+                    board = []
+                    player_postions = [i for i in c.fetchall()]
+                    for i in range(0,len(player_postions)):
+                            if i < 99:
+                                username_length = 10 - len(player_postions[i][0])
+                                num_length = 2 - len(str(i+1))
+                                leader = (f"{' '*num_length}{i+1}. Name: {player_postions[i][0].capitalize() + ' '*username_length} {text}: {player_postions[i][1]}")
+                                board.append(leader)
+                                if player_postions[i][0] == user:
+                                    user_postion = i + 1
+                                    user_games = player_postions[i][1]
+                    username_length = 10 - len(user)
+                    num_length = 2 - len(str(user_postion))
+                    curent_user = f"{' '*num_length}{user_postion}. Name: {user.capitalize() + ' '*username_length}  {text}: {user_games}"
+                    return [board,curent_user]
+
+                page = 0
+                des.create()
+                while separte_continue == True:
+                    if page == 1:
+                        choice = leaderboard_choice("Games","Games Played",user,gamemode)
+                        contin = True
+
+                    elif page == 2:
+                        choice = leaderboard_choice("Wins","Ganes Won",user,gamemode)
+                        contin = True
+
+                    elif page == 3:
+                        choice = leaderboard_choice("Loss","Games Loss",user,gamemode)
+                        contin = True
+
+                    elif page == 4:
+                        choice = leaderboard_choice("Draws","Games Drawn",user,gamemode)
+                        contin = True
+
+                    if back_button.draw() == True:
+                        con.close()
+                        separte_option = True
+                        separte_continue = False
+                        #break
+
+                    if contin == True:
+                        contin = False
+                        screen.fill((0,0,0))
+                        if back_button.draw() == True:
+                            con.close()
+                            separte_option = True
+                            separte_continue = False
+                            #break
+                        #Displays the current user leaderboard preview
+                        user_text = Text(choice[1],(240,248,255),100,300)
+                        user_text.create_2()
+                        y = 10
+                        for i in range(len(choice[0])):
+                            if i < 25:
+                                y += 26
+                                board = Text(choice[0][i],(240,248,255),620,y)
+                                board.create_2()
 
 
 
-        events = pygame.event.get()
-        for event in events:
-            if event.type == pygame.QUIT:
-                sys.exit()
+                    events = pygame.event.get()
+                    for event in events:
+                        if event.type == pygame.QUIT:
+                            sys.exit()
 
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_1:
-                    page = 1
+                        if event.type == pygame.KEYDOWN:
+                            if event.key == pygame.K_1:
+                                page = 1
 
-                elif event.key == pygame.K_2:
-                    page =2 
+                            elif event.key == pygame.K_2:
+                                page =2 
 
-                elif event.key == pygame.K_3:
-                    page =3
+                            elif event.key == pygame.K_3:
+                                page =3
 
-                elif event.key == pygame.K_4:
-                    page =4
+                            elif event.key == pygame.K_4:
+                                page =4
 
 
 
-        pygame.display.update()
-        clock.tick(60)
+                    pygame.display.update()
+                    clock.tick(60)
+
+        elif compare_option == True:
+            screen.fill((0,0,0))
+            optionslist = []
+            coptions = Text("PRESS TWO KEYS TO COMPARE OPTIONS: PRESS 1: NORMAL | PRESS 2: NO WILDS | PRESS 3: NORMAL",(240,248,255),20,650)
+            coptions.create()
+
+            while compare_option == True:
+
+
+
+                if back_button.draw() == True:
+                    compare_option = False
+                    comsep = True
+
+                events = pygame.event.get()
+                for event in events:
+                    if event.type == pygame.QUIT:
+                        sys.exit()
+                    if len(optionslist) <= 2:
+                        if event.type == pygame.KEYDOWN:
+                            if len(optionslist) >= 2:
+                                compaere_menu = True
+                                compare_option = False
+                                break
+                            print(optionslist)
+                            
+                            if event.key == pygame.K_1:
+                                if "Normal" not in optionslist:
+                                    optionslist.append("Normal")
+
+                            elif event.key == pygame.K_2:
+                                if "NoWilds" not in optionslist:
+                                    optionslist.append("NoWilds")
+
+                            elif event.key == pygame.K_3:
+                                if "Numbers" not in optionslist:
+                                    optionslist.append("Numbers")
+    
+
+                        
+                if compaere_menu == True:
+                    screen.fill((0,0,0))
+                    contin = False
+                    des = Text("Press 1: Games | Press 2: Wins | Press 3: Losses | Press 4: Draws",(240,248,255),20,650)
+                    def leaderboard_choice(choice,text,user,gamemode1,gamemode2):
+                        """To access SQL Table and pull it infomation for it to be displayed"""
+
+                        con = sqlite3.connect("uno_database.db")
+                        c = con.cursor()
+
+                        c.execute(f"""SELECT (UserName,{choice})
+                            FROM {gamemode1} INNERJOIN {gamemode2}.UserName
+                            {gamemode1}.UserName == {gamemode2}.UserName
+                            ORDER BY {choice} DESC
+                            """)
+                        board = []
+                        player_postions = [i for i in c.fetchall()]
+                        print(player_postions)
+                        for i in range(0,len(player_postions)):
+                                if i < 99:
+                                    username_length = 10 - len(player_postions[i][0])
+                                    num_length = 2 - len(str(i+1))
+                                    leader = (f"{' '*num_length}{i+1}. Name: {player_postions[i][0].capitalize() + ' '*username_length} {text}: {player_postions[i][1]}")
+                                    board.append(leader)
+                                    if player_postions[i][0] == user:
+                                        user_postion = i + 1
+                                        user_games = player_postions[i][1]
+                        username_length = 10 - len(user)
+                        num_length = 2 - len(str(user_postion))
+                        curent_user = f"{' '*num_length}{user_postion}. Name: {user.capitalize() + ' '*username_length}  {text}: {user_games}"
+                        return [board,curent_user]
+
+                    page = 0
+                    des.create()
+                    print("hello")
+                    while compaere_menu == True:
+                        if page == 1:
+                            print("hihihihihihihihiihih")
+                            choice = leaderboard_choice("Games","Games Played",user,optionslist[0],optionslist[1])
+                            contin = True
+
+                        elif page == 2:
+                            choice = leaderboard_choice("Wins","Ganes Won",user,optionslist[0],optionslist[1])
+                            contin = True
+
+                        elif page == 3:
+                            choice = leaderboard_choice("Loss","Games Loss",user,optionslist[0],optionslist[1])
+                            contin = True
+
+                        elif page == 4:
+                            choice = leaderboard_choice("Draws","Games Drawn",user,optionslist[0],optionslist[1])
+                            contin = True
+
+                        if back_button.draw() == True:
+                            con.close()
+                            separte_option = True
+                            separte_continue = False
+                            #break
+
+                        if contin == True:
+                            contin = False
+                            screen.fill((0,0,0))
+                            if back_button.draw() == True:
+                                con.close()
+                                separte_option = True
+                                separte_continue = False
+                                #break
+                            #Displays the current user leaderboard preview
+                            user_text = Text(choice[1],(240,248,255),100,300)
+                            user_text.create_2()
+                            y = 10
+                            for i in range(len(choice[0])):
+                                if i < 25:
+                                    y += 26
+                                    board = Text(choice[0][i],(240,248,255),620,y)
+                                    board.create_2()
+
+
+
+                        events = pygame.event.get()
+                        for event in events:
+                            if event.type == pygame.QUIT:
+                                sys.exit()
+
+                            if event.type == pygame.KEYDOWN:
+                                if event.key == pygame.K_1:
+                                    page = 1
+
+                                elif event.key == pygame.K_2:
+                                    page =2 
+
+                                elif event.key == pygame.K_3:
+                                    page =3
+
+                                elif event.key == pygame.K_4:
+                                    page =4
+
+                        pygame.display.update()
+                        clock.tick(60)
+
+
+
+
+
+                pygame.display.update()
+                clock.tick(60)
+
+
 
 
 
@@ -511,13 +738,32 @@ def drawloop():
 
 def choice_loop():
     screen.fill((255,255,255))
-    no_wilds = Button(400,355,no_wild_img,no_wild_hi_img,1)
-    number = Button(200, 355, all_numbers_img, all_numbers_hi_img, 1)
-    normal = Button(600,355, all_cards,all_cards_hi,1)
+    no_wilds = Button(550,340,no_wild_img,no_wild_hi_img,1)
+    number = Button(300, 340, all_numbers_img, all_numbers_hi_img, 1)
+    normal = Button(800,340, all_cards,all_cards_hi,1)
+    back_button = Button(20,20,black_back_img,black_back_hi_img,1)
 
 
     while True:
-        pass
+        events = pygame.event.get()
+
+        if no_wilds.draw() == True:
+            return "NoWilds"
+        elif number.draw() == True:
+            return "Numbers"
+        elif normal.draw() == True:
+            return "Normal"
+        elif back_button.draw() == True:
+            return "backtomenu"
+
+
+
+        for event in events:
+            if event.type == pygame.QUIT:
+                sys.exit()
+
+        pygame.display.update()
+        clock.tick(60)
 
 def playloop(user,user_deck,len_decks_list,topcard,pickup):
     screen.fill((248,248,255))
@@ -747,7 +993,7 @@ def colour_loop(user,user_deck,len_decks_list,topcard,pickup,current_card):
 
 def main_menu_loop():
     logo = Image(510,20,uno_logo,1)
-    screen.fill((248,248,255))
+    screen.fill((255,255,255))
     play_button = Button(555, 240, play_img,play_hi_img,1)
     leaderboard_button = Button(555, 360, leaderboard_img,leaderboard_hi_img,1)
     quit_button = Button(555,480,quit_img,quit_hi_img,1)

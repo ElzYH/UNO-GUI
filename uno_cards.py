@@ -13,23 +13,22 @@ class cards:
         return f"{self._colour} {self._value}"
     
 class deck:
-    def __init__(self):
+    def __init__(self,string):
         self.__colour = ["red","green","blue","yellow"]
         self.__special_no_colour = ["plus_4","switch"]
         self.__special = ["block","reverse","plus_2"]
         self.__value = [str(i) for i in (range(0,10))]*2  
-        self._deck_choice = int
-        self._card = card_decider()
+        self._deck_choice = string
+        self._card = self._carddeck()
     
-    def card_decider():
-    
-        if self._deck_choice == 1:
-            self._card = [cards(c,v) for c in self.__colour for v in self.__value]
-        elif self._deck_choice == 2:
-            self._card = [cards(c,v) for c in self.__colour for v in self.__value] + [cards(c,v) for c in self.__colour for v in self.__special]*2
-        elif self._deck_choice == 3:
-            self._card = [cards(c,v) for c in self.__colour for v in self.__value] + [cards(c,v) for c in self.__colour for v in self.__special]*2 + [cards("wild",v) for v in self.__special_no_colour]*4
-        return self._card
+    def _carddeck(self):
+        if self._deck_choice == "Numbers":
+            card = [cards(c,v) for c in self.__colour for v in self.__value]
+        elif self._deck_choice == "NoWilds":
+            card = [cards(c,v) for c in self.__colour for v in self.__value] + [cards(c,v) for c in self.__colour for v in self.__special]*2
+        elif self._deck_choice == "Normal":
+            card = [cards(c,v) for c in self.__colour for v in self.__value] + [cards(c,v) for c in self.__colour for v in self.__special]*2 + [cards("wild",v) for v in self.__special_no_colour]*4
+        return card
 
 
     def get_card(self):
@@ -39,9 +38,9 @@ class deck:
         return len(self._card)
 
     def shuffle_cards(self):
-        if self.get_count() == 112:
-            shuffle(self._card)
-            return self.get_card()
+        #if self.get_count() == 112:
+        shuffle(self._card)
+        return self.get_card()
 
     def _deal(self, num):
         count = self.get_count()
@@ -64,7 +63,7 @@ class deck:
 
 
 class UNO():
-    def __init__(self,uno_deck,player1,player2,player3,player4):
+    def __init__(self,uno_deck,player1,player2,player3,player4,gamemode):
         self._deck = uno_deck
         self._player1 = player1
         self._player2 = player2
@@ -80,6 +79,7 @@ class UNO():
         self._clockwise = True
         self._pickup = False
         self._colour = ""
+        self._gamemode = gamemode
 
 
     def user_deck(self):
@@ -389,6 +389,20 @@ class UNO():
         then player 1 recives additoion to games and loss by 1. ELSE if end check condtion is not TRUE then this code is skipped.
         The databasee is then close after."""
 
+        def database_updates(user,worl,games_played):
+            user_worl = c.execute(f"""SELECT {worl}
+            FROM {self._gamemode}
+            WHERE UserName = '{user}'
+            """)
+
+            user_worl = [int(i) for i in c.fetchone()]
+            user_worl[0] += 1
+
+            c.execute(f"""UPDATE {self._gamemode}
+            SET Games = {games_played[0]}, {worl} = {user_worl[0]}
+            WHERE UserName = '{user}'""")
+
+
         con = sqlite3.connect("uno_database.db")
         c = con.cursor()
         end = False
@@ -403,7 +417,7 @@ class UNO():
 
         if end == True:
             games_played = c.execute(f"""SELECT Games
-                        FROM Leaderboard
+                        FROM {self._gamemode}
                         WHERE UserName = '{user}'
                         """)
             games_played = [int(i) for i in c.fetchone()]
@@ -411,29 +425,31 @@ class UNO():
 
             if e == 0:
                 gui.winloop(user)
-                user_wins = c.execute(f"""SELECT Wins
-                FROM Leaderboard
-                WHERE UserName = '{user}'
-                """)
-                user_wins = [int(i) for i in c.fetchone()]
-                user_wins[0] += 1
-                c.execute(f"""UPDATE Leaderboard
-                SET Games = {games_played[0]}, Wins = {user_wins[0]}
-                WHERE UserName = '{user}'""") 
+                database_updates(user,"Wins",games_played)
+                # user_wins = c.execute(f"""SELECT Wins
+                # FROM {self._gamemode}
+                # WHERE UserName = '{user}'
+                # """)
+                # user_wins = [int(i) for i in c.fetchone()]
+                # user_wins[0] += 1
+                # c.execute(f"""UPDATE Normal
+                # SET Games = {games_played[0]}, Wins = {user_wins[0]}
+                # WHERE UserName = '{user}'""") 
             
 
             else:
                 gui.lossloop(e)
-                user_loss = c.execute(f"""SELECT loss
-                FROM Leaderboard
-                WHERE UserName = '{user}'
-                """)
-                user_loss = [int(i) for i in c.fetchone()]
-                user_loss[0] += 1
+                database_updates(user,"Loss",games_played)
+                # user_loss = c.execute(f"""SELECT loss
+                # FROM Normal
+                # WHERE UserName = '{user}'
+                # """)
+                # user_loss = [int(i) for i in c.fetchone()]
+                # user_loss[0] += 1
 
-                c.execute(f"""UPDATE Leaderboard
-                SET Games = {games_played[0]}, Loss = {user_loss[0]}
-                WHERE UserName = '{user}'""") 
+                # c.execute(f"""UPDATE Normal
+                # SET Games = {games_played[0]}, Loss = {user_loss[0]}
+                # WHERE UserName = '{user}'""") 
                 
             
             con.commit()

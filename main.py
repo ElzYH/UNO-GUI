@@ -25,11 +25,13 @@ def leaderboard(user):
     
 
 
-def main_game_uno(user,choice):
-    choice = None
+def main_game_uno(user):
+    choice = gui.choice_loop()
+    if choice == "backtomenu":
+        return
     uno_deck = uno_cards.deck(choice)
     uno_deck.shuffle_cards()
-    game = uno_cards.UNO(uno_deck,uno_deck.deal_hand(7),uno_deck.deal_hand(7),uno_deck.deal_hand(7),uno_deck.deal_hand(7))
+    game = uno_cards.UNO(uno_deck,uno_deck.deal_hand(7),uno_deck.deal_hand(7),uno_deck.deal_hand(7),uno_deck.deal_hand(7),choice)
 
     first_card = uno_deck.deal_card()
     first_card_check = str(first_card).split(" ")
@@ -69,23 +71,22 @@ def main_game_uno(user,choice):
             c = con.cursor()
 
             games_played = c.execute(f"""SELECT Games
-                        FROM Leaderboard
+                        FROM {choice}
                         WHERE UserName = '{user}'
                         """)
             games_played = [int(i) for i in c.fetchone()]
             games_played[0] += 1
 
             user_draws = c.execute(f"""SELECT Draws
-                        FROM Leaderboard
+                        FROM {choice}
                         WHERE UserName = '{user}'
                         """)
             user_draws = [int(i) for i in c.fetchone()]
-
             user_draws[0] += 1
 
-            print(f"{games_played},{user_draws}")
+            print(f"Games played{games_played}, User Draws{user_draws}")
 
-            c.execute(f"""UPDATE Leaderboard
+            c.execute(f"""UPDATE {choice}
             SET Games = {games_played[0]}, Draws = {user_draws[0]}
             WHERE UserName = '{user}'""")   
             con.commit()
