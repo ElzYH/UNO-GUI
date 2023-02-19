@@ -25,8 +25,9 @@ def leaderboard(user):
     
 
 
-def main_game_uno(user):
-    uno_deck = uno_cards.deck()
+def main_game_uno(user,choice):
+    choice = None
+    uno_deck = uno_cards.deck(choice)
     uno_deck.shuffle_cards()
     game = uno_cards.UNO(uno_deck,uno_deck.deal_hand(7),uno_deck.deal_hand(7),uno_deck.deal_hand(7),uno_deck.deal_hand(7))
 

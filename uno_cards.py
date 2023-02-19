@@ -18,14 +18,20 @@ class deck:
         self.__special_no_colour = ["plus_4","switch"]
         self.__special = ["block","reverse","plus_2"]
         self.__value = [str(i) for i in (range(0,10))]*2  
-        self._card = [
-            cards(c,v) for c in self.__colour for v in self.__value
-            ]  + [
-                cards(c,v) for c in self.__colour for v in self.__special
-                ]*2 + [
-                    cards("wild",v) for v in self.__special_no_colour
-                    ]*4 #4
+        self._deck_choice = int
+        self._card = card_decider()
     
+    def card_decider():
+    
+        if self._deck_choice == 1:
+            self._card = [cards(c,v) for c in self.__colour for v in self.__value]
+        elif self._deck_choice == 2:
+            self._card = [cards(c,v) for c in self.__colour for v in self.__value] + [cards(c,v) for c in self.__colour for v in self.__special]*2
+        elif self._deck_choice == 3:
+            self._card = [cards(c,v) for c in self.__colour for v in self.__value] + [cards(c,v) for c in self.__colour for v in self.__special]*2 + [cards("wild",v) for v in self.__special_no_colour]*4
+        return self._card
+
+
     def get_card(self):
         return self._card
     

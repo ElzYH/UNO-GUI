@@ -82,6 +82,15 @@ draws_hi_img = pygame.image.load('Assets/draws_hi.png').convert_alpha()
 black_back_img = pygame.image.load('Assets/back.png').convert_alpha()
 black_back_hi_img = pygame.image.load('Assets/back_hi.png').convert_alpha()
 
+all_numbers_img = pygame.image.load('Assets/numbers.png')
+all_numbers_hi_img = pygame.image.load('Assets/numbers_hi.png')
+
+no_wild_img = pygmae.image.load('Assets/no_wilds.ng')
+no_wild_hi_img = pygmae.image.load('Assets/no_wilds_hi.ng')
+
+all_cards = pygame.image.load('Assets/all_cards.png')
+all_cards_hi = pygame.image.load('Assets/all_cards.png')
+
 
 
 
@@ -500,6 +509,15 @@ def drawloop():
         pygame.display.update()
         clock.tick(60)
 
+def choice_loop():
+    screen.fill((255,255,255))
+    no_wilds = Button(400,355,no_wild_img,no_wild_hi_img,1)
+    number = Button(200, 355, all_numbers_img, all_numbers_hi_img, 1)
+    normal = Button(600,355, all_cards,all_cards_hi,1)
+
+
+    while True:
+        pass
 
 def playloop(user,user_deck,len_decks_list,topcard,pickup):
     screen.fill((248,248,255))
