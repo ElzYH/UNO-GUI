@@ -95,7 +95,7 @@ no_wild_img = pygame.image.load('Assets/no_wilds.png')
 no_wild_hi_img = pygame.image.load('Assets/no_wilds_hi.png')
 
 all_cards = pygame.image.load('Assets/all_cards.png')
-all_cards_hi = pygame.image.load('Assets/all_cards.png')
+all_cards_hi = pygame.image.load('Assets/all_cards_hi.png')
 
 
 bg = pygame.image.load("Assets/uno_background.png")
