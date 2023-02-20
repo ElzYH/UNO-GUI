@@ -9,14 +9,18 @@ import gui
 
 def menu(u):
     """A Function that gives the user options on what they want to do next"""
+    user = u
     while True:
         option = gui.main_menu_loop()
         if option == "play":
-            main_game_uno(u)
+            main_game_uno(user)
         if option == "leaderboard":
             leaderboard(user)
         if option == "quit":
                 sys.exit()
+        if option == "back_button":
+            user = gui.startloop()
+            gui.welcomeloop(user)
         
 
 
