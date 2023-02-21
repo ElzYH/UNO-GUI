@@ -476,7 +476,7 @@ def lead_menu(user):
                     pygame.display.update()
                     clock.tick(60)
 
-        if compare_option == True:
+        elif compare_option == True:
             screen.fill((0,0,0))
             optionslist = []
             coptions = Text("PRESS TWO KEYS TO COMPARE OPTIONS: PRESS 1: NORMAL | PRESS 2: NO WILDS | PRESS 3: NUMBERS",(240,248,255),20,730)
@@ -794,6 +794,14 @@ def choice_loop():
         elif normal.draw() == True:
             return "Normal"
         elif back_button.draw() == True:
+            for i in range(7):
+                screen.fill((255,255,255))
+                events = pygame.event.get()
+                for event in events:
+                    if event.type == pygame.QUIT:
+                        sys.exit()
+                pygame.display.update()
+                clock.tick(60)
             return "backtomenu"
 
 
