@@ -416,7 +416,7 @@ def lead_menu(user):
                         contin = True
 
                     elif page == 2:
-                        choice = leaderboard_choice("Wins","Ganes Won",user,gamemode)
+                        choice = leaderboard_choice("Wins","Games Won",user,gamemode)
                         contin = True
 
                     elif page == 3:
@@ -570,7 +570,7 @@ def lead_menu(user):
                         contin = True
 
                     elif page == 2:
-                        choice = leaderboard_choice("Wins","Ganes Won",user,optionslist[0],optionslist[1])
+                        choice = leaderboard_choice("Wins","Games Won",user,optionslist[0],optionslist[1])
                         contin = True
 
                     elif page == 3:
