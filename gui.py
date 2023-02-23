@@ -488,7 +488,7 @@ def lead_menu(user):
                     compare_option = False
                     comsep = True
 
-                gamemode_choices = Text(" ".join(optionslist),(255,255,255),390,325)
+                gamemode_choices = Text(" ".join(optionslist),(255,255,255),443,355)
                 gamemode_choices.create()
 
                 events = pygame.event.get()
