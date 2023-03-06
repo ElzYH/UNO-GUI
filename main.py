@@ -5,20 +5,27 @@ import uno_cards
 import sqlite3
 import sys
 import gui
+import logging
 
 
 def menu(u):
     """A Function that gives the user options on what they want to do next"""
+    logger = logging.getLogger(f"{__name__}")
+    logger.info(f"Currently on the Main Menu, current user is: {u}")
     user = u
     while True:
         option = gui.main_menu_loop()
         if option == "play":
+            logger.info(f"Pressed the play button")
             main_game_uno(user)
         if option == "leaderboard":
+            logger.info(f"Pressed the stats button")
             leaderboard(user)
         if option == "quit":
+                logger.info(f"Pressed the quit button")
                 sys.exit()
         if option == "back_button":
+            logger.info(f"{user} has logged out")
             user = gui.startloop()
             gui.welcomeloop(user)
         
@@ -32,44 +39,56 @@ def leaderboard(user):
 def main_game_uno(user):
     choice = gui.choice_loop()
     if choice == "backtomenu":
+        logger.info(f"{user} returned back to the menu choice = {choice}")
         return
+    logger.info(f"{user} has chosen the {choice} gamemode")
     uno_deck = uno_cards.deck(choice)
     uno_deck.shuffle_cards()
     game = uno_cards.UNO(uno_deck,uno_deck.deal_hand(7),uno_deck.deal_hand(7),uno_deck.deal_hand(7),uno_deck.deal_hand(7),choice)
 
     first_card = uno_deck.deal_card()
     first_card_check = str(first_card).split(" ")
+    logger.info(f"first card before {first_card_check}")
     while first_card_check[0] == "wild":
+        logger.warning(f"first card was equal to wild: {first_card_check}")
         first_card = uno_deck.deal_card()
         first_card_check = str(first_card).split(" ")
 
+    logger.info(f"first card after {first_card_check}")
     game.game_setter(first_card)
     pick_up = uno_deck.deal_card()
     while game.end_check(user) != True:
         try:
             if True:
                 if game.pick_up_card_used() == True:
+                    logger.info("game.pick_up_card_used() is True")
                     pick_up = uno_deck.deal_card()
+                    logger.info(f"pick up cards is: pick_up = {str(pick_up)}")
                     if pick_up == "end":
+                        logger.warning("Game has ended and Index error is rasied")
                         raise IndexError
                     game.player_move(pick_up,user) #
                 else:
+                    logger.info(f"pick_up card has not changed: {str(pick_up)}")
                     game.player_move(pick_up,user) #pick_up
             
             if game.plus_4_check() == True:
+                logger.info("Plus 4 check is TRUE")
                 add_card = []
                 for i in range(4):
                     add_card.append(uno_deck.deal_card())
+                logger.info(f"add_cards = {add_card} for plus 4")
                 game.append_cards(add_card)
 
             if game.plus_2_check() == True:
+                logger.info("Plus 2 check is TRUE")
                 add_card = []
                 for i in range(2):
                     add_card.append(uno_deck.deal_card())
                 game.append_cards(add_card)
         except TypeError and IndexError:
             
-            print("DRAW!!!!!")
+            logger.info("Game ended with a draw")
             gui.drawloop()
             con = sqlite3.connect("uno_database.db")
             c = con.cursor()
@@ -88,7 +107,7 @@ def main_game_uno(user):
             user_draws = [int(i) for i in c.fetchone()]
             user_draws[0] += 1
 
-            print(f"Games played{games_played}, User Draws{user_draws}")
+            logger.info(f"Games played{games_played}, User Draws{user_draws}")
 
             c.execute(f"""UPDATE {choice}
             SET Games = {games_played[0]}, Draws = {user_draws[0]}
@@ -102,10 +121,21 @@ def main_game_uno(user):
 
 
 if __name__ == "__main__":
-    if os.path.exists("uno_database.db"): print("database already created")
-    else: login.create()
+    logger = logging.getLogger(f"{__name__}")
+    logging.basicConfig(filename='application.log',filemode='w',format='%(name)s - %(asctime)s - %(levelname)s - %(message)s',datefmt='%d-%b-%y %H:%M:%S',level=logging.INFO)
+    logger.info(f'Application started')
+
+    if os.path.exists("uno_database.db"): 
+        logger.info(f"{__name__} Database is already created")
+    else:
+        logger.info(f"{__name__} Database does not exist")
+        login.create()
+        if os.path.exists("uno_database.db"):
+            logger.addHandler(logging.ERROR)
+            logger.error(f"{__name__} Database does not exist")
+
     user = gui.startloop()
-    print(f"Test Username: {user}")
+    logger.info(f"Player Username: {user}")
     gui.welcomeloop(user)
     menu(user)
         

@@ -3,6 +3,9 @@ from random import randint
 import sqlite3
 import gui
 import extra_module
+import logging
+
+logger = logging.getLogger(f"{__name__}")
 
 class cards:
     def __init__(self,colour,value):
@@ -28,6 +31,7 @@ class deck:
             card = [cards(c,v) for c in self.__colour for v in self.__value] + [cards(c,v) for c in self.__colour for v in self.__special]*2
         elif self._deck_choice == "Normal":
             card = [cards(c,v) for c in self.__colour for v in self.__value] + [cards(c,v) for c in self.__colour for v in self.__special]*2 + [cards("wild",v) for v in self.__special_no_colour]*4
+        logger.info(f"Cards in the gamemode: {self._deck_choice} deck: {card}")
         return card
 
 
@@ -40,14 +44,17 @@ class deck:
     def shuffle_cards(self):
         #if self.get_count() == 112:
         shuffle(self._card)
+        logger.info(f"shuffles cards: {self._card}")
         return self.get_card()
 
     def _deal(self, num):
         count = self.get_count()
         actual = min([count,num])
+        logger.info(f"count: {count} and actual: {actual} and num: {num}")
         if count == 0:
             None
         cards = self._card[-actual:]
+        logger.info(f"cards/self._cards: {cards}")
         self._card = self._card[:-actual]
         return cards
 
@@ -58,6 +65,7 @@ class deck:
         try:
             return self._deal(1)[0]
         except IndexError:
+            logger.info(f"IndexError Raised to end game")
             return "end"
 
 
@@ -94,8 +102,9 @@ class UNO():
         i = 0
         for n in self._order[self._order_postion]:
             i +=1
-
+        logger.info(f"postion states clockwise = {self._clockwise}, order postion = {self._order_postion}")
         if self._clockwise == True:
+            logger.info(f"postion states clockwise True, order postion = {self._order_postion}")
             if self._order_postion == 3:
                 for z in range(len(self._order[0])):
                     z = z + 1
@@ -106,33 +115,40 @@ class UNO():
                 else:
                     i = 0
 
+
             else:
                 for z in range(len(self._order[self._order_postion + 1])):
-                    if i < z:
-                        i = 2
-                    elif i > z:
-                        i = -2
-                    else:
-                        i = 0
+                    z = z + 1
+                if i < z:
+                    i = 2
+                elif i > z:
+                    i = -2
+                else:
+                    i = 0
+
 
         elif self._clockwise == False:
             if self._order_postion == 0:
                 for z in range(len(self._order[3])):
-                    if i < z:
-                        i = 2
-                    elif i > z:
-                        i = -2
-                    else:
-                        i = 0
+                    z = z + 1
+                if i < z:
+                    i = 2
+                elif i > z:
+                    i = -2
+                else:
+                    i = 0
 
             else:
                 for z in range(len(self._order[self._order_postion - 1])):
-                    if i < z:
-                        i = 2
-                    elif i > z:
-                        i = -2
-                    else:
-                        i = 0
+                    z = z + 1
+                if i < z:
+                    i = 2
+                elif i > z:
+                    i = -2
+                else:
+                    i = 0
+
+        logger.info(f"postion weight is {i} and z is = {z} and i was og {len(self._order[self._order_postion])} #i=2 winning #i=0 drawing #-2 losing")
         self._postion_weight = i
 
             
@@ -154,14 +170,19 @@ class UNO():
         green_count = 0
         yellow_count = 0
         blue_count = 0
+        logger.info(f"counts before: red {red_count} blue {blue_count} green {green_count} yellow {yellow_count}")
 
         for i in self._order[self._order_postion]:
             i = str(i).split() #splits cards into two strings e.g ["red" "2"]
-            g = self._cards_weight.get(i[1]) #g uses i to get the cards values/weights from a dictionay
+            g = self._cards_weight.get(i[1],1) #g uses i to get the cards values/weights from a dictionay
+            logger.info(f"This is g (card weight): {g}")
+            logger.info(f"This after (cardname,weight) appended to list for cards: {[i[0],i[1],g]}")
             list_for_cards.append([i[0],i[1],g]) #appends to a list with the: card and its weights
-
+        
+        logger.info(f"list_for_cards before non playbale cards are removed: {list_for_cards}")
         #The list sorts and removes cards that cannot be equal too the card on top and appends pick up too
         list_for_cards = list(filter(lambda x: x[0] == top_current_card[0] or x[1] == top_current_card[1] or x[0] == "wild",list_for_cards)) + [["pick_up",None,0]]
+        logger.info(f"list_for_cards after non playbale cards are removed: {list_for_cards}")
         count = len(list_for_cards)
 
         #For loop is used to give cards that are repeated more value/weight
@@ -175,16 +196,16 @@ class UNO():
             elif list_for_cards[i][0] == "blue":
                 blue_count += 1
         
-        
-        #Creates a new list with card colours and there weights and sorts the from the heightst value to the 
+        logger.info(f"counts after/amount_of_card_weight: red {red_count} blue {blue_count} green {green_count} yellow {yellow_count}")
+        #Creates a new list with card colours and there weights/counts and sorts the from the heightst value to the 
         #lowest
         amount_of_card_weight = [["red",red_count],["green",green_count],["yellow",yellow_count],["blue",blue_count]]
 
-        print(f"{self._order_postion + 1} the amount of card colour test before merge sort test {amount_of_card_weight}")
+        logger.info(f"Player {self._order_postion + 1} card colour weights/counts before merge sort {amount_of_card_weight}")
 
         amount_of_card_weight = extra_module.merge_sort(amount_of_card_weight)
 
-        print(f"{self._order_postion + 1} the amount of card colour test and sorted {amount_of_card_weight}")
+        logger.info(f"Player {self._order_postion + 1} card colour weights/counts after merge sort {amount_of_card_weight}")
         
         
         #Adds these values to current list with all the players cards and weights 
@@ -193,71 +214,87 @@ class UNO():
                 if b[0] == list_for_cards[z][0]:
                     list_for_cards[z][2] += b[1] 
 
-        print(f"{self._order_postion + 1} card with there new weights test{list_for_cards}")
+        logger.info(f"Player {self._order_postion + 1} deck with  new weights {list_for_cards}")
         
         list_for_cards = extra_module.quicksort(list_for_cards)
-        print(f"{self._order_postion + 1} the amount of card colour test and sorted {list_for_cards}")
+        logger.info(f"Player {self._order_postion + 1} quicksort used to sort deck: {list_for_cards}")
         
         self.postion_state() #Call postion state
-        
+        logger.info(f"Player {self._order_postion + 1} postion state is {self._postion_weight}")
         #Depending on the users postion state and chacne, is used to decide the player choice
         chance = randint(1,100) 
         if count >= 4:
             if self._postion_weight == 2:
                 if chance > 0 and chance < 10:
+                    logger.info(f"Player {self._order_postion + 1} played his best card")
                     return ai_choice(0)
                 
                 elif chance >= 10 and chance < 40:
+                    logger.info(f"Player {self._order_postion + 1} played his second best card")
                     return ai_choice(1)
 
                 else:
                     return ai_choice(2)
             elif self._postion_weight == 0:
                 if chance > 0 and chance < 30:
+                    logger.info(f"Player {self._order_postion + 1} played his best card")
                     return ai_choice(0)
                 
                 elif chance >= 30 and chance < 70:
+                    logger.info(f"Player {self._order_postion + 1} played his second best card")
                     return ai_choice(1)
 
                 else:
+                    logger.info(f"Player {self._order_postion + 1} played worse card out of his options")
                     return ai_choice(2)
             else:
                 if chance > 0 and chance < 50:
+                    logger.info(f"Player {self._order_postion + 1} played his best card")
                     return ai_choice(0)
                 
                 elif chance >= 50 and chance < 80:
+                    logger.info(f"Player {self._order_postion + 1} played his second best card")
                     return ai_choice(1)
 
                 else:
+                    logger.info(f"Player {self._order_postion + 1} played worse card out of his options")
                     return ai_choice(2)
 
         elif count == 3:
             
             if self._postion_weight == 2:
                 if chance <= 50:
+                    logger.info(f"Player {self._order_postion + 1} played his best card")
                     return ai_choice(0)
                 else:
+                    logger.info(f"Player {self._order_postion + 1} played worse card out of his options")
                     return ai_choice(1)
             elif self._postion_weight == 0:
                 if chance <= 30:
+                    logger.info(f"Player {self._order_postion + 1} played his best card")
                     return ai_choice(0)
                 else:
+                    logger.info(f"Player {self._order_postion + 1} played his second best card")
                     return ai_choice(1)
             else:
                 if chance <= 15:
+                    logger.info(f"Player {self._order_postion + 1} played his best card")
                     return ai_choice(0)
                 else:
+                    logger.info(f"Player {self._order_postion + 1} played worse card out of his options")
                     return ai_choice(1)
 
         elif count == 2:
+            logger.info(f"Player {self._order_postion + 1} played his only card")
             return ai_choice(0)
 
         elif count == 1:
+            logger.info(f"Player {self._order_postion + 1} has picked up")
             return "pick_up"
             
     def pick_up_card_used(self):
         if self._pickup == True:
-            print("Pick Up Test True")
+            logger.info(f"self._pickup is True ")
             self._pickup = False
             return True
         return False
@@ -265,10 +302,12 @@ class UNO():
     def set_turn(self):
         """Set turns"""
         self._turns = 0
+        logger.info(f"turns are set to {self._turns}")
 
     def set_order_clockwise(self):
         """Set order postion for the Uno players"""
         self._order_postion = 0
+
 
 
     def set_order_anti_clockwise(self):
@@ -279,11 +318,13 @@ class UNO():
     def next_turn(self):
         """Changes who turn it is to play. Check which way the order is going too"""
         if self._clockwise == True:
+            logger.info(f"Clockwise, bool should be True. self._clockwise = {self._clockwise}")
             if self._order_postion == 3: 
                 self.set_order_clockwise()
             else:
                 self._order_postion = self._order_postion + 1
         elif self._clockwise == False:
+            logger.info(f"Anti Clockwsie, bool should be False. self._clockwise = {self._clockwise}")
             if self._order_postion == 0:
                 self.set_order_anti_clockwise()
             else:
@@ -295,10 +336,12 @@ class UNO():
 
         for i in self._order[self._order_postion]:
             if str(i) == str(self._player_move):
+                logger.info(f"check if card in deck: {str(i)} should be the same as {str(self._player_move)}")
                 return True
 
         if self._pickup == False:
             self._order[self._order_postion].append(pick_up_card)
+            logger.info(f"check if card in deck: Deck after player {self._order_postion} picked up")
         return False
     
 
@@ -308,12 +351,13 @@ class UNO():
         current_card = str(self._player_move).split(" ")
         try:
             if current_card[1] == "plus_4":
-                print(f"{self._order_postion + 1} plus 4 test")
+                logger.info(f"player {self._order_postion + 1} plus 4 test is True current_card[1] = {current_card[1]}")
                 return True
-            else: 
+            else:
+                logger.info(f"player {self._order_postion + 1} plus 4 test is False")
                 return False
         except IndexError:
-            None
+            logger.warning(f"Index Error at Plus 4 check current card = {current_card}")
 
 
     def plus_2_check(self):
@@ -323,9 +367,10 @@ class UNO():
         current_card = str(self._player_move).split(" ")
         try:
             if current_card[0] == top_current_card[0] and current_card[1] == "plus_2":
-                print(f"{self._order_postion + 1} plus 4 test")
+                logger.info(f"player {self._order_postion + 1} plus 2 test is True: {top_current_card} == {current_card}")
                 return True
-            else: 
+            else:
+                logger.info(f"player {self._order_postion + 1} plus 2 test is False")
                 return False
         except IndexError:
             None
@@ -335,9 +380,12 @@ class UNO():
         """Appends cards to the next player hand. The amount of cards depends on what function calls it"""
         for i in args:
             if self._clockwise == True:
+                logger.info(f"player {self._order_postion + 1}  + {i}, clockwise True")
                 self._order[self._order_postion].extend(i)
             else:
+                logger.info(f"player {self._order_postion + 1}  + {i}, clockwise False")
                 self._order[self._order_postion].extend(i)
+            logger.info(f"player {self._order_postion + 1} deck is now {self._order[self._order_postion]}")
         
 
 
@@ -364,13 +412,18 @@ class UNO():
         card_list = []
         for y in self._order[self._order_postion]:
             if current_card != str(y).split(" "):
+                logger.info(f"current card: {current_card} should not == {str(y)}")
                 card_list.append(y)
             else:
+                logger.info(f"current card: {current_card} should  == {str(y)}")
                 if count == 0:
                     count +=1 
+                    logger.info(f"{y} will removed out of the deck and count == {count}")
                 else:
+                    logger.info(f"count should equal 1 already: {count}")
                     card_list.append(y)
         self._order[self._order_postion] = card_list
+        logger.info(f"player {self._order_postion + 1} should not have {current_card} in it deck: {self._order[self._order_postion]}")
 
 
 
@@ -378,7 +431,7 @@ class UNO():
         """Sets the top card, set the turn by calling a function and set the order by calling a function"""
 
         self._topcard = top_card_setter
-        self._cards_weight.update({str(i):1 for i in range(0,10)})
+        logger.info(f"Game Setter Called, topcurrentcard/startng card is {self._topcard}")
         self.set_turn()
         self.set_order_clockwise()
 
@@ -409,10 +462,11 @@ class UNO():
         for i in range(4):
             g = 0
             for x in self._order[i]:
-                g = g + 1
+                g = g + 1 #amount of cards in deck
             if g == 0:
+                logger.info(f"Player {i+1} has trigged the end game")
                 end = True
-                e = i
+                e = i #Player who won is e
                 break
 
         if end == True:
@@ -424,32 +478,17 @@ class UNO():
             games_played[0] += 1
 
             if e == 0:
+                logger.info(f"{user} has won")
                 gui.winloop(user)
                 database_updates(user,"Wins",games_played)
-                # user_wins = c.execute(f"""SELECT Wins
-                # FROM {self._gamemode}
-                # WHERE UserName = '{user}'
-                # """)
-                # user_wins = [int(i) for i in c.fetchone()]
-                # user_wins[0] += 1
-                # c.execute(f"""UPDATE Normal
-                # SET Games = {games_played[0]}, Wins = {user_wins[0]}
-                # WHERE UserName = '{user}'""") 
+
             
 
             else:
+                logger.info(f"{user} has loss")
                 gui.lossloop(e)
                 database_updates(user,"Loss",games_played)
-                # user_loss = c.execute(f"""SELECT loss
-                # FROM Normal
-                # WHERE UserName = '{user}'
-                # """)
-                # user_loss = [int(i) for i in c.fetchone()]
-                # user_loss[0] += 1
 
-                # c.execute(f"""UPDATE Normal
-                # SET Games = {games_played[0]}, Loss = {user_loss[0]}
-                # WHERE UserName = '{user}'""") 
                 
             
             con.commit()
@@ -464,52 +503,61 @@ class UNO():
         saves it variable as boolean datatype. Then calls a fucntion to check if player mmets end condtions. After calls a 
         function for the next user turn"""
         self._colour = ""
-        print(f"\nPlayer 1: {len(self._order[0])} cards | Player 2: {len(self._order[1])} cards | Player 3: {len(self._order[2])} cards | Player 4: {len(self._order[3])} cards")
-        print(f"\nCard On Top: {self._topcard} \n")
+        logger.info(f"Amount of cards all players have: Player 1: {len(self._order[0])} cards | Player 2: {len(self._order[1])} cards | Player 3: {len(self._order[2])} cards | Player 4: {len(self._order[3])} cards")
+        logger.info(f"Card On Top: {self._topcard}")
         if self._order_postion == 0:
             self._player_move = gui.playloop(user,self.user_deck(),self.players_deck_len(),self._topcard,pick_up_card)
+
+            logger.info(f"{user} player_move is {self._player_move}")
+
             if self._player_move == "endgamerightnow":
                 raise IndexError
-            print(f"Player {self._order_postion + 1}: {self._player_move} card played")
+            logger.info(f"Player{self._order_postion + 1}/{user}: {self._player_move} card played")
             if self._player_move[0].split()[0] == "wild":
+                logger.warning(f"517 in playermove, check if used")
                 self._colour = self._player_move[1]
                 self._player_move = self._player_move[0]
         
                 
                 
             if self._player_move[0].replace(" ", "_") == "pick_up" or self._player_move == "":
-                print(pick_up_card)
+                logger.info(f"Picked up card: {pick_up_card}")
                 self._order[self._order_postion].append(pick_up_card)
+                logger.info(f"Pick card should be in {user} deck: {self._order[self._order_postion]}")
                 second_chance = self._player_move[1]
                 self._pickup = True
                 
                 if second_chance== "yes":
+                    logger.info(f"second chance is True / {second_chance} == yes")
                     wild_check = str(self._order[self._order_postion][-1]).split()
                     if wild_check[0] == "wild":
-                        print(f"{wild_check} True")
-                        self._player_move = gui.colour_loop(user,self.user_deck(),self.players_deck_len(),self._topcard,pick_up_card,pick_up_card)
-                        print(f"After wild loop: {self._player_move}")
+                        logger.info(f"{wild_check} True / wild_check[0]: {wild_check[0]} == wild ")
+                        self._player_move = gui.colour_loop(user,self.players_deck_len(),self._topcard,pick_up_card)
+                        logger.info(f"self._player_move after wild/colour_loop: {self._player_move}")
                         self._colour = self._player_move[1]
                         self._player_move = self._player_move[0]
                         
 
                     self._player_move = self._order[self._order_postion][-1]
-                    print(self._player_move)
+                    logger.info(f"{user} plays {self._player_move}")
         else:
             self._player_move = self.card_states()
             gui.displayloop(user,self.user_deck(),self.players_deck_len(),self._topcard,self._order_postion+1)
-            print(f'Player{self._order_postion + 1} Turn')
+            logger.info(f'Player{self._order_postion + 1} Turn')
+            logger.info(f'Player{self._order_postion + 1} wants to play {self._player_move}')
 
         
             if self._player_move.lower().replace(" ", "_") == "pick_up":
+                logger.info(f"Player{self._order_postion + 1} wants to pick up, deck before pick up {self._order[self._order_postion]}")
                 self._order[self._order_postion].append(pick_up_card)
                 self._pickup = True
-                self._player_move = self._order[self._order_postion][-1]
+                logger.info(f"Player{self._order_postion + 1} deck after pick up {self._order[self._order_postion]}")
+                self._player_move = self._order[self._order_postion][-1] #if AI player picked up they will always try to play because there already a saftey net so they cannot cheat 
 
         is_card_in_deck = self.card_in_deck(pick_up_card)
         if is_card_in_deck == True:
             self.play_card(pick_up_card)
-        (f'Player{self._order_postion + 1} Move: {self._player_move}')
+        logger.info(f'Player{self._order_postion + 1} Move: {self._player_move}')
 
         self.next_turn() 
         
@@ -523,18 +571,29 @@ class UNO():
         current_card = str(self._player_move).split(" ")
         top_current_card = str(self._topcard).split(" ")
         
+        logger.info(f"current_card = {current_card} and top_current_card = {top_current_card}")
+
         if current_card[0] == "wild":
+
+            logger.info(f"Current card is a wild")
+
             if self._order_postion == 0: #user playing
+                logger.info(f"Player 1 played a wild")
+
                 colour = self._colour
+                logger.info(f"Player 1 chose the colour {colour}")
                 if current_card[1] == "switch":
+                    logger.info(f"Card is a switch/change colour")
                     colour = self._colour
 
                 elif current_card[1] == "plus_4":
+                    logger.info(f"Card is a plus 4")
                     if self.plus_4_check() == True:
                         colour = self._colour
                 self._topcard = cards(colour,"")
                 self.update_player_hand(current_card)
             else: #Ai players
+                logger.info(f"Player {self._order_postion + 1} played a wild")
                 red_count = 0
                 blue_count = 0
                 yellow_count = 0
@@ -542,8 +601,10 @@ class UNO():
                 list_for_cards = []
                 for i in self._order[self._order_postion]:
                     i = str(i).split()
-                    g = self._cards_weight.get(i[1])
+                    g = self._cards_weight.get(i[1],1)
                     list_for_cards.append([i[0],i[1],g])
+
+                logger.info(f"list_for_cards card weights without checking amount of card colours in total: {list_for_cards}")
 
                 for i in range(len(self._order[self._order_postion])):
                     if list_for_cards[i][0] == "red":
@@ -556,18 +617,24 @@ class UNO():
                         blue_count = blue_count + 1
 
 
-                amount_of_card_weight = {"red":red_count,"green":green_count,"yellow":yellow_count,"blue":blue_count}
+                #amount_of_card_weight = {"red":red_count,"green":green_count,"yellow":yellow_count,"blue":blue_count}
 
                 amount_of_card_weight = [["red",red_count],["green",green_count],["yellow",yellow_count],["blue",blue_count]]
 
+                logger.info(f"All card weights in total unsorted: amount_of_card_weight = {amount_of_card_weight}")
+
                 #Merge sort
                 amount_of_card_weight = extra_module.merge_sort(amount_of_card_weight)
+
+                logger.info(f"All card weights in total sorted: amount_of_card_weight = {amount_of_card_weight}")
                 
                 chance = randint(1,20)
-                if chance > 9:
+                if chance > 7:
                     colour = amount_of_card_weight[0][0]
+                    logger.info(f"Chose the best colour {colour}")
                 else:
                     colour = amount_of_card_weight[1][0]
+                    logger.info(f"Chose the second best colour {colour}")
                 
                 self._topcard = cards(colour,"")
                 self.update_player_hand(current_card)

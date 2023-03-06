@@ -1,4 +1,10 @@
 import sqlite3
+import logging
+
+logger = logging.getLogger(f"{__name__}")
+
+
+
 def create():
     conn = sqlite3.connect("uno_database.db")
     c = conn.cursor()
@@ -28,15 +34,18 @@ class User:
         try:
             copy_check = c.execute(f'SELECT UserName FROM Normal WHERE UserName IS "{self.__username}"')
             copy_check = str("".join(c.fetchone()))
-        except TypeError: None
+        except TypeError: logger.warning(f"Type Error Raised copy check = {copy_check}")
 
         if copy_check == self.__username: 
             self.error = "Please Create A UserName That Not In The Database"
+            logger.warning(f"{self.error} ")
         elif self.__username == "": 
             self.error = "Please Do Not Leave The Username Blank"
+            logger.warning(f"{self.error} ")
         else:
             for table_name in ["NoWilds","Numbers","Normal"]:
                 c.execute(f"INSERT INTO {table_name}(UserName,Games,Wins,Loss,Draws) VALUES ('{self.__username.lower()}',0,0,0,0)")
+            logger.info(f"{self.__username} added to database")
         
         self.__username = ""
         conn.commit()
@@ -49,18 +58,21 @@ class User:
 
         self.__username = str("".join([i for i in u])).lower()
         check = c.execute(f'SELECT UserName FROM Normal WHERE UserName IS "{self.__username}"')
+        logger.info(f"username: {self.__username}, check: {check}")
 
         try:
             check = str("".join(c.fetchone())).lower()
         except TypeError:
             self.__username = ""
             self.error = "Please Enter A Valid Username"
+            logger.warning(f"{self.error} ")
             conn.close()
         
-        if check == self.__username: 
+        if check == self.__username:
+            logger.info(f"Check is True") 
             return self.__username
 
-    def get_user(self): 
+    def get_user(self):
         return self.__username
 
     def error_code(self):
@@ -71,11 +83,14 @@ class User:
 
 def login_or_sign(login_options,name):
     account_name = User()
+    logger.info(f"account_name = {str(account_name)}")
     if login_options == "sign up":
             account_name.set_username(name)
+            logger.info(f"account_name = {str(account_name)}")
 
     elif login_options == "sign in":
         account_name.sign_in(name)
+        logger.info(f"account_name = {str(account_name)}")
 
     list2 = [account_name.get_user(), account_name.error_code()]
     return list2

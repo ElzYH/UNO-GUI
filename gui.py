@@ -982,7 +982,7 @@ def playloop(user,user_deck,len_decks_list,topcard,pickup):
 
 
 
-def colour_loop(user,user_deck,len_decks_list,topcard,pickup,current_card):
+def colour_loop(user,len_decks_list,topcard,current_card):
     screen.fill((248,248,255))
     screen.blit(bg, (0,0))  
     display_all_cards = Text(f"{str(user).capitalize()}: {len_decks_list[0]} cards | Player 2: {len_decks_list[1]} cards | Player 3: {len_decks_list[2]} cards | Player 4: {len_decks_list[3]} cards",("#6d6dba"),355,200)
