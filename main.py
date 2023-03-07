@@ -93,25 +93,18 @@ def main_game_uno(user):
             con = sqlite3.connect("uno_database.db")
             c = con.cursor()
 
-            games_played = c.execute(f"""SELECT Games
+            table = c.execute(f"""SELECT Games,Draws
                         FROM {choice}
                         WHERE UserName = '{user}'
                         """)
-            games_played = [int(i) for i in c.fetchone()]
-            games_played[0] += 1
-
-            user_draws = c.execute(f"""SELECT Draws
-                        FROM {choice}
-                        WHERE UserName = '{user}'
-                        """)
-            user_draws = [int(i) for i in c.fetchone()]
-            user_draws[0] += 1
-
-            logger.info(f"Games played{games_played}, User Draws{user_draws}")
+            table = [int(i) for i in c.fetchone()]
+            table[0] += 1 # games
+            table[1] += 1 # draws
 
             c.execute(f"""UPDATE {choice}
-            SET Games = {games_played[0]}, Draws = {user_draws[0]}
+            SET Games = {table[0]}, Draws = {table[1]}
             WHERE UserName = '{user}'""")   
+            logger.info(f"Games played{table[0]}, User Draws{table[1]}")
             con.commit()
             con.close()
             break

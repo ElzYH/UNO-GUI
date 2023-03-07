@@ -91,23 +91,26 @@ class UNO():
 
 
     def user_deck(self):
+        """Returns the players deck"""
         return [str(i) for i in self._order[0]]
 
     def players_deck_len(self):
+        """Returns the length of the players deck"""
         return [len(self._order[0]),len(self._order[1]),len(self._order[2]),len(self._order[3])]
 
 
     def postion_state(self):
+        """Used to find where the current player is compared to the player front. If the Number retunred is #i=2 winning #i=0 drawing #-2 losing. i is postion_weight but as local variavble.
+        z is the amount of cards in next person deck"""
         self._postion_weight = 0
-        i = 0
+        i = 0 
         for n in self._order[self._order_postion]:
             i +=1
         logger.info(f"postion states clockwise = {self._clockwise}, order postion = {self._order_postion}")
         if self._clockwise == True:
             logger.info(f"postion states clockwise True, order postion = {self._order_postion}")
             if self._order_postion == 3:
-                for z in range(len(self._order[0])):
-                    z = z + 1
+                z = len(self._order[0])
                 if i < z:
                     i = 2
                 elif i > z:
@@ -117,8 +120,7 @@ class UNO():
 
 
             else:
-                for z in range(len(self._order[self._order_postion + 1])):
-                    z = z + 1
+                z = len(self._order[self._order_postion + 1])
                 if i < z:
                     i = 2
                 elif i > z:
@@ -129,8 +131,7 @@ class UNO():
 
         elif self._clockwise == False:
             if self._order_postion == 0:
-                for z in range(len(self._order[3])):
-                    z = z + 1
+                z = len(self._order[self._order[3]])
                 if i < z:
                     i = 2
                 elif i > z:
@@ -156,10 +157,14 @@ class UNO():
 
 
     def card_states(self):
+        """Finds out what the best possible cards for the AI to use. It then uses the method postion weight to decide what would be problilty of what cards should be played"""
+
         def ai_choice(postion):
+            logger.info(f"{list_for_cards} the psotion looking {list_for_cards[postion]}")
             for z in self._order[self._order_postion]:
                 card_check = str(z).split(" ")
                 if card_check[0] == list_for_cards[postion][0] and card_check[1] == list_for_cards[postion][1]:
+                    logger.info(f"ai_choice broke with {card_check} and is was == to {list_for_cards[postion]} ")
                     break
             return str(z)
 
@@ -171,6 +176,7 @@ class UNO():
         yellow_count = 0
         blue_count = 0
         logger.info(f"counts before: red {red_count} blue {blue_count} green {green_count} yellow {yellow_count}")
+
 
         for i in self._order[self._order_postion]:
             i = str(i).split() #splits cards into two strings e.g ["red" "2"]
@@ -392,14 +398,7 @@ class UNO():
     
     def colour_check(self,colour): #check if it has use
         """Check if the string (colour), matches the colours. If it does it return TRUE else FAlSE"""
-
-        if colour == "red":
-            return True
-        elif colour == "green":
-            return True
-        elif colour == "yellow":
-            return True
-        elif colour == "blue":
+        if colour in ["red","green","yellow","blue"]:
             return True
         else:
             return False
@@ -442,17 +441,20 @@ class UNO():
         then player 1 recives additoion to games and loss by 1. ELSE if end check condtion is not TRUE then this code is skipped.
         The databasee is then close after."""
 
-        def database_updates(user,worl,games_played):
-            user_worl = c.execute(f"""SELECT {worl}
+        def database_updates(user,worl):
+            user_worl = c.execute(f"""SELECT Games, {worl}
             FROM {self._gamemode}
             WHERE UserName = '{user}'
             """)
 
             user_worl = [int(i) for i in c.fetchone()]
-            user_worl[0] += 1
+            logger.info(f"{user} Games Played {user_worl[0]} and {worl} {user_worl[1]}")
+            user_worl[0] += 1 
+            user_worl[1] += 1
+            logger.info(f"After it been incremented {user} Games Played {user_worl[0]} and {worl} {user_worl[1]}")
 
             c.execute(f"""UPDATE {self._gamemode}
-            SET Games = {games_played[0]}, {worl} = {user_worl[0]}
+            SET Games = {user_worl[0]}, {worl} = {user_worl[1]}
             WHERE UserName = '{user}'""")
 
 
@@ -470,27 +472,18 @@ class UNO():
                 break
 
         if end == True:
-            games_played = c.execute(f"""SELECT Games
-                        FROM {self._gamemode}
-                        WHERE UserName = '{user}'
-                        """)
-            games_played = [int(i) for i in c.fetchone()]
-            games_played[0] += 1
-
             if e == 0:
                 logger.info(f"{user} has won")
                 gui.winloop(user)
-                database_updates(user,"Wins",games_played)
+                database_updates(user,"Wins")
 
-            
-
+        
             else:
                 logger.info(f"{user} has loss")
                 gui.lossloop(e)
-                database_updates(user,"Loss",games_played)
+                database_updates(user,"Loss")
 
                 
-            
             con.commit()
             con.close()
             return True 
@@ -514,7 +507,7 @@ class UNO():
                 raise IndexError
             logger.info(f"Player{self._order_postion + 1}/{user}: {self._player_move} card played")
             if self._player_move[0].split()[0] == "wild":
-                logger.warning(f"517 in playermove, check if used")
+                logger.info(f"Player move is willd")
                 self._colour = self._player_move[1]
                 self._player_move = self._player_move[0]
         
@@ -617,8 +610,6 @@ class UNO():
                         blue_count = blue_count + 1
 
 
-                #amount_of_card_weight = {"red":red_count,"green":green_count,"yellow":yellow_count,"blue":blue_count}
-
                 amount_of_card_weight = [["red",red_count],["green",green_count],["yellow",yellow_count],["blue",blue_count]]
 
                 logger.info(f"All card weights in total unsorted: amount_of_card_weight = {amount_of_card_weight}")
@@ -646,14 +637,16 @@ class UNO():
                 self._clockwise = False
             elif self._clockwise == False:
                 self._clockwise = True
+            logger.info(f"Deck to be reversed, clockwise is now {self._clockwise}")
             self._topcard = cards(current_card[0],current_card[1])
             self.update_player_hand(current_card)
         
         elif current_card[0] == top_current_card[0] and current_card[1]  == "block":
             self.update_player_hand(current_card)
             self._topcard = cards(current_card[0],current_card[1])
-            for i in range(1):
-                self.next_turn()
+            #for i in range(1):
+            self.next_turn()
+            logger.info(f"player{self._order[self._order_postion]} to be blocked")
 
 
         elif current_card[0] == top_current_card[0] and current_card[1] == "plus_2":
@@ -663,25 +656,30 @@ class UNO():
 
         
         elif current_card[0] == top_current_card[0] or current_card[1] == top_current_card[1]:
-            if current_card[1] == "reverse":
+            #saftey net code, if th if statement fails this code catches them and where ordianry cards go
+            if current_card[1] == "reverse": 
                 if self._clockwise == True:
                     self._clockwise = False
                 elif self._clockwise == False:
                     self._clockwise = True
+                logger.warning(f"Deck to be reversed, clockwise is now {self._clockwise}")
                 self._topcard = cards(current_card[0],current_card[1])
                 self.update_player_hand(current_card)
             elif current_card[1]  == "block":
                 self.update_player_hand(current_card)
                 self._topcard = cards(current_card[0],current_card[1])
-                for i in range(1):
-                    self.next_turn()
+                #for i in range(1):
+                self.next_turn()
+                logger.warning(f"player{self._order[self._order_postion]} to be blocked")
             else:
                 self._topcard = cards(current_card[0],current_card[1])
                 self.update_player_hand(current_card)
         else:
             if self._order_postion == 0 and self._pickup == False:
-                self._pickup = False
+                self._pickup = True
+                logger.warning(f"After before{self._order[self._order_postion]}")
                 self._order[self._order_postion].append(pick_up_card)
+                logger.warning(f"After pick up{self._order[self._order_postion]}")
 
                 
 

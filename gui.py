@@ -4,6 +4,7 @@ import pygame.freetype
 import sys
 import login
 import sqlite3
+import logging
 
 pygame.init()
 
@@ -25,6 +26,7 @@ PLAYER_FONT = pygame.freetype.Font("Assets/Fonts/YeastyFlavorsRegular-yweyd.ttf"
 TEXT_FONT = pygame.freetype.Font("Assets/Fonts/YeastyFlavorsRegular-yweyd.ttf",18)
 END_FONT = pygame.freetype.Font("Assets/Fonts/YeastyFlavorsRegular-yweyd.ttf",1)
 
+logger = logging.getLogger(f"{__name__}")
 
 back = pygame.image.load("Assets/Cards/back.png").convert_alpha()
 back_hi = pygame.image.load("Assets/Cards/back_hi.png").convert_alpha()
@@ -283,6 +285,7 @@ class UnoCards():
 
 def lead_menu(user): 
     """Menu to display the leaderboard"""
+    logger.info(f"Leaderboard menu")
     screen.fill((0,0,0))
     for i in range(6):
         events = pygame.event.get()
@@ -301,11 +304,11 @@ def lead_menu(user):
     back_button = Button(20,20,black_back_img,black_back_hi_img,1)
     compare_button = Button(300,340,compare,compare_hi,1)
     separte_button = Button(700,340,separte,separte_hi,1)
-    compare_option = False
-    separte_option = False
-    separte_continue = False
-    comsep = True
-    compaere_menu = False
+    compare_option = False #compare menu with gamemodes
+    separte_option = False #seprate menu to chose stats
+    separte_continue = False #chose table
+    comsep = True #compare and menu screen
+    compaere_menu = False #compare with stats 
     while True:
         while comsep == True:
             screen.fill((0,0,0))
@@ -557,7 +560,7 @@ def lead_menu(user):
 
                 page = 0
                 des.create()
-                print("hello")
+
                 while compaere_menu == True:
 
                     if back_button.draw() == True:
@@ -565,7 +568,6 @@ def lead_menu(user):
                         compare_option = True
 
                     if page == 1:
-                        print("hihihihihihihihiihih")
                         choice = leaderboard_choice("Games","Games Played",user,optionslist[0],optionslist[1])
                         contin = True
 
