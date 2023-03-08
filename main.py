@@ -32,6 +32,7 @@ def menu(u):
 
 
 def leaderboard(user):
+    logger.info(f"{user} pressed leaderboard")
     gui.lead_menu(user)
     
 

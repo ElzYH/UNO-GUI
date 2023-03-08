@@ -462,9 +462,9 @@ class UNO():
         c = con.cursor()
         end = False
         for i in range(4):
-            g = 0
-            for x in self._order[i]:
-                g = g + 1 #amount of cards in deck
+            g = len(self._order[i])
+            # for x in self._order[i]:
+            #     g = g + 1 #amount of cards in deck
             if g == 0:
                 logger.info(f"Player {i+1} has trigged the end game")
                 end = True
