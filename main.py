@@ -37,6 +37,7 @@ def leaderboard(user):
 
 
 def main_game_uno(user):
+    """Function main purpose is to start a new game and iterate through this game until, it end condition is met. The loop also contains checks to run certain code"""
     choice = gui.choice_loop()
     if choice == "backtomenu":
         logger.info(f"{user} returned back to the menu choice = {choice}")
@@ -57,7 +58,7 @@ def main_game_uno(user):
     logger.info(f"first card after {first_card_check}")
     game.game_setter(first_card)
     pick_up = uno_deck.deal_card()
-    while game.end_check(user) != True:
+    while game.end_check(user) != True: #game loop
         try:
             if True:
                 if game.pick_up_card_used() == True:
@@ -65,14 +66,14 @@ def main_game_uno(user):
                     pick_up = uno_deck.deal_card()
                     logger.info(f"pick up cards is: pick_up = {str(pick_up)}")
                     if pick_up == "end":
-                        logger.warning("Game has ended and Index error is rasied")
+                        logger.warning("Game has ended and Index error is rasied") #No more cards
                         raise IndexError
-                    game.player_move(pick_up,user) #
+                    game.player_move(pick_up,user) 
                 else:
                     logger.info(f"pick_up card has not changed: {str(pick_up)}")
                     game.player_move(pick_up,user) #pick_up
             
-            if game.plus_4_check() == True:
+            if game.plus_4_check() == True: #checks if player played plus 4
                 logger.info("Plus 4 check is TRUE")
                 add_card = []
                 for i in range(4):
@@ -80,13 +81,13 @@ def main_game_uno(user):
                 logger.info(f"add_cards = {add_card} for plus 4")
                 game.append_cards(add_card)
 
-            if game.plus_2_check() == True:
+            if game.plus_2_check() == True: #checks if player played plus 2
                 logger.info("Plus 2 check is TRUE")
                 add_card = []
                 for i in range(2):
                     add_card.append(uno_deck.deal_card())
                 game.append_cards(add_card)
-        except TypeError and IndexError:
+        except TypeError and IndexError: #Game ended as draw 
             
             logger.info("Game ended with a draw")
             gui.drawloop()

@@ -291,6 +291,7 @@ def lead_menu(user):
         events = pygame.event.get()
         for event in events:
             if event.type == pygame.QUIT:
+                logger.info("Quit Application")
                 sys.exit()
 
         pygame.display.update()
@@ -325,6 +326,7 @@ def lead_menu(user):
                     events = pygame.event.get()
                     for event in events:
                         if event.type == pygame.QUIT:
+                            logger.info("Quit Application")
                             sys.exit()
 
                     pygame.display.update()
@@ -335,6 +337,7 @@ def lead_menu(user):
             events = pygame.event.get()
             for event in events:
                 if event.type == pygame.QUIT:
+                    logger.info("Quit Application")
                     sys.exit()
 
             pygame.display.update()
@@ -353,6 +356,7 @@ def lead_menu(user):
                 events = pygame.event.get()
                 for event in events:
                     if event.type == pygame.QUIT:
+                        logger.info("Quit Application")
                         sys.exit()
                     if event.type == pygame.KEYDOWN:
                         if event.key == pygame.K_1:
@@ -459,6 +463,7 @@ def lead_menu(user):
                     events = pygame.event.get()
                     for event in events:
                         if event.type == pygame.QUIT:
+                            logger.info("Quit Application")
                             sys.exit()
 
                         if event.type == pygame.KEYDOWN:
@@ -497,6 +502,7 @@ def lead_menu(user):
                 events = pygame.event.get()
                 for event in events:
                     if event.type == pygame.QUIT:
+                        logger.info("Quit Application")
                         sys.exit()
 
                     if len(optionslist) < 3:
@@ -611,6 +617,7 @@ def lead_menu(user):
                     events = pygame.event.get()
                     for event in events:
                         if event.type == pygame.QUIT:
+                            logger.info("Quit Application")
                             sys.exit()
 
                         if event.type == pygame.KEYDOWN:
@@ -664,10 +671,10 @@ def displayloop(user,user_deck,len_decks_list,topcard,current_player):
                 cards = UnoCards(x,y,user_cards[num][0],user_cards_hi[num],1,user_cards[num][1])
                 if cards.draw() == True:
                         current_card = cards.get_card()
-                        for a in user_cards[num][1]: #try to remove the loop i think it pointless
-                            a = user_cards[num][1]
-                            if current_card == a:
-                                current_card = a
+                        # for a in user_cards[num][1]: #try to remove the loop i think it pointless
+                        #     a = user_cards[num][1]
+                        #     if current_card == a:
+                        #         current_card = a
 
 
     for i in range(80):
@@ -703,6 +710,7 @@ def displayloop(user,user_deck,len_decks_list,topcard,current_player):
 
         for event in events:
             if event.type == pygame.QUIT:
+                logger.info("Quit Application")
                 sys.exit()
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_1:
@@ -725,6 +733,7 @@ def displayloop(user,user_deck,len_decks_list,topcard,current_player):
 
 
 def winloop(user):
+    """show a win screen for temp amount of time"""
     screen.fill((248,248,255))
     screen.blit(bg2, (0,0))
 
@@ -736,6 +745,7 @@ def winloop(user):
 
         for event in events:
             if event.type == pygame.QUIT:
+                logger.info("Quit Application")
                 sys.exit()
 
 
@@ -754,6 +764,7 @@ def lossloop(player):
 
         for event in events:
             if event.type == pygame.QUIT:
+                logger.info("Quit Application")
                 sys.exit()
 
         pygame.display.update()
@@ -763,6 +774,7 @@ def lossloop(player):
 
 
 def drawloop():
+    """show a draw screen for temp amount of time"""
     screen.fill((248,248,255))
     screen.blit(bg2, (0,0))
     win = Text(f"DRAW",("#ffffff"),578,360)
@@ -773,12 +785,14 @@ def drawloop():
 
         for event in events:
             if event.type == pygame.QUIT:
+                logger.info("Quit Application")
                 sys.exit()
 
         pygame.display.update()
         clock.tick(60)
 
 def choice_loop():
+    """A scrren to chose from selection of game mode with press of a button"""
     screen.fill((255,255,255))
     no_wilds = Button(550,340,no_wild_img,no_wild_hi_img,1)
     number = Button(300, 340, all_numbers_img, all_numbers_hi_img, 1)
@@ -801,6 +815,7 @@ def choice_loop():
                 events = pygame.event.get()
                 for event in events:
                     if event.type == pygame.QUIT:
+                        logger.info("Quit Application")
                         sys.exit()
                 pygame.display.update()
                 clock.tick(60)
@@ -810,12 +825,15 @@ def choice_loop():
 
         for event in events:
             if event.type == pygame.QUIT:
+                logger.info("Quit Application")
                 sys.exit()
 
         pygame.display.update()
         clock.tick(60)
 
 def playloop(user,user_deck,len_decks_list,topcard,pickup):
+    """Loop for user to chose his card from several pages of cards"""
+    logger.info("In playloop")
     screen.fill((248,248,255))
     screen.blit(bg, (0,0))  
     display_all_cards = Text(f"{str(user).capitalize()}: {len_decks_list[0]} cards | Player 2: {len_decks_list[1]} cards | Player 3: {len_decks_list[2]} cards | Player 4: {len_decks_list[3]} cards",("#6d6dba"),355,200)
@@ -832,14 +850,11 @@ def playloop(user,user_deck,len_decks_list,topcard,pickup):
     green_button = Button(100,450,greenimg,greenimghi,1)
     current_card = ""
     back_button = Button(20,20,black_back_img,black_back_hi_img,1)
-    nothing = pygame.image.load('Assets/blank.png').convert_alpha()
-    cards1 = UnoCards(0,0,nothing,nothing,1,"")
-    cards2 = UnoCards(0,0,nothing,nothing,1,"")
     pu_bool = False
     change_colour = False
     player1_text = Text(f"{str(user).capitalize()} Turn...",("#6d6dba"),30,650)
 
- 
+    current_card = ""
 
     while True:
         screen.blit(bg, (0,0))
@@ -852,115 +867,105 @@ def playloop(user,user_deck,len_decks_list,topcard,pickup):
         events = pygame.event.get()
         x = 190
         y = 600
-      
-        
-        if page == 1 and pu_bool == False and change_colour == False:
-            for num in range(len_decks_list[0]):
-                if num <= 6:
-                    x += 110
-                    cards1 = UnoCards(x,y,user_cards[num][0],user_cards_hi[num],1,user_cards[num][1])
-                    if cards1.draw() == True:
-                        current_card = cards1.get_card()
-                        for a in user_cards[num][1]:
-                            a = user_cards[num][1]
-                            if current_card == "wild plus_4" or current_card == "wild switch":
-                                change_colour = True
 
-                            elif current_card == a:
-                                current_card = a
-                                return current_card
-
-        elif page == 2 and pu_bool == False and change_colour == False:
-            for num in range(7,len_decks_list[0]):
-                if num >= 7 and num <= 13:
-                    x += 110
-                    cards2 = UnoCards(x,y,user_cards[num][0],user_cards_hi[num],1,user_cards[num][1])
-                    if cards2.draw() == True:
-                        current_card = cards2.get_card()
-                        for a in user_cards[num][1]:
-                            a = user_cards[num][1]
-                            if current_card == "wild plus_4" or current_card == "wild switch":
-                                change_colour = True
-
-                            elif current_card == a:
-                                current_card = a
-                                return current_card
-
-        elif page == 3 and pu_bool == False and change_colour == False:
-            for num in range(len_decks_list[0]):
-                if num >= 14 and num <= 20:
-                    x += 110
-                    cards2 = UnoCards(x,y,user_cards[num][0],user_cards_hi[num],1,user_cards[num][1])
-                    if cards2.draw() == True:
-                        current_card = cards2.get_card()
-                        for a in user_cards[num][1]:
-                            a = user_cards[num][1]
-                            if current_card == "wild plus_4" or current_card == "wild switch":
-                                change_colour = True
-
-                            elif current_card == a:
-                                current_card = a
-                                return current_card
-
-        elif page == 4 and change_colour == False and pu_bool == False:
-            for num in range(len_decks_list[0]):
-                if num >= 21 and num <= 27:
-                    x += 110
-                    cards2 = UnoCards(x,y,user_cards[num][0],user_cards_hi[num],1,user_cards[num][1])
-                    if cards2.draw() == True:
-                        current_card = cards2.get_card()
-                        for a in user_cards[num][1]:
+        def options(start,end,x,y,len_decks_list):
+            for num in range(start,len_decks_list): #Loops through and displays all cards #we do all to avoid errors by guessing the size of player deck
+                if num >= start and num <= end:
+                    if num <= end: #Minmise the cards shown
+                        x += 110 #movees a new card postion
+                        cards1 = UnoCards(x,y,user_cards[num][0],user_cards_hi[num],1,user_cards[num][1])
+                        if cards1.draw() == True:
+                            current_card = cards1.get_card()
                             a = user_cards[num][1]
                             if current_card == a:
-                                current_card = a
                                 return current_card
+
+
+        
+        if page == 1 and pu_bool == False and change_colour == False:
+            current_card = options(0,6,x,y,len_decks_list[0])
+            if current_card == "wild plus_4" or current_card == "wild switch":
+                change_colour = True
+            elif current_card not in ["wild plus_4","wild switch","",None] and change_colour == False:
+                return current_card
+
+        
+
+        elif page == 2 and pu_bool == False and change_colour == False:
+            current_card = options(7,13,x,y,len_decks_list[0])
+            if current_card == "wild plus_4" or current_card == "wild switch":
+                change_colour = True
+            elif current_card not in ["wild plus_4","wild switch","",None] and change_colour == False:
+                return current_card
+           
+
+
+        elif page == 3 and pu_bool == False and change_colour == False:
+            current_card = options(14,20,x,y,len_decks_list[0])
+            if current_card == "wild plus_4" or current_card == "wild switch":
+                change_colour = True
+            elif current_card not in ["wild plus_4","wild switch","",None] and change_colour == False:
+                return current_card
+
+
+
+        elif page == 4 and change_colour == False and pu_bool == False:
+            current_card = options(21,27,x,y,len_decks_list[0])
+            if current_card == "wild plus_4" or current_card == "wild switch":
+                change_colour = True
+            elif current_card not in ["wild plus_4","wild switch","",None] and change_colour == False:
+                return current_card
 
 
         elif page == 5 and change_colour == False and pu_bool == False:
-            for num in range(len_decks_list[0]):
-                if num >= 28 and num <= 34:
-                    x += 110
-                    cards2 = UnoCards(x,y,user_cards[num][0],user_cards_hi[num],1,user_cards[num][1])
-                    if cards2.draw() == True:
-                        current_card = cards2.get_card()
-                        for a in user_cards[num][1]:
-                            a = user_cards[num][1]
-                            if current_card == a:
-                                current_card = a
-                                return current_card
+            current_card = options(28,34,x,y,len_decks_list[0])
+            if current_card == "wild plus_4" or current_card == "wild switch":
+                change_colour = True
+            elif current_card not in ["wild plus_4","wild switch","",None] and change_colour == False:
+                return current_card
+
+
 
         if pick_up_button.draw() == True:
             pu_bool = True
 
         if back_button.draw() == True:
+            logger.info(f"Game Ended {'endgamerightnow'}")
             return "endgamerightnow"
         
-        if pu_bool == True:
-                if pick.draw() == True:
+        if pu_bool == True: #pu_bool means pick up button pressed (True or False)
+                if pick.draw() == True: #pick up and play
+                    logger.info(f"Picked up and play")
                     pu_bool = False
                     return ["pick up","yes"]
 
-                if play_pu.draw() == True:
+                if play_pu.draw() == True: #pick up and not play
+                    logger.info(f"Picked up and not played")
                     pu_bool = False
                     return ["pick up","no"]
 
         if change_colour == True:
             if red_button.draw() == True:
+                logger.info(f"A colour button clicked : {str(current_card)} {'red'}")
                 return [str(current_card),"red"]
             elif green_button.draw() == True:
+                logger.info(f"A colour button clicked : {str(current_card)} {'green'}")
                 return [str(current_card),"green"]
             elif yellow_button.draw() == True:
+                logger.info(f"A colour button clicked : {str(current_card)} {'yellow'}")
                 return [str(current_card),"yellow"]
             elif blue_button.draw() == True:
+                logger.info(f"A colour button clicked : {str(current_card)} {'blue'}")
                 return [str(current_card),"blue"]
 
 
         for event in events:
             if event.type == pygame.QUIT:
+                logger.info("Quit Application")
                 sys.exit()
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_1:
-                    page = 1
+                if event.key == pygame.K_1: #Changes the pages of cards, with key presses
+                    page = 1 
 
                 elif event.key == pygame.K_2:
                     page =2 
@@ -985,6 +990,8 @@ def playloop(user,user_deck,len_decks_list,topcard,pickup):
 
 
 def colour_loop(user,len_decks_list,topcard,current_card):
+    """Used for displaying all colours for the player to pick from. Only used for wild cards"""
+    logger.info("On colour loop")
     screen.fill((248,248,255))
     screen.blit(bg, (0,0))  
     display_all_cards = Text(f"{str(user).capitalize()}: {len_decks_list[0]} cards | Player 2: {len_decks_list[1]} cards | Player 3: {len_decks_list[2]} cards | Player 4: {len_decks_list[3]} cards",("#6d6dba"),355,200)
@@ -1009,17 +1016,22 @@ def colour_loop(user,len_decks_list,topcard,current_card):
     while True:
         events = pygame.event.get()
         if red_button.draw() == True:
+            logger.info(f"A colour button clicked : {str(current_card)} {'red'}")
             return [str(current_card),"red"]
         elif green_button.draw() == True:
+            logger.info(f"A colour button clicked : {str(current_card)} {'green'}")
             return [str(current_card),"green"]
         elif yellow_button.draw() == True:
+            logger.info(f"A colour button clicked : {str(current_card)} {'yellow'}")
             return [str(current_card),"yellow"]
         elif blue_button.draw() == True:
+            logger.info(f"A colour button clicked : {str(current_card)} {'blue'}")
             return [str(current_card),"blue"]
 
 
         for event in events:
             if event.type == pygame.QUIT:
+                logger.info("Quit Application")
                 sys.exit()
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_1:
@@ -1042,6 +1054,8 @@ def colour_loop(user,len_decks_list,topcard,current_card):
 
 
 def main_menu_loop():
+    """Displays the main menu with buttons to display choices"""
+    logger.info("On Main Menu")
     logo = Image(510,20,uno_logo,1)
     screen.fill((255,255,255))
     play_button = Button(555, 240, play_img,play_hi_img,1)
@@ -1057,6 +1071,7 @@ def main_menu_loop():
         if leaderboard_button.draw() == True:
             return "leaderboard"
         if quit_button.draw() == True:
+            logger.info("Quit Application")
             sys.exit()
         if back_button.draw() == True:
             return "back_button"
@@ -1065,12 +1080,16 @@ def main_menu_loop():
         for event in events:
             #quit game
             if event.type == pygame.QUIT:
+                logger.info("Quit Application")
                 sys.exit()
+                
         pygame.display.update()
         clock.tick(60)
 
 
 def welcomeloop(user):
+    """show a welcome screen for temp amount of time"""
+    logger.info("On welcome Loop")
     for i in range(120):
         welcome_text = Text(f"Hi {str(user).capitalize()}",(0,0,0),500,325)
         welcome_text2 = Text("Welcome To Uno",(0,0,0),500,375)
@@ -1081,6 +1100,7 @@ def welcomeloop(user):
         for event in events:
                 #quit game
                 if event.type == pygame.QUIT:
+                    logger.info("Quit Application")
                     sys.exit()
         pygame.display.update()
         clock.tick(60)
@@ -1088,6 +1108,8 @@ def welcomeloop(user):
 
 #create buttonm
 def startloop():
+    """Login and Sign up menus. First loaded at the start of the application and can be return too, to switch user"""
+    logger.info("In startloop / Login and Main menu loop")
     in_button= Button(200, 260, signin_img,signin_img_hi,1)
     up_button = Button(750, 260, signup_img,signup_img_hi,1)
     back_button = Button(20,20,black_back_img,black_back_hi_img,1)
@@ -1124,6 +1146,7 @@ def startloop():
             error = list_1[1]
             text1.clear_text()
             if user != "":
+                logger.info(f"User has enterted : {list_1}")
                 return user
             else:
                 user = ""
@@ -1141,6 +1164,7 @@ def startloop():
         for event in events:
             #quit game
             if event.type == pygame.QUIT:
+                logger.info("Quit Application")
                 sys.exit()
 
             text1.enter(events)
