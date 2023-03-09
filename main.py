@@ -32,6 +32,7 @@ def menu(u):
 
 
 def leaderboard(user):
+    """Calls the leaderboard menu in GUI module"""
     logger.info(f"{user} pressed leaderboard")
     gui.lead_menu(user)
     
@@ -51,7 +52,7 @@ def main_game_uno(user):
     first_card = uno_deck.deal_card()
     first_card_check = str(first_card).split(" ")
     logger.info(f"first card before {first_card_check}")
-    while first_card_check[0] == "wild":
+    while first_card_check[0] == "wild": #check if the first card is wild. If it is it will draw another car
         logger.warning(f"first card was equal to wild: {first_card_check}")
         first_card = uno_deck.deal_card()
         first_card_check = str(first_card).split(" ")
@@ -117,7 +118,7 @@ def main_game_uno(user):
 
 if __name__ == "__main__":
     logger = logging.getLogger(f"{__name__}")
-    logging.basicConfig(filename='application.log',filemode='w',format='%(name)s - %(asctime)s - %(levelname)s - %(message)s',datefmt='%d-%b-%y %H:%M:%S',level=logging.INFO)
+    logging.basicConfig(filename='application.log',filemode='w',format='%(name)s - %(asctime)s - %(levelname)s - %(message)s',datefmt='%d-%b-%y %H:%M:%S',level=logging.INFO) #for logging
     logger.info(f'Application started')
 
     if os.path.exists("uno_database.db"): 

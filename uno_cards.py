@@ -102,52 +102,37 @@ class UNO():
     def postion_state(self):
         """Used to find where the current player is compared to the player front. If the Number retunred is #i=2 winning #i=0 drawing #-2 losing. i is postion_weight but as local variavble.
         z is the amount of cards in next person deck"""
+        def postioing(i,z):
+            if i < z:
+                i = 2
+            elif i > z:
+                i = -2
+            else:
+                i = 0
+            return i
+
+
         self._postion_weight = 0
-        i = 0 
-        for n in self._order[self._order_postion]:
-            i +=1
+        i = len(self._order[self._order_postion])
         logger.info(f"postion states clockwise = {self._clockwise}, order postion = {self._order_postion}")
         if self._clockwise == True:
             logger.info(f"postion states clockwise True, order postion = {self._order_postion}")
             if self._order_postion == 3:
                 z = len(self._order[0])
-                if i < z:
-                    i = 2
-                elif i > z:
-                    i = -2
-                else:
-                    i = 0
-
+                i = postioing(i,z)
 
             else:
                 z = len(self._order[self._order_postion + 1])
-                if i < z:
-                    i = 2
-                elif i > z:
-                    i = -2
-                else:
-                    i = 0
-
+                i = postioing(i,z)
 
         elif self._clockwise == False:
             if self._order_postion == 0:
                 z = len(self._order[self._order[3]])
-                if i < z:
-                    i = 2
-                elif i > z:
-                    i = -2
-                else:
-                    i = 0
+                i = postioing(i,z)
 
             else:
-                for z in range(len(self._order[self._order_postion - 1])):
-                    z = z + 1
-                if i < z:
-                    i = 2
-                elif i > z:
-                    i = -2
-                else:
-                    i = 0
+                z = len(self._order[self._order_postion - 1])
+                i = postioing(i,z)
 
         logger.info(f"postion weight is {i} and z is = {z} and i was og {len(self._order[self._order_postion])} #i=2 winning #i=0 drawing #-2 losing")
         self._postion_weight = i
@@ -495,30 +480,30 @@ class UNO():
         the user can pick up card and is given a second chance to play a cards. It then calls function to check the card and
         saves it variable as boolean datatype. Then calls a fucntion to check if player mmets end condtions. After calls a 
         function for the next user turn"""
-        self._colour = ""
+        self._colour = "" #set colour choice to nothing
         logger.info(f"Amount of cards all players have: Player 1: {len(self._order[0])} cards | Player 2: {len(self._order[1])} cards | Player 3: {len(self._order[2])} cards | Player 4: {len(self._order[3])} cards")
         logger.info(f"Card On Top: {self._topcard}")
-        if self._order_postion == 0:
+        if self._order_postion == 0: #player1/user turn
             self._player_move = gui.playloop(user,self.user_deck(),self.players_deck_len(),self._topcard,pick_up_card)
 
             logger.info(f"{user} player_move is {self._player_move}")
 
-            if self._player_move == "endgamerightnow":
+            if self._player_move == "endgamerightnow": #ends game
                 raise IndexError
             logger.info(f"Player{self._order_postion + 1}/{user}: {self._player_move} card played")
-            if self._player_move[0].split()[0] == "wild":
+            if self._player_move[0].split()[0] == "wild": #check if player card is a wild
                 logger.info(f"Player move is willd")
                 self._colour = self._player_move[1]
                 self._player_move = self._player_move[0]
         
                 
                 
-            if self._player_move[0].replace(" ", "_") == "pick_up" or self._player_move == "":
+            if self._player_move[0].replace(" ", "_") == "pick_up" or self._player_move == "":#Player picked up
                 logger.info(f"Picked up card: {pick_up_card}")
                 self._order[self._order_postion].append(pick_up_card)
                 logger.info(f"Pick card should be in {user} deck: {self._order[self._order_postion]}")
                 second_chance = self._player_move[1]
-                self._pickup = True
+                self._pickup = True 
                 
                 if second_chance== "yes":
                     logger.info(f"second chance is True / {second_chance} == yes")
@@ -533,8 +518,12 @@ class UNO():
 
                     self._player_move = self._order[self._order_postion][-1]
                     logger.info(f"{user} plays {self._player_move}")
-        else:
-            self._player_move = self.card_states()
+
+
+
+
+        else: #AI
+            self._player_move = self.card_states() #AI
             gui.displayloop(user,self.user_deck(),self.players_deck_len(),self._topcard,self._order_postion+1)
             logger.info(f'Player{self._order_postion + 1} Turn')
             logger.info(f'Player{self._order_postion + 1} wants to play {self._player_move}')
@@ -547,6 +536,8 @@ class UNO():
                 logger.info(f"Player{self._order_postion + 1} deck after pick up {self._order[self._order_postion]}")
                 self._player_move = self._order[self._order_postion][-1] #if AI player picked up they will always try to play because there already a saftey net so they cannot cheat 
 
+
+        #AI and Player
         is_card_in_deck = self.card_in_deck(pick_up_card)
         if is_card_in_deck == True:
             self.play_card(pick_up_card)
@@ -585,6 +576,8 @@ class UNO():
                         colour = self._colour
                 self._topcard = cards(colour,"")
                 self.update_player_hand(current_card)
+
+                
             else: #Ai players
                 logger.info(f"Player {self._order_postion + 1} played a wild")
                 red_count = 0

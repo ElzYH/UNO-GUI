@@ -18,6 +18,9 @@ pygame.display.set_caption("UNO")
 icon = pygame.image.load('Assets/uno_icon.ico')
 pygame.display.set_icon(icon)
 pygame.key.set_repeat(0,0)
+
+
+#Fonts and Images
 GAME_FONT = pygame.freetype.Font("Assets/Fonts/cambria.ttf",22)
 GAME_FONT2 = pygame.freetype.Font("Assets/Fonts/cambria.ttf",16)
 WELCOME_FONT = pygame.freetype.Font("Assets/Fonts/cambria.ttf",48)
@@ -103,7 +106,8 @@ all_cards_hi = pygame.image.load('Assets/all_cards_hi.png')
 bg = pygame.image.load("Assets/uno_background.png")
 bg2 = pygame.image.load("Assets/end_screen.png")
 
-#user_name_img = pygame.image.load('Assets/enter_username.png')
+
+
 class Button():
     """Creates Buttons that change image when the user mouse postion is over the button"""
     def __init__(self,x,y,image,image_hi,scale):
@@ -180,12 +184,11 @@ class Enter_Text:
 
 class Text:
     def __init__(self,text,colour,x,y):
-        """Creates text"""
+        """Creates and display text with differnt fonts and sizes"""
         self.text = text
         self.colour = colour
         self.x = x
         self.y = y
-
 
     def create(self):
         text_surface, rect = WELCOME_FONT.render(self.text, (self.colour))
@@ -234,41 +237,12 @@ class Image():
         """Draws Images"""
         screen.blit(self.image, (self.rect.x,self.rect.y))
 
-class UnoCards():
+class UnoCards(Button):
     """A version of the button class above but with couple of changes for Uno Cards in the game """
     def __init__(self,x,y,image,image_hi,scale,postion):
-        width = image.get_width()
-        height = image.get_height()
-        self.image = pygame.transform.scale(image,(int(width*scale),int(height*scale)))
-        self.image_hi = pygame.transform.scale(image_hi,(int(width*scale),int(height*scale)))
-        self.rect = self.image.get_rect()
-        self.rect.topleft = (x,y)
-        self.clicked = False
+        super().__init__(x,y,image,image_hi,scale)
         self.postion = postion #the current card basically
 
-    def draw(self):
-        action = False
-        pos = pygame.mouse.get_pos()
-        if self.rect.collidepoint(pos):
-            screen.blit(self.image_hi, (self.rect.x,self.rect.y))
-            if pygame.mouse.get_pressed()[0]== 1 and self.clicked == False:
-                action = True
-                self.clicked = True
-
-        if pygame.mouse.get_pressed()[0] == 0:
-            self.clicked = False
-        
-
-
-        if self.rect.collidepoint(pos):
-            screen.blit(self.image_hi, (self.rect.x,self.rect.y))
-
-        elif self.rect.collidepoint(pos) == False:
-            screen.blit(self.image, (self.rect.x,self.rect.y))
-
-        return action
-        
-        
 
     def get_card(self):
         if self.clicked == True:
@@ -296,8 +270,6 @@ def lead_menu(user):
 
         pygame.display.update()
         clock.tick(60)
-
-
 
 
 
@@ -621,7 +593,7 @@ def lead_menu(user):
                             sys.exit()
 
                         if event.type == pygame.KEYDOWN:
-                            if event.key == pygame.K_1:
+                            if event.key == pygame.K_1: #Number keys to change options
                                 page = 1
 
                             elif event.key == pygame.K_2:
@@ -669,15 +641,10 @@ def displayloop(user,user_deck,len_decks_list,topcard,current_player):
             if num >= start and num <= end:
                 x += 110
                 cards = UnoCards(x,y,user_cards[num][0],user_cards_hi[num],1,user_cards[num][1])
-                if cards.draw() == True:
-                        current_card = cards.get_card()
-                        # for a in user_cards[num][1]: #try to remove the loop i think it pointless
-                        #     a = user_cards[num][1]
-                        #     if current_card == a:
-                        #         current_card = a
+                cards.draw()
 
 
-    for i in range(80):
+    for i in range(84):
         screen.blit(bg, (0,0))
         display_player.create_3()
         display_all_cards.create_4()
@@ -701,7 +668,6 @@ def displayloop(user,user_deck,len_decks_list,topcard,current_player):
 
         elif page == 4:
             cards_show(21,27)
-
 
         elif page == 5:
             cards_show(28,34)
@@ -980,9 +946,6 @@ def playloop(user,user_deck,len_decks_list,topcard,pickup):
                     page =5
 
             
-
-
-
         pygame.display.update()
         clock.tick(60)
 
