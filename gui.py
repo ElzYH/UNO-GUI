@@ -608,16 +608,8 @@ def lead_menu(user):
                     pygame.display.update()
                     clock.tick(60)
 
-
-
-
-
                 pygame.display.update()
                 clock.tick(60)
-
-
-
-
 
 
 

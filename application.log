@@ -1,740 +1,561 @@
-__main__ - 09-Mar-23 11:51:07 - INFO - Application started
-__main__ - 09-Mar-23 11:51:07 - INFO - __main__ Database is already created
-gui - 09-Mar-23 11:51:07 - INFO - In startloop / Login and Main menu loop
-login - 09-Mar-23 11:51:09 - INFO - account_name = <login.User object at 0x0000023DEDB7AD90>
-login - 09-Mar-23 11:51:09 - INFO - username: erol, check: <sqlite3.Cursor object at 0x0000023DF228A570>
-login - 09-Mar-23 11:51:09 - INFO - Check is True
-login - 09-Mar-23 11:51:09 - INFO - account_name = <login.User object at 0x0000023DEDB7AD90>
-gui - 09-Mar-23 11:51:09 - INFO - User has enterted : ['erol', '']
-__main__ - 09-Mar-23 11:51:09 - INFO - Player Username: erol
-gui - 09-Mar-23 11:51:09 - INFO - On welcome Loop
-__main__ - 09-Mar-23 11:51:11 - INFO - Currently on the Main Menu, current user is: erol
-gui - 09-Mar-23 11:51:11 - INFO - On Main Menu
-__main__ - 09-Mar-23 11:51:11 - INFO - Pressed the play button
-__main__ - 09-Mar-23 11:51:12 - INFO - erol has chosen the Normal gamemode
-uno_cards - 09-Mar-23 11:51:12 - INFO - Cards in the gamemode: Normal deck: [red 0, red 1, red 2, red 3, red 4, red 5, red 6, red 7, red 8, red 9, red 0, red 1, red 2, red 3, red 4, red 5, red 6, red 7, red 8, red 9, green 0, green 1, green 2, green 3, green 4, green 5, green 6, green 7, green 8, green 9, green 0, green 1, green 2, green 3, green 4, green 5, green 6, green 7, green 8, green 9, blue 0, blue 1, blue 2, blue 3, blue 4, blue 5, blue 6, blue 7, blue 8, blue 9, blue 0, blue 1, blue 2, blue 3, blue 4, blue 5, blue 6, blue 7, blue 8, blue 9, yellow 0, yellow 1, yellow 2, yellow 3, yellow 4, yellow 5, yellow 6, yellow 7, yellow 8, yellow 9, yellow 0, yellow 1, yellow 2, yellow 3, yellow 4, yellow 5, yellow 6, yellow 7, yellow 8, yellow 9, red block, red reverse, red plus_2, green block, green reverse, green plus_2, blue block, blue reverse, blue plus_2, yellow block, yellow reverse, yellow plus_2, red block, red reverse, red plus_2, green block, green reverse, green plus_2, blue block, blue reverse, blue plus_2, yellow block, yellow reverse, yellow plus_2, wild plus_4, wild switch, wild plus_4, wild switch, wild plus_4, wild switch, wild plus_4, wild switch]
-uno_cards - 09-Mar-23 11:51:12 - INFO - shuffles cards: [wild plus_4, yellow 0, red plus_2, yellow reverse, blue 4, blue 3, blue reverse, green block, yellow block, wild plus_4, green plus_2, blue 1, red 9, yellow 2, green 4, blue block, blue 0, green 5, green 6, yellow block, red 0, blue 3, yellow 3, wild switch, wild plus_4, yellow 8, yellow 6, green 4, red block, green 0, green 1, blue 8, wild switch, yellow 4, red block, yellow 9, green 3, yellow 2, yellow reverse, red 1, blue 9, yellow 1, red reverse, yellow 5, green block, red 3, red 1, wild switch, blue plus_2, green 7, red 5, blue block, red 5, green 3, yellow plus_2, blue plus_2, green 1, yellow 7, blue 8, green 9, wild plus_4, blue 5, green 5, yellow 9, yellow 6, green 2, blue 2, yellow 3, blue 9, red 4, blue 6, blue 4, red 3, yellow 1, green reverse, red 2, red 2, yellow 4, wild switch, yellow plus_2, red 7, red 9, green 2, yellow 5, blue 0, blue 6, red 8, green 0, red 6, blue 5, red 6, red 0, blue 7, green 7, blue 2, green plus_2, red reverse, green 6, blue 1, yellow 7, blue reverse, red plus_2, blue 7, red 7, green 8, red 8, red 4, green 9, yellow 0, yellow 8, green 8, green reverse]
-uno_cards - 09-Mar-23 11:51:12 - INFO - count: 112 and actual: 7 and num: 7
-uno_cards - 09-Mar-23 11:51:12 - INFO - cards/self._cards: [red 8, red 4, green 9, yellow 0, yellow 8, green 8, green reverse]
-uno_cards - 09-Mar-23 11:51:12 - INFO - count: 105 and actual: 7 and num: 7
-uno_cards - 09-Mar-23 11:51:12 - INFO - cards/self._cards: [blue 1, yellow 7, blue reverse, red plus_2, blue 7, red 7, green 8]
-uno_cards - 09-Mar-23 11:51:12 - INFO - count: 98 and actual: 7 and num: 7
-uno_cards - 09-Mar-23 11:51:12 - INFO - cards/self._cards: [red 0, blue 7, green 7, blue 2, green plus_2, red reverse, green 6]
-uno_cards - 09-Mar-23 11:51:12 - INFO - count: 91 and actual: 7 and num: 7
-uno_cards - 09-Mar-23 11:51:12 - INFO - cards/self._cards: [blue 0, blue 6, red 8, green 0, red 6, blue 5, red 6]
-uno_cards - 09-Mar-23 11:51:12 - INFO - count: 84 and actual: 1 and num: 1
-uno_cards - 09-Mar-23 11:51:12 - INFO - cards/self._cards: [yellow 5]
-__main__ - 09-Mar-23 11:51:12 - INFO - first card before ['yellow', '5']
-__main__ - 09-Mar-23 11:51:12 - INFO - first card after ['yellow', '5']
-uno_cards - 09-Mar-23 11:51:12 - INFO - Game Setter Called, topcurrentcard/startng card is yellow 5
-uno_cards - 09-Mar-23 11:51:12 - INFO - turns are set to 0
-uno_cards - 09-Mar-23 11:51:12 - INFO - count: 83 and actual: 1 and num: 1
-uno_cards - 09-Mar-23 11:51:12 - INFO - cards/self._cards: [green 2]
-__main__ - 09-Mar-23 11:51:12 - INFO - pick_up card has not changed: green 2
-uno_cards - 09-Mar-23 11:51:12 - INFO - Amount of cards all players have: Player 1: 7 cards | Player 2: 7 cards | Player 3: 7 cards | Player 4: 7 cards
-uno_cards - 09-Mar-23 11:51:12 - INFO - Card On Top: yellow 5
-gui - 09-Mar-23 11:51:12 - INFO - In playloop
-uno_cards - 09-Mar-23 11:51:13 - INFO - erol player_move is yellow 0
-uno_cards - 09-Mar-23 11:51:13 - INFO - Player1/erol: yellow 0 card played
-uno_cards - 09-Mar-23 11:51:13 - INFO - check if card in deck: yellow 0 should be the same as yellow 0
-uno_cards - 09-Mar-23 11:51:13 - INFO - current_card = ['yellow', '0'] and top_current_card = ['yellow', '5']
-uno_cards - 09-Mar-23 11:51:13 - INFO - current card: ['yellow', '0'] should not == red 8
-uno_cards - 09-Mar-23 11:51:13 - INFO - current card: ['yellow', '0'] should not == red 4
-uno_cards - 09-Mar-23 11:51:13 - INFO - current card: ['yellow', '0'] should not == green 9
-uno_cards - 09-Mar-23 11:51:13 - INFO - current card: ['yellow', '0'] should  == yellow 0
-uno_cards - 09-Mar-23 11:51:13 - INFO - yellow 0 will removed out of the deck and count == 1
-uno_cards - 09-Mar-23 11:51:13 - INFO - current card: ['yellow', '0'] should not == yellow 8
-uno_cards - 09-Mar-23 11:51:13 - INFO - current card: ['yellow', '0'] should not == green 8
-uno_cards - 09-Mar-23 11:51:13 - INFO - current card: ['yellow', '0'] should not == green reverse
-uno_cards - 09-Mar-23 11:51:13 - INFO - player 1 should not have ['yellow', '0'] in it deck: [red 8, red 4, green 9, yellow 8, green 8, green reverse]
-uno_cards - 09-Mar-23 11:51:13 - INFO - Player1 Move: yellow 0
-uno_cards - 09-Mar-23 11:51:13 - INFO - Clockwise, bool should be True. self._clockwise = True
-uno_cards - 09-Mar-23 11:51:13 - INFO - player 2 plus 4 test is False
-uno_cards - 09-Mar-23 11:51:13 - INFO - player 2 plus 2 test is False
-__main__ - 09-Mar-23 11:51:13 - INFO - pick_up card has not changed: green 2
-uno_cards - 09-Mar-23 11:51:13 - INFO - Amount of cards all players have: Player 1: 6 cards | Player 2: 7 cards | Player 3: 7 cards | Player 4: 7 cards
-uno_cards - 09-Mar-23 11:51:13 - INFO - Card On Top: yellow 0
-uno_cards - 09-Mar-23 11:51:13 - INFO - counts before: red 0 blue 0 green 0 yellow 0
-uno_cards - 09-Mar-23 11:51:13 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:13 - INFO - This after (cardname,weight) appended to list for cards: ['blue', '1', 1]
-uno_cards - 09-Mar-23 11:51:13 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:13 - INFO - This after (cardname,weight) appended to list for cards: ['yellow', '7', 1]
-uno_cards - 09-Mar-23 11:51:13 - INFO - This is g (card weight): 2
-uno_cards - 09-Mar-23 11:51:13 - INFO - This after (cardname,weight) appended to list for cards: ['blue', 'reverse', 2]
-uno_cards - 09-Mar-23 11:51:13 - INFO - This is g (card weight): 5
-uno_cards - 09-Mar-23 11:51:13 - INFO - This after (cardname,weight) appended to list for cards: ['red', 'plus_2', 5]
-uno_cards - 09-Mar-23 11:51:13 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:13 - INFO - This after (cardname,weight) appended to list for cards: ['blue', '7', 1]
-uno_cards - 09-Mar-23 11:51:13 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:13 - INFO - This after (cardname,weight) appended to list for cards: ['red', '7', 1]
-uno_cards - 09-Mar-23 11:51:13 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:13 - INFO - This after (cardname,weight) appended to list for cards: ['green', '8', 1]
-uno_cards - 09-Mar-23 11:51:13 - INFO - list_for_cards before non playbale cards are removed: [['blue', '1', 1], ['yellow', '7', 1], ['blue', 'reverse', 2], ['red', 'plus_2', 5], ['blue', '7', 1], ['red', '7', 1], ['green', '8', 1]]
-uno_cards - 09-Mar-23 11:51:13 - INFO - list_for_cards after non playbale cards are removed: [['yellow', '7', 1], ['pick_up', None, 0]]
-uno_cards - 09-Mar-23 11:51:13 - INFO - counts after/amount_of_card_weight: red 0 blue 0 green 0 yellow 1
-uno_cards - 09-Mar-23 11:51:13 - INFO - Player 2 card colour weights/counts before merge sort [['red', 0], ['green', 0], ['yellow', 1], ['blue', 0]]
-uno_cards - 09-Mar-23 11:51:13 - INFO - Player 2 card colour weights/counts after merge sort [['yellow', 1], ['blue', 0], ['green', 0], ['red', 0]]
-uno_cards - 09-Mar-23 11:51:13 - INFO - Player 2 deck with  new weights [['yellow', '7', 2], ['pick_up', None, 0]]
-uno_cards - 09-Mar-23 11:51:13 - INFO - Player 2 quicksort used to sort deck: [['yellow', '7', 2], ['pick_up', None, 0]]
-uno_cards - 09-Mar-23 11:51:13 - INFO - postion states clockwise = True, order postion = 1
-uno_cards - 09-Mar-23 11:51:13 - INFO - postion states clockwise True, order postion = 1
-uno_cards - 09-Mar-23 11:51:13 - INFO - postion weight is 0 and z is = 7 and i was og 7 #i=2 winning #i=0 drawing #-2 losing
-uno_cards - 09-Mar-23 11:51:13 - INFO - Player 2 postion state is 0
-uno_cards - 09-Mar-23 11:51:13 - INFO - Player 2 played his only card
-uno_cards - 09-Mar-23 11:51:13 - INFO - [['yellow', '7', 2], ['pick_up', None, 0]] the psotion looking ['yellow', '7', 2]
-uno_cards - 09-Mar-23 11:51:13 - INFO - ai_choice broke with ['yellow', '7'] and is was == to ['yellow', '7', 2] 
-uno_cards - 09-Mar-23 11:51:14 - INFO - Player2 Turn
-uno_cards - 09-Mar-23 11:51:14 - INFO - Player2 wants to play yellow 7
-uno_cards - 09-Mar-23 11:51:14 - INFO - check if card in deck: yellow 7 should be the same as yellow 7
-uno_cards - 09-Mar-23 11:51:14 - INFO - current_card = ['yellow', '7'] and top_current_card = ['yellow', '0']
-uno_cards - 09-Mar-23 11:51:14 - INFO - current card: ['yellow', '7'] should not == blue 1
-uno_cards - 09-Mar-23 11:51:14 - INFO - current card: ['yellow', '7'] should  == yellow 7
-uno_cards - 09-Mar-23 11:51:14 - INFO - yellow 7 will removed out of the deck and count == 1
-uno_cards - 09-Mar-23 11:51:14 - INFO - current card: ['yellow', '7'] should not == blue reverse
-uno_cards - 09-Mar-23 11:51:14 - INFO - current card: ['yellow', '7'] should not == red plus_2
-uno_cards - 09-Mar-23 11:51:14 - INFO - current card: ['yellow', '7'] should not == blue 7
-uno_cards - 09-Mar-23 11:51:14 - INFO - current card: ['yellow', '7'] should not == red 7
-uno_cards - 09-Mar-23 11:51:14 - INFO - current card: ['yellow', '7'] should not == green 8
-uno_cards - 09-Mar-23 11:51:14 - INFO - player 2 should not have ['yellow', '7'] in it deck: [blue 1, blue reverse, red plus_2, blue 7, red 7, green 8]
-uno_cards - 09-Mar-23 11:51:14 - INFO - Player2 Move: yellow 7
-uno_cards - 09-Mar-23 11:51:14 - INFO - Clockwise, bool should be True. self._clockwise = True
-uno_cards - 09-Mar-23 11:51:14 - INFO - player 3 plus 4 test is False
-uno_cards - 09-Mar-23 11:51:14 - INFO - player 3 plus 2 test is False
-__main__ - 09-Mar-23 11:51:14 - INFO - pick_up card has not changed: green 2
-uno_cards - 09-Mar-23 11:51:14 - INFO - Amount of cards all players have: Player 1: 6 cards | Player 2: 6 cards | Player 3: 7 cards | Player 4: 7 cards
-uno_cards - 09-Mar-23 11:51:14 - INFO - Card On Top: yellow 7
-uno_cards - 09-Mar-23 11:51:14 - INFO - counts before: red 0 blue 0 green 0 yellow 0
-uno_cards - 09-Mar-23 11:51:14 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:14 - INFO - This after (cardname,weight) appended to list for cards: ['red', '0', 1]
-uno_cards - 09-Mar-23 11:51:14 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:14 - INFO - This after (cardname,weight) appended to list for cards: ['blue', '7', 1]
-uno_cards - 09-Mar-23 11:51:14 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:14 - INFO - This after (cardname,weight) appended to list for cards: ['green', '7', 1]
-uno_cards - 09-Mar-23 11:51:14 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:14 - INFO - This after (cardname,weight) appended to list for cards: ['blue', '2', 1]
-uno_cards - 09-Mar-23 11:51:14 - INFO - This is g (card weight): 5
-uno_cards - 09-Mar-23 11:51:14 - INFO - This after (cardname,weight) appended to list for cards: ['green', 'plus_2', 5]
-uno_cards - 09-Mar-23 11:51:14 - INFO - This is g (card weight): 2
-uno_cards - 09-Mar-23 11:51:14 - INFO - This after (cardname,weight) appended to list for cards: ['red', 'reverse', 2]
-uno_cards - 09-Mar-23 11:51:14 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:14 - INFO - This after (cardname,weight) appended to list for cards: ['green', '6', 1]
-uno_cards - 09-Mar-23 11:51:14 - INFO - list_for_cards before non playbale cards are removed: [['red', '0', 1], ['blue', '7', 1], ['green', '7', 1], ['blue', '2', 1], ['green', 'plus_2', 5], ['red', 'reverse', 2], ['green', '6', 1]]
-uno_cards - 09-Mar-23 11:51:14 - INFO - list_for_cards after non playbale cards are removed: [['blue', '7', 1], ['green', '7', 1], ['pick_up', None, 0]]
-uno_cards - 09-Mar-23 11:51:14 - INFO - counts after/amount_of_card_weight: red 0 blue 1 green 1 yellow 0
-uno_cards - 09-Mar-23 11:51:14 - INFO - Player 3 card colour weights/counts before merge sort [['red', 0], ['green', 1], ['yellow', 0], ['blue', 1]]
-uno_cards - 09-Mar-23 11:51:14 - INFO - Player 3 card colour weights/counts after merge sort [['blue', 1], ['green', 1], ['yellow', 0], ['red', 0]]
-uno_cards - 09-Mar-23 11:51:14 - INFO - Player 3 deck with  new weights [['blue', '7', 2], ['green', '7', 2], ['pick_up', None, 0]]
-uno_cards - 09-Mar-23 11:51:14 - INFO - Player 3 quicksort used to sort deck: [['blue', '7', 2], ['green', '7', 2], ['pick_up', None, 0]]
-uno_cards - 09-Mar-23 11:51:14 - INFO - postion states clockwise = True, order postion = 2
-uno_cards - 09-Mar-23 11:51:14 - INFO - postion states clockwise True, order postion = 2
-uno_cards - 09-Mar-23 11:51:14 - INFO - postion weight is 0 and z is = 7 and i was og 7 #i=2 winning #i=0 drawing #-2 losing
-uno_cards - 09-Mar-23 11:51:14 - INFO - Player 3 postion state is 0
-uno_cards - 09-Mar-23 11:51:14 - INFO - Player 3 played his second best card
-uno_cards - 09-Mar-23 11:51:14 - INFO - [['blue', '7', 2], ['green', '7', 2], ['pick_up', None, 0]] the psotion looking ['green', '7', 2]
-uno_cards - 09-Mar-23 11:51:14 - INFO - ai_choice broke with ['green', '7'] and is was == to ['green', '7', 2] 
-uno_cards - 09-Mar-23 11:51:16 - INFO - Player3 Turn
-uno_cards - 09-Mar-23 11:51:16 - INFO - Player3 wants to play green 7
-uno_cards - 09-Mar-23 11:51:16 - INFO - check if card in deck: green 7 should be the same as green 7
-uno_cards - 09-Mar-23 11:51:16 - INFO - current_card = ['green', '7'] and top_current_card = ['yellow', '7']
-uno_cards - 09-Mar-23 11:51:16 - INFO - current card: ['green', '7'] should not == red 0
-uno_cards - 09-Mar-23 11:51:16 - INFO - current card: ['green', '7'] should not == blue 7
-uno_cards - 09-Mar-23 11:51:16 - INFO - current card: ['green', '7'] should  == green 7
-uno_cards - 09-Mar-23 11:51:16 - INFO - green 7 will removed out of the deck and count == 1
-uno_cards - 09-Mar-23 11:51:16 - INFO - current card: ['green', '7'] should not == blue 2
-uno_cards - 09-Mar-23 11:51:16 - INFO - current card: ['green', '7'] should not == green plus_2
-uno_cards - 09-Mar-23 11:51:16 - INFO - current card: ['green', '7'] should not == red reverse
-uno_cards - 09-Mar-23 11:51:16 - INFO - current card: ['green', '7'] should not == green 6
-uno_cards - 09-Mar-23 11:51:16 - INFO - player 3 should not have ['green', '7'] in it deck: [red 0, blue 7, blue 2, green plus_2, red reverse, green 6]
-uno_cards - 09-Mar-23 11:51:16 - INFO - Player3 Move: green 7
-uno_cards - 09-Mar-23 11:51:16 - INFO - Clockwise, bool should be True. self._clockwise = True
-uno_cards - 09-Mar-23 11:51:16 - INFO - player 4 plus 4 test is False
-uno_cards - 09-Mar-23 11:51:16 - INFO - player 4 plus 2 test is False
-__main__ - 09-Mar-23 11:51:16 - INFO - pick_up card has not changed: green 2
-uno_cards - 09-Mar-23 11:51:16 - INFO - Amount of cards all players have: Player 1: 6 cards | Player 2: 6 cards | Player 3: 6 cards | Player 4: 7 cards
-uno_cards - 09-Mar-23 11:51:16 - INFO - Card On Top: green 7
-uno_cards - 09-Mar-23 11:51:16 - INFO - counts before: red 0 blue 0 green 0 yellow 0
-uno_cards - 09-Mar-23 11:51:16 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:16 - INFO - This after (cardname,weight) appended to list for cards: ['blue', '0', 1]
-uno_cards - 09-Mar-23 11:51:16 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:16 - INFO - This after (cardname,weight) appended to list for cards: ['blue', '6', 1]
-uno_cards - 09-Mar-23 11:51:16 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:16 - INFO - This after (cardname,weight) appended to list for cards: ['red', '8', 1]
-uno_cards - 09-Mar-23 11:51:16 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:16 - INFO - This after (cardname,weight) appended to list for cards: ['green', '0', 1]
-uno_cards - 09-Mar-23 11:51:16 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:16 - INFO - This after (cardname,weight) appended to list for cards: ['red', '6', 1]
-uno_cards - 09-Mar-23 11:51:16 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:16 - INFO - This after (cardname,weight) appended to list for cards: ['blue', '5', 1]
-uno_cards - 09-Mar-23 11:51:16 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:16 - INFO - This after (cardname,weight) appended to list for cards: ['red', '6', 1]
-uno_cards - 09-Mar-23 11:51:16 - INFO - list_for_cards before non playbale cards are removed: [['blue', '0', 1], ['blue', '6', 1], ['red', '8', 1], ['green', '0', 1], ['red', '6', 1], ['blue', '5', 1], ['red', '6', 1]]
-uno_cards - 09-Mar-23 11:51:16 - INFO - list_for_cards after non playbale cards are removed: [['green', '0', 1], ['pick_up', None, 0]]
-uno_cards - 09-Mar-23 11:51:16 - INFO - counts after/amount_of_card_weight: red 0 blue 0 green 1 yellow 0
-uno_cards - 09-Mar-23 11:51:16 - INFO - Player 4 card colour weights/counts before merge sort [['red', 0], ['green', 1], ['yellow', 0], ['blue', 0]]
-uno_cards - 09-Mar-23 11:51:16 - INFO - Player 4 card colour weights/counts after merge sort [['green', 1], ['blue', 0], ['yellow', 0], ['red', 0]]
-uno_cards - 09-Mar-23 11:51:16 - INFO - Player 4 deck with  new weights [['green', '0', 2], ['pick_up', None, 0]]
-uno_cards - 09-Mar-23 11:51:16 - INFO - Player 4 quicksort used to sort deck: [['green', '0', 2], ['pick_up', None, 0]]
-uno_cards - 09-Mar-23 11:51:16 - INFO - postion states clockwise = True, order postion = 3
-uno_cards - 09-Mar-23 11:51:16 - INFO - postion states clockwise True, order postion = 3
-uno_cards - 09-Mar-23 11:51:16 - INFO - postion weight is -2 and z is = 6 and i was og 7 #i=2 winning #i=0 drawing #-2 losing
-uno_cards - 09-Mar-23 11:51:16 - INFO - Player 4 postion state is -2
-uno_cards - 09-Mar-23 11:51:16 - INFO - Player 4 played his only card
-uno_cards - 09-Mar-23 11:51:16 - INFO - [['green', '0', 2], ['pick_up', None, 0]] the psotion looking ['green', '0', 2]
-uno_cards - 09-Mar-23 11:51:16 - INFO - ai_choice broke with ['green', '0'] and is was == to ['green', '0', 2] 
-uno_cards - 09-Mar-23 11:51:17 - INFO - Player4 Turn
-uno_cards - 09-Mar-23 11:51:17 - INFO - Player4 wants to play green 0
-uno_cards - 09-Mar-23 11:51:17 - INFO - check if card in deck: green 0 should be the same as green 0
-uno_cards - 09-Mar-23 11:51:17 - INFO - current_card = ['green', '0'] and top_current_card = ['green', '7']
-uno_cards - 09-Mar-23 11:51:17 - INFO - current card: ['green', '0'] should not == blue 0
-uno_cards - 09-Mar-23 11:51:17 - INFO - current card: ['green', '0'] should not == blue 6
-uno_cards - 09-Mar-23 11:51:17 - INFO - current card: ['green', '0'] should not == red 8
-uno_cards - 09-Mar-23 11:51:17 - INFO - current card: ['green', '0'] should  == green 0
-uno_cards - 09-Mar-23 11:51:17 - INFO - green 0 will removed out of the deck and count == 1
-uno_cards - 09-Mar-23 11:51:17 - INFO - current card: ['green', '0'] should not == red 6
-uno_cards - 09-Mar-23 11:51:17 - INFO - current card: ['green', '0'] should not == blue 5
-uno_cards - 09-Mar-23 11:51:17 - INFO - current card: ['green', '0'] should not == red 6
-uno_cards - 09-Mar-23 11:51:17 - INFO - player 4 should not have ['green', '0'] in it deck: [blue 0, blue 6, red 8, red 6, blue 5, red 6]
-uno_cards - 09-Mar-23 11:51:17 - INFO - Player4 Move: green 0
-uno_cards - 09-Mar-23 11:51:17 - INFO - Clockwise, bool should be True. self._clockwise = True
-uno_cards - 09-Mar-23 11:51:17 - INFO - player 1 plus 4 test is False
-uno_cards - 09-Mar-23 11:51:17 - INFO - player 1 plus 2 test is False
-__main__ - 09-Mar-23 11:51:17 - INFO - pick_up card has not changed: green 2
-uno_cards - 09-Mar-23 11:51:17 - INFO - Amount of cards all players have: Player 1: 6 cards | Player 2: 6 cards | Player 3: 6 cards | Player 4: 6 cards
-uno_cards - 09-Mar-23 11:51:17 - INFO - Card On Top: green 0
-gui - 09-Mar-23 11:51:17 - INFO - In playloop
-gui - 09-Mar-23 11:51:18 - INFO - Picked up and not played
-uno_cards - 09-Mar-23 11:51:18 - INFO - erol player_move is ['pick up', 'no']
-uno_cards - 09-Mar-23 11:51:18 - INFO - Player1/erol: ['pick up', 'no'] card played
-uno_cards - 09-Mar-23 11:51:18 - INFO - Picked up card: green 2
-uno_cards - 09-Mar-23 11:51:18 - INFO - Pick card should be in erol deck: [red 8, red 4, green 9, yellow 8, green 8, green reverse, green 2]
-uno_cards - 09-Mar-23 11:51:18 - INFO - Player1 Move: ['pick up', 'no']
-uno_cards - 09-Mar-23 11:51:18 - INFO - Clockwise, bool should be True. self._clockwise = True
-uno_cards - 09-Mar-23 11:51:18 - INFO - player 2 plus 4 test is False
-uno_cards - 09-Mar-23 11:51:18 - INFO - player 2 plus 2 test is False
-uno_cards - 09-Mar-23 11:51:18 - INFO - self._pickup is True 
-__main__ - 09-Mar-23 11:51:18 - INFO - game.pick_up_card_used() is True
-uno_cards - 09-Mar-23 11:51:18 - INFO - count: 82 and actual: 1 and num: 1
-uno_cards - 09-Mar-23 11:51:18 - INFO - cards/self._cards: [red 9]
-__main__ - 09-Mar-23 11:51:18 - INFO - pick up cards is: pick_up = red 9
-uno_cards - 09-Mar-23 11:51:18 - INFO - Amount of cards all players have: Player 1: 7 cards | Player 2: 6 cards | Player 3: 6 cards | Player 4: 6 cards
-uno_cards - 09-Mar-23 11:51:18 - INFO - Card On Top: green 0
-uno_cards - 09-Mar-23 11:51:18 - INFO - counts before: red 0 blue 0 green 0 yellow 0
-uno_cards - 09-Mar-23 11:51:18 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:18 - INFO - This after (cardname,weight) appended to list for cards: ['blue', '1', 1]
-uno_cards - 09-Mar-23 11:51:18 - INFO - This is g (card weight): 2
-uno_cards - 09-Mar-23 11:51:18 - INFO - This after (cardname,weight) appended to list for cards: ['blue', 'reverse', 2]
-uno_cards - 09-Mar-23 11:51:18 - INFO - This is g (card weight): 5
-uno_cards - 09-Mar-23 11:51:18 - INFO - This after (cardname,weight) appended to list for cards: ['red', 'plus_2', 5]
-uno_cards - 09-Mar-23 11:51:18 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:18 - INFO - This after (cardname,weight) appended to list for cards: ['blue', '7', 1]
-uno_cards - 09-Mar-23 11:51:18 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:18 - INFO - This after (cardname,weight) appended to list for cards: ['red', '7', 1]
-uno_cards - 09-Mar-23 11:51:18 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:18 - INFO - This after (cardname,weight) appended to list for cards: ['green', '8', 1]
-uno_cards - 09-Mar-23 11:51:18 - INFO - list_for_cards before non playbale cards are removed: [['blue', '1', 1], ['blue', 'reverse', 2], ['red', 'plus_2', 5], ['blue', '7', 1], ['red', '7', 1], ['green', '8', 1]]
-uno_cards - 09-Mar-23 11:51:18 - INFO - list_for_cards after non playbale cards are removed: [['green', '8', 1], ['pick_up', None, 0]]
-uno_cards - 09-Mar-23 11:51:18 - INFO - counts after/amount_of_card_weight: red 0 blue 0 green 1 yellow 0
-uno_cards - 09-Mar-23 11:51:18 - INFO - Player 2 card colour weights/counts before merge sort [['red', 0], ['green', 1], ['yellow', 0], ['blue', 0]]
-uno_cards - 09-Mar-23 11:51:18 - INFO - Player 2 card colour weights/counts after merge sort [['green', 1], ['blue', 0], ['yellow', 0], ['red', 0]]
-uno_cards - 09-Mar-23 11:51:18 - INFO - Player 2 deck with  new weights [['green', '8', 2], ['pick_up', None, 0]]
-uno_cards - 09-Mar-23 11:51:18 - INFO - Player 2 quicksort used to sort deck: [['green', '8', 2], ['pick_up', None, 0]]
-uno_cards - 09-Mar-23 11:51:18 - INFO - postion states clockwise = True, order postion = 1
-uno_cards - 09-Mar-23 11:51:18 - INFO - postion states clockwise True, order postion = 1
-uno_cards - 09-Mar-23 11:51:18 - INFO - postion weight is 0 and z is = 6 and i was og 6 #i=2 winning #i=0 drawing #-2 losing
-uno_cards - 09-Mar-23 11:51:18 - INFO - Player 2 postion state is 0
-uno_cards - 09-Mar-23 11:51:18 - INFO - Player 2 played his only card
-uno_cards - 09-Mar-23 11:51:18 - INFO - [['green', '8', 2], ['pick_up', None, 0]] the psotion looking ['green', '8', 2]
-uno_cards - 09-Mar-23 11:51:18 - INFO - ai_choice broke with ['green', '8'] and is was == to ['green', '8', 2] 
-uno_cards - 09-Mar-23 11:51:20 - INFO - Player2 Turn
-uno_cards - 09-Mar-23 11:51:20 - INFO - Player2 wants to play green 8
-uno_cards - 09-Mar-23 11:51:20 - INFO - check if card in deck: green 8 should be the same as green 8
-uno_cards - 09-Mar-23 11:51:20 - INFO - current_card = ['green', '8'] and top_current_card = ['green', '0']
-uno_cards - 09-Mar-23 11:51:20 - INFO - current card: ['green', '8'] should not == blue 1
-uno_cards - 09-Mar-23 11:51:20 - INFO - current card: ['green', '8'] should not == blue reverse
-uno_cards - 09-Mar-23 11:51:20 - INFO - current card: ['green', '8'] should not == red plus_2
-uno_cards - 09-Mar-23 11:51:20 - INFO - current card: ['green', '8'] should not == blue 7
-uno_cards - 09-Mar-23 11:51:20 - INFO - current card: ['green', '8'] should not == red 7
-uno_cards - 09-Mar-23 11:51:20 - INFO - current card: ['green', '8'] should  == green 8
-uno_cards - 09-Mar-23 11:51:20 - INFO - green 8 will removed out of the deck and count == 1
-uno_cards - 09-Mar-23 11:51:20 - INFO - player 2 should not have ['green', '8'] in it deck: [blue 1, blue reverse, red plus_2, blue 7, red 7]
-uno_cards - 09-Mar-23 11:51:20 - INFO - Player2 Move: green 8
-uno_cards - 09-Mar-23 11:51:20 - INFO - Clockwise, bool should be True. self._clockwise = True
-uno_cards - 09-Mar-23 11:51:20 - INFO - player 3 plus 4 test is False
-uno_cards - 09-Mar-23 11:51:20 - INFO - player 3 plus 2 test is False
-__main__ - 09-Mar-23 11:51:20 - INFO - pick_up card has not changed: red 9
-uno_cards - 09-Mar-23 11:51:20 - INFO - Amount of cards all players have: Player 1: 7 cards | Player 2: 5 cards | Player 3: 6 cards | Player 4: 6 cards
-uno_cards - 09-Mar-23 11:51:20 - INFO - Card On Top: green 8
-uno_cards - 09-Mar-23 11:51:20 - INFO - counts before: red 0 blue 0 green 0 yellow 0
-uno_cards - 09-Mar-23 11:51:20 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:20 - INFO - This after (cardname,weight) appended to list for cards: ['red', '0', 1]
-uno_cards - 09-Mar-23 11:51:20 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:20 - INFO - This after (cardname,weight) appended to list for cards: ['blue', '7', 1]
-uno_cards - 09-Mar-23 11:51:20 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:20 - INFO - This after (cardname,weight) appended to list for cards: ['blue', '2', 1]
-uno_cards - 09-Mar-23 11:51:20 - INFO - This is g (card weight): 5
-uno_cards - 09-Mar-23 11:51:20 - INFO - This after (cardname,weight) appended to list for cards: ['green', 'plus_2', 5]
-uno_cards - 09-Mar-23 11:51:20 - INFO - This is g (card weight): 2
-uno_cards - 09-Mar-23 11:51:20 - INFO - This after (cardname,weight) appended to list for cards: ['red', 'reverse', 2]
-uno_cards - 09-Mar-23 11:51:20 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:20 - INFO - This after (cardname,weight) appended to list for cards: ['green', '6', 1]
-uno_cards - 09-Mar-23 11:51:20 - INFO - list_for_cards before non playbale cards are removed: [['red', '0', 1], ['blue', '7', 1], ['blue', '2', 1], ['green', 'plus_2', 5], ['red', 'reverse', 2], ['green', '6', 1]]
-uno_cards - 09-Mar-23 11:51:20 - INFO - list_for_cards after non playbale cards are removed: [['green', 'plus_2', 5], ['green', '6', 1], ['pick_up', None, 0]]
-uno_cards - 09-Mar-23 11:51:20 - INFO - counts after/amount_of_card_weight: red 0 blue 0 green 2 yellow 0
-uno_cards - 09-Mar-23 11:51:20 - INFO - Player 3 card colour weights/counts before merge sort [['red', 0], ['green', 2], ['yellow', 0], ['blue', 0]]
-uno_cards - 09-Mar-23 11:51:20 - INFO - Player 3 card colour weights/counts after merge sort [['green', 2], ['blue', 0], ['yellow', 0], ['red', 0]]
-uno_cards - 09-Mar-23 11:51:20 - INFO - Player 3 deck with  new weights [['green', 'plus_2', 7], ['green', '6', 3], ['pick_up', None, 0]]
-uno_cards - 09-Mar-23 11:51:20 - INFO - Player 3 quicksort used to sort deck: [['green', 'plus_2', 7], ['green', '6', 3], ['pick_up', None, 0]]
-uno_cards - 09-Mar-23 11:51:20 - INFO - postion states clockwise = True, order postion = 2
-uno_cards - 09-Mar-23 11:51:20 - INFO - postion states clockwise True, order postion = 2
-uno_cards - 09-Mar-23 11:51:20 - INFO - postion weight is 0 and z is = 6 and i was og 6 #i=2 winning #i=0 drawing #-2 losing
-uno_cards - 09-Mar-23 11:51:20 - INFO - Player 3 postion state is 0
-uno_cards - 09-Mar-23 11:51:20 - INFO - Player 3 played his second best card
-uno_cards - 09-Mar-23 11:51:20 - INFO - [['green', 'plus_2', 7], ['green', '6', 3], ['pick_up', None, 0]] the psotion looking ['green', '6', 3]
-uno_cards - 09-Mar-23 11:51:20 - INFO - ai_choice broke with ['green', '6'] and is was == to ['green', '6', 3] 
-uno_cards - 09-Mar-23 11:51:22 - INFO - Player3 Turn
-uno_cards - 09-Mar-23 11:51:22 - INFO - Player3 wants to play green 6
-uno_cards - 09-Mar-23 11:51:22 - INFO - check if card in deck: green 6 should be the same as green 6
-uno_cards - 09-Mar-23 11:51:22 - INFO - current_card = ['green', '6'] and top_current_card = ['green', '8']
-uno_cards - 09-Mar-23 11:51:22 - INFO - current card: ['green', '6'] should not == red 0
-uno_cards - 09-Mar-23 11:51:22 - INFO - current card: ['green', '6'] should not == blue 7
-uno_cards - 09-Mar-23 11:51:22 - INFO - current card: ['green', '6'] should not == blue 2
-uno_cards - 09-Mar-23 11:51:22 - INFO - current card: ['green', '6'] should not == green plus_2
-uno_cards - 09-Mar-23 11:51:22 - INFO - current card: ['green', '6'] should not == red reverse
-uno_cards - 09-Mar-23 11:51:22 - INFO - current card: ['green', '6'] should  == green 6
-uno_cards - 09-Mar-23 11:51:22 - INFO - green 6 will removed out of the deck and count == 1
-uno_cards - 09-Mar-23 11:51:22 - INFO - player 3 should not have ['green', '6'] in it deck: [red 0, blue 7, blue 2, green plus_2, red reverse]
-uno_cards - 09-Mar-23 11:51:22 - INFO - Player3 Move: green 6
-uno_cards - 09-Mar-23 11:51:22 - INFO - Clockwise, bool should be True. self._clockwise = True
-uno_cards - 09-Mar-23 11:51:22 - INFO - player 4 plus 4 test is False
-uno_cards - 09-Mar-23 11:51:22 - INFO - player 4 plus 2 test is False
-__main__ - 09-Mar-23 11:51:22 - INFO - pick_up card has not changed: red 9
-uno_cards - 09-Mar-23 11:51:22 - INFO - Amount of cards all players have: Player 1: 7 cards | Player 2: 5 cards | Player 3: 5 cards | Player 4: 6 cards
-uno_cards - 09-Mar-23 11:51:22 - INFO - Card On Top: green 6
-uno_cards - 09-Mar-23 11:51:22 - INFO - counts before: red 0 blue 0 green 0 yellow 0
-uno_cards - 09-Mar-23 11:51:22 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:22 - INFO - This after (cardname,weight) appended to list for cards: ['blue', '0', 1]
-uno_cards - 09-Mar-23 11:51:22 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:22 - INFO - This after (cardname,weight) appended to list for cards: ['blue', '6', 1]
-uno_cards - 09-Mar-23 11:51:22 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:22 - INFO - This after (cardname,weight) appended to list for cards: ['red', '8', 1]
-uno_cards - 09-Mar-23 11:51:22 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:22 - INFO - This after (cardname,weight) appended to list for cards: ['red', '6', 1]
-uno_cards - 09-Mar-23 11:51:22 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:22 - INFO - This after (cardname,weight) appended to list for cards: ['blue', '5', 1]
-uno_cards - 09-Mar-23 11:51:22 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:22 - INFO - This after (cardname,weight) appended to list for cards: ['red', '6', 1]
-uno_cards - 09-Mar-23 11:51:22 - INFO - list_for_cards before non playbale cards are removed: [['blue', '0', 1], ['blue', '6', 1], ['red', '8', 1], ['red', '6', 1], ['blue', '5', 1], ['red', '6', 1]]
-uno_cards - 09-Mar-23 11:51:22 - INFO - list_for_cards after non playbale cards are removed: [['blue', '6', 1], ['red', '6', 1], ['red', '6', 1], ['pick_up', None, 0]]
-uno_cards - 09-Mar-23 11:51:22 - INFO - counts after/amount_of_card_weight: red 2 blue 1 green 0 yellow 0
-uno_cards - 09-Mar-23 11:51:22 - INFO - Player 4 card colour weights/counts before merge sort [['red', 2], ['green', 0], ['yellow', 0], ['blue', 1]]
-uno_cards - 09-Mar-23 11:51:22 - INFO - Player 4 card colour weights/counts after merge sort [['red', 2], ['blue', 1], ['yellow', 0], ['green', 0]]
-uno_cards - 09-Mar-23 11:51:22 - INFO - Player 4 deck with  new weights [['blue', '6', 2], ['red', '6', 3], ['red', '6', 3], ['pick_up', None, 0]]
-uno_cards - 09-Mar-23 11:51:22 - INFO - Player 4 quicksort used to sort deck: [['red', '6', 3], ['red', '6', 3], ['blue', '6', 2], ['pick_up', None, 0]]
-uno_cards - 09-Mar-23 11:51:22 - INFO - postion states clockwise = True, order postion = 3
-uno_cards - 09-Mar-23 11:51:22 - INFO - postion states clockwise True, order postion = 3
-uno_cards - 09-Mar-23 11:51:22 - INFO - postion weight is 2 and z is = 7 and i was og 6 #i=2 winning #i=0 drawing #-2 losing
-uno_cards - 09-Mar-23 11:51:22 - INFO - Player 4 postion state is 2
-uno_cards - 09-Mar-23 11:51:22 - INFO - Player 4 played his second best card
-uno_cards - 09-Mar-23 11:51:22 - INFO - [['red', '6', 3], ['red', '6', 3], ['blue', '6', 2], ['pick_up', None, 0]] the psotion looking ['red', '6', 3]
-uno_cards - 09-Mar-23 11:51:22 - INFO - ai_choice broke with ['red', '6'] and is was == to ['red', '6', 3] 
-uno_cards - 09-Mar-23 11:51:23 - INFO - Player4 Turn
-uno_cards - 09-Mar-23 11:51:23 - INFO - Player4 wants to play red 6
-uno_cards - 09-Mar-23 11:51:23 - INFO - check if card in deck: red 6 should be the same as red 6
-uno_cards - 09-Mar-23 11:51:23 - INFO - current_card = ['red', '6'] and top_current_card = ['green', '6']
-uno_cards - 09-Mar-23 11:51:23 - INFO - current card: ['red', '6'] should not == blue 0
-uno_cards - 09-Mar-23 11:51:23 - INFO - current card: ['red', '6'] should not == blue 6
-uno_cards - 09-Mar-23 11:51:23 - INFO - current card: ['red', '6'] should not == red 8
-uno_cards - 09-Mar-23 11:51:23 - INFO - current card: ['red', '6'] should  == red 6
-uno_cards - 09-Mar-23 11:51:23 - INFO - red 6 will removed out of the deck and count == 1
-uno_cards - 09-Mar-23 11:51:23 - INFO - current card: ['red', '6'] should not == blue 5
-uno_cards - 09-Mar-23 11:51:23 - INFO - current card: ['red', '6'] should  == red 6
-uno_cards - 09-Mar-23 11:51:23 - INFO - count should equal 1 already: 1
-uno_cards - 09-Mar-23 11:51:23 - INFO - player 4 should not have ['red', '6'] in it deck: [blue 0, blue 6, red 8, blue 5, red 6]
-uno_cards - 09-Mar-23 11:51:23 - INFO - Player4 Move: red 6
-uno_cards - 09-Mar-23 11:51:23 - INFO - Clockwise, bool should be True. self._clockwise = True
-uno_cards - 09-Mar-23 11:51:23 - INFO - player 1 plus 4 test is False
-uno_cards - 09-Mar-23 11:51:23 - INFO - player 1 plus 2 test is False
-__main__ - 09-Mar-23 11:51:23 - INFO - pick_up card has not changed: red 9
-uno_cards - 09-Mar-23 11:51:23 - INFO - Amount of cards all players have: Player 1: 7 cards | Player 2: 5 cards | Player 3: 5 cards | Player 4: 5 cards
-uno_cards - 09-Mar-23 11:51:23 - INFO - Card On Top: red 6
-gui - 09-Mar-23 11:51:23 - INFO - In playloop
-gui - 09-Mar-23 11:51:24 - INFO - Picked up and not played
-uno_cards - 09-Mar-23 11:51:24 - INFO - erol player_move is ['pick up', 'no']
-uno_cards - 09-Mar-23 11:51:24 - INFO - Player1/erol: ['pick up', 'no'] card played
-uno_cards - 09-Mar-23 11:51:24 - INFO - Picked up card: red 9
-uno_cards - 09-Mar-23 11:51:24 - INFO - Pick card should be in erol deck: [red 8, red 4, green 9, yellow 8, green 8, green reverse, green 2, red 9]
-uno_cards - 09-Mar-23 11:51:24 - INFO - Player1 Move: ['pick up', 'no']
-uno_cards - 09-Mar-23 11:51:24 - INFO - Clockwise, bool should be True. self._clockwise = True
-uno_cards - 09-Mar-23 11:51:24 - INFO - player 2 plus 4 test is False
-uno_cards - 09-Mar-23 11:51:24 - INFO - player 2 plus 2 test is False
-uno_cards - 09-Mar-23 11:51:24 - INFO - self._pickup is True 
-__main__ - 09-Mar-23 11:51:24 - INFO - game.pick_up_card_used() is True
-uno_cards - 09-Mar-23 11:51:24 - INFO - count: 81 and actual: 1 and num: 1
-uno_cards - 09-Mar-23 11:51:24 - INFO - cards/self._cards: [red 7]
-__main__ - 09-Mar-23 11:51:24 - INFO - pick up cards is: pick_up = red 7
-uno_cards - 09-Mar-23 11:51:24 - INFO - Amount of cards all players have: Player 1: 8 cards | Player 2: 5 cards | Player 3: 5 cards | Player 4: 5 cards
-uno_cards - 09-Mar-23 11:51:24 - INFO - Card On Top: red 6
-uno_cards - 09-Mar-23 11:51:24 - INFO - counts before: red 0 blue 0 green 0 yellow 0
-uno_cards - 09-Mar-23 11:51:24 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:24 - INFO - This after (cardname,weight) appended to list for cards: ['blue', '1', 1]
-uno_cards - 09-Mar-23 11:51:24 - INFO - This is g (card weight): 2
-uno_cards - 09-Mar-23 11:51:24 - INFO - This after (cardname,weight) appended to list for cards: ['blue', 'reverse', 2]
-uno_cards - 09-Mar-23 11:51:24 - INFO - This is g (card weight): 5
-uno_cards - 09-Mar-23 11:51:24 - INFO - This after (cardname,weight) appended to list for cards: ['red', 'plus_2', 5]
-uno_cards - 09-Mar-23 11:51:24 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:24 - INFO - This after (cardname,weight) appended to list for cards: ['blue', '7', 1]
-uno_cards - 09-Mar-23 11:51:24 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:24 - INFO - This after (cardname,weight) appended to list for cards: ['red', '7', 1]
-uno_cards - 09-Mar-23 11:51:24 - INFO - list_for_cards before non playbale cards are removed: [['blue', '1', 1], ['blue', 'reverse', 2], ['red', 'plus_2', 5], ['blue', '7', 1], ['red', '7', 1]]
-uno_cards - 09-Mar-23 11:51:24 - INFO - list_for_cards after non playbale cards are removed: [['red', 'plus_2', 5], ['red', '7', 1], ['pick_up', None, 0]]
-uno_cards - 09-Mar-23 11:51:24 - INFO - counts after/amount_of_card_weight: red 2 blue 0 green 0 yellow 0
-uno_cards - 09-Mar-23 11:51:24 - INFO - Player 2 card colour weights/counts before merge sort [['red', 2], ['green', 0], ['yellow', 0], ['blue', 0]]
-uno_cards - 09-Mar-23 11:51:24 - INFO - Player 2 card colour weights/counts after merge sort [['red', 2], ['blue', 0], ['yellow', 0], ['green', 0]]
-uno_cards - 09-Mar-23 11:51:24 - INFO - Player 2 deck with  new weights [['red', 'plus_2', 7], ['red', '7', 3], ['pick_up', None, 0]]
-uno_cards - 09-Mar-23 11:51:24 - INFO - Player 2 quicksort used to sort deck: [['red', 'plus_2', 7], ['red', '7', 3], ['pick_up', None, 0]]
-uno_cards - 09-Mar-23 11:51:24 - INFO - postion states clockwise = True, order postion = 1
-uno_cards - 09-Mar-23 11:51:24 - INFO - postion states clockwise True, order postion = 1
-uno_cards - 09-Mar-23 11:51:24 - INFO - postion weight is 0 and z is = 5 and i was og 5 #i=2 winning #i=0 drawing #-2 losing
-uno_cards - 09-Mar-23 11:51:24 - INFO - Player 2 postion state is 0
-uno_cards - 09-Mar-23 11:51:24 - INFO - Player 2 played his second best card
-uno_cards - 09-Mar-23 11:51:24 - INFO - [['red', 'plus_2', 7], ['red', '7', 3], ['pick_up', None, 0]] the psotion looking ['red', '7', 3]
-uno_cards - 09-Mar-23 11:51:24 - INFO - ai_choice broke with ['red', '7'] and is was == to ['red', '7', 3] 
-uno_cards - 09-Mar-23 11:51:26 - INFO - Player2 Turn
-uno_cards - 09-Mar-23 11:51:26 - INFO - Player2 wants to play red 7
-uno_cards - 09-Mar-23 11:51:26 - INFO - check if card in deck: red 7 should be the same as red 7
-uno_cards - 09-Mar-23 11:51:26 - INFO - current_card = ['red', '7'] and top_current_card = ['red', '6']
-uno_cards - 09-Mar-23 11:51:26 - INFO - current card: ['red', '7'] should not == blue 1
-uno_cards - 09-Mar-23 11:51:26 - INFO - current card: ['red', '7'] should not == blue reverse
-uno_cards - 09-Mar-23 11:51:26 - INFO - current card: ['red', '7'] should not == red plus_2
-uno_cards - 09-Mar-23 11:51:26 - INFO - current card: ['red', '7'] should not == blue 7
-uno_cards - 09-Mar-23 11:51:26 - INFO - current card: ['red', '7'] should  == red 7
-uno_cards - 09-Mar-23 11:51:26 - INFO - red 7 will removed out of the deck and count == 1
-uno_cards - 09-Mar-23 11:51:26 - INFO - player 2 should not have ['red', '7'] in it deck: [blue 1, blue reverse, red plus_2, blue 7]
-uno_cards - 09-Mar-23 11:51:26 - INFO - Player2 Move: red 7
-uno_cards - 09-Mar-23 11:51:26 - INFO - Clockwise, bool should be True. self._clockwise = True
-uno_cards - 09-Mar-23 11:51:26 - INFO - player 3 plus 4 test is False
-uno_cards - 09-Mar-23 11:51:26 - INFO - player 3 plus 2 test is False
-__main__ - 09-Mar-23 11:51:26 - INFO - pick_up card has not changed: red 7
-uno_cards - 09-Mar-23 11:51:26 - INFO - Amount of cards all players have: Player 1: 8 cards | Player 2: 4 cards | Player 3: 5 cards | Player 4: 5 cards
-uno_cards - 09-Mar-23 11:51:26 - INFO - Card On Top: red 7
-uno_cards - 09-Mar-23 11:51:26 - INFO - counts before: red 0 blue 0 green 0 yellow 0
-uno_cards - 09-Mar-23 11:51:26 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:26 - INFO - This after (cardname,weight) appended to list for cards: ['red', '0', 1]
-uno_cards - 09-Mar-23 11:51:26 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:26 - INFO - This after (cardname,weight) appended to list for cards: ['blue', '7', 1]
-uno_cards - 09-Mar-23 11:51:26 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:26 - INFO - This after (cardname,weight) appended to list for cards: ['blue', '2', 1]
-uno_cards - 09-Mar-23 11:51:26 - INFO - This is g (card weight): 5
-uno_cards - 09-Mar-23 11:51:26 - INFO - This after (cardname,weight) appended to list for cards: ['green', 'plus_2', 5]
-uno_cards - 09-Mar-23 11:51:26 - INFO - This is g (card weight): 2
-uno_cards - 09-Mar-23 11:51:26 - INFO - This after (cardname,weight) appended to list for cards: ['red', 'reverse', 2]
-uno_cards - 09-Mar-23 11:51:26 - INFO - list_for_cards before non playbale cards are removed: [['red', '0', 1], ['blue', '7', 1], ['blue', '2', 1], ['green', 'plus_2', 5], ['red', 'reverse', 2]]
-uno_cards - 09-Mar-23 11:51:26 - INFO - list_for_cards after non playbale cards are removed: [['red', '0', 1], ['blue', '7', 1], ['red', 'reverse', 2], ['pick_up', None, 0]]
-uno_cards - 09-Mar-23 11:51:26 - INFO - counts after/amount_of_card_weight: red 2 blue 1 green 0 yellow 0
-uno_cards - 09-Mar-23 11:51:26 - INFO - Player 3 card colour weights/counts before merge sort [['red', 2], ['green', 0], ['yellow', 0], ['blue', 1]]
-uno_cards - 09-Mar-23 11:51:26 - INFO - Player 3 card colour weights/counts after merge sort [['red', 2], ['blue', 1], ['yellow', 0], ['green', 0]]
-uno_cards - 09-Mar-23 11:51:26 - INFO - Player 3 deck with  new weights [['red', '0', 3], ['blue', '7', 2], ['red', 'reverse', 4], ['pick_up', None, 0]]
-uno_cards - 09-Mar-23 11:51:26 - INFO - Player 3 quicksort used to sort deck: [['red', 'reverse', 4], ['red', '0', 3], ['blue', '7', 2], ['pick_up', None, 0]]
-uno_cards - 09-Mar-23 11:51:26 - INFO - postion states clockwise = True, order postion = 2
-uno_cards - 09-Mar-23 11:51:26 - INFO - postion states clockwise True, order postion = 2
-uno_cards - 09-Mar-23 11:51:26 - INFO - postion weight is 0 and z is = 5 and i was og 5 #i=2 winning #i=0 drawing #-2 losing
-uno_cards - 09-Mar-23 11:51:26 - INFO - Player 3 postion state is 0
-uno_cards - 09-Mar-23 11:51:26 - INFO - Player 3 played his second best card
-uno_cards - 09-Mar-23 11:51:26 - INFO - [['red', 'reverse', 4], ['red', '0', 3], ['blue', '7', 2], ['pick_up', None, 0]] the psotion looking ['red', '0', 3]
-uno_cards - 09-Mar-23 11:51:26 - INFO - ai_choice broke with ['red', '0'] and is was == to ['red', '0', 3] 
-uno_cards - 09-Mar-23 11:51:28 - INFO - Player3 Turn
-uno_cards - 09-Mar-23 11:51:28 - INFO - Player3 wants to play red 0
-uno_cards - 09-Mar-23 11:51:28 - INFO - check if card in deck: red 0 should be the same as red 0
-uno_cards - 09-Mar-23 11:51:28 - INFO - current_card = ['red', '0'] and top_current_card = ['red', '7']
-uno_cards - 09-Mar-23 11:51:28 - INFO - current card: ['red', '0'] should  == red 0
-uno_cards - 09-Mar-23 11:51:28 - INFO - red 0 will removed out of the deck and count == 1
-uno_cards - 09-Mar-23 11:51:28 - INFO - current card: ['red', '0'] should not == blue 7
-uno_cards - 09-Mar-23 11:51:28 - INFO - current card: ['red', '0'] should not == blue 2
-uno_cards - 09-Mar-23 11:51:28 - INFO - current card: ['red', '0'] should not == green plus_2
-uno_cards - 09-Mar-23 11:51:28 - INFO - current card: ['red', '0'] should not == red reverse
-uno_cards - 09-Mar-23 11:51:28 - INFO - player 3 should not have ['red', '0'] in it deck: [blue 7, blue 2, green plus_2, red reverse]
-uno_cards - 09-Mar-23 11:51:28 - INFO - Player3 Move: red 0
-uno_cards - 09-Mar-23 11:51:28 - INFO - Clockwise, bool should be True. self._clockwise = True
-uno_cards - 09-Mar-23 11:51:28 - INFO - player 4 plus 4 test is False
-uno_cards - 09-Mar-23 11:51:28 - INFO - player 4 plus 2 test is False
-__main__ - 09-Mar-23 11:51:28 - INFO - pick_up card has not changed: red 7
-uno_cards - 09-Mar-23 11:51:28 - INFO - Amount of cards all players have: Player 1: 8 cards | Player 2: 4 cards | Player 3: 4 cards | Player 4: 5 cards
-uno_cards - 09-Mar-23 11:51:28 - INFO - Card On Top: red 0
-uno_cards - 09-Mar-23 11:51:28 - INFO - counts before: red 0 blue 0 green 0 yellow 0
-uno_cards - 09-Mar-23 11:51:28 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:28 - INFO - This after (cardname,weight) appended to list for cards: ['blue', '0', 1]
-uno_cards - 09-Mar-23 11:51:28 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:28 - INFO - This after (cardname,weight) appended to list for cards: ['blue', '6', 1]
-uno_cards - 09-Mar-23 11:51:28 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:28 - INFO - This after (cardname,weight) appended to list for cards: ['red', '8', 1]
-uno_cards - 09-Mar-23 11:51:28 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:28 - INFO - This after (cardname,weight) appended to list for cards: ['blue', '5', 1]
-uno_cards - 09-Mar-23 11:51:28 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:28 - INFO - This after (cardname,weight) appended to list for cards: ['red', '6', 1]
-uno_cards - 09-Mar-23 11:51:28 - INFO - list_for_cards before non playbale cards are removed: [['blue', '0', 1], ['blue', '6', 1], ['red', '8', 1], ['blue', '5', 1], ['red', '6', 1]]
-uno_cards - 09-Mar-23 11:51:28 - INFO - list_for_cards after non playbale cards are removed: [['blue', '0', 1], ['red', '8', 1], ['red', '6', 1], ['pick_up', None, 0]]
-uno_cards - 09-Mar-23 11:51:28 - INFO - counts after/amount_of_card_weight: red 2 blue 1 green 0 yellow 0
-uno_cards - 09-Mar-23 11:51:28 - INFO - Player 4 card colour weights/counts before merge sort [['red', 2], ['green', 0], ['yellow', 0], ['blue', 1]]
-uno_cards - 09-Mar-23 11:51:28 - INFO - Player 4 card colour weights/counts after merge sort [['red', 2], ['blue', 1], ['yellow', 0], ['green', 0]]
-uno_cards - 09-Mar-23 11:51:28 - INFO - Player 4 deck with  new weights [['blue', '0', 2], ['red', '8', 3], ['red', '6', 3], ['pick_up', None, 0]]
-uno_cards - 09-Mar-23 11:51:28 - INFO - Player 4 quicksort used to sort deck: [['red', '8', 3], ['red', '6', 3], ['blue', '0', 2], ['pick_up', None, 0]]
-uno_cards - 09-Mar-23 11:51:28 - INFO - postion states clockwise = True, order postion = 3
-uno_cards - 09-Mar-23 11:51:28 - INFO - postion states clockwise True, order postion = 3
-uno_cards - 09-Mar-23 11:51:28 - INFO - postion weight is 2 and z is = 8 and i was og 5 #i=2 winning #i=0 drawing #-2 losing
-uno_cards - 09-Mar-23 11:51:28 - INFO - Player 4 postion state is 2
-uno_cards - 09-Mar-23 11:51:28 - INFO - Player 4 played his second best card
-uno_cards - 09-Mar-23 11:51:28 - INFO - [['red', '8', 3], ['red', '6', 3], ['blue', '0', 2], ['pick_up', None, 0]] the psotion looking ['red', '6', 3]
-uno_cards - 09-Mar-23 11:51:28 - INFO - ai_choice broke with ['red', '6'] and is was == to ['red', '6', 3] 
-uno_cards - 09-Mar-23 11:51:29 - INFO - Player4 Turn
-uno_cards - 09-Mar-23 11:51:29 - INFO - Player4 wants to play red 6
-uno_cards - 09-Mar-23 11:51:29 - INFO - check if card in deck: red 6 should be the same as red 6
-uno_cards - 09-Mar-23 11:51:29 - INFO - current_card = ['red', '6'] and top_current_card = ['red', '0']
-uno_cards - 09-Mar-23 11:51:29 - INFO - current card: ['red', '6'] should not == blue 0
-uno_cards - 09-Mar-23 11:51:29 - INFO - current card: ['red', '6'] should not == blue 6
-uno_cards - 09-Mar-23 11:51:29 - INFO - current card: ['red', '6'] should not == red 8
-uno_cards - 09-Mar-23 11:51:29 - INFO - current card: ['red', '6'] should not == blue 5
-uno_cards - 09-Mar-23 11:51:29 - INFO - current card: ['red', '6'] should  == red 6
-uno_cards - 09-Mar-23 11:51:29 - INFO - red 6 will removed out of the deck and count == 1
-uno_cards - 09-Mar-23 11:51:29 - INFO - player 4 should not have ['red', '6'] in it deck: [blue 0, blue 6, red 8, blue 5]
-uno_cards - 09-Mar-23 11:51:29 - INFO - Player4 Move: red 6
-uno_cards - 09-Mar-23 11:51:29 - INFO - Clockwise, bool should be True. self._clockwise = True
-uno_cards - 09-Mar-23 11:51:29 - INFO - player 1 plus 4 test is False
-uno_cards - 09-Mar-23 11:51:29 - INFO - player 1 plus 2 test is False
-__main__ - 09-Mar-23 11:51:29 - INFO - pick_up card has not changed: red 7
-uno_cards - 09-Mar-23 11:51:29 - INFO - Amount of cards all players have: Player 1: 8 cards | Player 2: 4 cards | Player 3: 4 cards | Player 4: 4 cards
-uno_cards - 09-Mar-23 11:51:29 - INFO - Card On Top: red 6
-gui - 09-Mar-23 11:51:29 - INFO - In playloop
-uno_cards - 09-Mar-23 11:51:30 - INFO - erol player_move is green reverse
-uno_cards - 09-Mar-23 11:51:30 - INFO - Player1/erol: green reverse card played
-uno_cards - 09-Mar-23 11:51:30 - INFO - check if card in deck: green reverse should be the same as green reverse
-uno_cards - 09-Mar-23 11:51:30 - INFO - current_card = ['green', 'reverse'] and top_current_card = ['red', '6']
-uno_cards - 09-Mar-23 11:51:30 - WARNING - After before[red 8, red 4, green 9, yellow 8, green 8, green reverse, green 2, red 9]
-uno_cards - 09-Mar-23 11:51:30 - WARNING - After pick up[red 8, red 4, green 9, yellow 8, green 8, green reverse, green 2, red 9, red 7]
-uno_cards - 09-Mar-23 11:51:30 - INFO - Player1 Move: green reverse
-uno_cards - 09-Mar-23 11:51:30 - INFO - Clockwise, bool should be True. self._clockwise = True
-uno_cards - 09-Mar-23 11:51:30 - INFO - player 2 plus 4 test is False
-uno_cards - 09-Mar-23 11:51:30 - INFO - player 2 plus 2 test is False
-uno_cards - 09-Mar-23 11:51:30 - INFO - self._pickup is True 
-__main__ - 09-Mar-23 11:51:30 - INFO - game.pick_up_card_used() is True
-uno_cards - 09-Mar-23 11:51:30 - INFO - count: 80 and actual: 1 and num: 1
-uno_cards - 09-Mar-23 11:51:30 - INFO - cards/self._cards: [yellow plus_2]
-__main__ - 09-Mar-23 11:51:30 - INFO - pick up cards is: pick_up = yellow plus_2
-uno_cards - 09-Mar-23 11:51:30 - INFO - Amount of cards all players have: Player 1: 9 cards | Player 2: 4 cards | Player 3: 4 cards | Player 4: 4 cards
-uno_cards - 09-Mar-23 11:51:30 - INFO - Card On Top: red 6
-uno_cards - 09-Mar-23 11:51:30 - INFO - counts before: red 0 blue 0 green 0 yellow 0
-uno_cards - 09-Mar-23 11:51:30 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:30 - INFO - This after (cardname,weight) appended to list for cards: ['blue', '1', 1]
-uno_cards - 09-Mar-23 11:51:30 - INFO - This is g (card weight): 2
-uno_cards - 09-Mar-23 11:51:30 - INFO - This after (cardname,weight) appended to list for cards: ['blue', 'reverse', 2]
-uno_cards - 09-Mar-23 11:51:30 - INFO - This is g (card weight): 5
-uno_cards - 09-Mar-23 11:51:30 - INFO - This after (cardname,weight) appended to list for cards: ['red', 'plus_2', 5]
-uno_cards - 09-Mar-23 11:51:30 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:30 - INFO - This after (cardname,weight) appended to list for cards: ['blue', '7', 1]
-uno_cards - 09-Mar-23 11:51:30 - INFO - list_for_cards before non playbale cards are removed: [['blue', '1', 1], ['blue', 'reverse', 2], ['red', 'plus_2', 5], ['blue', '7', 1]]
-uno_cards - 09-Mar-23 11:51:30 - INFO - list_for_cards after non playbale cards are removed: [['red', 'plus_2', 5], ['pick_up', None, 0]]
-uno_cards - 09-Mar-23 11:51:30 - INFO - counts after/amount_of_card_weight: red 1 blue 0 green 0 yellow 0
-uno_cards - 09-Mar-23 11:51:30 - INFO - Player 2 card colour weights/counts before merge sort [['red', 1], ['green', 0], ['yellow', 0], ['blue', 0]]
-uno_cards - 09-Mar-23 11:51:30 - INFO - Player 2 card colour weights/counts after merge sort [['red', 1], ['blue', 0], ['yellow', 0], ['green', 0]]
-uno_cards - 09-Mar-23 11:51:30 - INFO - Player 2 deck with  new weights [['red', 'plus_2', 6], ['pick_up', None, 0]]
-uno_cards - 09-Mar-23 11:51:30 - INFO - Player 2 quicksort used to sort deck: [['red', 'plus_2', 6], ['pick_up', None, 0]]
-uno_cards - 09-Mar-23 11:51:30 - INFO - postion states clockwise = True, order postion = 1
-uno_cards - 09-Mar-23 11:51:30 - INFO - postion states clockwise True, order postion = 1
-uno_cards - 09-Mar-23 11:51:30 - INFO - postion weight is 0 and z is = 4 and i was og 4 #i=2 winning #i=0 drawing #-2 losing
-uno_cards - 09-Mar-23 11:51:30 - INFO - Player 2 postion state is 0
-uno_cards - 09-Mar-23 11:51:30 - INFO - Player 2 played his only card
-uno_cards - 09-Mar-23 11:51:30 - INFO - [['red', 'plus_2', 6], ['pick_up', None, 0]] the psotion looking ['red', 'plus_2', 6]
-uno_cards - 09-Mar-23 11:51:30 - INFO - ai_choice broke with ['red', 'plus_2'] and is was == to ['red', 'plus_2', 6] 
-uno_cards - 09-Mar-23 11:51:31 - INFO - Player2 Turn
-uno_cards - 09-Mar-23 11:51:31 - INFO - Player2 wants to play red plus_2
-uno_cards - 09-Mar-23 11:51:31 - INFO - check if card in deck: red plus_2 should be the same as red plus_2
-uno_cards - 09-Mar-23 11:51:31 - INFO - current_card = ['red', 'plus_2'] and top_current_card = ['red', '6']
-uno_cards - 09-Mar-23 11:51:31 - INFO - player 2 plus 2 test is True: ['red', '6'] == ['red', 'plus_2']
-uno_cards - 09-Mar-23 11:51:31 - INFO - current card: ['red', 'plus_2'] should not == blue 1
-uno_cards - 09-Mar-23 11:51:31 - INFO - current card: ['red', 'plus_2'] should not == blue reverse
-uno_cards - 09-Mar-23 11:51:31 - INFO - current card: ['red', 'plus_2'] should  == red plus_2
-uno_cards - 09-Mar-23 11:51:31 - INFO - red plus_2 will removed out of the deck and count == 1
-uno_cards - 09-Mar-23 11:51:31 - INFO - current card: ['red', 'plus_2'] should not == blue 7
-uno_cards - 09-Mar-23 11:51:31 - INFO - player 2 should not have ['red', 'plus_2'] in it deck: [blue 1, blue reverse, blue 7]
-uno_cards - 09-Mar-23 11:51:31 - INFO - Player2 Move: red plus_2
-uno_cards - 09-Mar-23 11:51:31 - INFO - Clockwise, bool should be True. self._clockwise = True
-uno_cards - 09-Mar-23 11:51:31 - INFO - player 3 plus 4 test is False
-uno_cards - 09-Mar-23 11:51:31 - INFO - player 3 plus 2 test is True: ['red', 'plus_2'] == ['red', 'plus_2']
-__main__ - 09-Mar-23 11:51:31 - INFO - Plus 2 check is TRUE
-uno_cards - 09-Mar-23 11:51:31 - INFO - count: 79 and actual: 1 and num: 1
-uno_cards - 09-Mar-23 11:51:31 - INFO - cards/self._cards: [wild switch]
-uno_cards - 09-Mar-23 11:51:31 - INFO - count: 78 and actual: 1 and num: 1
-uno_cards - 09-Mar-23 11:51:31 - INFO - cards/self._cards: [yellow 4]
-uno_cards - 09-Mar-23 11:51:31 - INFO - player 3  + [wild switch, yellow 4], clockwise True
-uno_cards - 09-Mar-23 11:51:31 - INFO - player 3 deck is now [blue 7, blue 2, green plus_2, red reverse, wild switch, yellow 4]
-__main__ - 09-Mar-23 11:51:31 - INFO - pick_up card has not changed: yellow plus_2
-uno_cards - 09-Mar-23 11:51:31 - INFO - Amount of cards all players have: Player 1: 9 cards | Player 2: 3 cards | Player 3: 6 cards | Player 4: 4 cards
-uno_cards - 09-Mar-23 11:51:31 - INFO - Card On Top: red plus_2
-uno_cards - 09-Mar-23 11:51:31 - INFO - counts before: red 0 blue 0 green 0 yellow 0
-uno_cards - 09-Mar-23 11:51:31 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:31 - INFO - This after (cardname,weight) appended to list for cards: ['blue', '7', 1]
-uno_cards - 09-Mar-23 11:51:31 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:31 - INFO - This after (cardname,weight) appended to list for cards: ['blue', '2', 1]
-uno_cards - 09-Mar-23 11:51:31 - INFO - This is g (card weight): 5
-uno_cards - 09-Mar-23 11:51:31 - INFO - This after (cardname,weight) appended to list for cards: ['green', 'plus_2', 5]
-uno_cards - 09-Mar-23 11:51:31 - INFO - This is g (card weight): 2
-uno_cards - 09-Mar-23 11:51:31 - INFO - This after (cardname,weight) appended to list for cards: ['red', 'reverse', 2]
-uno_cards - 09-Mar-23 11:51:31 - INFO - This is g (card weight): 5
-uno_cards - 09-Mar-23 11:51:31 - INFO - This after (cardname,weight) appended to list for cards: ['wild', 'switch', 5]
-uno_cards - 09-Mar-23 11:51:31 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:31 - INFO - This after (cardname,weight) appended to list for cards: ['yellow', '4', 1]
-uno_cards - 09-Mar-23 11:51:31 - INFO - list_for_cards before non playbale cards are removed: [['blue', '7', 1], ['blue', '2', 1], ['green', 'plus_2', 5], ['red', 'reverse', 2], ['wild', 'switch', 5], ['yellow', '4', 1]]
-uno_cards - 09-Mar-23 11:51:31 - INFO - list_for_cards after non playbale cards are removed: [['green', 'plus_2', 5], ['red', 'reverse', 2], ['wild', 'switch', 5], ['pick_up', None, 0]]
-uno_cards - 09-Mar-23 11:51:31 - INFO - counts after/amount_of_card_weight: red 1 blue 0 green 1 yellow 0
-uno_cards - 09-Mar-23 11:51:31 - INFO - Player 3 card colour weights/counts before merge sort [['red', 1], ['green', 1], ['yellow', 0], ['blue', 0]]
-uno_cards - 09-Mar-23 11:51:31 - INFO - Player 3 card colour weights/counts after merge sort [['green', 1], ['red', 1], ['blue', 0], ['yellow', 0]]
-uno_cards - 09-Mar-23 11:51:31 - INFO - Player 3 deck with  new weights [['green', 'plus_2', 6], ['red', 'reverse', 3], ['wild', 'switch', 5], ['pick_up', None, 0]]
-uno_cards - 09-Mar-23 11:51:31 - INFO - Player 3 quicksort used to sort deck: [['green', 'plus_2', 6], ['wild', 'switch', 5], ['red', 'reverse', 3], ['pick_up', None, 0]]
-uno_cards - 09-Mar-23 11:51:31 - INFO - postion states clockwise = True, order postion = 2
-uno_cards - 09-Mar-23 11:51:31 - INFO - postion states clockwise True, order postion = 2
-uno_cards - 09-Mar-23 11:51:31 - INFO - postion weight is -2 and z is = 4 and i was og 6 #i=2 winning #i=0 drawing #-2 losing
-uno_cards - 09-Mar-23 11:51:31 - INFO - Player 3 postion state is -2
-uno_cards - 09-Mar-23 11:51:31 - INFO - Player 3 played worse card out of his options
-uno_cards - 09-Mar-23 11:51:31 - INFO - [['green', 'plus_2', 6], ['wild', 'switch', 5], ['red', 'reverse', 3], ['pick_up', None, 0]] the psotion looking ['red', 'reverse', 3]
-uno_cards - 09-Mar-23 11:51:31 - INFO - ai_choice broke with ['red', 'reverse'] and is was == to ['red', 'reverse', 3] 
-uno_cards - 09-Mar-23 11:51:33 - INFO - Player3 Turn
-uno_cards - 09-Mar-23 11:51:33 - INFO - Player3 wants to play red reverse
-uno_cards - 09-Mar-23 11:51:33 - INFO - check if card in deck: red reverse should be the same as red reverse
-uno_cards - 09-Mar-23 11:51:33 - INFO - current_card = ['red', 'reverse'] and top_current_card = ['red', 'plus_2']
-uno_cards - 09-Mar-23 11:51:33 - INFO - Deck to be reversed, clockwise is now False
-uno_cards - 09-Mar-23 11:51:33 - INFO - current card: ['red', 'reverse'] should not == blue 7
-uno_cards - 09-Mar-23 11:51:33 - INFO - current card: ['red', 'reverse'] should not == blue 2
-uno_cards - 09-Mar-23 11:51:33 - INFO - current card: ['red', 'reverse'] should not == green plus_2
-uno_cards - 09-Mar-23 11:51:33 - INFO - current card: ['red', 'reverse'] should  == red reverse
-uno_cards - 09-Mar-23 11:51:33 - INFO - red reverse will removed out of the deck and count == 1
-uno_cards - 09-Mar-23 11:51:33 - INFO - current card: ['red', 'reverse'] should not == wild switch
-uno_cards - 09-Mar-23 11:51:33 - INFO - current card: ['red', 'reverse'] should not == yellow 4
-uno_cards - 09-Mar-23 11:51:33 - INFO - player 3 should not have ['red', 'reverse'] in it deck: [blue 7, blue 2, green plus_2, wild switch, yellow 4]
-uno_cards - 09-Mar-23 11:51:33 - INFO - Player3 Move: red reverse
-uno_cards - 09-Mar-23 11:51:33 - INFO - Anti Clockwsie, bool should be False. self._clockwise = False
-uno_cards - 09-Mar-23 11:51:33 - INFO - player 2 plus 4 test is False
-uno_cards - 09-Mar-23 11:51:33 - INFO - player 2 plus 2 test is False
-__main__ - 09-Mar-23 11:51:33 - INFO - pick_up card has not changed: yellow plus_2
-uno_cards - 09-Mar-23 11:51:33 - INFO - Amount of cards all players have: Player 1: 9 cards | Player 2: 3 cards | Player 3: 5 cards | Player 4: 4 cards
-uno_cards - 09-Mar-23 11:51:33 - INFO - Card On Top: red reverse
-uno_cards - 09-Mar-23 11:51:33 - INFO - counts before: red 0 blue 0 green 0 yellow 0
-uno_cards - 09-Mar-23 11:51:33 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:33 - INFO - This after (cardname,weight) appended to list for cards: ['blue', '1', 1]
-uno_cards - 09-Mar-23 11:51:33 - INFO - This is g (card weight): 2
-uno_cards - 09-Mar-23 11:51:33 - INFO - This after (cardname,weight) appended to list for cards: ['blue', 'reverse', 2]
-uno_cards - 09-Mar-23 11:51:33 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:33 - INFO - This after (cardname,weight) appended to list for cards: ['blue', '7', 1]
-uno_cards - 09-Mar-23 11:51:33 - INFO - list_for_cards before non playbale cards are removed: [['blue', '1', 1], ['blue', 'reverse', 2], ['blue', '7', 1]]
-uno_cards - 09-Mar-23 11:51:33 - INFO - list_for_cards after non playbale cards are removed: [['blue', 'reverse', 2], ['pick_up', None, 0]]
-uno_cards - 09-Mar-23 11:51:33 - INFO - counts after/amount_of_card_weight: red 0 blue 1 green 0 yellow 0
-uno_cards - 09-Mar-23 11:51:33 - INFO - Player 2 card colour weights/counts before merge sort [['red', 0], ['green', 0], ['yellow', 0], ['blue', 1]]
-uno_cards - 09-Mar-23 11:51:33 - INFO - Player 2 card colour weights/counts after merge sort [['blue', 1], ['yellow', 0], ['green', 0], ['red', 0]]
-uno_cards - 09-Mar-23 11:51:33 - INFO - Player 2 deck with  new weights [['blue', 'reverse', 3], ['pick_up', None, 0]]
-uno_cards - 09-Mar-23 11:51:33 - INFO - Player 2 quicksort used to sort deck: [['blue', 'reverse', 3], ['pick_up', None, 0]]
-uno_cards - 09-Mar-23 11:51:33 - INFO - postion states clockwise = False, order postion = 1
-uno_cards - 09-Mar-23 11:51:33 - INFO - postion weight is 2 and z is = 9 and i was og 3 #i=2 winning #i=0 drawing #-2 losing
-uno_cards - 09-Mar-23 11:51:33 - INFO - Player 2 postion state is 2
-uno_cards - 09-Mar-23 11:51:33 - INFO - Player 2 played his only card
-uno_cards - 09-Mar-23 11:51:33 - INFO - [['blue', 'reverse', 3], ['pick_up', None, 0]] the psotion looking ['blue', 'reverse', 3]
-uno_cards - 09-Mar-23 11:51:33 - INFO - ai_choice broke with ['blue', 'reverse'] and is was == to ['blue', 'reverse', 3] 
-uno_cards - 09-Mar-23 11:51:35 - INFO - Player2 Turn
-uno_cards - 09-Mar-23 11:51:35 - INFO - Player2 wants to play blue reverse
-uno_cards - 09-Mar-23 11:51:35 - INFO - check if card in deck: blue reverse should be the same as blue reverse
-uno_cards - 09-Mar-23 11:51:35 - INFO - current_card = ['blue', 'reverse'] and top_current_card = ['red', 'reverse']
-uno_cards - 09-Mar-23 11:51:35 - WARNING - Deck to be reversed, clockwise is now True
-uno_cards - 09-Mar-23 11:51:35 - INFO - current card: ['blue', 'reverse'] should not == blue 1
-uno_cards - 09-Mar-23 11:51:35 - INFO - current card: ['blue', 'reverse'] should  == blue reverse
-uno_cards - 09-Mar-23 11:51:35 - INFO - blue reverse will removed out of the deck and count == 1
-uno_cards - 09-Mar-23 11:51:35 - INFO - current card: ['blue', 'reverse'] should not == blue 7
-uno_cards - 09-Mar-23 11:51:35 - INFO - player 2 should not have ['blue', 'reverse'] in it deck: [blue 1, blue 7]
-uno_cards - 09-Mar-23 11:51:35 - INFO - Player2 Move: blue reverse
-uno_cards - 09-Mar-23 11:51:35 - INFO - Clockwise, bool should be True. self._clockwise = True
-uno_cards - 09-Mar-23 11:51:35 - INFO - player 3 plus 4 test is False
-uno_cards - 09-Mar-23 11:51:35 - INFO - player 3 plus 2 test is False
-__main__ - 09-Mar-23 11:51:35 - INFO - pick_up card has not changed: yellow plus_2
-uno_cards - 09-Mar-23 11:51:35 - INFO - Amount of cards all players have: Player 1: 9 cards | Player 2: 2 cards | Player 3: 5 cards | Player 4: 4 cards
-uno_cards - 09-Mar-23 11:51:35 - INFO - Card On Top: blue reverse
-uno_cards - 09-Mar-23 11:51:35 - INFO - counts before: red 0 blue 0 green 0 yellow 0
-uno_cards - 09-Mar-23 11:51:35 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:35 - INFO - This after (cardname,weight) appended to list for cards: ['blue', '7', 1]
-uno_cards - 09-Mar-23 11:51:35 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:35 - INFO - This after (cardname,weight) appended to list for cards: ['blue', '2', 1]
-uno_cards - 09-Mar-23 11:51:35 - INFO - This is g (card weight): 5
-uno_cards - 09-Mar-23 11:51:35 - INFO - This after (cardname,weight) appended to list for cards: ['green', 'plus_2', 5]
-uno_cards - 09-Mar-23 11:51:35 - INFO - This is g (card weight): 5
-uno_cards - 09-Mar-23 11:51:35 - INFO - This after (cardname,weight) appended to list for cards: ['wild', 'switch', 5]
-uno_cards - 09-Mar-23 11:51:35 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:35 - INFO - This after (cardname,weight) appended to list for cards: ['yellow', '4', 1]
-uno_cards - 09-Mar-23 11:51:35 - INFO - list_for_cards before non playbale cards are removed: [['blue', '7', 1], ['blue', '2', 1], ['green', 'plus_2', 5], ['wild', 'switch', 5], ['yellow', '4', 1]]
-uno_cards - 09-Mar-23 11:51:35 - INFO - list_for_cards after non playbale cards are removed: [['blue', '7', 1], ['blue', '2', 1], ['wild', 'switch', 5], ['pick_up', None, 0]]
-uno_cards - 09-Mar-23 11:51:35 - INFO - counts after/amount_of_card_weight: red 0 blue 2 green 0 yellow 0
-uno_cards - 09-Mar-23 11:51:35 - INFO - Player 3 card colour weights/counts before merge sort [['red', 0], ['green', 0], ['yellow', 0], ['blue', 2]]
-uno_cards - 09-Mar-23 11:51:35 - INFO - Player 3 card colour weights/counts after merge sort [['blue', 2], ['yellow', 0], ['green', 0], ['red', 0]]
-uno_cards - 09-Mar-23 11:51:35 - INFO - Player 3 deck with  new weights [['blue', '7', 3], ['blue', '2', 3], ['wild', 'switch', 5], ['pick_up', None, 0]]
-uno_cards - 09-Mar-23 11:51:35 - INFO - Player 3 quicksort used to sort deck: [['wild', 'switch', 5], ['blue', '7', 3], ['blue', '2', 3], ['pick_up', None, 0]]
-uno_cards - 09-Mar-23 11:51:35 - INFO - postion states clockwise = True, order postion = 2
-uno_cards - 09-Mar-23 11:51:35 - INFO - postion states clockwise True, order postion = 2
-uno_cards - 09-Mar-23 11:51:35 - INFO - postion weight is -2 and z is = 4 and i was og 5 #i=2 winning #i=0 drawing #-2 losing
-uno_cards - 09-Mar-23 11:51:35 - INFO - Player 3 postion state is -2
-uno_cards - 09-Mar-23 11:51:35 - INFO - Player 3 played his second best card
-uno_cards - 09-Mar-23 11:51:35 - INFO - [['wild', 'switch', 5], ['blue', '7', 3], ['blue', '2', 3], ['pick_up', None, 0]] the psotion looking ['blue', '7', 3]
-uno_cards - 09-Mar-23 11:51:35 - INFO - ai_choice broke with ['blue', '7'] and is was == to ['blue', '7', 3] 
-uno_cards - 09-Mar-23 11:51:36 - INFO - Player3 Turn
-uno_cards - 09-Mar-23 11:51:36 - INFO - Player3 wants to play blue 7
-uno_cards - 09-Mar-23 11:51:36 - INFO - check if card in deck: blue 7 should be the same as blue 7
-uno_cards - 09-Mar-23 11:51:36 - INFO - current_card = ['blue', '7'] and top_current_card = ['blue', 'reverse']
-uno_cards - 09-Mar-23 11:51:36 - INFO - current card: ['blue', '7'] should  == blue 7
-uno_cards - 09-Mar-23 11:51:36 - INFO - blue 7 will removed out of the deck and count == 1
-uno_cards - 09-Mar-23 11:51:36 - INFO - current card: ['blue', '7'] should not == blue 2
-uno_cards - 09-Mar-23 11:51:36 - INFO - current card: ['blue', '7'] should not == green plus_2
-uno_cards - 09-Mar-23 11:51:36 - INFO - current card: ['blue', '7'] should not == wild switch
-uno_cards - 09-Mar-23 11:51:36 - INFO - current card: ['blue', '7'] should not == yellow 4
-uno_cards - 09-Mar-23 11:51:36 - INFO - player 3 should not have ['blue', '7'] in it deck: [blue 2, green plus_2, wild switch, yellow 4]
-uno_cards - 09-Mar-23 11:51:36 - INFO - Player3 Move: blue 7
-uno_cards - 09-Mar-23 11:51:36 - INFO - Clockwise, bool should be True. self._clockwise = True
-uno_cards - 09-Mar-23 11:51:36 - INFO - player 4 plus 4 test is False
-uno_cards - 09-Mar-23 11:51:36 - INFO - player 4 plus 2 test is False
-__main__ - 09-Mar-23 11:51:36 - INFO - pick_up card has not changed: yellow plus_2
-uno_cards - 09-Mar-23 11:51:36 - INFO - Amount of cards all players have: Player 1: 9 cards | Player 2: 2 cards | Player 3: 4 cards | Player 4: 4 cards
-uno_cards - 09-Mar-23 11:51:36 - INFO - Card On Top: blue 7
-uno_cards - 09-Mar-23 11:51:36 - INFO - counts before: red 0 blue 0 green 0 yellow 0
-uno_cards - 09-Mar-23 11:51:36 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:36 - INFO - This after (cardname,weight) appended to list for cards: ['blue', '0', 1]
-uno_cards - 09-Mar-23 11:51:36 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:36 - INFO - This after (cardname,weight) appended to list for cards: ['blue', '6', 1]
-uno_cards - 09-Mar-23 11:51:36 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:36 - INFO - This after (cardname,weight) appended to list for cards: ['red', '8', 1]
-uno_cards - 09-Mar-23 11:51:36 - INFO - This is g (card weight): 1
-uno_cards - 09-Mar-23 11:51:36 - INFO - This after (cardname,weight) appended to list for cards: ['blue', '5', 1]
-uno_cards - 09-Mar-23 11:51:36 - INFO - list_for_cards before non playbale cards are removed: [['blue', '0', 1], ['blue', '6', 1], ['red', '8', 1], ['blue', '5', 1]]
-uno_cards - 09-Mar-23 11:51:36 - INFO - list_for_cards after non playbale cards are removed: [['blue', '0', 1], ['blue', '6', 1], ['blue', '5', 1], ['pick_up', None, 0]]
-uno_cards - 09-Mar-23 11:51:36 - INFO - counts after/amount_of_card_weight: red 0 blue 3 green 0 yellow 0
-uno_cards - 09-Mar-23 11:51:36 - INFO - Player 4 card colour weights/counts before merge sort [['red', 0], ['green', 0], ['yellow', 0], ['blue', 3]]
-uno_cards - 09-Mar-23 11:51:36 - INFO - Player 4 card colour weights/counts after merge sort [['blue', 3], ['yellow', 0], ['green', 0], ['red', 0]]
-uno_cards - 09-Mar-23 11:51:36 - INFO - Player 4 deck with  new weights [['blue', '0', 4], ['blue', '6', 4], ['blue', '5', 4], ['pick_up', None, 0]]
-uno_cards - 09-Mar-23 11:51:36 - INFO - Player 4 quicksort used to sort deck: [['blue', '0', 4], ['blue', '6', 4], ['blue', '5', 4], ['pick_up', None, 0]]
-uno_cards - 09-Mar-23 11:51:36 - INFO - postion states clockwise = True, order postion = 3
-uno_cards - 09-Mar-23 11:51:36 - INFO - postion states clockwise True, order postion = 3
-uno_cards - 09-Mar-23 11:51:36 - INFO - postion weight is 2 and z is = 9 and i was og 4 #i=2 winning #i=0 drawing #-2 losing
-uno_cards - 09-Mar-23 11:51:36 - INFO - Player 4 postion state is 2
-uno_cards - 09-Mar-23 11:51:36 - INFO - Player 4 played his second best card
-uno_cards - 09-Mar-23 11:51:36 - INFO - [['blue', '0', 4], ['blue', '6', 4], ['blue', '5', 4], ['pick_up', None, 0]] the psotion looking ['blue', '6', 4]
-uno_cards - 09-Mar-23 11:51:36 - INFO - ai_choice broke with ['blue', '6'] and is was == to ['blue', '6', 4] 
-uno_cards - 09-Mar-23 11:51:38 - INFO - Player4 Turn
-uno_cards - 09-Mar-23 11:51:38 - INFO - Player4 wants to play blue 6
-uno_cards - 09-Mar-23 11:51:38 - INFO - check if card in deck: blue 6 should be the same as blue 6
-uno_cards - 09-Mar-23 11:51:38 - INFO - current_card = ['blue', '6'] and top_current_card = ['blue', '7']
-uno_cards - 09-Mar-23 11:51:38 - INFO - current card: ['blue', '6'] should not == blue 0
-uno_cards - 09-Mar-23 11:51:38 - INFO - current card: ['blue', '6'] should  == blue 6
-uno_cards - 09-Mar-23 11:51:38 - INFO - blue 6 will removed out of the deck and count == 1
-uno_cards - 09-Mar-23 11:51:38 - INFO - current card: ['blue', '6'] should not == red 8
-uno_cards - 09-Mar-23 11:51:38 - INFO - current card: ['blue', '6'] should not == blue 5
-uno_cards - 09-Mar-23 11:51:38 - INFO - player 4 should not have ['blue', '6'] in it deck: [blue 0, red 8, blue 5]
-uno_cards - 09-Mar-23 11:51:38 - INFO - Player4 Move: blue 6
-uno_cards - 09-Mar-23 11:51:38 - INFO - Clockwise, bool should be True. self._clockwise = True
-uno_cards - 09-Mar-23 11:51:38 - INFO - player 1 plus 4 test is False
-uno_cards - 09-Mar-23 11:51:38 - INFO - player 1 plus 2 test is False
-__main__ - 09-Mar-23 11:51:38 - INFO - pick_up card has not changed: yellow plus_2
-uno_cards - 09-Mar-23 11:51:38 - INFO - Amount of cards all players have: Player 1: 9 cards | Player 2: 2 cards | Player 3: 4 cards | Player 4: 3 cards
-uno_cards - 09-Mar-23 11:51:38 - INFO - Card On Top: blue 6
-gui - 09-Mar-23 11:51:38 - INFO - In playloop
-gui - 09-Mar-23 11:51:48 - INFO - Quit Application
+__main__ - 09-Mar-23 12:12:11 - INFO - Application started
+__main__ - 09-Mar-23 12:12:11 - INFO - __main__ Database is already created
+gui - 09-Mar-23 12:12:11 - INFO - In startloop / Login and Main menu loop
+login - 09-Mar-23 12:12:13 - INFO - account_name = <login.User object at 0x00000166C70BB940>
+login - 09-Mar-23 12:12:13 - INFO - username: erol, check: <sqlite3.Cursor object at 0x00000166CB7A9420>
+login - 09-Mar-23 12:12:13 - INFO - Check is True
+login - 09-Mar-23 12:12:13 - INFO - account_name = <login.User object at 0x00000166C70BB940>
+gui - 09-Mar-23 12:12:13 - INFO - User has enterted : ['erol', '']
+__main__ - 09-Mar-23 12:12:13 - INFO - Player Username: erol
+gui - 09-Mar-23 12:12:13 - INFO - On welcome Loop
+__main__ - 09-Mar-23 12:12:15 - INFO - Currently on the Main Menu, current user is: erol
+gui - 09-Mar-23 12:12:15 - INFO - On Main Menu
+__main__ - 09-Mar-23 12:12:16 - INFO - Pressed the play button
+__main__ - 09-Mar-23 12:12:17 - INFO - erol has chosen the Normal gamemode
+uno_cards - 09-Mar-23 12:12:17 - INFO - Cards in the gamemode: Normal deck: [red 0, red 1, red 2, red 3, red 4, red 5, red 6, red 7, red 8, red 9, red 0, red 1, red 2, red 3, red 4, red 5, red 6, red 7, red 8, red 9, green 0, green 1, green 2, green 3, green 4, green 5, green 6, green 7, green 8, green 9, green 0, green 1, green 2, green 3, green 4, green 5, green 6, green 7, green 8, green 9, blue 0, blue 1, blue 2, blue 3, blue 4, blue 5, blue 6, blue 7, blue 8, blue 9, blue 0, blue 1, blue 2, blue 3, blue 4, blue 5, blue 6, blue 7, blue 8, blue 9, yellow 0, yellow 1, yellow 2, yellow 3, yellow 4, yellow 5, yellow 6, yellow 7, yellow 8, yellow 9, yellow 0, yellow 1, yellow 2, yellow 3, yellow 4, yellow 5, yellow 6, yellow 7, yellow 8, yellow 9, red block, red reverse, red plus_2, green block, green reverse, green plus_2, blue block, blue reverse, blue plus_2, yellow block, yellow reverse, yellow plus_2, red block, red reverse, red plus_2, green block, green reverse, green plus_2, blue block, blue reverse, blue plus_2, yellow block, yellow reverse, yellow plus_2, wild plus_4, wild switch, wild plus_4, wild switch, wild plus_4, wild switch, wild plus_4, wild switch]
+uno_cards - 09-Mar-23 12:12:17 - INFO - shuffles cards: [yellow 1, red block, yellow 4, red 8, wild plus_4, yellow 2, green 9, green 8, green 3, wild plus_4, yellow 9, blue 7, green 2, green block, blue 9, blue 1, yellow 3, green 6, red plus_2, yellow 9, blue 7, blue 5, wild switch, yellow 5, blue 0, yellow plus_2, yellow plus_2, red 4, green 2, red 2, red reverse, blue 2, yellow 6, blue 4, blue 9, blue 1, blue plus_2, red 3, wild switch, green 0, yellow 5, yellow 8, green 4, blue 6, red 1, green 7, blue 5, yellow block, red plus_2, blue 0, green 5, red 7, red 7, blue block, yellow block, yellow 3, yellow reverse, yellow reverse, yellow 7, blue block, red 9, red 0, red 5, green 4, red reverse, green 7, blue plus_2, red 8, red 5, blue reverse, yellow 0, blue reverse, green 3, green block, blue 8, green 9, blue 8, yellow 2, blue 3, green plus_2, blue 4, wild switch, green 6, yellow 8, yellow 6, green 1, green 0, red 4, red 3, red block, blue 2, green reverse, green 8, yellow 1, green 5, wild switch, red 1, green reverse, wild plus_4, wild plus_4, red 0, yellow 0, red 9, yellow 7, green 1, green plus_2, blue 3, red 2, red 6, yellow 4, red 6, blue 6]
+uno_cards - 09-Mar-23 12:12:17 - INFO - count: 112 and actual: 7 and num: 7
+uno_cards - 09-Mar-23 12:12:17 - INFO - cards/self._cards: [green plus_2, blue 3, red 2, red 6, yellow 4, red 6, blue 6]
+uno_cards - 09-Mar-23 12:12:17 - INFO - count: 105 and actual: 7 and num: 7
+uno_cards - 09-Mar-23 12:12:17 - INFO - cards/self._cards: [wild plus_4, wild plus_4, red 0, yellow 0, red 9, yellow 7, green 1]
+uno_cards - 09-Mar-23 12:12:17 - INFO - count: 98 and actual: 7 and num: 7
+uno_cards - 09-Mar-23 12:12:17 - INFO - cards/self._cards: [green reverse, green 8, yellow 1, green 5, wild switch, red 1, green reverse]
+uno_cards - 09-Mar-23 12:12:17 - INFO - count: 91 and actual: 7 and num: 7
+uno_cards - 09-Mar-23 12:12:17 - INFO - cards/self._cards: [yellow 6, green 1, green 0, red 4, red 3, red block, blue 2]
+uno_cards - 09-Mar-23 12:12:17 - INFO - count: 84 and actual: 1 and num: 1
+uno_cards - 09-Mar-23 12:12:17 - INFO - cards/self._cards: [yellow 8]
+__main__ - 09-Mar-23 12:12:17 - INFO - first card before ['yellow', '8']
+__main__ - 09-Mar-23 12:12:17 - INFO - first card after ['yellow', '8']
+uno_cards - 09-Mar-23 12:12:17 - INFO - Game Setter Called, topcurrentcard/startng card is yellow 8
+uno_cards - 09-Mar-23 12:12:17 - INFO - turns are set to 0
+uno_cards - 09-Mar-23 12:12:17 - INFO - count: 83 and actual: 1 and num: 1
+uno_cards - 09-Mar-23 12:12:17 - INFO - cards/self._cards: [green 6]
+__main__ - 09-Mar-23 12:12:17 - INFO - pick_up card has not changed: green 6
+uno_cards - 09-Mar-23 12:12:17 - INFO - Amount of cards all players have: Player 1: 7 cards | Player 2: 7 cards | Player 3: 7 cards | Player 4: 7 cards
+uno_cards - 09-Mar-23 12:12:17 - INFO - Card On Top: yellow 8
+gui - 09-Mar-23 12:12:17 - INFO - In playloop
+uno_cards - 09-Mar-23 12:12:18 - INFO - erol player_move is yellow 4
+uno_cards - 09-Mar-23 12:12:18 - INFO - Player1/erol: yellow 4 card played
+uno_cards - 09-Mar-23 12:12:18 - INFO - check if card in deck: yellow 4 should be the same as yellow 4
+uno_cards - 09-Mar-23 12:12:18 - INFO - current_card = ['yellow', '4'] and top_current_card = ['yellow', '8']
+uno_cards - 09-Mar-23 12:12:18 - INFO - current card: ['yellow', '4'] should not == green plus_2
+uno_cards - 09-Mar-23 12:12:18 - INFO - current card: ['yellow', '4'] should not == blue 3
+uno_cards - 09-Mar-23 12:12:18 - INFO - current card: ['yellow', '4'] should not == red 2
+uno_cards - 09-Mar-23 12:12:18 - INFO - current card: ['yellow', '4'] should not == red 6
+uno_cards - 09-Mar-23 12:12:18 - INFO - current card: ['yellow', '4'] should  == yellow 4
+uno_cards - 09-Mar-23 12:12:18 - INFO - yellow 4 will removed out of the deck and count == 1
+uno_cards - 09-Mar-23 12:12:18 - INFO - current card: ['yellow', '4'] should not == red 6
+uno_cards - 09-Mar-23 12:12:18 - INFO - current card: ['yellow', '4'] should not == blue 6
+uno_cards - 09-Mar-23 12:12:18 - INFO - player 1 should not have ['yellow', '4'] in it deck: [green plus_2, blue 3, red 2, red 6, red 6, blue 6]
+uno_cards - 09-Mar-23 12:12:18 - INFO - Player1 Move: yellow 4
+uno_cards - 09-Mar-23 12:12:18 - INFO - Clockwise, bool should be True. self._clockwise = True
+uno_cards - 09-Mar-23 12:12:18 - INFO - player 2 plus 4 test is False
+uno_cards - 09-Mar-23 12:12:18 - INFO - player 2 plus 2 test is False
+__main__ - 09-Mar-23 12:12:18 - INFO - pick_up card has not changed: green 6
+uno_cards - 09-Mar-23 12:12:18 - INFO - Amount of cards all players have: Player 1: 6 cards | Player 2: 7 cards | Player 3: 7 cards | Player 4: 7 cards
+uno_cards - 09-Mar-23 12:12:18 - INFO - Card On Top: yellow 4
+uno_cards - 09-Mar-23 12:12:18 - INFO - counts before: red 0 blue 0 green 0 yellow 0
+uno_cards - 09-Mar-23 12:12:18 - INFO - This is g (card weight): 10
+uno_cards - 09-Mar-23 12:12:18 - INFO - This after (cardname,weight) appended to list for cards: ['wild', 'plus_4', 10]
+uno_cards - 09-Mar-23 12:12:18 - INFO - This is g (card weight): 10
+uno_cards - 09-Mar-23 12:12:18 - INFO - This after (cardname,weight) appended to list for cards: ['wild', 'plus_4', 10]
+uno_cards - 09-Mar-23 12:12:18 - INFO - This is g (card weight): 1
+uno_cards - 09-Mar-23 12:12:18 - INFO - This after (cardname,weight) appended to list for cards: ['red', '0', 1]
+uno_cards - 09-Mar-23 12:12:18 - INFO - This is g (card weight): 1
+uno_cards - 09-Mar-23 12:12:18 - INFO - This after (cardname,weight) appended to list for cards: ['yellow', '0', 1]
+uno_cards - 09-Mar-23 12:12:18 - INFO - This is g (card weight): 1
+uno_cards - 09-Mar-23 12:12:18 - INFO - This after (cardname,weight) appended to list for cards: ['red', '9', 1]
+uno_cards - 09-Mar-23 12:12:18 - INFO - This is g (card weight): 1
+uno_cards - 09-Mar-23 12:12:18 - INFO - This after (cardname,weight) appended to list for cards: ['yellow', '7', 1]
+uno_cards - 09-Mar-23 12:12:18 - INFO - This is g (card weight): 1
+uno_cards - 09-Mar-23 12:12:18 - INFO - This after (cardname,weight) appended to list for cards: ['green', '1', 1]
+uno_cards - 09-Mar-23 12:12:18 - INFO - list_for_cards before non playbale cards are removed: [['wild', 'plus_4', 10], ['wild', 'plus_4', 10], ['red', '0', 1], ['yellow', '0', 1], ['red', '9', 1], ['yellow', '7', 1], ['green', '1', 1]]
+uno_cards - 09-Mar-23 12:12:18 - INFO - list_for_cards after non playbale cards are removed: [['wild', 'plus_4', 10], ['wild', 'plus_4', 10], ['yellow', '0', 1], ['yellow', '7', 1], ['pick_up', None, 0]]
+uno_cards - 09-Mar-23 12:12:18 - INFO - counts after/amount_of_card_weight: red 0 blue 0 green 0 yellow 2
+uno_cards - 09-Mar-23 12:12:18 - INFO - Player 2 card colour weights/counts before merge sort [['red', 0], ['green', 0], ['yellow', 2], ['blue', 0]]
+uno_cards - 09-Mar-23 12:12:18 - INFO - Player 2 card colour weights/counts after merge sort [['red', 0], ['green', 0], ['yellow', 2], ['blue', 0]]
+uno_cards - 09-Mar-23 12:12:18 - INFO - Player 2 deck with  new weights [['wild', 'plus_4', 10], ['wild', 'plus_4', 10], ['yellow', '0', 3], ['yellow', '7', 3], ['pick_up', None, 0]]
+uno_cards - 09-Mar-23 12:12:18 - INFO - Player 2 quicksort used to sort deck: [['wild', 'plus_4', 10], ['wild', 'plus_4', 10], ['yellow', '0', 3], ['yellow', '7', 3], ['pick_up', None, 0]]
+uno_cards - 09-Mar-23 12:12:18 - INFO - postion states clockwise = True, order postion = 1
+uno_cards - 09-Mar-23 12:12:18 - INFO - postion states clockwise True, order postion = 1
+uno_cards - 09-Mar-23 12:12:18 - INFO - postion weight is 0 and z is = 7 and i was og 7 #i=2 winning #i=0 drawing #-2 losing
+uno_cards - 09-Mar-23 12:12:18 - INFO - Player 2 postion state is 0
+uno_cards - 09-Mar-23 12:12:18 - INFO - Player 2 played worse card out of his options
+uno_cards - 09-Mar-23 12:12:18 - INFO - [['wild', 'plus_4', 10], ['wild', 'plus_4', 10], ['yellow', '0', 3], ['yellow', '7', 3], ['pick_up', None, 0]] the psotion looking ['yellow', '0', 3]
+uno_cards - 09-Mar-23 12:12:18 - INFO - ai_choice broke with ['yellow', '0'] and is was == to ['yellow', '0', 3] 
+uno_cards - 09-Mar-23 12:12:19 - INFO - Player2 Turn
+uno_cards - 09-Mar-23 12:12:19 - INFO - Player2 wants to play yellow 0
+uno_cards - 09-Mar-23 12:12:19 - INFO - check if card in deck: yellow 0 should be the same as yellow 0
+uno_cards - 09-Mar-23 12:12:19 - INFO - current_card = ['yellow', '0'] and top_current_card = ['yellow', '4']
+uno_cards - 09-Mar-23 12:12:19 - INFO - current card: ['yellow', '0'] should not == wild plus_4
+uno_cards - 09-Mar-23 12:12:19 - INFO - current card: ['yellow', '0'] should not == wild plus_4
+uno_cards - 09-Mar-23 12:12:19 - INFO - current card: ['yellow', '0'] should not == red 0
+uno_cards - 09-Mar-23 12:12:19 - INFO - current card: ['yellow', '0'] should  == yellow 0
+uno_cards - 09-Mar-23 12:12:19 - INFO - yellow 0 will removed out of the deck and count == 1
+uno_cards - 09-Mar-23 12:12:19 - INFO - current card: ['yellow', '0'] should not == red 9
+uno_cards - 09-Mar-23 12:12:19 - INFO - current card: ['yellow', '0'] should not == yellow 7
+uno_cards - 09-Mar-23 12:12:19 - INFO - current card: ['yellow', '0'] should not == green 1
+uno_cards - 09-Mar-23 12:12:19 - INFO - player 2 should not have ['yellow', '0'] in it deck: [wild plus_4, wild plus_4, red 0, red 9, yellow 7, green 1]
+uno_cards - 09-Mar-23 12:12:19 - INFO - Player2 Move: yellow 0
+uno_cards - 09-Mar-23 12:12:19 - INFO - Clockwise, bool should be True. self._clockwise = True
+uno_cards - 09-Mar-23 12:12:19 - INFO - player 3 plus 4 test is False
+uno_cards - 09-Mar-23 12:12:19 - INFO - player 3 plus 2 test is False
+__main__ - 09-Mar-23 12:12:19 - INFO - pick_up card has not changed: green 6
+uno_cards - 09-Mar-23 12:12:19 - INFO - Amount of cards all players have: Player 1: 6 cards | Player 2: 6 cards | Player 3: 7 cards | Player 4: 7 cards
+uno_cards - 09-Mar-23 12:12:19 - INFO - Card On Top: yellow 0
+uno_cards - 09-Mar-23 12:12:19 - INFO - counts before: red 0 blue 0 green 0 yellow 0
+uno_cards - 09-Mar-23 12:12:19 - INFO - This is g (card weight): 2
+uno_cards - 09-Mar-23 12:12:19 - INFO - This after (cardname,weight) appended to list for cards: ['green', 'reverse', 2]
+uno_cards - 09-Mar-23 12:12:19 - INFO - This is g (card weight): 1
+uno_cards - 09-Mar-23 12:12:19 - INFO - This after (cardname,weight) appended to list for cards: ['green', '8', 1]
+uno_cards - 09-Mar-23 12:12:19 - INFO - This is g (card weight): 1
+uno_cards - 09-Mar-23 12:12:19 - INFO - This after (cardname,weight) appended to list for cards: ['yellow', '1', 1]
+uno_cards - 09-Mar-23 12:12:19 - INFO - This is g (card weight): 1
+uno_cards - 09-Mar-23 12:12:19 - INFO - This after (cardname,weight) appended to list for cards: ['green', '5', 1]
+uno_cards - 09-Mar-23 12:12:19 - INFO - This is g (card weight): 5
+uno_cards - 09-Mar-23 12:12:19 - INFO - This after (cardname,weight) appended to list for cards: ['wild', 'switch', 5]
+uno_cards - 09-Mar-23 12:12:19 - INFO - This is g (card weight): 1
+uno_cards - 09-Mar-23 12:12:19 - INFO - This after (cardname,weight) appended to list for cards: ['red', '1', 1]
+uno_cards - 09-Mar-23 12:12:19 - INFO - This is g (card weight): 2
+uno_cards - 09-Mar-23 12:12:19 - INFO - This after (cardname,weight) appended to list for cards: ['green', 'reverse', 2]
+uno_cards - 09-Mar-23 12:12:19 - INFO - list_for_cards before non playbale cards are removed: [['green', 'reverse', 2], ['green', '8', 1], ['yellow', '1', 1], ['green', '5', 1], ['wild', 'switch', 5], ['red', '1', 1], ['green', 'reverse', 2]]
+uno_cards - 09-Mar-23 12:12:19 - INFO - list_for_cards after non playbale cards are removed: [['yellow', '1', 1], ['wild', 'switch', 5], ['pick_up', None, 0]]
+uno_cards - 09-Mar-23 12:12:19 - INFO - counts after/amount_of_card_weight: red 0 blue 0 green 0 yellow 1
+uno_cards - 09-Mar-23 12:12:19 - INFO - Player 3 card colour weights/counts before merge sort [['red', 0], ['green', 0], ['yellow', 1], ['blue', 0]]
+uno_cards - 09-Mar-23 12:12:19 - INFO - Player 3 card colour weights/counts after merge sort [['red', 0], ['green', 0], ['yellow', 1], ['blue', 0]]
+uno_cards - 09-Mar-23 12:12:19 - INFO - Player 3 deck with  new weights [['yellow', '1', 2], ['wild', 'switch', 5], ['pick_up', None, 0]]
+uno_cards - 09-Mar-23 12:12:19 - INFO - Player 3 quicksort used to sort deck: [['wild', 'switch', 5], ['yellow', '1', 2], ['pick_up', None, 0]]
+uno_cards - 09-Mar-23 12:12:19 - INFO - postion states clockwise = True, order postion = 2
+uno_cards - 09-Mar-23 12:12:19 - INFO - postion states clockwise True, order postion = 2
+uno_cards - 09-Mar-23 12:12:19 - INFO - postion weight is 0 and z is = 7 and i was og 7 #i=2 winning #i=0 drawing #-2 losing
+uno_cards - 09-Mar-23 12:12:19 - INFO - Player 3 postion state is 0
+uno_cards - 09-Mar-23 12:12:19 - INFO - Player 3 played his second best card
+uno_cards - 09-Mar-23 12:12:19 - INFO - [['wild', 'switch', 5], ['yellow', '1', 2], ['pick_up', None, 0]] the psotion looking ['yellow', '1', 2]
+uno_cards - 09-Mar-23 12:12:19 - INFO - ai_choice broke with ['yellow', '1'] and is was == to ['yellow', '1', 2] 
+uno_cards - 09-Mar-23 12:12:21 - INFO - Player3 Turn
+uno_cards - 09-Mar-23 12:12:21 - INFO - Player3 wants to play yellow 1
+uno_cards - 09-Mar-23 12:12:21 - INFO - check if card in deck: yellow 1 should be the same as yellow 1
+uno_cards - 09-Mar-23 12:12:21 - INFO - current_card = ['yellow', '1'] and top_current_card = ['yellow', '0']
+uno_cards - 09-Mar-23 12:12:21 - INFO - current card: ['yellow', '1'] should not == green reverse
+uno_cards - 09-Mar-23 12:12:21 - INFO - current card: ['yellow', '1'] should not == green 8
+uno_cards - 09-Mar-23 12:12:21 - INFO - current card: ['yellow', '1'] should  == yellow 1
+uno_cards - 09-Mar-23 12:12:21 - INFO - yellow 1 will removed out of the deck and count == 1
+uno_cards - 09-Mar-23 12:12:21 - INFO - current card: ['yellow', '1'] should not == green 5
+uno_cards - 09-Mar-23 12:12:21 - INFO - current card: ['yellow', '1'] should not == wild switch
+uno_cards - 09-Mar-23 12:12:21 - INFO - current card: ['yellow', '1'] should not == red 1
+uno_cards - 09-Mar-23 12:12:21 - INFO - current card: ['yellow', '1'] should not == green reverse
+uno_cards - 09-Mar-23 12:12:21 - INFO - player 3 should not have ['yellow', '1'] in it deck: [green reverse, green 8, green 5, wild switch, red 1, green reverse]
+uno_cards - 09-Mar-23 12:12:21 - INFO - Player3 Move: yellow 1
+uno_cards - 09-Mar-23 12:12:21 - INFO - Clockwise, bool should be True. self._clockwise = True
+uno_cards - 09-Mar-23 12:12:21 - INFO - player 4 plus 4 test is False
+uno_cards - 09-Mar-23 12:12:21 - INFO - player 4 plus 2 test is False
+__main__ - 09-Mar-23 12:12:21 - INFO - pick_up card has not changed: green 6
+uno_cards - 09-Mar-23 12:12:21 - INFO - Amount of cards all players have: Player 1: 6 cards | Player 2: 6 cards | Player 3: 6 cards | Player 4: 7 cards
+uno_cards - 09-Mar-23 12:12:21 - INFO - Card On Top: yellow 1
+uno_cards - 09-Mar-23 12:12:21 - INFO - counts before: red 0 blue 0 green 0 yellow 0
+uno_cards - 09-Mar-23 12:12:21 - INFO - This is g (card weight): 1
+uno_cards - 09-Mar-23 12:12:21 - INFO - This after (cardname,weight) appended to list for cards: ['yellow', '6', 1]
+uno_cards - 09-Mar-23 12:12:21 - INFO - This is g (card weight): 1
+uno_cards - 09-Mar-23 12:12:21 - INFO - This after (cardname,weight) appended to list for cards: ['green', '1', 1]
+uno_cards - 09-Mar-23 12:12:21 - INFO - This is g (card weight): 1
+uno_cards - 09-Mar-23 12:12:21 - INFO - This after (cardname,weight) appended to list for cards: ['green', '0', 1]
+uno_cards - 09-Mar-23 12:12:21 - INFO - This is g (card weight): 1
+uno_cards - 09-Mar-23 12:12:21 - INFO - This after (cardname,weight) appended to list for cards: ['red', '4', 1]
+uno_cards - 09-Mar-23 12:12:21 - INFO - This is g (card weight): 1
+uno_cards - 09-Mar-23 12:12:21 - INFO - This after (cardname,weight) appended to list for cards: ['red', '3', 1]
+uno_cards - 09-Mar-23 12:12:21 - INFO - This is g (card weight): 3
+uno_cards - 09-Mar-23 12:12:21 - INFO - This after (cardname,weight) appended to list for cards: ['red', 'block', 3]
+uno_cards - 09-Mar-23 12:12:21 - INFO - This is g (card weight): 1
+uno_cards - 09-Mar-23 12:12:21 - INFO - This after (cardname,weight) appended to list for cards: ['blue', '2', 1]
+uno_cards - 09-Mar-23 12:12:21 - INFO - list_for_cards before non playbale cards are removed: [['yellow', '6', 1], ['green', '1', 1], ['green', '0', 1], ['red', '4', 1], ['red', '3', 1], ['red', 'block', 3], ['blue', '2', 1]]
+uno_cards - 09-Mar-23 12:12:21 - INFO - list_for_cards after non playbale cards are removed: [['yellow', '6', 1], ['green', '1', 1], ['pick_up', None, 0]]
+uno_cards - 09-Mar-23 12:12:21 - INFO - counts after/amount_of_card_weight: red 0 blue 0 green 1 yellow 1
+uno_cards - 09-Mar-23 12:12:21 - INFO - Player 4 card colour weights/counts before merge sort [['red', 0], ['green', 1], ['yellow', 1], ['blue', 0]]
+uno_cards - 09-Mar-23 12:12:21 - INFO - Player 4 card colour weights/counts after merge sort [['red', 0], ['green', 1], ['yellow', 1], ['blue', 0]]
+uno_cards - 09-Mar-23 12:12:21 - INFO - Player 4 deck with  new weights [['yellow', '6', 2], ['green', '1', 2], ['pick_up', None, 0]]
+uno_cards - 09-Mar-23 12:12:21 - INFO - Player 4 quicksort used to sort deck: [['yellow', '6', 2], ['green', '1', 2], ['pick_up', None, 0]]
+uno_cards - 09-Mar-23 12:12:21 - INFO - postion states clockwise = True, order postion = 3
+uno_cards - 09-Mar-23 12:12:21 - INFO - postion states clockwise True, order postion = 3
+uno_cards - 09-Mar-23 12:12:21 - INFO - postion weight is -2 and z is = 6 and i was og 7 #i=2 winning #i=0 drawing #-2 losing
+uno_cards - 09-Mar-23 12:12:21 - INFO - Player 4 postion state is -2
+uno_cards - 09-Mar-23 12:12:21 - INFO - Player 4 played worse card out of his options
+uno_cards - 09-Mar-23 12:12:21 - INFO - [['yellow', '6', 2], ['green', '1', 2], ['pick_up', None, 0]] the psotion looking ['green', '1', 2]
+uno_cards - 09-Mar-23 12:12:21 - INFO - ai_choice broke with ['green', '1'] and is was == to ['green', '1', 2] 
+uno_cards - 09-Mar-23 12:12:23 - INFO - Player4 Turn
+uno_cards - 09-Mar-23 12:12:23 - INFO - Player4 wants to play green 1
+uno_cards - 09-Mar-23 12:12:23 - INFO - check if card in deck: green 1 should be the same as green 1
+uno_cards - 09-Mar-23 12:12:23 - INFO - current_card = ['green', '1'] and top_current_card = ['yellow', '1']
+uno_cards - 09-Mar-23 12:12:23 - INFO - current card: ['green', '1'] should not == yellow 6
+uno_cards - 09-Mar-23 12:12:23 - INFO - current card: ['green', '1'] should  == green 1
+uno_cards - 09-Mar-23 12:12:23 - INFO - green 1 will removed out of the deck and count == 1
+uno_cards - 09-Mar-23 12:12:23 - INFO - current card: ['green', '1'] should not == green 0
+uno_cards - 09-Mar-23 12:12:23 - INFO - current card: ['green', '1'] should not == red 4
+uno_cards - 09-Mar-23 12:12:23 - INFO - current card: ['green', '1'] should not == red 3
+uno_cards - 09-Mar-23 12:12:23 - INFO - current card: ['green', '1'] should not == red block
+uno_cards - 09-Mar-23 12:12:23 - INFO - current card: ['green', '1'] should not == blue 2
+uno_cards - 09-Mar-23 12:12:23 - INFO - player 4 should not have ['green', '1'] in it deck: [yellow 6, green 0, red 4, red 3, red block, blue 2]
+uno_cards - 09-Mar-23 12:12:23 - INFO - Player4 Move: green 1
+uno_cards - 09-Mar-23 12:12:23 - INFO - Clockwise, bool should be True. self._clockwise = True
+uno_cards - 09-Mar-23 12:12:23 - INFO - player 1 plus 4 test is False
+uno_cards - 09-Mar-23 12:12:23 - INFO - player 1 plus 2 test is False
+__main__ - 09-Mar-23 12:12:23 - INFO - pick_up card has not changed: green 6
+uno_cards - 09-Mar-23 12:12:23 - INFO - Amount of cards all players have: Player 1: 6 cards | Player 2: 6 cards | Player 3: 6 cards | Player 4: 6 cards
+uno_cards - 09-Mar-23 12:12:23 - INFO - Card On Top: green 1
+gui - 09-Mar-23 12:12:23 - INFO - In playloop
+uno_cards - 09-Mar-23 12:13:24 - INFO - erol player_move is green plus_2
+uno_cards - 09-Mar-23 12:13:24 - INFO - Player1/erol: green plus_2 card played
+uno_cards - 09-Mar-23 12:13:24 - INFO - check if card in deck: green plus_2 should be the same as green plus_2
+uno_cards - 09-Mar-23 12:13:24 - INFO - current_card = ['green', 'plus_2'] and top_current_card = ['green', '1']
+uno_cards - 09-Mar-23 12:13:24 - INFO - player 1 plus 2 test is True: ['green', '1'] == ['green', 'plus_2']
+uno_cards - 09-Mar-23 12:13:24 - INFO - current card: ['green', 'plus_2'] should  == green plus_2
+uno_cards - 09-Mar-23 12:13:24 - INFO - green plus_2 will removed out of the deck and count == 1
+uno_cards - 09-Mar-23 12:13:24 - INFO - current card: ['green', 'plus_2'] should not == blue 3
+uno_cards - 09-Mar-23 12:13:24 - INFO - current card: ['green', 'plus_2'] should not == red 2
+uno_cards - 09-Mar-23 12:13:24 - INFO - current card: ['green', 'plus_2'] should not == red 6
+uno_cards - 09-Mar-23 12:13:24 - INFO - current card: ['green', 'plus_2'] should not == red 6
+uno_cards - 09-Mar-23 12:13:24 - INFO - current card: ['green', 'plus_2'] should not == blue 6
+uno_cards - 09-Mar-23 12:13:24 - INFO - player 1 should not have ['green', 'plus_2'] in it deck: [blue 3, red 2, red 6, red 6, blue 6]
+uno_cards - 09-Mar-23 12:13:24 - INFO - Player1 Move: green plus_2
+uno_cards - 09-Mar-23 12:13:24 - INFO - Clockwise, bool should be True. self._clockwise = True
+uno_cards - 09-Mar-23 12:13:24 - INFO - player 2 plus 4 test is False
+uno_cards - 09-Mar-23 12:13:24 - INFO - player 2 plus 2 test is True: ['green', 'plus_2'] == ['green', 'plus_2']
+__main__ - 09-Mar-23 12:13:24 - INFO - Plus 2 check is TRUE
+uno_cards - 09-Mar-23 12:13:24 - INFO - count: 82 and actual: 1 and num: 1
+uno_cards - 09-Mar-23 12:13:24 - INFO - cards/self._cards: [wild switch]
+uno_cards - 09-Mar-23 12:13:24 - INFO - count: 81 and actual: 1 and num: 1
+uno_cards - 09-Mar-23 12:13:24 - INFO - cards/self._cards: [blue 4]
+uno_cards - 09-Mar-23 12:13:24 - INFO - player 2  + [wild switch, blue 4], clockwise True
+uno_cards - 09-Mar-23 12:13:24 - INFO - player 2 deck is now [wild plus_4, wild plus_4, red 0, red 9, yellow 7, green 1, wild switch, blue 4]
+__main__ - 09-Mar-23 12:13:24 - INFO - pick_up card has not changed: green 6
+uno_cards - 09-Mar-23 12:13:24 - INFO - Amount of cards all players have: Player 1: 5 cards | Player 2: 8 cards | Player 3: 6 cards | Player 4: 6 cards
+uno_cards - 09-Mar-23 12:13:24 - INFO - Card On Top: green plus_2
+uno_cards - 09-Mar-23 12:13:24 - INFO - counts before: red 0 blue 0 green 0 yellow 0
+uno_cards - 09-Mar-23 12:13:24 - INFO - This is g (card weight): 10
+uno_cards - 09-Mar-23 12:13:24 - INFO - This after (cardname,weight) appended to list for cards: ['wild', 'plus_4', 10]
+uno_cards - 09-Mar-23 12:13:24 - INFO - This is g (card weight): 10
+uno_cards - 09-Mar-23 12:13:24 - INFO - This after (cardname,weight) appended to list for cards: ['wild', 'plus_4', 10]
+uno_cards - 09-Mar-23 12:13:24 - INFO - This is g (card weight): 1
+uno_cards - 09-Mar-23 12:13:24 - INFO - This after (cardname,weight) appended to list for cards: ['red', '0', 1]
+uno_cards - 09-Mar-23 12:13:24 - INFO - This is g (card weight): 1
+uno_cards - 09-Mar-23 12:13:24 - INFO - This after (cardname,weight) appended to list for cards: ['red', '9', 1]
+uno_cards - 09-Mar-23 12:13:24 - INFO - This is g (card weight): 1
+uno_cards - 09-Mar-23 12:13:24 - INFO - This after (cardname,weight) appended to list for cards: ['yellow', '7', 1]
+uno_cards - 09-Mar-23 12:13:24 - INFO - This is g (card weight): 1
+uno_cards - 09-Mar-23 12:13:24 - INFO - This after (cardname,weight) appended to list for cards: ['green', '1', 1]
+uno_cards - 09-Mar-23 12:13:24 - INFO - This is g (card weight): 5
+uno_cards - 09-Mar-23 12:13:24 - INFO - This after (cardname,weight) appended to list for cards: ['wild', 'switch', 5]
+uno_cards - 09-Mar-23 12:13:24 - INFO - This is g (card weight): 1
+uno_cards - 09-Mar-23 12:13:24 - INFO - This after (cardname,weight) appended to list for cards: ['blue', '4', 1]
+uno_cards - 09-Mar-23 12:13:24 - INFO - list_for_cards before non playbale cards are removed: [['wild', 'plus_4', 10], ['wild', 'plus_4', 10], ['red', '0', 1], ['red', '9', 1], ['yellow', '7', 1], ['green', '1', 1], ['wild', 'switch', 5], ['blue', '4', 1]]
+uno_cards - 09-Mar-23 12:13:24 - INFO - list_for_cards after non playbale cards are removed: [['wild', 'plus_4', 10], ['wild', 'plus_4', 10], ['green', '1', 1], ['wild', 'switch', 5], ['pick_up', None, 0]]
+uno_cards - 09-Mar-23 12:13:24 - INFO - counts after/amount_of_card_weight: red 0 blue 0 green 1 yellow 0
+uno_cards - 09-Mar-23 12:13:24 - INFO - Player 2 card colour weights/counts before merge sort [['red', 0], ['green', 1], ['yellow', 0], ['blue', 0]]
+uno_cards - 09-Mar-23 12:13:24 - INFO - Player 2 card colour weights/counts after merge sort [['red', 0], ['green', 1], ['yellow', 0], ['blue', 0]]
+uno_cards - 09-Mar-23 12:13:24 - INFO - Player 2 deck with  new weights [['wild', 'plus_4', 10], ['wild', 'plus_4', 10], ['green', '1', 2], ['wild', 'switch', 5], ['pick_up', None, 0]]
+uno_cards - 09-Mar-23 12:13:24 - INFO - Player 2 quicksort used to sort deck: [['wild', 'plus_4', 10], ['wild', 'plus_4', 10], ['wild', 'switch', 5], ['green', '1', 2], ['pick_up', None, 0]]
+uno_cards - 09-Mar-23 12:13:24 - INFO - postion states clockwise = True, order postion = 1
+uno_cards - 09-Mar-23 12:13:24 - INFO - postion states clockwise True, order postion = 1
+uno_cards - 09-Mar-23 12:13:24 - INFO - postion weight is -2 and z is = 6 and i was og 8 #i=2 winning #i=0 drawing #-2 losing
+uno_cards - 09-Mar-23 12:13:24 - INFO - Player 2 postion state is -2
+uno_cards - 09-Mar-23 12:13:24 - INFO - Player 2 played his second best card
+uno_cards - 09-Mar-23 12:13:24 - INFO - [['wild', 'plus_4', 10], ['wild', 'plus_4', 10], ['wild', 'switch', 5], ['green', '1', 2], ['pick_up', None, 0]] the psotion looking ['wild', 'plus_4', 10]
+uno_cards - 09-Mar-23 12:13:24 - INFO - ai_choice broke with ['wild', 'plus_4'] and is was == to ['wild', 'plus_4', 10] 
+uno_cards - 09-Mar-23 12:13:25 - INFO - Player2 Turn
+uno_cards - 09-Mar-23 12:13:25 - INFO - Player2 wants to play wild plus_4
+uno_cards - 09-Mar-23 12:13:25 - INFO - check if card in deck: wild plus_4 should be the same as wild plus_4
+uno_cards - 09-Mar-23 12:13:25 - INFO - current_card = ['wild', 'plus_4'] and top_current_card = ['green', 'plus_2']
+uno_cards - 09-Mar-23 12:13:25 - INFO - Current card is a wild
+uno_cards - 09-Mar-23 12:13:25 - INFO - Player 2 played a wild
+uno_cards - 09-Mar-23 12:13:25 - INFO - list_for_cards card weights without checking amount of card colours in total: [['wild', 'plus_4', 10], ['wild', 'plus_4', 10], ['red', '0', 1], ['red', '9', 1], ['yellow', '7', 1], ['green', '1', 1], ['wild', 'switch', 5], ['blue', '4', 1]]
+uno_cards - 09-Mar-23 12:13:25 - INFO - All card weights in total unsorted: amount_of_card_weight = [['red', 2], ['green', 1], ['yellow', 1], ['blue', 1]]
+uno_cards - 09-Mar-23 12:13:25 - INFO - All card weights in total sorted: amount_of_card_weight = [['red', 2], ['blue', 1], ['yellow', 1], ['green', 1]]
+uno_cards - 09-Mar-23 12:13:25 - INFO - Chose the best colour red
+uno_cards - 09-Mar-23 12:13:25 - INFO - current card: ['wild', 'plus_4'] should  == wild plus_4
+uno_cards - 09-Mar-23 12:13:25 - INFO - wild plus_4 will removed out of the deck and count == 1
+uno_cards - 09-Mar-23 12:13:25 - INFO - current card: ['wild', 'plus_4'] should  == wild plus_4
+uno_cards - 09-Mar-23 12:13:25 - INFO - count should equal 1 already: 1
+uno_cards - 09-Mar-23 12:13:25 - INFO - current card: ['wild', 'plus_4'] should not == red 0
+uno_cards - 09-Mar-23 12:13:25 - INFO - current card: ['wild', 'plus_4'] should not == red 9
+uno_cards - 09-Mar-23 12:13:25 - INFO - current card: ['wild', 'plus_4'] should not == yellow 7
+uno_cards - 09-Mar-23 12:13:25 - INFO - current card: ['wild', 'plus_4'] should not == green 1
+uno_cards - 09-Mar-23 12:13:25 - INFO - current card: ['wild', 'plus_4'] should not == wild switch
+uno_cards - 09-Mar-23 12:13:25 - INFO - current card: ['wild', 'plus_4'] should not == blue 4
+uno_cards - 09-Mar-23 12:13:25 - INFO - player 2 should not have ['wild', 'plus_4'] in it deck: [wild plus_4, red 0, red 9, yellow 7, green 1, wild switch, blue 4]
+uno_cards - 09-Mar-23 12:13:25 - INFO - Player2 Move: wild plus_4
+uno_cards - 09-Mar-23 12:13:25 - INFO - Clockwise, bool should be True. self._clockwise = True
+uno_cards - 09-Mar-23 12:13:25 - INFO - player 3 plus 4 test is True current_card[1] = plus_4
+__main__ - 09-Mar-23 12:13:25 - INFO - Plus 4 check is TRUE
+uno_cards - 09-Mar-23 12:13:25 - INFO - count: 80 and actual: 1 and num: 1
+uno_cards - 09-Mar-23 12:13:25 - INFO - cards/self._cards: [green plus_2]
+uno_cards - 09-Mar-23 12:13:25 - INFO - count: 79 and actual: 1 and num: 1
+uno_cards - 09-Mar-23 12:13:25 - INFO - cards/self._cards: [blue 3]
+uno_cards - 09-Mar-23 12:13:25 - INFO - count: 78 and actual: 1 and num: 1
+uno_cards - 09-Mar-23 12:13:25 - INFO - cards/self._cards: [yellow 2]
+uno_cards - 09-Mar-23 12:13:25 - INFO - count: 77 and actual: 1 and num: 1
+uno_cards - 09-Mar-23 12:13:25 - INFO - cards/self._cards: [blue 8]
+__main__ - 09-Mar-23 12:13:25 - INFO - add_cards = [green plus_2, blue 3, yellow 2, blue 8] for plus 4
+uno_cards - 09-Mar-23 12:13:25 - INFO - player 3  + [green plus_2, blue 3, yellow 2, blue 8], clockwise True
+uno_cards - 09-Mar-23 12:13:25 - INFO - player 3 deck is now [green reverse, green 8, green 5, wild switch, red 1, green reverse, green plus_2, blue 3, yellow 2, blue 8]
+uno_cards - 09-Mar-23 12:13:25 - INFO - player 3 plus 2 test is False
+__main__ - 09-Mar-23 12:13:25 - INFO - pick_up card has not changed: green 6
+uno_cards - 09-Mar-23 12:13:25 - INFO - Amount of cards all players have: Player 1: 5 cards | Player 2: 7 cards | Player 3: 10 cards | Player 4: 6 cards
+uno_cards - 09-Mar-23 12:13:25 - INFO - Card On Top: red 
+uno_cards - 09-Mar-23 12:13:25 - INFO - counts before: red 0 blue 0 green 0 yellow 0
+uno_cards - 09-Mar-23 12:13:25 - INFO - This is g (card weight): 2
+uno_cards - 09-Mar-23 12:13:25 - INFO - This after (cardname,weight) appended to list for cards: ['green', 'reverse', 2]
+uno_cards - 09-Mar-23 12:13:25 - INFO - This is g (card weight): 1
+uno_cards - 09-Mar-23 12:13:25 - INFO - This after (cardname,weight) appended to list for cards: ['green', '8', 1]
+uno_cards - 09-Mar-23 12:13:25 - INFO - This is g (card weight): 1
+uno_cards - 09-Mar-23 12:13:25 - INFO - This after (cardname,weight) appended to list for cards: ['green', '5', 1]
+uno_cards - 09-Mar-23 12:13:25 - INFO - This is g (card weight): 5
+uno_cards - 09-Mar-23 12:13:25 - INFO - This after (cardname,weight) appended to list for cards: ['wild', 'switch', 5]
+uno_cards - 09-Mar-23 12:13:25 - INFO - This is g (card weight): 1
+uno_cards - 09-Mar-23 12:13:25 - INFO - This after (cardname,weight) appended to list for cards: ['red', '1', 1]
+uno_cards - 09-Mar-23 12:13:25 - INFO - This is g (card weight): 2
+uno_cards - 09-Mar-23 12:13:25 - INFO - This after (cardname,weight) appended to list for cards: ['green', 'reverse', 2]
+uno_cards - 09-Mar-23 12:13:25 - INFO - This is g (card weight): 5
+uno_cards - 09-Mar-23 12:13:25 - INFO - This after (cardname,weight) appended to list for cards: ['green', 'plus_2', 5]
+uno_cards - 09-Mar-23 12:13:25 - INFO - This is g (card weight): 1
+uno_cards - 09-Mar-23 12:13:25 - INFO - This after (cardname,weight) appended to list for cards: ['blue', '3', 1]
+uno_cards - 09-Mar-23 12:13:25 - INFO - This is g (card weight): 1
+uno_cards - 09-Mar-23 12:13:25 - INFO - This after (cardname,weight) appended to list for cards: ['yellow', '2', 1]
+uno_cards - 09-Mar-23 12:13:25 - INFO - This is g (card weight): 1
+uno_cards - 09-Mar-23 12:13:25 - INFO - This after (cardname,weight) appended to list for cards: ['blue', '8', 1]
+uno_cards - 09-Mar-23 12:13:25 - INFO - list_for_cards before non playbale cards are removed: [['green', 'reverse', 2], ['green', '8', 1], ['green', '5', 1], ['wild', 'switch', 5], ['red', '1', 1], ['green', 'reverse', 2], ['green', 'plus_2', 5], ['blue', '3', 1], ['yellow', '2', 1], ['blue', '8', 1]]
+uno_cards - 09-Mar-23 12:13:25 - INFO - list_for_cards after non playbale cards are removed: [['wild', 'switch', 5], ['red', '1', 1], ['pick_up', None, 0]]
+uno_cards - 09-Mar-23 12:13:25 - INFO - counts after/amount_of_card_weight: red 1 blue 0 green 0 yellow 0
+uno_cards - 09-Mar-23 12:13:25 - INFO - Player 3 card colour weights/counts before merge sort [['red', 1], ['green', 0], ['yellow', 0], ['blue', 0]]
+uno_cards - 09-Mar-23 12:13:25 - INFO - Player 3 card colour weights/counts after merge sort [['red', 1], ['green', 0], ['yellow', 0], ['blue', 0]]
+uno_cards - 09-Mar-23 12:13:25 - INFO - Player 3 deck with  new weights [['wild', 'switch', 5], ['red', '1', 2], ['pick_up', None, 0]]
+uno_cards - 09-Mar-23 12:13:25 - INFO - Player 3 quicksort used to sort deck: [['wild', 'switch', 5], ['red', '1', 2], ['pick_up', None, 0]]
+uno_cards - 09-Mar-23 12:13:25 - INFO - postion states clockwise = True, order postion = 2
+uno_cards - 09-Mar-23 12:13:25 - INFO - postion states clockwise True, order postion = 2
+uno_cards - 09-Mar-23 12:13:25 - INFO - postion weight is -2 and z is = 6 and i was og 10 #i=2 winning #i=0 drawing #-2 losing
+uno_cards - 09-Mar-23 12:13:25 - INFO - Player 3 postion state is -2
+uno_cards - 09-Mar-23 12:13:25 - INFO - Player 3 played worse card out of his options
+uno_cards - 09-Mar-23 12:13:25 - INFO - [['wild', 'switch', 5], ['red', '1', 2], ['pick_up', None, 0]] the psotion looking ['red', '1', 2]
+uno_cards - 09-Mar-23 12:13:25 - INFO - ai_choice broke with ['red', '1'] and is was == to ['red', '1', 2] 
+uno_cards - 09-Mar-23 12:13:27 - INFO - Player3 Turn
+uno_cards - 09-Mar-23 12:13:27 - INFO - Player3 wants to play red 1
+uno_cards - 09-Mar-23 12:13:27 - INFO - check if card in deck: red 1 should be the same as red 1
+uno_cards - 09-Mar-23 12:13:27 - INFO - current_card = ['red', '1'] and top_current_card = ['red', '']
+uno_cards - 09-Mar-23 12:13:27 - INFO - current card: ['red', '1'] should not == green reverse
+uno_cards - 09-Mar-23 12:13:27 - INFO - current card: ['red', '1'] should not == green 8
+uno_cards - 09-Mar-23 12:13:27 - INFO - current card: ['red', '1'] should not == green 5
+uno_cards - 09-Mar-23 12:13:27 - INFO - current card: ['red', '1'] should not == wild switch
+uno_cards - 09-Mar-23 12:13:27 - INFO - current card: ['red', '1'] should  == red 1
+uno_cards - 09-Mar-23 12:13:27 - INFO - red 1 will removed out of the deck and count == 1
+uno_cards - 09-Mar-23 12:13:27 - INFO - current card: ['red', '1'] should not == green reverse
+uno_cards - 09-Mar-23 12:13:27 - INFO - current card: ['red', '1'] should not == green plus_2
+uno_cards - 09-Mar-23 12:13:27 - INFO - current card: ['red', '1'] should not == blue 3
+uno_cards - 09-Mar-23 12:13:27 - INFO - current card: ['red', '1'] should not == yellow 2
+uno_cards - 09-Mar-23 12:13:27 - INFO - current card: ['red', '1'] should not == blue 8
+uno_cards - 09-Mar-23 12:13:27 - INFO - player 3 should not have ['red', '1'] in it deck: [green reverse, green 8, green 5, wild switch, green reverse, green plus_2, blue 3, yellow 2, blue 8]
+uno_cards - 09-Mar-23 12:13:27 - INFO - Player3 Move: red 1
+uno_cards - 09-Mar-23 12:13:27 - INFO - Clockwise, bool should be True. self._clockwise = True
+uno_cards - 09-Mar-23 12:13:27 - INFO - player 4 plus 4 test is False
+uno_cards - 09-Mar-23 12:13:27 - INFO - player 4 plus 2 test is False
+__main__ - 09-Mar-23 12:13:27 - INFO - pick_up card has not changed: green 6
+uno_cards - 09-Mar-23 12:13:27 - INFO - Amount of cards all players have: Player 1: 5 cards | Player 2: 7 cards | Player 3: 9 cards | Player 4: 6 cards
+uno_cards - 09-Mar-23 12:13:27 - INFO - Card On Top: red 1
+uno_cards - 09-Mar-23 12:13:27 - INFO - counts before: red 0 blue 0 green 0 yellow 0
+uno_cards - 09-Mar-23 12:13:27 - INFO - This is g (card weight): 1
+uno_cards - 09-Mar-23 12:13:27 - INFO - This after (cardname,weight) appended to list for cards: ['yellow', '6', 1]
+uno_cards - 09-Mar-23 12:13:27 - INFO - This is g (card weight): 1
+uno_cards - 09-Mar-23 12:13:27 - INFO - This after (cardname,weight) appended to list for cards: ['green', '0', 1]
+uno_cards - 09-Mar-23 12:13:27 - INFO - This is g (card weight): 1
+uno_cards - 09-Mar-23 12:13:27 - INFO - This after (cardname,weight) appended to list for cards: ['red', '4', 1]
+uno_cards - 09-Mar-23 12:13:27 - INFO - This is g (card weight): 1
+uno_cards - 09-Mar-23 12:13:27 - INFO - This after (cardname,weight) appended to list for cards: ['red', '3', 1]
+uno_cards - 09-Mar-23 12:13:27 - INFO - This is g (card weight): 3
+uno_cards - 09-Mar-23 12:13:27 - INFO - This after (cardname,weight) appended to list for cards: ['red', 'block', 3]
+uno_cards - 09-Mar-23 12:13:27 - INFO - This is g (card weight): 1
+uno_cards - 09-Mar-23 12:13:27 - INFO - This after (cardname,weight) appended to list for cards: ['blue', '2', 1]
+uno_cards - 09-Mar-23 12:13:27 - INFO - list_for_cards before non playbale cards are removed: [['yellow', '6', 1], ['green', '0', 1], ['red', '4', 1], ['red', '3', 1], ['red', 'block', 3], ['blue', '2', 1]]
+uno_cards - 09-Mar-23 12:13:27 - INFO - list_for_cards after non playbale cards are removed: [['red', '4', 1], ['red', '3', 1], ['red', 'block', 3], ['pick_up', None, 0]]
+uno_cards - 09-Mar-23 12:13:27 - INFO - counts after/amount_of_card_weight: red 3 blue 0 green 0 yellow 0
+uno_cards - 09-Mar-23 12:13:27 - INFO - Player 4 card colour weights/counts before merge sort [['red', 3], ['green', 0], ['yellow', 0], ['blue', 0]]
+uno_cards - 09-Mar-23 12:13:27 - INFO - Player 4 card colour weights/counts after merge sort [['red', 3], ['green', 0], ['yellow', 0], ['blue', 0]]
+uno_cards - 09-Mar-23 12:13:27 - INFO - Player 4 deck with  new weights [['red', '4', 4], ['red', '3', 4], ['red', 'block', 6], ['pick_up', None, 0]]
+uno_cards - 09-Mar-23 12:13:27 - INFO - Player 4 quicksort used to sort deck: [['red', 'block', 6], ['red', '4', 4], ['red', '3', 4], ['pick_up', None, 0]]
+uno_cards - 09-Mar-23 12:13:27 - INFO - postion states clockwise = True, order postion = 3
+uno_cards - 09-Mar-23 12:13:27 - INFO - postion states clockwise True, order postion = 3
+uno_cards - 09-Mar-23 12:13:27 - INFO - postion weight is -2 and z is = 5 and i was og 6 #i=2 winning #i=0 drawing #-2 losing
+uno_cards - 09-Mar-23 12:13:27 - INFO - Player 4 postion state is -2
+uno_cards - 09-Mar-23 12:13:27 - INFO - Player 4 played his best card
+uno_cards - 09-Mar-23 12:13:27 - INFO - [['red', 'block', 6], ['red', '4', 4], ['red', '3', 4], ['pick_up', None, 0]] the psotion looking ['red', 'block', 6]
+uno_cards - 09-Mar-23 12:13:27 - INFO - ai_choice broke with ['red', 'block'] and is was == to ['red', 'block', 6] 
+uno_cards - 09-Mar-23 12:13:28 - INFO - Player4 Turn
+uno_cards - 09-Mar-23 12:13:28 - INFO - Player4 wants to play red block
+uno_cards - 09-Mar-23 12:13:28 - INFO - check if card in deck: red block should be the same as red block
+uno_cards - 09-Mar-23 12:13:28 - INFO - current_card = ['red', 'block'] and top_current_card = ['red', '1']
+uno_cards - 09-Mar-23 12:13:28 - INFO - current card: ['red', 'block'] should not == yellow 6
+uno_cards - 09-Mar-23 12:13:28 - INFO - current card: ['red', 'block'] should not == green 0
+uno_cards - 09-Mar-23 12:13:28 - INFO - current card: ['red', 'block'] should not == red 4
+uno_cards - 09-Mar-23 12:13:28 - INFO - current card: ['red', 'block'] should not == red 3
+uno_cards - 09-Mar-23 12:13:28 - INFO - current card: ['red', 'block'] should  == red block
+uno_cards - 09-Mar-23 12:13:28 - INFO - red block will removed out of the deck and count == 1
+uno_cards - 09-Mar-23 12:13:28 - INFO - current card: ['red', 'block'] should not == blue 2
+uno_cards - 09-Mar-23 12:13:28 - INFO - player 4 should not have ['red', 'block'] in it deck: [yellow 6, green 0, red 4, red 3, blue 2]
+uno_cards - 09-Mar-23 12:13:28 - INFO - Clockwise, bool should be True. self._clockwise = True
+uno_cards - 09-Mar-23 12:13:28 - INFO - player[blue 3, red 2, red 6, red 6, blue 6] to be blocked
+uno_cards - 09-Mar-23 12:13:28 - INFO - Player1 Move: red block
+uno_cards - 09-Mar-23 12:13:28 - INFO - Clockwise, bool should be True. self._clockwise = True
+uno_cards - 09-Mar-23 12:13:28 - INFO - player 2 plus 4 test is False
+uno_cards - 09-Mar-23 12:13:28 - INFO - player 2 plus 2 test is False
+__main__ - 09-Mar-23 12:13:28 - INFO - pick_up card has not changed: green 6
+uno_cards - 09-Mar-23 12:13:28 - INFO - Amount of cards all players have: Player 1: 5 cards | Player 2: 7 cards | Player 3: 9 cards | Player 4: 5 cards
+uno_cards - 09-Mar-23 12:13:28 - INFO - Card On Top: red block
+uno_cards - 09-Mar-23 12:13:28 - INFO - counts before: red 0 blue 0 green 0 yellow 0
+uno_cards - 09-Mar-23 12:13:28 - INFO - This is g (card weight): 10
+uno_cards - 09-Mar-23 12:13:28 - INFO - This after (cardname,weight) appended to list for cards: ['wild', 'plus_4', 10]
+uno_cards - 09-Mar-23 12:13:28 - INFO - This is g (card weight): 1
+uno_cards - 09-Mar-23 12:13:28 - INFO - This after (cardname,weight) appended to list for cards: ['red', '0', 1]
+uno_cards - 09-Mar-23 12:13:28 - INFO - This is g (card weight): 1
+uno_cards - 09-Mar-23 12:13:28 - INFO - This after (cardname,weight) appended to list for cards: ['red', '9', 1]
+uno_cards - 09-Mar-23 12:13:28 - INFO - This is g (card weight): 1
+uno_cards - 09-Mar-23 12:13:28 - INFO - This after (cardname,weight) appended to list for cards: ['yellow', '7', 1]
+uno_cards - 09-Mar-23 12:13:28 - INFO - This is g (card weight): 1
+uno_cards - 09-Mar-23 12:13:28 - INFO - This after (cardname,weight) appended to list for cards: ['green', '1', 1]
+uno_cards - 09-Mar-23 12:13:28 - INFO - This is g (card weight): 5
+uno_cards - 09-Mar-23 12:13:28 - INFO - This after (cardname,weight) appended to list for cards: ['wild', 'switch', 5]
+uno_cards - 09-Mar-23 12:13:28 - INFO - This is g (card weight): 1
+uno_cards - 09-Mar-23 12:13:28 - INFO - This after (cardname,weight) appended to list for cards: ['blue', '4', 1]
+uno_cards - 09-Mar-23 12:13:28 - INFO - list_for_cards before non playbale cards are removed: [['wild', 'plus_4', 10], ['red', '0', 1], ['red', '9', 1], ['yellow', '7', 1], ['green', '1', 1], ['wild', 'switch', 5], ['blue', '4', 1]]
+uno_cards - 09-Mar-23 12:13:28 - INFO - list_for_cards after non playbale cards are removed: [['wild', 'plus_4', 10], ['red', '0', 1], ['red', '9', 1], ['wild', 'switch', 5], ['pick_up', None, 0]]
+uno_cards - 09-Mar-23 12:13:28 - INFO - counts after/amount_of_card_weight: red 2 blue 0 green 0 yellow 0
+uno_cards - 09-Mar-23 12:13:28 - INFO - Player 2 card colour weights/counts before merge sort [['red', 2], ['green', 0], ['yellow', 0], ['blue', 0]]
+uno_cards - 09-Mar-23 12:13:28 - INFO - Player 2 card colour weights/counts after merge sort [['red', 2], ['green', 0], ['yellow', 0], ['blue', 0]]
+uno_cards - 09-Mar-23 12:13:28 - INFO - Player 2 deck with  new weights [['wild', 'plus_4', 10], ['red', '0', 3], ['red', '9', 3], ['wild', 'switch', 5], ['pick_up', None, 0]]
+uno_cards - 09-Mar-23 12:13:28 - INFO - Player 2 quicksort used to sort deck: [['wild', 'plus_4', 10], ['wild', 'switch', 5], ['red', '0', 3], ['red', '9', 3], ['pick_up', None, 0]]
+uno_cards - 09-Mar-23 12:13:28 - INFO - postion states clockwise = True, order postion = 1
+uno_cards - 09-Mar-23 12:13:28 - INFO - postion states clockwise True, order postion = 1
+uno_cards - 09-Mar-23 12:13:28 - INFO - postion weight is 2 and z is = 9 and i was og 7 #i=2 winning #i=0 drawing #-2 losing
+uno_cards - 09-Mar-23 12:13:28 - INFO - Player 2 postion state is 2
+uno_cards - 09-Mar-23 12:13:28 - INFO - [['wild', 'plus_4', 10], ['wild', 'switch', 5], ['red', '0', 3], ['red', '9', 3], ['pick_up', None, 0]] the psotion looking ['red', '0', 3]
+uno_cards - 09-Mar-23 12:13:28 - INFO - ai_choice broke with ['red', '0'] and is was == to ['red', '0', 3] 
+uno_cards - 09-Mar-23 12:13:30 - INFO - Player2 Turn
+uno_cards - 09-Mar-23 12:13:30 - INFO - Player2 wants to play red 0
+uno_cards - 09-Mar-23 12:13:30 - INFO - check if card in deck: red 0 should be the same as red 0
+uno_cards - 09-Mar-23 12:13:30 - INFO - current_card = ['red', '0'] and top_current_card = ['red', 'block']
+uno_cards - 09-Mar-23 12:13:30 - INFO - current card: ['red', '0'] should not == wild plus_4
+uno_cards - 09-Mar-23 12:13:30 - INFO - current card: ['red', '0'] should  == red 0
+uno_cards - 09-Mar-23 12:13:30 - INFO - red 0 will removed out of the deck and count == 1
+uno_cards - 09-Mar-23 12:13:30 - INFO - current card: ['red', '0'] should not == red 9
+uno_cards - 09-Mar-23 12:13:30 - INFO - current card: ['red', '0'] should not == yellow 7
+uno_cards - 09-Mar-23 12:13:30 - INFO - current card: ['red', '0'] should not == green 1
+uno_cards - 09-Mar-23 12:13:30 - INFO - current card: ['red', '0'] should not == wild switch
+uno_cards - 09-Mar-23 12:13:30 - INFO - current card: ['red', '0'] should not == blue 4
+uno_cards - 09-Mar-23 12:13:30 - INFO - player 2 should not have ['red', '0'] in it deck: [wild plus_4, red 9, yellow 7, green 1, wild switch, blue 4]
+uno_cards - 09-Mar-23 12:13:30 - INFO - Player2 Move: red 0
+uno_cards - 09-Mar-23 12:13:30 - INFO - Clockwise, bool should be True. self._clockwise = True
+uno_cards - 09-Mar-23 12:13:30 - INFO - player 3 plus 4 test is False
+uno_cards - 09-Mar-23 12:13:30 - INFO - player 3 plus 2 test is False
+__main__ - 09-Mar-23 12:13:30 - INFO - pick_up card has not changed: green 6
+uno_cards - 09-Mar-23 12:13:30 - INFO - Amount of cards all players have: Player 1: 5 cards | Player 2: 6 cards | Player 3: 9 cards | Player 4: 5 cards
+uno_cards - 09-Mar-23 12:13:30 - INFO - Card On Top: red 0
+uno_cards - 09-Mar-23 12:13:30 - INFO - counts before: red 0 blue 0 green 0 yellow 0
+uno_cards - 09-Mar-23 12:13:30 - INFO - This is g (card weight): 2
+uno_cards - 09-Mar-23 12:13:30 - INFO - This after (cardname,weight) appended to list for cards: ['green', 'reverse', 2]
+uno_cards - 09-Mar-23 12:13:30 - INFO - This is g (card weight): 1
+uno_cards - 09-Mar-23 12:13:30 - INFO - This after (cardname,weight) appended to list for cards: ['green', '8', 1]
+uno_cards - 09-Mar-23 12:13:30 - INFO - This is g (card weight): 1
+uno_cards - 09-Mar-23 12:13:30 - INFO - This after (cardname,weight) appended to list for cards: ['green', '5', 1]
+uno_cards - 09-Mar-23 12:13:30 - INFO - This is g (card weight): 5
+uno_cards - 09-Mar-23 12:13:30 - INFO - This after (cardname,weight) appended to list for cards: ['wild', 'switch', 5]
+uno_cards - 09-Mar-23 12:13:30 - INFO - This is g (card weight): 2
+uno_cards - 09-Mar-23 12:13:30 - INFO - This after (cardname,weight) appended to list for cards: ['green', 'reverse', 2]
+uno_cards - 09-Mar-23 12:13:30 - INFO - This is g (card weight): 5
+uno_cards - 09-Mar-23 12:13:30 - INFO - This after (cardname,weight) appended to list for cards: ['green', 'plus_2', 5]
+uno_cards - 09-Mar-23 12:13:30 - INFO - This is g (card weight): 1
+uno_cards - 09-Mar-23 12:13:30 - INFO - This after (cardname,weight) appended to list for cards: ['blue', '3', 1]
+uno_cards - 09-Mar-23 12:13:30 - INFO - This is g (card weight): 1
+uno_cards - 09-Mar-23 12:13:30 - INFO - This after (cardname,weight) appended to list for cards: ['yellow', '2', 1]
+uno_cards - 09-Mar-23 12:13:30 - INFO - This is g (card weight): 1
+uno_cards - 09-Mar-23 12:13:30 - INFO - This after (cardname,weight) appended to list for cards: ['blue', '8', 1]
+uno_cards - 09-Mar-23 12:13:30 - INFO - list_for_cards before non playbale cards are removed: [['green', 'reverse', 2], ['green', '8', 1], ['green', '5', 1], ['wild', 'switch', 5], ['green', 'reverse', 2], ['green', 'plus_2', 5], ['blue', '3', 1], ['yellow', '2', 1], ['blue', '8', 1]]
+uno_cards - 09-Mar-23 12:13:30 - INFO - list_for_cards after non playbale cards are removed: [['wild', 'switch', 5], ['pick_up', None, 0]]
+uno_cards - 09-Mar-23 12:13:30 - INFO - counts after/amount_of_card_weight: red 0 blue 0 green 0 yellow 0
+uno_cards - 09-Mar-23 12:13:30 - INFO - Player 3 card colour weights/counts before merge sort [['red', 0], ['green', 0], ['yellow', 0], ['blue', 0]]
+uno_cards - 09-Mar-23 12:13:30 - INFO - Player 3 card colour weights/counts after merge sort [['red', 0], ['green', 0], ['yellow', 0], ['blue', 0]]
+uno_cards - 09-Mar-23 12:13:30 - INFO - Player 3 deck with  new weights [['wild', 'switch', 5], ['pick_up', None, 0]]
+uno_cards - 09-Mar-23 12:13:30 - INFO - Player 3 quicksort used to sort deck: [['wild', 'switch', 5], ['pick_up', None, 0]]
+uno_cards - 09-Mar-23 12:13:30 - INFO - postion states clockwise = True, order postion = 2
+uno_cards - 09-Mar-23 12:13:30 - INFO - postion states clockwise True, order postion = 2
+uno_cards - 09-Mar-23 12:13:30 - INFO - postion weight is -2 and z is = 5 and i was og 9 #i=2 winning #i=0 drawing #-2 losing
+uno_cards - 09-Mar-23 12:13:30 - INFO - Player 3 postion state is -2
+uno_cards - 09-Mar-23 12:13:30 - INFO - Player 3 played his only card
+uno_cards - 09-Mar-23 12:13:30 - INFO - [['wild', 'switch', 5], ['pick_up', None, 0]] the psotion looking ['wild', 'switch', 5]
+uno_cards - 09-Mar-23 12:13:30 - INFO - ai_choice broke with ['wild', 'switch'] and is was == to ['wild', 'switch', 5] 
+uno_cards - 09-Mar-23 12:13:31 - INFO - Player3 Turn
+uno_cards - 09-Mar-23 12:13:31 - INFO - Player3 wants to play wild switch
+uno_cards - 09-Mar-23 12:13:31 - INFO - check if card in deck: wild switch should be the same as wild switch
+uno_cards - 09-Mar-23 12:13:31 - INFO - current_card = ['wild', 'switch'] and top_current_card = ['red', '0']
+uno_cards - 09-Mar-23 12:13:31 - INFO - Current card is a wild
+uno_cards - 09-Mar-23 12:13:31 - INFO - Player 3 played a wild
+uno_cards - 09-Mar-23 12:13:31 - INFO - list_for_cards card weights without checking amount of card colours in total: [['green', 'reverse', 2], ['green', '8', 1], ['green', '5', 1], ['wild', 'switch', 5], ['green', 'reverse', 2], ['green', 'plus_2', 5], ['blue', '3', 1], ['yellow', '2', 1], ['blue', '8', 1]]
+uno_cards - 09-Mar-23 12:13:31 - INFO - All card weights in total unsorted: amount_of_card_weight = [['red', 0], ['green', 5], ['yellow', 1], ['blue', 2]]
+uno_cards - 09-Mar-23 12:13:31 - INFO - All card weights in total sorted: amount_of_card_weight = [['green', 5], ['blue', 2], ['yellow', 1], ['red', 0]]
+uno_cards - 09-Mar-23 12:13:31 - INFO - Chose the best colour green
+uno_cards - 09-Mar-23 12:13:31 - INFO - current card: ['wild', 'switch'] should not == green reverse
+uno_cards - 09-Mar-23 12:13:31 - INFO - current card: ['wild', 'switch'] should not == green 8
+uno_cards - 09-Mar-23 12:13:31 - INFO - current card: ['wild', 'switch'] should not == green 5
+uno_cards - 09-Mar-23 12:13:31 - INFO - current card: ['wild', 'switch'] should  == wild switch
+uno_cards - 09-Mar-23 12:13:31 - INFO - wild switch will removed out of the deck and count == 1
+uno_cards - 09-Mar-23 12:13:31 - INFO - current card: ['wild', 'switch'] should not == green reverse
+uno_cards - 09-Mar-23 12:13:31 - INFO - current card: ['wild', 'switch'] should not == green plus_2
+uno_cards - 09-Mar-23 12:13:31 - INFO - current card: ['wild', 'switch'] should not == blue 3
+uno_cards - 09-Mar-23 12:13:31 - INFO - current card: ['wild', 'switch'] should not == yellow 2
+uno_cards - 09-Mar-23 12:13:31 - INFO - current card: ['wild', 'switch'] should not == blue 8
+uno_cards - 09-Mar-23 12:13:31 - INFO - player 3 should not have ['wild', 'switch'] in it deck: [green reverse, green 8, green 5, green reverse, green plus_2, blue 3, yellow 2, blue 8]
+uno_cards - 09-Mar-23 12:13:31 - INFO - Player3 Move: wild switch
+uno_cards - 09-Mar-23 12:13:31 - INFO - Clockwise, bool should be True. self._clockwise = True
+uno_cards - 09-Mar-23 12:13:31 - INFO - player 4 plus 4 test is False
+uno_cards - 09-Mar-23 12:13:31 - INFO - player 4 plus 2 test is False
+__main__ - 09-Mar-23 12:13:31 - INFO - pick_up card has not changed: green 6
+uno_cards - 09-Mar-23 12:13:31 - INFO - Amount of cards all players have: Player 1: 5 cards | Player 2: 6 cards | Player 3: 8 cards | Player 4: 5 cards
+uno_cards - 09-Mar-23 12:13:31 - INFO - Card On Top: green 
+uno_cards - 09-Mar-23 12:13:31 - INFO - counts before: red 0 blue 0 green 0 yellow 0
+uno_cards - 09-Mar-23 12:13:31 - INFO - This is g (card weight): 1
+uno_cards - 09-Mar-23 12:13:31 - INFO - This after (cardname,weight) appended to list for cards: ['yellow', '6', 1]
+uno_cards - 09-Mar-23 12:13:31 - INFO - This is g (card weight): 1
+uno_cards - 09-Mar-23 12:13:31 - INFO - This after (cardname,weight) appended to list for cards: ['green', '0', 1]
+uno_cards - 09-Mar-23 12:13:31 - INFO - This is g (card weight): 1
+uno_cards - 09-Mar-23 12:13:31 - INFO - This after (cardname,weight) appended to list for cards: ['red', '4', 1]
+uno_cards - 09-Mar-23 12:13:31 - INFO - This is g (card weight): 1
+uno_cards - 09-Mar-23 12:13:31 - INFO - This after (cardname,weight) appended to list for cards: ['red', '3', 1]
+uno_cards - 09-Mar-23 12:13:31 - INFO - This is g (card weight): 1
+uno_cards - 09-Mar-23 12:13:31 - INFO - This after (cardname,weight) appended to list for cards: ['blue', '2', 1]
+uno_cards - 09-Mar-23 12:13:31 - INFO - list_for_cards before non playbale cards are removed: [['yellow', '6', 1], ['green', '0', 1], ['red', '4', 1], ['red', '3', 1], ['blue', '2', 1]]
+uno_cards - 09-Mar-23 12:13:31 - INFO - list_for_cards after non playbale cards are removed: [['green', '0', 1], ['pick_up', None, 0]]
+uno_cards - 09-Mar-23 12:13:31 - INFO - counts after/amount_of_card_weight: red 0 blue 0 green 1 yellow 0
+uno_cards - 09-Mar-23 12:13:31 - INFO - Player 4 card colour weights/counts before merge sort [['red', 0], ['green', 1], ['yellow', 0], ['blue', 0]]
+uno_cards - 09-Mar-23 12:13:31 - INFO - Player 4 card colour weights/counts after merge sort [['red', 0], ['green', 1], ['yellow', 0], ['blue', 0]]
+uno_cards - 09-Mar-23 12:13:31 - INFO - Player 4 deck with  new weights [['green', '0', 2], ['pick_up', None, 0]]
+uno_cards - 09-Mar-23 12:13:31 - INFO - Player 4 quicksort used to sort deck: [['green', '0', 2], ['pick_up', None, 0]]
+uno_cards - 09-Mar-23 12:13:31 - INFO - postion states clockwise = True, order postion = 3
+uno_cards - 09-Mar-23 12:13:31 - INFO - postion states clockwise True, order postion = 3
+uno_cards - 09-Mar-23 12:13:31 - INFO - postion weight is 0 and z is = 5 and i was og 5 #i=2 winning #i=0 drawing #-2 losing
+uno_cards - 09-Mar-23 12:13:31 - INFO - Player 4 postion state is 0
+uno_cards - 09-Mar-23 12:13:31 - INFO - Player 4 played his only card
+uno_cards - 09-Mar-23 12:13:31 - INFO - [['green', '0', 2], ['pick_up', None, 0]] the psotion looking ['green', '0', 2]
+uno_cards - 09-Mar-23 12:13:31 - INFO - ai_choice broke with ['green', '0'] and is was == to ['green', '0', 2] 
+uno_cards - 09-Mar-23 12:13:33 - INFO - Player4 Turn
+uno_cards - 09-Mar-23 12:13:33 - INFO - Player4 wants to play green 0
+uno_cards - 09-Mar-23 12:13:33 - INFO - check if card in deck: green 0 should be the same as green 0
+uno_cards - 09-Mar-23 12:13:33 - INFO - current_card = ['green', '0'] and top_current_card = ['green', '']
+uno_cards - 09-Mar-23 12:13:33 - INFO - current card: ['green', '0'] should not == yellow 6
+uno_cards - 09-Mar-23 12:13:33 - INFO - current card: ['green', '0'] should  == green 0
+uno_cards - 09-Mar-23 12:13:33 - INFO - green 0 will removed out of the deck and count == 1
+uno_cards - 09-Mar-23 12:13:33 - INFO - current card: ['green', '0'] should not == red 4
+uno_cards - 09-Mar-23 12:13:33 - INFO - current card: ['green', '0'] should not == red 3
+uno_cards - 09-Mar-23 12:13:33 - INFO - current card: ['green', '0'] should not == blue 2
+uno_cards - 09-Mar-23 12:13:33 - INFO - player 4 should not have ['green', '0'] in it deck: [yellow 6, red 4, red 3, blue 2]
+uno_cards - 09-Mar-23 12:13:33 - INFO - Player4 Move: green 0
+uno_cards - 09-Mar-23 12:13:33 - INFO - Clockwise, bool should be True. self._clockwise = True
+uno_cards - 09-Mar-23 12:13:33 - INFO - player 1 plus 4 test is False
+uno_cards - 09-Mar-23 12:13:33 - INFO - player 1 plus 2 test is False
+__main__ - 09-Mar-23 12:13:33 - INFO - pick_up card has not changed: green 6
+uno_cards - 09-Mar-23 12:13:33 - INFO - Amount of cards all players have: Player 1: 5 cards | Player 2: 6 cards | Player 3: 8 cards | Player 4: 4 cards
+uno_cards - 09-Mar-23 12:13:33 - INFO - Card On Top: green 0
+gui - 09-Mar-23 12:13:33 - INFO - In playloop

@@ -192,12 +192,8 @@ class UNO():
         #lowest
         amount_of_card_weight = [["red",red_count],["green",green_count],["yellow",yellow_count],["blue",blue_count]]
 
-        logger.info(f"Player {self._order_postion + 1} card colour weights/counts before merge sort {amount_of_card_weight}")
+        logger.info(f"Player {self._order_postion + 1} card colour weights/counts {amount_of_card_weight}")
 
-        amount_of_card_weight = extra_module.merge_sort(amount_of_card_weight)
-
-        logger.info(f"Player {self._order_postion + 1} card colour weights/counts after merge sort {amount_of_card_weight}")
-        
         
         #Adds these values to current list with all the players cards and weights 
         for b in amount_of_card_weight:
@@ -577,7 +573,7 @@ class UNO():
                 self._topcard = cards(colour,"")
                 self.update_player_hand(current_card)
 
-                
+
             else: #Ai players
                 logger.info(f"Player {self._order_postion + 1} played a wild")
                 red_count = 0
