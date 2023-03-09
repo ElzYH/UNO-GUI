@@ -30,7 +30,7 @@ class deck:
         elif self._deck_choice == "NoWilds":
             card = [cards(c,v) for c in self.__colour for v in self.__value] + [cards(c,v) for c in self.__colour for v in self.__special]*2
         elif self._deck_choice == "Normal":
-            card = [cards(c,v) for c in self.__colour for v in self.__value] + [cards(c,v) for c in self.__colour for v in self.__special]*2 + [cards("wild",v) for v in self.__special_no_colour]*4
+            card = [cards(c,v) for c in self.__colour for v in self.__value] + [cards(c,v) for c in self.__colour for v in self.__special]*2 + [cards("wild",v) for v in self.__special_no_colour]*4 #4
         logger.info(f"Cards in the gamemode: {self._deck_choice} deck: {card}")
         return card
 
@@ -42,7 +42,6 @@ class deck:
         return len(self._card)
 
     def shuffle_cards(self):
-        #if self.get_count() == 112:
         shuffle(self._card)
         logger.info(f"shuffles cards: {self._card}")
         return self.get_card()
@@ -102,6 +101,7 @@ class UNO():
     def postion_state(self):
         """Used to find where the current player is compared to the player front. If the Number retunred is #i=2 winning #i=0 drawing #-2 losing. i is postion_weight but as local variavble.
         z is the amount of cards in next person deck"""
+        logger.info("Postion State")
         def postioing(i,z):
             if i < z:
                 i = 2
@@ -411,7 +411,7 @@ class UNO():
         """Sets the top card, set the turn by calling a function and set the order by calling a function"""
 
         self._topcard = top_card_setter
-        logger.info(f"Game Setter Called, topcurrentcard/startng card is {self._topcard}")
+        logger.info(f"Game Setter Called, top current card/startng card is {self._topcard}")
         self.set_turn()
         self.set_order_clockwise()
 
@@ -477,7 +477,8 @@ class UNO():
         saves it variable as boolean datatype. Then calls a fucntion to check if player mmets end condtions. After calls a 
         function for the next user turn"""
         self._colour = "" #set colour choice to nothing
-        logger.info(f"Amount of cards all players have: Player 1: {len(self._order[0])} cards | Player 2: {len(self._order[1])} cards | Player 3: {len(self._order[2])} cards | Player 4: {len(self._order[3])} cards")
+        logger.info(f"Amount of cards all players have: {user}: {len(self._order[0])} cards | Player 2: {len(self._order[1])} cards | Player 3: {len(self._order[2])} cards | Player 4: {len(self._order[3])} cards")
+        logger.info(f"all players decks: {user}: {self._order[0]} cards | Player 2: {self._order[1]} cards | Player 3: {self._order[2]} cards | Player 4: {self._order[3]} cards")
         logger.info(f"Card On Top: {self._topcard}")
         if self._order_postion == 0: #player1/user turn
             self._player_move = gui.playloop(user,self.user_deck(),self.players_deck_len(),self._topcard,pick_up_card)
@@ -609,7 +610,7 @@ class UNO():
                 logger.info(f"All card weights in total sorted: amount_of_card_weight = {amount_of_card_weight}")
                 
                 chance = randint(1,20)
-                if chance > 7:
+                if chance > 7 or list_for_cards[1][0] == 0:
                     colour = amount_of_card_weight[0][0]
                     logger.info(f"Chose the best colour {colour}")
                 else:

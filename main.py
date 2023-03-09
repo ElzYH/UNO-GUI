@@ -6,6 +6,7 @@ import sqlite3
 import sys
 import gui
 import logging
+import datetime
 
 
 def menu(u):
@@ -105,13 +106,14 @@ def main_game_uno(user):
                         WHERE UserName = '{user}'
                         """)
             table = [int(i) for i in c.fetchone()]
+            logger.info(f"Games = {table[0]}, Draws = {table[1]}")
             table[0] += 1 # games
             table[1] += 1 # draws
 
             c.execute(f"""UPDATE {choice}
             SET Games = {table[0]}, Draws = {table[1]}
             WHERE UserName = '{user}'""")   
-            logger.info(f"Games played{table[0]}, User Draws{table[1]}")
+            logger.info(f"Games played {table[0]}, User Draws {table[1]}")
             con.commit()
             con.close()
             break
@@ -122,17 +124,21 @@ def main_game_uno(user):
 
 if __name__ == "__main__":
     logger = logging.getLogger(f"{__name__}")
-    logging.basicConfig(filename='application.log',filemode='w',format='%(name)s - %(asctime)s - %(levelname)s - %(message)s',datefmt='%d-%b-%y %H:%M:%S',level=logging.INFO) #for logging
+    x = datetime.datetime.now()
+    x = 'application_' + str(x.strftime("%x")) + " T"+ str(x.strftime("%X")) + '.log'
+    x = str(x).replace("/","-").replace(" ","--").replace(":","-")
+    logging.basicConfig(filename=x,filemode='w',format='%(name)s - %(asctime)s - %(levelname)s - %(message)s',datefmt='%d-%b-%y %H:%M:%S',level=logging.INFO) #for logging
     logger.info(f'Application started')
 
     if os.path.exists("uno_database.db"): 
-        logger.info(f"{__name__} Database is already created")
+        logger.info(f"Database is already created")
     else:
-        logger.info(f"{__name__} Database does not exist")
+        logger.info(f"Database does not exist")
         login.create()
         if os.path.exists("uno_database.db"):
-            logger.addHandler(logging.ERROR)
-            logger.error(f"{__name__} Database does not exist")
+            logger.info(f"Databse created")
+        else:
+            logger.error(f"Database does not exist")
 
     user = gui.startloop()
     logger.info(f"Player Username: {user}")
