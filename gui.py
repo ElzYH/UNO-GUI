@@ -1022,13 +1022,16 @@ def main_menu_loop():
         events = pygame.event.get()
         logo.display()
         if play_button.draw() == True:
+            logger.info("Pressed Play")
             return "play"
         if leaderboard_button.draw() == True:
+            logger.info("Pressed Stats")
             return "leaderboard"
         if quit_button.draw() == True:
             logger.info("Quit Application")
             sys.exit()
         if back_button.draw() == True:
+            logger.info("Pressed Back")
             return "back_button"
 
 

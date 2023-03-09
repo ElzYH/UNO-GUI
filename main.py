@@ -41,6 +41,7 @@ def leaderboard(user):
 def main_game_uno(user):
     """Function main purpose is to start a new game and iterate through this game until, it end condition is met. The loop also contains checks to run certain code"""
     choice = gui.choice_loop()
+    logger.info(f"User chocie/gamemode: {choice}")
     if choice == "backtomenu":
         logger.info(f"{user} returned back to the menu choice = {choice}")
         return
@@ -62,13 +63,14 @@ def main_game_uno(user):
     pick_up = uno_deck.deal_card()
     while game.end_check(user) != True: #game loop
         try:
+
             if True:
                 if game.pick_up_card_used() == True:
                     logger.info("game.pick_up_card_used() is True")
                     pick_up = uno_deck.deal_card()
                     logger.info(f"pick up cards is: pick_up = {str(pick_up)}")
                     if pick_up == "end":
-                        logger.warning("Game has ended and Index error is rasied") #No more cards
+                        logger.warning("Game has ended and Index error is rasied due to no more cards") #No more cards
                         raise IndexError
                     game.player_move(pick_up,user) 
                 else:
@@ -89,7 +91,9 @@ def main_game_uno(user):
                 for i in range(2):
                     add_card.append(uno_deck.deal_card())
                 game.append_cards(add_card)
-        except TypeError and IndexError: #Game ended as draw 
+
+
+        except IndexError: #Game ended as draw 
             
             logger.info("Game ended with a draw")
             gui.drawloop()

@@ -559,3 +559,4 @@ __main__ - 09-Mar-23 12:13:33 - INFO - pick_up card has not changed: green 6
 uno_cards - 09-Mar-23 12:13:33 - INFO - Amount of cards all players have: Player 1: 5 cards | Player 2: 6 cards | Player 3: 8 cards | Player 4: 4 cards
 uno_cards - 09-Mar-23 12:13:33 - INFO - Card On Top: green 0
 gui - 09-Mar-23 12:13:33 - INFO - In playloop
+gui - 09-Mar-23 14:02:52 - INFO - Quit Application
