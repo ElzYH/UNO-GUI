@@ -21,13 +21,14 @@ pygame.key.set_repeat(0,0)
 
 
 #Fonts and Images
-GAME_FONT = pygame.freetype.Font("Assets/Fonts/cambria.ttf",22)
-GAME_FONT2 = pygame.freetype.Font("Assets/Fonts/cambria.ttf",16)
-WELCOME_FONT = pygame.freetype.Font("Assets/Fonts/cambria.ttf",48)
-WELCOME_FONT2 = pygame.freetype.Font("Assets/Fonts/cambria.ttf",29)
-PLAYER_FONT = pygame.freetype.Font("Assets/Fonts/YeastyFlavorsRegular-yweyd.ttf",37)
-TEXT_FONT = pygame.freetype.Font("Assets/Fonts/YeastyFlavorsRegular-yweyd.ttf",18)
+GAME_FONT = pygame.freetype.Font("Assets/Fonts/AOTFShinGoProMedium.otf",18)
+GAME_FONT2 = pygame.freetype.Font("Assets/Fonts/AOTFShinGoProMedium.otf",12.5)
+WELCOME_FONT = pygame.freetype.Font("Assets/Fonts/AOTFShinGoProMedium.otf",37.5)
+WELCOME_FONT2 = pygame.freetype.Font("Assets/Fonts/AOTFShinGoProMedium.otf",22)
+PLAYER_FONT = pygame.freetype.Font("Assets/Fonts/AOTFShinGoProMedium.otf",28)
+TEXT_FONT = pygame.freetype.Font("Assets/Fonts/AOTFShinGoProMedium.otf",18)
 END_FONT = pygame.freetype.Font("Assets/Fonts/YeastyFlavorsRegular-yweyd.ttf",1)
+WII_FONT = pygame.freetype.Font("Assets/Fonts/AOTFShinGoProMedium.otf",18)
 
 logger = logging.getLogger(f"{__name__}")
 
@@ -218,6 +219,11 @@ class Text:
         text_surface, rect = GAME_FONT2.render(self.text, (self.colour))
         screen.blit(text_surface, (self.x, self.y))
 
+    def create8(self):
+        text_surface, rect = WII_FONT.render(self.text, (self.colour))
+        screen.blit(text_surface, (self.x, self.y))
+        
+
     def clear(self):
         text_surface, rect = END_FONT.render("", (self.colour))
         screen.blit(text_surface, (self.x, self.y))
@@ -375,16 +381,12 @@ def lead_menu(user):
                     player_postions = [i for i in c.fetchall()]
                     for i in range(0,len(player_postions)):
                             if i < 99:
-                                username_length = 10 - len(player_postions[i][0])
-                                num_length = 2 - len(str(i+1))
-                                leader = (f"{' '*num_length}{i+1}. Name: {player_postions[i][0].capitalize() + ' '*username_length} {text}: {player_postions[i][1]}")
+                                leader = (f"{str(i+1):3}. Name: {player_postions[i][0].capitalize():6} {text}: {player_postions[i][1]}")
                                 board.append(leader)
                                 if player_postions[i][0] == user:
-                                    user_postion = i + 1
+                                    user_postion = str(i + 1)
                                     user_games = player_postions[i][1]
-                    username_length = 10 - len(user)
-                    num_length = 2 - len(str(user_postion))
-                    curent_user = f"{' '*num_length}{user_postion}. Name: {user.capitalize() + ' '*username_length}  {text}: {user_games}"
+                    curent_user = f"{user_postion:3}. Name: {user.capitalize():6}  {text}: {user_games}"
                     return [board,curent_user]
 
                 page = 0
@@ -428,7 +430,7 @@ def lead_menu(user):
                             if i < 25:
                                 y += 26
                                 board = Text(choice[0][i],(240,248,255),620,y)
-                                board.create_2()
+                                board.create8()
 
 
 
@@ -518,21 +520,18 @@ def lead_menu(user):
                         ON {gamemode1}.UserName == {gamemode2}.UserName
                         ORDER BY {gamemode1}.{choice} DESC
                         """)
+
+
                     board = []
                     player_postions = [i for i in c.fetchall()]
-                    print(player_postions)
                     for i in range(0,len(player_postions)):
                             if i < 99:
-                                username_length = 10 - len(player_postions[i][0])
-                                num_length = 2 - len(str(i+1))
-                                leader = (f"{' '*num_length}{i+1}. Name: {player_postions[i][0].capitalize() + ' '*username_length}    {gamemode1}:  {text}: {player_postions[i][1]}  |  {gamemode2} {text} {player_postions[i][2]}")
+                                leader = (f"{str(i+1):3}. Name: {player_postions[i][0].capitalize():6}{gamemode1}:  {text}: {player_postions[i][1]}  |  {gamemode2} {text} {player_postions[i][2]}")
                                 board.append(leader)
                                 if player_postions[i][0] == user:
-                                    user_postion = i + 1
+                                    user_postion = str(i + 1)
                                     user_games = [player_postions[i][1],player_postions[i][2]]
-                    username_length = 10 - len(user)
-                    num_length = 2 - len(str(user_postion))
-                    curent_user = f"{' '*num_length}{user_postion}. Name: {user.capitalize()}  {gamemode1}:  {text}: {user_games[0]}  |  {gamemode2} {text} {user_games[1]}"
+                    curent_user = f"{user_postion:3}. Name: {user.capitalize()}  {gamemode1}:  {text}: {user_games[0]}  |  {gamemode2} {text} {user_games[1]}"
                     con.close()
                     return [board,curent_user]
 
@@ -582,7 +581,7 @@ def lead_menu(user):
                             if i < 25:
                                 y += 26
                                 board = Text(choice[0][i],(240,248,255),560,y)
-                                board.create_2()
+                                board.create8()
 
 
 
@@ -757,26 +756,33 @@ def choice_loop():
     normal = Button(800,340, all_cards,all_cards_hi,1)
     back_button = Button(20,20,black_back_img,black_back_hi_img,1)
 
+    def temp_white_screen():
+        for i in range(7):
+            screen.fill((255,255,255))
+            events = pygame.event.get()
+            for event in events:
+                if event.type == pygame.QUIT:
+                    logger.info("Quit Application")
+                    sys.exit()
+            pygame.display.update()
+            clock.tick(60)
+        
+
 
     while True:
         events = pygame.event.get()
 
         if no_wilds.draw() == True:
+            temp_white_screen()
             return "NoWilds"
         elif number.draw() == True:
+            temp_white_screen()
             return "Numbers"
         elif normal.draw() == True:
+            temp_white_screen()
             return "Normal"
         elif back_button.draw() == True:
-            for i in range(7):
-                screen.fill((255,255,255))
-                events = pygame.event.get()
-                for event in events:
-                    if event.type == pygame.QUIT:
-                        logger.info("Quit Application")
-                        sys.exit()
-                pygame.display.update()
-                clock.tick(60)
+            temp_white_screen()
             return "backtomenu"
 
 
@@ -1096,7 +1102,7 @@ def startloop():
                 menu ="clicked"
                 text2.clear()
             else:
-                text2.create_2()
+                text2.create8()
 
         if text1.access() != "":
             list_1 = login.login_or_sign(option,text1.access())
