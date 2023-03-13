@@ -267,7 +267,7 @@ def lead_menu(user):
     """Menu to display the leaderboard"""
     logger.info(f"Leaderboard menu")
     screen.fill((0,0,0))
-    for i in range(6):
+    for i in range(8):
         events = pygame.event.get()
         for event in events:
             if event.type == pygame.QUIT:
@@ -276,9 +276,6 @@ def lead_menu(user):
 
         pygame.display.update()
         clock.tick(60)
-
-
-
     screen.fill((0,0,0))
     back_button = Button(20,20,black_back_img,black_back_hi_img,1)
     compare_button = Button(300,340,compare,compare_hi,1)
@@ -616,12 +613,12 @@ def displayloop(user,user_deck,len_decks_list,topcard,current_player):
     """Display the same infomation to the user during other players turns"""
     screen.fill((248,248,255))
     screen.blit(bg, (0,0))
-    display_all_cards = Text(f"{str(user).capitalize()}: {len_decks_list[0]} cards | Player 2: {len_decks_list[1]} cards | Player 3: {len_decks_list[2]} cards | Player 4: {len_decks_list[3]} cards",("#6d6dba"),355,200)
+    display_all_cards = Text(f"{str(user).capitalize()}: {len_decks_list[0]} cards | Player 2: {len_decks_list[1]} cards | Player 3: {len_decks_list[2]} cards | Player 4: {len_decks_list[3]} cards",("#6d6dba"),355,206)
     topcard = pygame.image.load(f'Assets/Cards/{topcard}.png').convert_alpha()
     topcard = Image(640,330,topcard,1)
     display_all_cards.create_4()
     page = 1
-    display_player = Text(f"Player{current_player} Turn...",(205,51,51),535,40)
+    display_player = Text(f"Player{current_player} Turn...",(205,51,51),int((SCREEN_WIDTH//2)-100),60)
     display_player.create_3()
 
 
@@ -750,6 +747,7 @@ def drawloop():
 
 def choice_loop():
     """A scrren to chose from selection of game mode with press of a button"""
+    pygame.time.wait(50)
     screen.fill((255,255,255))
     no_wilds = Button(550,340,no_wild_img,no_wild_hi_img,1)
     number = Button(300, 340, all_numbers_img, all_numbers_hi_img, 1)
@@ -800,7 +798,7 @@ def playloop(user,user_deck,len_decks_list,topcard,pickup):
     logger.info("In playloop")
     screen.fill((248,248,255))
     screen.blit(bg, (0,0))  
-    display_all_cards = Text(f"{str(user).capitalize()}: {len_decks_list[0]} cards | Player 2: {len_decks_list[1]} cards | Player 3: {len_decks_list[2]} cards | Player 4: {len_decks_list[3]} cards",("#6d6dba"),355,200)
+    display_all_cards = Text(f"{str(user).capitalize()}: {len_decks_list[0]} cards | Player 2: {len_decks_list[1]} cards | Player 3: {len_decks_list[2]} cards | Player 4: {len_decks_list[3]} cards",("#6d6dba"),355,206)
     topcard = pygame.image.load(f'Assets/Cards/{topcard}.png').convert_alpha()
     topcard = Image(640,330,topcard,1)
     display_all_cards.create_4()
@@ -816,7 +814,7 @@ def playloop(user,user_deck,len_decks_list,topcard,pickup):
     back_button = Button(20,20,black_back_img,black_back_hi_img,1)
     pu_bool = False
     change_colour = False
-    player1_text = Text(f"{str(user).capitalize()} Turn...",("#6d6dba"),30,650)
+    player1_text = Text(f"{str(user).capitalize()} Turn...",("#6d6dba"),50,650)
 
     current_card = ""
 
@@ -955,7 +953,7 @@ def colour_loop(user,len_decks_list,topcard,current_card):
     logger.info("On colour loop")
     screen.fill((248,248,255))
     screen.blit(bg, (0,0))  
-    display_all_cards = Text(f"{str(user).capitalize()}: {len_decks_list[0]} cards | Player 2: {len_decks_list[1]} cards | Player 3: {len_decks_list[2]} cards | Player 4: {len_decks_list[3]} cards",("#6d6dba"),355,200)
+    display_all_cards = Text(f"{str(user).capitalize()}: {len_decks_list[0]} cards | Player 2: {len_decks_list[1]} cards | Player 3: {len_decks_list[2]} cards | Player 4: {len_decks_list[3]} cards",("#6d6dba"),355,206)
     topcard = pygame.image.load(f'Assets/Cards/{topcard}.png').convert_alpha()
     topcard = Image(640,330,topcard,1)
     display_all_cards.create_4()
@@ -967,7 +965,7 @@ def colour_loop(user,len_decks_list,topcard,current_card):
     green_button = Button(100,450,greenimg,greenimghi,1)
 
 
-    player1_text = Text(f"{str(user).capitalize()} Turn...",("#6d6dba"),30,650)
+    player1_text = Text(f"{str(user).capitalize()} Turn...",("#6d6dba"),50,650)
 
     player1_text.create_3()
     display_all_cards.create_4()
@@ -1016,6 +1014,7 @@ def colour_loop(user,len_decks_list,topcard,current_card):
 
 def main_menu_loop():
     """Displays the main menu with buttons to display choices"""
+    pygame.time.wait(50)
     logger.info("On Main Menu")
     logo = Image(510,20,uno_logo,1)
     screen.fill((255,255,255))
