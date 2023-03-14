@@ -693,7 +693,7 @@ def winloop(user):
 
     for x in range(320):
         screen.blit(bg2, (0,0))
-        win = Text(f"{str(user).capitalize()} WIIIIINNNNNSSSSS",("#42e54a"),((SCREEN_WIDTH//2)-100),x*1.051)
+        win = Text(f"{str(user).capitalize()} WIIIIINNNNNSSSSS",("#42e54a"),((SCREEN_WIDTH//2)-200),x*1.051)
         win.create()
         events = pygame.event.get()
 
@@ -712,7 +712,7 @@ def lossloop(player):
 
     for x in range(320):
         screen.blit(bg2, (0,0))
-        win = Text(f"Player{str(player + 1).capitalize()} WIIIIINNNNNSSSSS",("#ee2525"),((SCREEN_WIDTH//2)-100),x*1.051)
+        win = Text(f"Player{str(player + 1).capitalize()} WIIIIINNNNNSSSSS",("#ee2525"),((SCREEN_WIDTH//2)-200),x*1.051)
         win.create()
         events = pygame.event.get()
 
