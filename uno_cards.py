@@ -610,7 +610,7 @@ class UNO():
                 logger.info(f"All card weights in total sorted: amount_of_card_weight = {amount_of_card_weight}")
                 
                 chance = randint(1,20)
-                if chance > 7 or list_for_cards[1][0] == 0:
+                if chance > 7 or list_for_cards[1][1] == 0:
                     colour = amount_of_card_weight[0][0]
                     logger.info(f"Chose the best colour {colour}")
                 else:

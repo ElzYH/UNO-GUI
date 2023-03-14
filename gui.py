@@ -26,7 +26,7 @@ GAME_FONT2 = pygame.freetype.Font("Assets/Fonts/AOTFShinGoProMedium.otf",12.5)
 WELCOME_FONT = pygame.freetype.Font("Assets/Fonts/AOTFShinGoProMedium.otf",37.5)
 WELCOME_FONT2 = pygame.freetype.Font("Assets/Fonts/AOTFShinGoProMedium.otf",22)
 PLAYER_FONT = pygame.freetype.Font("Assets/Fonts/AOTFShinGoProMedium.otf",28)
-TEXT_FONT = pygame.freetype.Font("Assets/Fonts/AOTFShinGoProMedium.otf",18)
+TEXT_FONT = pygame.freetype.Font("Assets/Fonts/AOTFShinGoProMedium.otf",16.5)
 END_FONT = pygame.freetype.Font("Assets/Fonts/YeastyFlavorsRegular-yweyd.ttf",1)
 WII_FONT = pygame.freetype.Font("Assets/Fonts/AOTFShinGoProMedium.otf",18)
 
@@ -691,9 +691,9 @@ def winloop(user):
     screen.fill((248,248,255))
     screen.blit(bg2, (0,0))
 
-    for x in range(300):
+    for x in range(320):
         screen.blit(bg2, (0,0))
-        win = Text(f"{str(user).capitalize()} WIIIIINNNNNSSSSS",("#42e54a"),380,x*1.2)
+        win = Text(f"{str(user).capitalize()} WIIIIINNNNNSSSSS",("#42e54a"),((SCREEN_WIDTH//2)-100),x*1.051)
         win.create()
         events = pygame.event.get()
 
@@ -710,9 +710,9 @@ def winloop(user):
 def lossloop(player):
     screen.fill((248,248,255))
 
-    for x in range(300):
+    for x in range(320):
         screen.blit(bg2, (0,0))
-        win = Text(f"Player{str(player + 1).capitalize()} WIIIIINNNNNSSSSS",("#ee2525"),380,x*1.2)
+        win = Text(f"Player{str(player + 1).capitalize()} WIIIIINNNNNSSSSS",("#ee2525"),((SCREEN_WIDTH//2)-100),x*1.051)
         win.create()
         events = pygame.event.get()
 
