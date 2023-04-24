@@ -267,15 +267,8 @@ def lead_menu(user):
     """Menu to display the leaderboard"""
     logger.info(f"Leaderboard menu")
     screen.fill((0,0,0))
-    for i in range(8):
-        events = pygame.event.get()
-        for event in events:
-            if event.type == pygame.QUIT:
-                logger.info("Quit Application")
-                sys.exit()
-
-        pygame.display.update()
-        clock.tick(60)
+    
+        
     screen.fill((0,0,0))
     back_button = Button(20,20,black_back_img,black_back_hi_img,1)
     compare_button = Button(300,340,compare,compare_hi,1)
@@ -285,6 +278,27 @@ def lead_menu(user):
     separte_continue = False #chose table
     comsep = True #compare and menu screen
     compaere_menu = False #compare with stats 
+
+    for i in range(2):
+        separte_button.draw()
+        compare_button.draw()
+        back_button.draw()
+
+        events = pygame.event.get()
+        for event in events:
+            if event.type == pygame.QUIT:
+                logger.info("Quit Application")
+                sys.exit()
+
+        pygame.display.update()
+        clock.tick(60)
+
+
+
+
+
+    
+    
     while True:
         while comsep == True:
             screen.fill((0,0,0))
