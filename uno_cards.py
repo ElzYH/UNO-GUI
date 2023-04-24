@@ -99,7 +99,7 @@ class UNO():
 
 
     def postion_state(self):
-        """Used to find where the current player is compared to the player front. If the Number retunred is #i=2 winning #i=0 drawing #-2 losing. i is postion_weight but as local variavble.
+        """Used to find where the current AI player is compared to the player front. If the Number retunred is #i=2 winning #i=0 drawing #-2 losing. i is postion_weight but as local variavble.
         z is the amount of cards in next person deck"""
         logger.info("Postion State")
         def postioing(i,z):
@@ -142,7 +142,8 @@ class UNO():
 
 
     def card_states(self):
-        """Finds out what the best possible cards for the AI to use. It then uses the method postion weight to decide what would be problilty of what cards should be played"""
+        """Finds out what the best possible cards for the AI to use. It then uses the method postion weight to decide what would be problilty of what cards should be played . 
+        Where the AI decides which card it wants to play"""
 
         def ai_choice(postion):
             logger.info(f"{list_for_cards} the psotion looking {list_for_cards[postion]}")
@@ -153,6 +154,8 @@ class UNO():
                     break
             return str(z)
 
+
+        #Start of code
         top_current_card = str(self._topcard).split(" ")
         list_for_cards = []
         #Card counts:
@@ -188,8 +191,7 @@ class UNO():
                 blue_count += 1
         
         logger.info(f"counts after/amount_of_card_weight: red {red_count} blue {blue_count} green {green_count} yellow {yellow_count}")
-        #Creates a new list with card colours and there weights/counts and sorts the from the heightst value to the 
-        #lowest
+        #Creates a new list with card colours counts
         amount_of_card_weight = [["red",red_count],["green",green_count],["yellow",yellow_count],["blue",blue_count]]
 
         logger.info(f"Player {self._order_postion + 1} card colour weights/counts {amount_of_card_weight}")
@@ -208,7 +210,7 @@ class UNO():
         
         self.postion_state() #Call postion state
         logger.info(f"Player {self._order_postion + 1} postion state is {self._postion_weight}")
-        #Depending on the users postion state and chacne, is used to decide the player choice
+        #Depending on the player postion state and chance vairable, is used to decide the player choice
         chance = randint(1,100) 
         if count >= 4:
             if self._postion_weight == 2:
@@ -519,14 +521,14 @@ class UNO():
 
 
 
-        else: #AI
-            self._player_move = self.card_states() #AI
+        else: #It an AI turn 
+            self._player_move = self.card_states() #AI decideing what to play
             gui.displayloop(user,self.user_deck(),self.players_deck_len(),self._topcard,self._order_postion+1)
             logger.info(f'Player{self._order_postion + 1} Turn')
             logger.info(f'Player{self._order_postion + 1} wants to play {self._player_move}')
 
         
-            if self._player_move.lower().replace(" ", "_") == "pick_up":
+            if self._player_move.lower().replace(" ", "_") == "pick_up": #Ai decided to pickup/draw a card
                 logger.info(f"Player{self._order_postion + 1} wants to pick up, deck before pick up {self._order[self._order_postion]}")
                 self._order[self._order_postion].append(pick_up_card)
                 self._pickup = True
@@ -537,9 +539,8 @@ class UNO():
         #AI and Player
         is_card_in_deck = self.card_in_deck(pick_up_card)
         if is_card_in_deck == True:
-            self.play_card(pick_up_card)
+            self.play_card(pick_up_card) #call the play card method if the card being played in the deck
         logger.info(f'Player{self._order_postion + 1} Move: {self._player_move}')
-
         self.next_turn() 
         
 
@@ -558,7 +559,7 @@ class UNO():
 
             logger.info(f"Current card is a wild")
 
-            if self._order_postion == 0: #user playing
+            if self._order_postion == 0: #user player section for wilds
                 logger.info(f"Player 1 played a wild")
 
                 colour = self._colour
@@ -575,7 +576,7 @@ class UNO():
                 self.update_player_hand(current_card)
 
 
-            else: #Ai players
+            else: #Ai players section for wilds
                 logger.info(f"Player {self._order_postion + 1} played a wild")
                 red_count = 0
                 blue_count = 0
@@ -610,7 +611,7 @@ class UNO():
                 logger.info(f"All card weights in total sorted: amount_of_card_weight = {amount_of_card_weight}")
                 
                 chance = randint(1,20)
-                if chance > 7 or list_for_cards[1][1] == 0:
+                if chance > 7 or list_for_cards[1][1] == 0 or list_for_cards[1][1] == 1:
                     colour = amount_of_card_weight[0][0]
                     logger.info(f"Chose the best colour {colour}")
                 else:
@@ -634,7 +635,6 @@ class UNO():
         elif current_card[0] == top_current_card[0] and current_card[1]  == "block":
             self.update_player_hand(current_card)
             self._topcard = cards(current_card[0],current_card[1])
-            #for i in range(1):
             self.next_turn()
             logger.info(f"player{self._order[self._order_postion]} to be blocked")
 
@@ -658,7 +658,6 @@ class UNO():
             elif current_card[1]  == "block":
                 self.update_player_hand(current_card)
                 self._topcard = cards(current_card[0],current_card[1])
-                #for i in range(1):
                 self.next_turn()
                 logger.warning(f"player{self._order[self._order_postion]} to be blocked")
             else:
