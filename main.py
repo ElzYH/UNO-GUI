@@ -122,6 +122,7 @@ if __name__ == "__main__":
     x = datetime.datetime.now()
     x = 'application_' + str(x.strftime("%x")) + " T"+ str(x.strftime("%X")) + '.log'
     x = str(x).replace("/","-").replace(" ","--").replace(":","-")
+    os.makedirs("Logs", exist_ok=True) 
     logging.basicConfig(filename=f"Logs/{x}",filemode='w',format='%(name)s - %(asctime)s - %(levelname)s - %(message)s',datefmt='%d-%b-%y %H:%M:%S',level=logging.INFO) #for logging
     logger.info(f'Application started')
 

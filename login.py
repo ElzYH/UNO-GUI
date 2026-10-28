@@ -59,9 +59,8 @@ class User:
         logger.info(f"Signing in")
         conn = sqlite3.connect("uno_database.db")
         c = conn.cursor()
-
+        self.__username = str("".join([i for i in u])).lower()   # username typed in, lowercased
         check = c.execute('SELECT UserName FROM Normal WHERE UserName = ?', (self.__username,))
-        check = c.execute(f'SELECT UserName FROM Normal WHERE UserName IS "{self.__username}"')
         logger.info(f"username: {self.__username}, check: {check}") #shows where how private access work
 
         try:
@@ -71,9 +70,10 @@ class User:
             self.error = "Please Enter A Valid Username"
             logger.warning(f"{self.error} Enter a non valid username/ not in table")
             conn.close()
-        
+
         if check == self.__username:
-            logger.info(f"Check is True") 
+            logger.info(f"Check is True")
+            conn.close()  
             return self.__username
 
     def get_user(self):
