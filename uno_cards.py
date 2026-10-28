@@ -127,7 +127,7 @@ class UNO():
 
         elif self._clockwise == False:
             if self._order_postion == 0:
-                z = len(self._order[self._order[3]])
+                z = len(self._order[3])
                 i = postioing(i,z)
 
             else:
