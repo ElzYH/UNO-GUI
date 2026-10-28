@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+
+# Old Windows venv files
+Include/
+Lib/
+Scripts/
+pyvenv.cfg
+
+# Generated at runtime
+Logs/
+*.db
+
+# Build output
+build/
+dist/
+*.spec
+*.exe
+
+# Editor / OS
+.idea/
+.vscode/
+.DS_Store
