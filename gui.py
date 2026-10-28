@@ -107,6 +107,13 @@ all_cards_hi = pygame.image.load('Assets/all_cards_hi.png')
 bg = pygame.image.load("Assets/uno_background.png")
 bg2 = pygame.image.load("Assets/end_screen.png")
 
+card_cache = {}  # card name -> loaded image, so each file is only read from disk once
+
+def load_card(name):
+    """Returns a card image, loading it from disk the first time only"""
+    if name not in card_cache:
+        card_cache[name] = pygame.image.load(f'Assets/Cards/{name}.png').convert_alpha()
+    return card_cache[name]
 
 
 class Button():
@@ -628,7 +635,7 @@ def displayloop(user,user_deck,len_decks_list,topcard,current_player):
     screen.fill((248,248,255))
     screen.blit(bg, (0,0))
     display_all_cards = Text(f"{str(user).capitalize()}: {len_decks_list[0]} cards | Player 2: {len_decks_list[1]} cards | Player 3: {len_decks_list[2]} cards | Player 4: {len_decks_list[3]} cards",("#6d6dba"),355,206)
-    topcard = pygame.image.load(f'Assets/Cards/{topcard}.png').convert_alpha()
+    topcard = load_card(topcard)
     topcard = Image(640,330,topcard,1)
     display_all_cards.create_4()
     page = 1
@@ -651,8 +658,8 @@ def displayloop(user,user_deck,len_decks_list,topcard,current_player):
         display_player.create_3()
         display_all_cards.create_4()
         topcard.display()
-        user_cards = [[pygame.image.load(f'Assets/Cards/{i}.png').convert_alpha(),str(i)] for i in user_deck]
-        user_cards_hi = [pygame.image.load(f'Assets/Cards/{x}_hi.png').convert_alpha() for x in user_deck]
+        user_cards = [[load_card(i), str(i)] for i in user_deck]
+        user_cards_hi = [load_card(f"{x}_hi") for x in user_deck]
 
         events = pygame.event.get()
         x = 190
@@ -813,7 +820,7 @@ def playloop(user,user_deck,len_decks_list,topcard,pickup):
     screen.fill((248,248,255))
     screen.blit(bg, (0,0))  
     display_all_cards = Text(f"{str(user).capitalize()}: {len_decks_list[0]} cards | Player 2: {len_decks_list[1]} cards | Player 3: {len_decks_list[2]} cards | Player 4: {len_decks_list[3]} cards",("#6d6dba"),355,206)
-    topcard = pygame.image.load(f'Assets/Cards/{topcard}.png').convert_alpha()
+    topcard = load_card(topcard)
     topcard = Image(640,330,topcard,1)
     display_all_cards.create_4()
     page = 1
@@ -837,9 +844,9 @@ def playloop(user,user_deck,len_decks_list,topcard,pickup):
         player1_text.create_3()
         display_all_cards.create_4()
         topcard.display()
-        user_cards = [[pygame.image.load(f'Assets/Cards/{i}.png').convert_alpha(),str(i)] for i in user_deck]
-        user_cards_hi = [pygame.image.load(f'Assets/Cards/{x}_hi.png').convert_alpha() for x in user_deck]
-        pick = UnoCards(400,330,pygame.image.load(f'Assets/Cards/{pickup}.png'),pygame.image.load(f'Assets/Cards/{pickup}_hi.png').convert_alpha(),1,pickup)
+        user_cards = [[load_card(i), str(i)] for i in user_deck]
+        user_cards_hi = [load_card(f"{x}_hi") for x in user_deck]
+        pick = UnoCards(400,330,load_card(pickup),load_card(f"{pickup}_hi"),1,pickup)
         events = pygame.event.get()
         x = 190
         y = 600
@@ -968,7 +975,7 @@ def colour_loop(user,len_decks_list,topcard,current_card):
     screen.fill((248,248,255))
     screen.blit(bg, (0,0))  
     display_all_cards = Text(f"{str(user).capitalize()}: {len_decks_list[0]} cards | Player 2: {len_decks_list[1]} cards | Player 3: {len_decks_list[2]} cards | Player 4: {len_decks_list[3]} cards",("#6d6dba"),355,206)
-    topcard = pygame.image.load(f'Assets/Cards/{topcard}.png').convert_alpha()
+    topcard = load_card(topcard)
     topcard = Image(640,330,topcard,1)
     display_all_cards.create_4()
 

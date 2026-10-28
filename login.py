@@ -73,7 +73,7 @@ class User:
 
         if check == self.__username:
             logger.info(f"Check is True")
-            conn.close()  
+            conn.close()
             return self.__username
 
     def get_user(self):
