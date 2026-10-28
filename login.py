@@ -34,7 +34,7 @@ class User:
         self.__username = u.replace(" ", "_") 
 
         try:
-            copy_check = c.execute(f'SELECT UserName FROM Normal WHERE UserName IS "{self.__username}"')
+            copy_check = c.execute('SELECT UserName FROM Normal WHERE UserName = ?', (self.__username,))
             copy_check = str("".join(c.fetchone()))
         except TypeError: logger.warning(f"Type Error Raised copy check = {copy_check}")
 
@@ -46,7 +46,8 @@ class User:
             logger.warning(f"Error code: {self.error} ")
         else:
             for table_name in ["NoWilds","Numbers","Normal"]:
-                c.execute(f"INSERT INTO {table_name}(UserName,Games,Wins,Loss,Draws) VALUES ('{self.__username.lower()}',0,0,0,0)")
+                c.execute(f"INSERT INTO {table_name} (UserName, Games, Wins, Loss, Draws) VALUES (?, 0, 0, 0, 0)",
+                          (self.__username.lower(),))
             logger.info(f"{self.__username} added to database")
         
         self.__username = ""
@@ -59,7 +60,7 @@ class User:
         conn = sqlite3.connect("uno_database.db")
         c = conn.cursor()
 
-        self.__username = str("".join([i for i in u])).lower()
+        check = c.execute('SELECT UserName FROM Normal WHERE UserName = ?', (self.__username,))
         check = c.execute(f'SELECT UserName FROM Normal WHERE UserName IS "{self.__username}"')
         logger.info(f"username: {self.__username}, check: {check}") #shows where how private access work
 

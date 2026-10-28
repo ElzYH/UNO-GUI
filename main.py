@@ -101,18 +101,13 @@ def main_game_uno(user):
             con = sqlite3.connect("uno_database.db")
             c = con.cursor()
 
-            table = c.execute(f"""SELECT Games,Draws
-                        FROM {choice}
-                        WHERE UserName = '{user}'
-                        """)
+            if choice not in ("Normal", "NoWilds", "Numbers"):  # table name can't be a ?, so whitelist it
+                raise ValueError(f"Invalid game mode {choice}")
+            c.execute(f"SELECT Games, Draws FROM {choice} WHERE UserName = ?", (user,))
             table = [int(i) for i in c.fetchone()]
-            logger.info(f"Games = {table[0]}, Draws = {table[1]}")
-            table[0] += 1 # games
-            table[1] += 1 # draws
-
-            c.execute(f"""UPDATE {choice}
-            SET Games = {table[0]}, Draws = {table[1]}
-            WHERE UserName = '{user}'""")   
+            ...
+            c.execute(f"UPDATE {choice} SET Games = ?, Draws = ? WHERE UserName = ?",
+                      (table[0], table[1], user))
             logger.info(f"Games played {table[0]}, User Draws {table[1]}")
             con.commit()
             con.close()

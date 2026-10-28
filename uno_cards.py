@@ -425,10 +425,8 @@ class UNO():
         The databasee is then close after."""
 
         def database_updates(user,worl):
-            user_worl = c.execute(f"""SELECT Games, {worl}
-            FROM {self._gamemode}
-            WHERE UserName = '{user}'
-            """)
+            user_worl =  c.execute(f"SELECT Games, {worl} FROM {self._gamemode} WHERE UserName = ?",
+                                   (user,))
 
             user_worl = [int(i) for i in c.fetchone()]
             logger.info(f"{user} Games Played {user_worl[0]} and {worl} {user_worl[1]}")
@@ -436,9 +434,8 @@ class UNO():
             user_worl[1] += 1
             logger.info(f"After it been incremented {user} Games Played {user_worl[0]} and {worl} {user_worl[1]}")
 
-            c.execute(f"""UPDATE {self._gamemode}
-            SET Games = {user_worl[0]}, {worl} = {user_worl[1]}
-            WHERE UserName = '{user}'""")
+            c.execute(f"UPDATE {self._gamemode} SET Games = ?, {worl} = ? WHERE UserName = ?",
+                      (user_worl[0], user_worl[1], user))
 
 
         con = sqlite3.connect("uno_database.db")
